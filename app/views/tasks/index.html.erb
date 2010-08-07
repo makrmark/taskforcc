@@ -1,0 +1,19 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Created By</th>
+    <th>Assigned To</th>
+  </tr>
+
+  <%= render(:partial => 'shared/task', :collection => @tasks )%>
+
+</table>
+
+<br />
+
+<%= link_to 'New task', new_task_path %>

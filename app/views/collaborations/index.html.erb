@@ -1,0 +1,29 @@
+<h1>Listing collaborations</h1>
+
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Created by</th>
+  </tr>
+
+<% @collaborations.each do |collaboration| %>
+  <tr>
+    <td><%=h collaboration.subject %></td>
+    <td><%=h collaboration.description %></td>
+    <td><%=h collaboration.status %></td>
+    <td title="<%= collaboration.user_created_by.email %>">
+      <%= collaboration.user_created_by.full_name %>
+    </td>
+
+    <td><%= link_to 'Show', collaboration %></td>
+    <td><%= link_to 'Edit', edit_collaboration_path(collaboration) %></td>
+    <td><%= link_to 'Destroy', collaboration, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New collaboration', new_collaboration_path %>

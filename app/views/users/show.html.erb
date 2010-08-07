@@ -1,0 +1,28 @@
+<p>
+  <b>Full name:</b>
+  <%=h @user.full_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<h1>Listing tasks</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Created By</th>
+    <th>Assigned To</th>
+  </tr>
+
+  <%= render(:partial => 'shared/task', :collection => @user.tasks_created_by )%>
+
+</table>

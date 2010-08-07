@@ -1,0 +1,40 @@
+<p>
+  <b>Subject:</b>
+  <%=h @collaboration.subject %>
+</p>
+
+
+<p>
+  <b>Status:</b>
+  <%=h @collaboration.status %>
+</p>
+
+<p>
+  <b>Created By</b>
+  <span title="<%= @collaboration.user_created_by.email %>">
+  <%=h @collaboration.user_created_by.full_name %>
+  </span>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @collaboration.description %>
+</p>
+
+<%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
+<%= link_to 'Back', collaborations_path %>
+
+<hr/>
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Full name</th>
+    <th>Email</th>
+  </tr>
+
+  <%= render(:partial => 'shared/user_list', :collection => @collaboration.users )%>
+
+<%= link_to 'Add Users', adduser_collaboration_path(@collaboration) %> |
+
+</table>

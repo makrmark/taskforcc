@@ -1,0 +1,17 @@
+
+<tr>    
+  <td><%= task.id %></td>
+  <td><%= task.title %></td>
+  <td><%= task.type %></td>
+  <td><%= task.status %></td>
+  <td title="<%= task.user_created_by.email %>">
+    <%= task.user_created_by.full_name %>
+  </td>
+  <td title="<%= task.user_assigned_to.email %>">
+    <%= task.user_assigned_to.full_name %>
+  </td>
+
+  <td><%= link_to 'Show', task %></td>
+  <td><%= link_to 'Edit', edit_task_path(task) %></td>
+  <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>

@@ -1,0 +1,24 @@
+<h1>Editing collaboration_user</h1>
+
+<% form_for(@collaboration_user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :collaboration_id %><br />
+    <%= f.text_field :collaboration_id %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :manager %><br />
+    <%= f.check_box :manager %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @collaboration_user %> |
+<%= link_to 'Back', collaboration_users_path %>

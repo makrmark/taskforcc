@@ -1,0 +1,18 @@
+<p>
+  <b>Collaboration:</b>
+  <%=h @collaboration_user.collaboration_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @collaboration_user.user_id %>
+</p>
+
+<p>
+  <b>Manager:</b>
+  <%=h @collaboration_user.manager %>
+</p>
+
+
+<%= link_to 'Edit', edit_collaboration_user_path(@collaboration_user) %> |
+<%= link_to 'Back', collaboration_users_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  collaboration_id: 1
+  user_id: 1
+  manager: false
+
+two:
+  collaboration_id: 1
+  user_id: 1
+  manager: false

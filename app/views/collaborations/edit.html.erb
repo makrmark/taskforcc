@@ -1,0 +1,27 @@
+<h1>Editing collaboration</h1>
+
+<% form_for(@collaboration) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.select :status, %w{ In-Progress On-Hold Cancelled Completed } %>
+  </p>
+  <p>
+    <%= f.label :created_by %><br />
+    <%=h @collaboration.user_created_by.full_name %>
+  <p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @collaboration %> |
+<%= link_to 'Back', collaborations_path %>

@@ -1,0 +1,43 @@
+  <p>
+    <b>ID</b>
+    <%=h @task.id %>
+  </p>
+
+  <p>
+    <b>Title</b>
+    <%=h @task.title %>
+  </p>
+
+  <p>
+    <b>Type</b>
+    <%=h @task.type %>
+  </p>
+
+  <p>
+    <b>Status</b>
+    <%=h @task.status %>
+  </p>
+
+  <p>
+    <b>Resolution</b>
+    <%=h @task.resolution %>
+  </p>
+
+  <p>
+    <b>Created By</b>
+    <%=h @task.user_created_by.full_name %>
+  </p>
+
+  <p>
+    <b>Assigned To</b>
+    <%=h @task.user_assigned_to.full_name %>
+  </p>
+
+
+  <p>
+    <b>Description</b>
+    <%=h @task.description %>
+  </p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
