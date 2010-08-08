@@ -1,6 +1,6 @@
 class CreateCollaborationUsers < ActiveRecord::Migration
   def self.up
-    create_table :collaboration_users do |t|
+    create_table :collaborations_users do |t|
       t.integer :collaboration_id
       t.integer :user_id
       t.boolean :manager
@@ -10,6 +10,6 @@ class CreateCollaborationUsers < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :collaboration_users
+    drop_table :collaborations_users
   end
 end

@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :collaboration_users
+  map.resources :collaborations_users
 
   map.resources :collaborations
 
@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
 
-  map.connect 'cu/:action/:collaboration_id', :controller => 'collaboration_user'
+  map.connect 'cu/:action/:collaboration_id', :controller => 'collaborations_users'
 
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'

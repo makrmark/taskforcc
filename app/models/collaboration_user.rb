@@ -1,5 +1,7 @@
 class CollaborationUser < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :collaboration
+  set_table_name "collaborations_users"
+
+  belongs_to :user
+  belongs_to :collaboration
 
 end

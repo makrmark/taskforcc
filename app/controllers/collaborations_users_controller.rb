@@ -1,29 +1,29 @@
-class CollaborationUsersController < ApplicationController
+class CollaborationsUsersController < ApplicationController
 
-  # GET /collaboration_users
-  # GET /collaboration_users.xml
+  # GET /collaborations_users
+  # GET /collaborations_users.xml
   def index
-    @collaboration_users = CollaborationUser.all
+    @collaborations_users = CollaborationUser.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @collaboration_users }
+      format.xml  { render :xml => @collaborations_users }
     end
   end
 
-  # GET /collaboration_users/list/1
-  # GET /collaboration_users/list/1.xml
+  # GET /collaborations_users/list/1
+  # GET /collaborations_users/list/1.xml
   def list
-    @collaboration_users = CollaborationUser.find_by_collaboration_id(params[:collaboration_id])
+    @collaborations_users = CollaborationUser.find_by_collaboration_id(params[:collaboration_id])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @collaboration_users }
+      format.xml  { render :xml => @collaborations_users }
     end
   end
 
-  # GET /collaboration_users/1
-  # GET /collaboration_users/1.xml
+  # GET /collaborations_users/1
+  # GET /collaborations_users/1.xml
   def show
     @collaboration_user = CollaborationUser.find(params[:id])
 
@@ -33,8 +33,8 @@ class CollaborationUsersController < ApplicationController
     end
   end
 
-  # GET /collaboration_users/new
-  # GET /collaboration_users/new.xml
+  # GET /collaborations_users/new
+  # GET /collaborations_users/new.xml
   def new
     @collaboration_user = CollaborationUser.new
 
@@ -44,13 +44,13 @@ class CollaborationUsersController < ApplicationController
     end
   end
 
-  # GET /collaboration_users/1/edit
+  # GET /collaborations_users/1/edit
   def edit
     @collaboration_user = CollaborationUser.find(params[:id])
   end
 
-  # POST /collaboration_users
-  # POST /collaboration_users.xml
+  # POST /collaborations_users
+  # POST /collaborations_users.xml
   def create
     @collaboration_user = CollaborationUser.new(params[:collaboration_user])
 

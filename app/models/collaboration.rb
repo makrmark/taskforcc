@@ -1,6 +1,6 @@
 class Collaboration < ActiveRecord::Base
-  has_many :collaboration_users  
-  has_many :users, :through => :collaboration_users
+  has_many :collaborations_users  
+  has_many :users, :through => :collaborations_users
 
   belongs_to :user_created_by,
     :class_name => 'User',
