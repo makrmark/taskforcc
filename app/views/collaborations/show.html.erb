@@ -1,3 +1,5 @@
+<h1>Collaboration Details</h1>
+
 <p>
   <b>Subject:</b>
   <%=h @collaboration.subject %>
@@ -25,7 +27,7 @@
 <%= link_to 'Back', collaborations_path %>
 
 <hr/>
-<h1>Listing users</h1>
+<h1>Collaboration users</h1>
 
 <table>
   <tr>
@@ -33,8 +35,28 @@
     <th>Email</th>
   </tr>
 
-  <%= render(:partial => 'shared/user_list', :collection => @collaboration.users )%>
+  <%= render(:partial => 'shared/user', :collection => @collaboration.users )%>
 
-<%= link_to 'Add Users', adduser_collaboration_path(@collaboration) %> |
+<%# link_to 'Add Users', user_collaboration_path(@collaboration) %>
 
 </table>
+
+<hr/>
+
+<h1>Collaboration tasks</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Created By</th>
+    <th>Assigned To</th>
+  </tr>
+
+  <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
+
+</table>
+
+<br />

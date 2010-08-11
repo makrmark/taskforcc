@@ -8,6 +8,8 @@ class Task < ActiveRecord::Base
     :class_name => 'User',
     :primary_key => 'id',
     :foreign_key => 'assigned_to'
+
+  belongs_to :collaborations
   
   validates_presence_of :title, :description, :status, :resolution, :created_by, :assigned_to, :type
 

@@ -1,0 +1,12 @@
+div.header {
+  height: 50px;
+  background: darkblue;
+  color: orange;
+}
+
+div.sidebar {
+  width: 250px;
+  height: 1000px;  
+  float: left;
+  background: lightblue;
+}

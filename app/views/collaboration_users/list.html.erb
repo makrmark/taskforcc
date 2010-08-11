@@ -1,16 +1,16 @@
-<h1>Listing collaboration_users</h1>
+<h1>Listing Users for <%=h @collaboration.subject %></h1>
 
 <table>
   <tr>
-    <th>Collaboration</th>
     <th>User</th>
     <th>Manager</th>
   </tr>
 
 <% @collaboration_users.each do |collaboration_user| %>
   <tr>
-    <td><%=h collaboration_user.collaboration_id %></td>
-    <td><%=h collaboration_user.user_id %></td>
+    <td><%= titled_text( collaboration_user.user.full_name,
+       collaboration_user.user.email)
+      %></td>
     <td><%=h collaboration_user.manager %></td>
     <td><%= link_to 'Show', collaboration_user %></td>
     <td><%= link_to 'Edit', edit_collaboration_user_path(collaboration_user) %></td>

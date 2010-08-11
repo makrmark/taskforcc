@@ -7,8 +7,10 @@
   <td title="<%= task.user_created_by.email %>">
     <%= task.user_created_by.full_name %>
   </td>
-  <td title="<%= task.user_assigned_to.email %>">
-    <%= task.user_assigned_to.full_name %>
+  <td>
+    <% titled_text(task.user_assigned_to.full_name,
+      task.user_assigned_to.email)
+     %>
   </td>
 
   <td><%= link_to 'Show', task %></td>

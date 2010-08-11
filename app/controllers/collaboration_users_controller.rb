@@ -14,6 +14,7 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/list/1
   # GET /collaboration_users/list/1.xml
   def list
+    @collaboration = Collaboration.find(params[:collaboration_id])
     @collaboration_users = CollaborationUser.find_all_by_collaboration_id(params[:collaboration_id])
 
     respond_to do |format|

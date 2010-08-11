@@ -9,21 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100807113708) do
+ActiveRecord::Schema.define(:version => 20100811111411) do
+
+  create_table "collaboration_users", :force => true do |t|
+    t.integer  "collaboration_id"
+    t.integer  "user_id"
+    t.boolean  "manager"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "collaborations", :force => true do |t|
     t.string   "subject"
     t.text     "description"
     t.string   "status"
     t.integer  "created_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "collaborations_users", :force => true do |t|
-    t.integer  "collaboration_id"
-    t.integer  "user_id"
-    t.boolean  "manager"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,12 +43,15 @@ ActiveRecord::Schema.define(:version => 20100807113708) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
-    t.string   "type",        :default => "Task",       :null => false
-    t.string   "status",      :default => "New",        :null => false
-    t.string   "resolution",  :default => "Unresolved", :null => false
+    t.string   "type",             :default => "Task",       :null => false
+    t.string   "status",           :default => "New",        :null => false
+    t.string   "resolution",       :default => "Unresolved", :null => false
     t.integer  "created_by"
     t.integer  "assigned_to"
+    t.integer  "collaboration_id"
   end
+
+  add_index "tasks", ["collaboration_id"], :name => "index_tasks_on_collaboration_id"
 
   create_table "users", :force => true do |t|
     t.string   "full_name"
