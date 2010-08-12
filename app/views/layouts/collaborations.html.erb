@@ -10,11 +10,11 @@
 </head>
 <body>
 
-<div class="header">
-  <h1>Collabramation</h1>
+<div id="header">
+  <h1>Collab</h1>
 </div>
 
-<div class="sidebar">
+<div id="sidebar">
   <b>User:</b>
   <span title="<%= @current_user.email %>">
   <%=h @current_user.full_name %>
@@ -22,13 +22,16 @@
   <b> | <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%></b>
   <hr>
 
-  <b>Collaborations:</b>
+  <b>My Open Collaborations:</b>
   <ul>
     <% @current_user.collaborations.each do |collab| %>
       <li><%= link_to collab.subject, collab %></li>
     <% end %>
   </ul>
-
+  <div width='100%' align='right'>
+  <%= link_to 'List All &gt; ', { :action => 'index', :controller => 'collaborations'} %>
+  </div>
+  
   <hr>
       
   <div class="contextual-sidebar">
@@ -36,8 +39,24 @@
   </div>
 </div>
 
-<div class="body">
-  <p style="color: green"><%= notice %></p>
+<div id="nav-tabs">
+  <table class='tab'>
+    <tr>
+      <td class='tab'>User Profile</td>
+      <td class='tab selected'>Collaboration</td>
+      <td class='tab'><%= link_to 'Team', collaboration_collaboration_users_path(@collaboration)  %></td>
+      <td class='tab'>Topics</td>
+      <td class='tab'>Milestones</td>
+      <td class='tab'>Tasks</td>
+      <td class='tab'>Meetings</td>      
+    </tr>    
+  </table>
+</div>
+
+<div id="body">
+  <div id="notices">
+    <p style="color: green"><%= notice %></p>
+  </div>
 
   <%= yield %>
 
@@ -46,6 +65,6 @@
 <div class="footer">
 
 </div>
-
+<%= (params[:controller] + '/'+ params[:action])  %>
 </body>
 </html>

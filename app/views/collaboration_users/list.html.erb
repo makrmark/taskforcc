@@ -12,9 +12,9 @@
        collaboration_user.user.email)
       %></td>
     <td><%=h collaboration_user.manager %></td>
-    <td><%= link_to 'Show', collaboration_user %></td>
-    <td><%= link_to 'Edit', edit_collaboration_user_path(collaboration_user) %></td>
-    <td><%= link_to 'Destroy', collaboration_user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', collaboration_users_path %></td>
+    <td><%= link_to 'Edit', edit_collaborations_user_path(collaboration_user) %></td>
+    <td><%= link_to 'Destroy', collaboration_users, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

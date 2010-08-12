@@ -13,6 +13,10 @@
   <%=h @collaboration_user.manager %>
 </p>
 
-
-<%= link_to 'Edit', edit_collaboration_user_path(@collaboration_user) %> |
-<%= link_to 'Back', collaboration_users_path %>
+<%= link_to 'Edit', edit_collaboration_collaboration_user_path(
+      :collaboration_id => @collaboration_user.collaboration_id,
+      :id => @collaboration_user.id
+    ) %> |
+<%= link_to 'Back', collaboration_collaboration_users_path(
+      :collaboration_id => @collaboration_user.collaboration_id
+    ) %>

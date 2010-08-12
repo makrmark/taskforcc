@@ -1,12 +1,59 @@
-div.header {
-  height: 50px;
+html, body, div, span, object,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      vertical-align: baseline;
+}
+#body {
+     line-height: 1;
+     color: black;
+     background: white;
+}
+
+#header {
+  height: 30px;
   background: darkblue;
   color: orange;
 }
 
-div.sidebar {
+#sidebar {
   width: 250px;
-  height: 1000px;  
-  float: left;
+  margin:15px 15px 0 0;
+  min-height: 1000px;
+  display:inline;
+  float:left;
   background: lightblue;
+}
+
+#nav-tabs {
+  background: lightblue;
+}
+
+td.tab, table.tab {
+  border-left: 1px;
+  border-right: 1px;
+  border-top: 1px;
+  border-bottom: 0px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-color: white;
+  border-style: solid;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  background: lightblue;
+}
+
+td.tab.selected {
+  background: white;
+  font-weight: bold;
 }

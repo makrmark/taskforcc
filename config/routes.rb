@@ -1,10 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :collaboration_users
 
-  map.resources :collaborations
-
+  map.resources :collaborations, :has_many => 'collaboration_users'
   map.resources :users
-
   map.resources :tasks
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,7 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
 
-  map.connect 'cu/:action/:collaboration_id', :controller => 'collaboration_users'
+#  map.connect 'teams/:action/:collaboration_id', :controller => 'collaboration_users'
+#  map.connect 'teams/:action/:collaboration_id/:user_id', :controller => 'collaboration_users'
 
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'

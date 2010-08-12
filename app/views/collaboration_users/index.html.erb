@@ -1,4 +1,4 @@
-<h1>Listing collaboration_users</h1>
+<h1>Collaboration Users</h1>
 
 <table>
   <tr>
@@ -12,13 +12,24 @@
     <td><%=h collaboration_user.collaboration_id %></td>
     <td><%=h collaboration_user.user_id %></td>
     <td><%=h collaboration_user.manager %></td>
-    <td><%= link_to 'Show', collaboration_user %></td>
-    <td><%= link_to 'Edit', edit_collaboration_user_path(collaboration_user) %></td>
-    <td><%= link_to 'Destroy', collaboration_user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', collaboration_collaboration_user_path(
+      :collaboration_id => collaboration_user.collaboration_id,
+      :id => collaboration_user.id
+    ) %></td>
+    
+    <td><%= link_to 'Edit', edit_collaboration_collaboration_user_path(
+      :collaboration_id => collaboration_user.collaboration_id,
+      :id => collaboration_user.id
+    ) %></td>
+    <td><%= link_to 'Destroy', collaboration_collaboration_user_path(
+      :collaboration_id => collaboration_user.collaboration_id,
+      :id => collaboration_user.id
+    ), 
+    :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New collaboration_user', new_collaboration_user_path %>
+<%= link_to 'New collaboration_user', new_collaboration_collaboration_user_path %>

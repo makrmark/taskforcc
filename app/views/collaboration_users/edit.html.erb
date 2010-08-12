@@ -1,6 +1,6 @@
 <h1>Editing collaboration_user</h1>
 
-<% form_for(@collaboration_user) do |f| %>
+<% form_for([@collaboration, @collaboration_user]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -20,5 +20,10 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @collaboration_user %> |
-<%= link_to 'Back', collaboration_users_path %>
+<%= link_to 'Show', collaboration_collaboration_user_path(
+      :collaboration_id => @collaboration_user.collaboration_id,
+      :id => @collaboration_user.id
+    ) %> |
+<%= link_to 'Back', collaboration_collaboration_users_path(
+      :collaboration_id => @collaboration_user.collaboration_id
+    ) %>
