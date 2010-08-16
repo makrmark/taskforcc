@@ -15,10 +15,12 @@
   <ul>
     <% @current_user.collaborations.each do |collab| %>
       <li><%= link_to collab.subject, collab %></li>
+      <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
     <% end %>
   </ul>
   <div width='100%' align='right'>
   <%= link_to 'List All &gt; ', collaborations_path %>
+  <br />
   </div>
   
   <hr>
@@ -29,7 +31,8 @@
 </div>
 
 <div class="nav-tabs">
-  <% unless params[:controller].eql?("collaborations") && params[:action].eql?("index") %>
+  <% unless params[:controller].eql?("collaborations") && 
+    ( params[:action].eql?("index") || params[:action].eql?("new") ) %>
     <ul class='tab nav'>
       <li class='tab <%= "selected" if params[:controller].eql?("collaborations") %>'>
           <%= link_to 'Collaboration', collaboration_path(@collaboration) %></li>
@@ -66,6 +69,9 @@
 <div class="footer">
 
 </div>
-<%= (params[:controller] + '/'+ params[:action])  %>
+
+<hr />
+<%=h (params[:controller] + ' / '+ params[:action])  %>
+<%=h params.to_s %>
 </body>
 </html>

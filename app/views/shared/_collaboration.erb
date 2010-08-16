@@ -1,0 +1,7 @@
+  <tr>
+    <td><%=h link_to collaboration.subject, collaboration %></td>
+    <td><%=h collaboration.status %></td>
+    <td title="<%= collaboration.user_created_by.email %>">
+      <%= collaboration.user_created_by.full_name %>
+    </td>
+  </tr>

@@ -1,0 +1,19 @@
+  <tr>
+    <td><%= titled_text(collaboration_user.user.full_name,
+     collaboration_user.user.email) %></td>
+    <td><%=h collaboration_user.manager %></td>
+    <td><%= link_to 'Show', collaboration_collaboration_user_path(
+      :collaboration_id => collaboration_user.collaboration_id,
+      :id => collaboration_user.id
+    ) %></td>
+    
+    <td><%= link_to 'Edit', edit_collaboration_collaboration_user_path(
+      :collaboration_id => collaboration_user.collaboration_id,
+      :id => collaboration_user.id
+    ) %></td>
+    <td><%= link_to 'Remove User', collaboration_collaboration_user_path(
+      :collaboration_id => collaboration_user.collaboration_id,
+      :id => collaboration_user.id
+    ),
+    :confirm => 'Really remove from collaboration?', :method => :delete %></td>
+  </tr>

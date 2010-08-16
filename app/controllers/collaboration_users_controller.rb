@@ -14,19 +14,6 @@ class CollaborationUsersController < ApplicationController
     end
   end
 
-  # GET /collaboration_users/list/1
-  # GET /collaboration_users/list/1.xml
-  def list
-    @collaboration_users = CollaborationUser.find_all_by_collaboration_id(params[:collaboration_id])
-    @collaboration = Collaboration.find(params[:collaboration_id])
-    @current_user = User.find(session[:user_id])
-
-    respond_to do |format|
-      format.html # list.html.erb
-      format.xml  { render :xml => @collaboration_users }
-    end
-  end
-
   # GET /collaboration_users/1
   # GET /collaboration_users/1.xml
   def show

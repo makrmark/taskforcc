@@ -1,35 +1,16 @@
 <h1>Collaboration Users</h1>
 
-<table>
+<table border='1'>
   <tr>
-    <th>Collaboration</th>
     <th>User</th>
     <th>Manager</th>
+    <th colspan='3'></th>
   </tr>
 
-<% @collaboration_users.each do |collaboration_user| %>
-  <tr>
-    <td><%=h collaboration_user.collaboration_id %></td>
-    <td><%=h collaboration_user.user_id %></td>
-    <td><%=h collaboration_user.manager %></td>
-    <td><%= link_to 'Show', collaboration_collaboration_user_path(
-      :collaboration_id => collaboration_user.collaboration_id,
-      :id => collaboration_user.id
-    ) %></td>
-    
-    <td><%= link_to 'Edit', edit_collaboration_collaboration_user_path(
-      :collaboration_id => collaboration_user.collaboration_id,
-      :id => collaboration_user.id
-    ) %></td>
-    <td><%= link_to 'Destroy', collaboration_collaboration_user_path(
-      :collaboration_id => collaboration_user.collaboration_id,
-      :id => collaboration_user.id
-    ), 
-    :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <%= render(:partial => 'shared/collaboration_user', :collection => @collaboration_users )%>
+
 </table>
 
 <br />
 
-<%= link_to 'New collaboration_user', new_collaboration_collaboration_user_path %>
+<%= link_to 'Invite User to Collaborate', new_collaboration_collaboration_user_path %>

@@ -13,7 +13,7 @@ class Collaboration < ActiveRecord::Base
   validates_presence_of :subject, :description, :status, :created_by
 
   validates_inclusion_of :status, 
-    :in => %w{In-Progress On-Hold Cancelled Completed}, 
-    :message => "should be In-Progress, On-Hold, Cancelled, or Completed"
+    :in => %w{Open On-Hold Closed}, 
+    :message => "should be Open, On-Hold, or Closed"
 
 end

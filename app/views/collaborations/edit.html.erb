@@ -9,12 +9,12 @@
   </p>
   <p>
     <%= f.label :status %><br />
-    <%= f.select :status, %w{ In-Progress On-Hold Cancelled Completed } %>
+    <%= f.select :status, %w{ Open On-Hold Closed } %>
   </p>
   <p>
     <%= f.label :created_by %><br />
     <%=h @collaboration.user_created_by.full_name %>
-  <p>
+  </p>
   <p>
     <%= f.label :description %><br />
     <%= f.text_area :description %>
@@ -24,4 +24,5 @@
 <% end %>
 
 <%= link_to 'Show', @collaboration %> |
+<%= link_to 'Destroy', @collaboration, :confirm => 'Are you sure?', :method => :delete %>
 <%= link_to 'Back', collaborations_path %>

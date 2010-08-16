@@ -1,15 +1,16 @@
-<h1>Editing collaboration_user</h1>
+<h1>Editing Collaboration User</h1>
 
 <% form_for([@collaboration, @collaboration_user]) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :collaboration_id %><br />
-    <%= f.text_field :collaboration_id %>
+    <%=h @collaboration_user.collaboration.subject %>
   </p>
   <p>
     <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= titled_text(@collaboration_user.user.full_name,
+     @collaboration_user.user.email) %>
   </p>
   <p>
     <%= f.label :manager %><br />

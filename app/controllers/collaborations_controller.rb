@@ -39,6 +39,7 @@ class CollaborationsController < ApplicationController
   # GET /collaborations/1/edit
   def edit
     @collaboration = Collaboration.find(params[:id])
+    @current_user = User.find(session[:user_id])
   end
 
   # POST /collaborations

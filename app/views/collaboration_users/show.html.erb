@@ -1,11 +1,12 @@
 <p>
   <b>Collaboration:</b>
-  <%=h @collaboration_user.collaboration_id %>
+  <%=h @collaboration_user.collaboration.subject %>
 </p>
 
 <p>
   <b>User:</b>
-  <%=h @collaboration_user.user_id %>
+  <%= titled_text(@collaboration_user.user.full_name,
+   @collaboration_user.user.email) %>
 </p>
 
 <p>
