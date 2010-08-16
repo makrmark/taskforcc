@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :collaborations, :has_many => 'collaboration_users'
+  map.resources :collaborations, :has_many => 'tasks'
   map.resources :users
   map.resources :tasks
 

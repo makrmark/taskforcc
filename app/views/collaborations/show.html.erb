@@ -26,37 +26,4 @@
 <%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
 <%= link_to 'Back', collaborations_path %>
 
-<hr/>
-<h1>Collaboration users</h1>
-
-<table>
-  <tr>
-    <th>Full name</th>
-    <th>Email</th>
-  </tr>
-
-  <%= render(:partial => 'shared/user', :collection => @collaboration.users )%>
-
-<%# link_to 'Add Users', user_collaboration_path(@collaboration) %>
-
-</table>
-
-<hr/>
-
-<h1>Collaboration tasks</h1>
-
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Title</th>
-    <th>Type</th>
-    <th>Status</th>
-    <th>Created By</th>
-    <th>Assigned To</th>
-  </tr>
-
-  <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
-
-</table>
-
 <br />

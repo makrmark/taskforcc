@@ -48,5 +48,8 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Show', collaboration_task_path(
+      :collaboration_id => @collaboration.id,
+      :id => @task.id
+  ) %> |
+<%= link_to 'Close', @collaboration %>

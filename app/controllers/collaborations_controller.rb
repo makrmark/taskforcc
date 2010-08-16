@@ -27,6 +27,7 @@ class CollaborationsController < ApplicationController
   # GET /collaborations/new.xml
   def new
     @collaboration = Collaboration.new
+    @current_user = User.find(session[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb

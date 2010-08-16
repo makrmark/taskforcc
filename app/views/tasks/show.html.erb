@@ -38,5 +38,8 @@
     <%=h @task.description %>
   </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_collaboration_task_path(
+      :collaboration_id => @collaboration.id,
+      :id => @task.id
+  )  %> |
+<%= link_to 'Close', collaboration_tasks_path(@collaboration) %>

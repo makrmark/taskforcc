@@ -1,8 +1,12 @@
 class TasksController < ApplicationController
+  layout "collaborations"
+
   # GET /tasks
   # GET /tasks.xml
   def index
     @tasks = Task.all
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +18,8 @@ class TasksController < ApplicationController
   # GET /tasks/1.xml
   def show
     @task = Task.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +32,8 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @user_list = select_user_list
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +45,8 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     @user_list = select_user_list
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
   end
 
   # POST /tasks
@@ -44,6 +54,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @task.created_by = session[:user_id]
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       if @task.save
@@ -60,6 +72,8 @@ class TasksController < ApplicationController
   # PUT /tasks/1.xml
   def update
     @task = Task.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -76,10 +90,14 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.xml
   def destroy
     @task = Task.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tasks_url) }
+      format.html { redirect_to( collaboration_tasks_url(
+        :collaboration_id => @collaboration.id
+      ) ) }
       format.xml  { head :ok }
     end
   end

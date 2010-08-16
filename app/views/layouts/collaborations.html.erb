@@ -10,18 +10,7 @@
 </head>
 <body>
 
-<div id="header">
-  <h1>Collab</h1>
-</div>
-
 <div id="sidebar">
-  <b>User:</b>
-  <span title="<%= @current_user.email %>">
-  <%=h @current_user.full_name %>
-  </span>
-  <b> | <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%></b>
-  <hr>
-
   <b>My Open Collaborations:</b>
   <ul>
     <% @current_user.collaborations.each do |collab| %>
@@ -29,7 +18,7 @@
     <% end %>
   </ul>
   <div width='100%' align='right'>
-  <%= link_to 'List All &gt; ', { :action => 'index', :controller => 'collaborations'} %>
+  <%= link_to 'List All &gt; ', collaborations_path %>
   </div>
   
   <hr>
@@ -39,21 +28,33 @@
   </div>
 </div>
 
-<div id="nav-tabs">
-  <table class='tab'>
-    <tr>
-      <td class='tab'>User Profile</td>
-      <td class='tab selected'>Collaboration</td>
-      <td class='tab'><%= link_to 'Team', collaboration_collaboration_users_path(@collaboration)  %></td>
-      <td class='tab'>Topics</td>
-      <td class='tab'>Milestones</td>
-      <td class='tab'>Tasks</td>
-      <td class='tab'>Meetings</td>      
-    </tr>    
-  </table>
+<div class="nav-tabs">
+  <% unless params[:controller].eql?("collaborations") && params[:action].eql?("index") %>
+    <ul class='tab nav'>
+      <li class='tab <%= "selected" if params[:controller].eql?("collaborations") %>'>
+          <%= link_to 'Collaboration', collaboration_path(@collaboration) %></li>
+      <li class='tab <%= "selected" if params[:controller].eql?("tasks") %>'>
+        <%= link_to 'Tasks', collaboration_tasks_path(@collaboration) %></li>
+      <li class='tab <%= "selected" if params[:controller].eql?("collaboration_users") %>'>
+        <%= link_to 'Team', collaboration_collaboration_users_path(@collaboration)  %></li>
+      <li class='tab'>
+        Topics</li>
+      <li class='tab'>
+        Milestones</li>
+      <li class='tab'>
+        Meetings</li>
+    </ul>
+  <% end %>
+  
+  <ul class='tab user'>
+    <li class='tab'>
+      <%=h @current_user.full_name %></li>
+    <li class='tab'>
+      <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%></li>
+  </ul>
 </div>
 
-<div id="body">
+<div id="content">
   <div id="notices">
     <p style="color: green"><%= notice %></p>
   </div>
