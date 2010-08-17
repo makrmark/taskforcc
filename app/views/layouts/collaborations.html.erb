@@ -15,8 +15,8 @@
   <ul>
     <% @current_user.collaborations.each do |collab| %>
       <li><%= link_to collab.subject, collab %></li>
-      <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
     <% end %>
+    <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
   </ul>
   <div width='100%' align='right'>
   <%= link_to 'List All &gt; ', collaborations_path %>

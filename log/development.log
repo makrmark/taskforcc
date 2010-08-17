@@ -18940,3 +18940,1497 @@ Rendering template within layouts/collaborations
 Rendering collaboration_users/index
   [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
 Completed in 250ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 17:52:03) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 281ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 17:55:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 31, DB: 16) | 200 OK [http://localhost/collaborations/1]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 17:55:15) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 17:55:20) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 203ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 17:55:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:55:26) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (31.3ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 203ms (View: 78, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 17:55:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 219ms (View: 141, DB: 0) | 200 OK [http://localhost/collaborations/1]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:55:53) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 47, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 17:55:55) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (31.3ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 47, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 17:57:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 63ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:57:26) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 63, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 17:57:29) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:57:31) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mTask Load (0.0ms)[0m   [0;1mSELECT * FROM "tasks" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 47, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:58:08) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 47, DB: 16) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:58:15) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mTask Load (15.6ms)[0m   [0;1mSELECT * FROM "tasks" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 47, DB: 16) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:58:52) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 234ms (View: 156, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:59:00) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mTask Load (0.0ms)[0m   [0;1mSELECT * FROM "tasks" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (15.6ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 47, DB: 16) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:59:22) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 47, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:59:31) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mTask Load (0.0ms)[0m   [0;1mSELECT * FROM "tasks" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 250ms (View: 156, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 17:59:51) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (0.0ms)
+  [4;35;1mCollaboration Load (15.6ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 16, DB: 16) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:59:53) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (15.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (31.3ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 156ms (View: 63, DB: 16) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 17:59:55) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 17:59:57) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mTask Load (0.0ms)[0m   [0;1mSELECT * FROM "tasks" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 63, DB: 0) | 200 OK [http://localhost/collaborations/1/tasks]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 17:59:59) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing CollaborationUsersController#show (for 127.0.0.1 at 2010-08-16 18:01:18) [GET]
+  Parameters: {"id"=>"1", "collaboration_id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users/1]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 18:01:23) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 18:06:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 78ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1]
+
+
+Processing CollaborationsController#index (for 127.0.0.1 at 2010-08-16 18:09:16) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;35;1mCollaboration Load (15.6ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 16, DB: 16) | 200 OK [http://localhost/collaborations]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 19:16:02) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined local variable or method `user_id' for #<Class:0x487dca0>) on line #16 of app/views/layouts/collaborations.html.erb:
+13: <div id="sidebar">
+14:   <b>My Open Collaborations:</b>
+15:   <ul>
+16:     <% @current_user.collaborations.each do |collab| %>
+17:       <li><%= link_to collab.subject, collab %></li>
+18:       <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+19:     <% end %>
+
+    app/models/collaboration_user.rb:5
+    app/views/layouts/collaborations.html.erb:16
+    app/controllers/collaborations_controller.rb:20:in `show'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (15.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 19:18:59) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined local variable or method `user_id' for #<Class:0x451cde8>) on line #16 of app/views/layouts/collaborations.html.erb:
+13: <div id="sidebar">
+14:   <b>My Open Collaborations:</b>
+15:   <ul>
+16:     <% @current_user.collaborations.each do |collab| %>
+17:       <li><%= link_to collab.subject, collab %></li>
+18:       <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+19:     <% end %>
+
+    app/models/collaboration_user.rb:5
+    app/views/layouts/collaborations.html.erb:16
+    app/controllers/collaborations_controller.rb:20:in `show'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationsController#index (for 127.0.0.1 at 2010-08-16 19:20:10) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined local variable or method `user_id' for #<Class:0x45ad958>) on line #16 of app/views/layouts/collaborations.html.erb:
+13: <div id="sidebar">
+14:   <b>My Open Collaborations:</b>
+15:   <ul>
+16:     <% @current_user.collaborations.each do |collab| %>
+17:       <li><%= link_to collab.subject, collab %></li>
+18:       <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+19:     <% end %>
+
+    app/models/collaboration_user.rb:5
+    app/views/layouts/collaborations.html.erb:16
+    app/controllers/collaborations_controller.rb:8:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (265.6ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationsController#index (for 127.0.0.1 at 2010-08-16 19:21:32) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined local variable or method `user_id' for #<Class:0x468ce88>) on line #16 of app/views/layouts/collaborations.html.erb:
+13: <div id="sidebar">
+14:   <b>My Open Collaborations:</b>
+15:   <ul>
+16:     <% @current_user.collaborations.each do |collab| %>
+17:       <li><%= link_to collab.subject, collab %></li>
+18:       <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+19:     <% end %>
+
+    app/models/collaboration_user.rb:5
+    app/views/layouts/collaborations.html.erb:16
+    app/controllers/collaborations_controller.rb:8:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (234.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationsController#index (for 127.0.0.1 at 2010-08-16 19:22:00) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (15.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined local variable or method `user_id' for #<Class:0x470b2d8>) on line #16 of app/views/layouts/collaborations.html.erb:
+13: <div id="sidebar">
+14:   <b>My Open Collaborations:</b>
+15:   <ul>
+16:     <% @current_user.collaborations.each do |collab| %>
+17:       <li><%= link_to collab.subject, collab %></li>
+18:       <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+19:     <% end %>
+
+    app/models/collaboration_user.rb:5
+    app/views/layouts/collaborations.html.erb:16
+    app/controllers/collaborations_controller.rb:8:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (234.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationsController#index (for 127.0.0.1 at 2010-08-16 19:22:42) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (15.6ms)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined local variable or method `user_id' for #<Class:0x47734f8>) on line #16 of app/views/layouts/collaborations.html.erb:
+13: <div id="sidebar">
+14:   <b>My Open Collaborations:</b>
+15:   <ul>
+16:     <% @current_user.collaborations.each do |collab| %>
+17:       <li><%= link_to collab.subject, collab %></li>
+18:       <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+19:     <% end %>
+
+    app/models/collaboration_user.rb:5
+    app/views/layouts/collaborations.html.erb:16
+    app/controllers/collaborations_controller.rb:8:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing AccessController#logout (for 127.0.0.1 at 2010-08-16 19:33:00) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/access/login
+Completed in 172ms (DB: 0) | 302 Found [http://localhost/access/logout]
+
+
+Processing AccessController#login (for 127.0.0.1 at 2010-08-16 19:33:01) [GET]
+Rendering template within layouts/access
+Rendering access/login
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/access/login]
+
+
+Processing AccessController#login (for 127.0.0.1 at 2010-08-16 19:33:07) [POST]
+  Parameters: {"commit"=>"Login", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "password"=>"snoman", "email"=>"mark.cowlishaw@gmail.com"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."email" = 'mark.cowlishaw@gmail.com') LIMIT 1[0m
+Redirected to http://localhost:3000/access/welcome
+Completed in 94ms (DB: 0) | 302 Found [http://localhost/access/login]
+
+
+Processing AccessController#welcome (for 127.0.0.1 at 2010-08-16 19:33:08) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/access
+Rendering access/welcome
+Completed in 78ms (View: 47, DB: 16) | 200 OK [http://localhost/access/welcome]
+
+
+Processing CollaborationsController#index (for 127.0.0.1 at 2010-08-16 19:33:15) [GET]
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (15.6ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+ActionView::TemplateError (undefined local variable or method `user_id' for #<Class:0x4591728>) on line #16 of app/views/layouts/collaborations.html.erb:
+13: <div id="sidebar">
+14:   <b>My Open Collaborations:</b>
+15:   <ul>
+16:     <% @current_user.collaborations.each do |collab| %>
+17:       <li><%= link_to collab.subject, collab %></li>
+18:       <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+19:     <% end %>
+
+    app/models/collaboration_user.rb:5
+    app/views/layouts/collaborations.html.erb:16
+    app/controllers/collaborations_controller.rb:8:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (265.6ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationsController#index (for 127.0.0.1 at 2010-08-16 19:36:05) [GET]
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" [0m
+  [4;36;1mUser Load (15.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (0.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_collaboration (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 78ms (View: 16, DB: 16) | 200 OK [http://localhost/collaborations]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 19:36:26) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:36:30) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 78ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#new (for 127.0.0.1 at 2010-08-16 19:36:32) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/new
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 359ms (View: 266, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users/new]
+
+
+Processing CollaborationUsersController#create (for 127.0.0.1 at 2010-08-16 19:36:35) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "collaboration_user"=>{"manager"=>"0", "user_id"=>""}, "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/new
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#create (for 127.0.0.1 at 2010-08-16 19:39:04) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "collaboration_user"=>{"manager"=>"0", "user_id"=>""}, "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mCollaborationUser Create (0.0ms)[0m   [0mINSERT INTO "collaboration_users" ("created_at", "updated_at", "manager", "user_id", "collaboration_id") VALUES('2010-08-16 17:39:04', '2010-08-16 17:39:04', 'f', 1, 2)[0m
+Redirected to http://localhost:3000/collaborations/2/collaboration_users
+Completed in 844ms (DB: 0) | 302 Found [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:39:05) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (0.0ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#create (for 127.0.0.1 at 2010-08-16 19:39:32) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "collaboration_user"=>{"manager"=>"0", "user_id"=>""}, "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/new
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing TasksController#index (for 127.0.0.1 at 2010-08-16 19:39:45) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mTask Load (0.0ms)[0m   [0mSELECT * FROM "tasks" [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering tasks/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered shared/_task (15.6ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered shared/_task (0.0ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 141ms (View: 47, DB: 0) | 200 OK [http://localhost/collaborations/2/tasks]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 19:39:46) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:39:50) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (0.0ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#edit (for 127.0.0.1 at 2010-08-16 19:39:52) [GET]
+  Parameters: {"id"=>"9", "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (15.6ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."id" = 9) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/edit
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 31, DB: 16) | 200 OK [http://localhost/collaborations/2/collaboration_users/9/edit]
+
+
+Processing CollaborationUsersController#update (for 127.0.0.1 at 2010-08-16 19:39:55) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "id"=>"9", "collaboration_user"=>{"manager"=>"1"}, "collaboration_id"=>"2"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."id" = 9) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mCollaborationUser Update (0.0ms)[0m   [0mUPDATE "collaboration_users" SET "updated_at" = '2010-08-16 17:39:55', "manager" = 't' WHERE "id" = 9[0m
+Redirected to http://localhost:3000/collaborations/2/collaboration_users/9
+Completed in 297ms (DB: 0) | 302 Found [http://localhost/collaborations/2/collaboration_users/9]
+
+
+Processing CollaborationUsersController#show (for 127.0.0.1 at 2010-08-16 19:39:56) [GET]
+  Parameters: {"id"=>"9", "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."id" = 9) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (15.6ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 125ms (View: 47, DB: 16) | 200 OK [http://localhost/collaborations/2/collaboration_users/9]
+
+
+Processing CollaborationUsersController#show (for 127.0.0.1 at 2010-08-16 19:40:13) [GET]
+  Parameters: {"id"=>"9", "collaboration_id"=>"2"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."id" = 9) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (15.6ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 16, DB: 16) | 200 OK [http://localhost/collaborations/2/collaboration_users/9]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:40:18) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:40:51) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 219ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#new (for 127.0.0.1 at 2010-08-16 19:41:31) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/new
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 109ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users/new]
+
+
+Processing CollaborationUsersController#create (for 127.0.0.1 at 2010-08-16 19:57:58) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "collaboration_user"=>{"manager"=>"0", "user_id"=>"10"}, "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 10) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mCollaborationUser Create (0.0ms)[0m   [0mINSERT INTO "collaboration_users" ("created_at", "updated_at", "manager", "user_id", "collaboration_id") VALUES('2010-08-16 17:57:58', '2010-08-16 17:57:58', 'f', 10, 2)[0m
+Redirected to http://localhost:3000/collaborations/2/collaboration_users
+Completed in 3891ms (DB: 16) | 302 Found [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:58:02) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (125.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 10) [0m
+
+ActionView::TemplateError (undefined method `full_name' for nil:NilClass) on line #2 of app/views/shared/_collaboration_user.erb:
+1:   <tr>
+2:     <td><%= titled_text(collaboration_user.user.full_name,
+3:      collaboration_user.user.email) %></td>
+4:     <td><%=h collaboration_user.manager %></td>
+5:     <td><%= link_to 'Show', collaboration_collaboration_user_path(
+
+    app/views/shared/_collaboration_user.erb:2
+    app/views/collaboration_users/index.html.erb:10
+    app/controllers/collaboration_users_controller.rb:11:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (31.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 19:58:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 78ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:58:21) [GET]
+  Parameters: {"collaboration_id"=>"1"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaborationUser Load (0.0ms)[0m   [0;1mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '1') [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 344ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/1/collaboration_users]
+
+
+Processing CollaborationsController#show (for 127.0.0.1 at 2010-08-16 19:58:23) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/collaborations
+Rendering collaborations/show
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 19:58:25) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 10) [0m
+
+ActionView::TemplateError (undefined method `full_name' for nil:NilClass) on line #2 of app/views/shared/_collaboration_user.erb:
+1:   <tr>
+2:     <td><%= titled_text(collaboration_user.user.full_name,
+3:      collaboration_user.user.email) %></td>
+4:     <td><%=h collaboration_user.manager %></td>
+5:     <td><%= link_to 'Show', collaboration_collaboration_user_path(
+
+    app/views/shared/_collaboration_user.erb:2
+    app/views/collaboration_users/index.html.erb:10
+    app/controllers/collaboration_users_controller.rb:11:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (234.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 20:01:24) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (0.0ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#new (for 127.0.0.1 at 2010-08-16 20:11:50) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/new
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users/new]
+
+
+Processing CollaborationUsersController#create (for 127.0.0.1 at 2010-08-16 20:11:54) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "collaboration_user"=>{"manager"=>"0", "user_id"=>"50"}, "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 50) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mCollaborationUser Create (0.0ms)[0m   [0mINSERT INTO "collaboration_users" ("created_at", "updated_at", "manager", "user_id", "collaboration_id") VALUES('2010-08-16 18:11:54', '2010-08-16 18:11:54', 'f', 50, 2)[0m
+Redirected to http://localhost:3000/collaborations/2/collaboration_users
+Completed in 406ms (DB: 16) | 302 Found [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 20:11:55) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 50) [0m
+
+ActionView::TemplateError (undefined method `full_name' for nil:NilClass) on line #2 of app/views/shared/_collaboration_user.erb:
+1:   <tr>
+2:     <td><%= titled_text(collaboration_user.user.full_name,
+3:      collaboration_user.user.email) %></td>
+4:     <td><%=h collaboration_user.manager %></td>
+5:     <td><%= link_to 'Show', collaboration_collaboration_user_path(
+
+    app/views/shared/_collaboration_user.erb:2
+    app/views/collaboration_users/index.html.erb:10
+    app/controllers/collaboration_users_controller.rb:11:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (93.8ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 20:12:14) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 50) [0m
+
+ActionView::TemplateError (undefined method `full_name' for nil:NilClass) on line #2 of app/views/shared/_collaboration_user.erb:
+1:   <tr>
+2:     <td><%= titled_text(collaboration_user.user.full_name,
+3:      collaboration_user.user.email) %></td>
+4:     <td><%=h collaboration_user.manager %></td>
+5:     <td><%= link_to 'Show', collaboration_collaboration_user_path(
+
+    app/views/shared/_collaboration_user.erb:2
+    app/views/collaboration_users/index.html.erb:10
+    app/controllers/collaboration_users_controller.rb:11:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 20:12:19) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 50) [0m
+
+ActionView::TemplateError (undefined method `full_name' for nil:NilClass) on line #2 of app/views/shared/_collaboration_user.erb:
+1:   <tr>
+2:     <td><%= titled_text(collaboration_user.user.full_name,
+3:      collaboration_user.user.email) %></td>
+4:     <td><%=h collaboration_user.manager %></td>
+5:     <td><%= link_to 'Show', collaboration_collaboration_user_path(
+
+    app/views/shared/_collaboration_user.erb:2
+    app/views/collaboration_users/index.html.erb:10
+    app/controllers/collaboration_users_controller.rb:11:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (234.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 20:12:31) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (0.0ms)
+  [4;35;1mUser Load (15.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 50) [0m
+
+ActionView::TemplateError (undefined method `full_name' for nil:NilClass) on line #2 of app/views/shared/_collaboration_user.erb:
+1:   <tr>
+2:     <td><%= titled_text(collaboration_user.user.full_name,
+3:      collaboration_user.user.email) %></td>
+4:     <td><%=h collaboration_user.manager %></td>
+5:     <td><%= link_to 'Show', collaboration_collaboration_user_path(
+
+    app/views/shared/_collaboration_user.erb:2
+    app/views/collaboration_users/index.html.erb:10
+    app/controllers/collaboration_users_controller.rb:11:in `index'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (93.8ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 20:12:49) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (15.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 219ms (View: 16, DB: 16) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#index (for 127.0.0.1 at 2010-08-16 20:14:09) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCollaborationUser Load (0.0ms)[0m   [0mSELECT * FROM "collaboration_users" WHERE ("collaboration_users"."collaboration_id" = '2') [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/index
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendered shared/_collaboration_user (15.6ms)
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 94ms (View: 16, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#new (for 127.0.0.1 at 2010-08-16 20:21:11) [GET]
+  Parameters: {"collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/new
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 156ms (View: 63, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users/new]
+
+
+Processing CollaborationUsersController#create (for 127.0.0.1 at 2010-08-16 20:21:20) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "collaboration_user"=>{"manager"=>"0", "email"=>"mark.cowlishaw@gmail.com"}, "collaboration_id"=>"2"}
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+Rendering template within layouts/collaborations
+Rendering collaboration_users/new
+  [4;36;1mCollaboration Load (0.0ms)[0m   [0;1mSELECT "collaborations".* FROM "collaborations" INNER JOIN "collaboration_users" ON "collaborations".id = "collaboration_users".collaboration_id WHERE (("collaboration_users".user_id = 1)) [0m
+Completed in 219ms (View: 31, DB: 0) | 200 OK [http://localhost/collaborations/2/collaboration_users]
+
+
+Processing CollaborationUsersController#create (for 127.0.0.1 at 2010-08-16 20:23:44) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"5Bv5lSBzVsTqECjvaZ+XuL2a67iIxrq05w3WEf0ZXps=", "collaboration_user"=>{"manager"=>"0", "email"=>"mark.cowlishaw@gmail.com"}, "collaboration_id"=>"2"}
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mCollaboration Load (0.0ms)[0m   [0mSELECT * FROM "collaborations" WHERE ("collaborations"."id" = 2) [0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."email" IS NULL) LIMIT 1[0m
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/controllers/collaboration_users_controller.rb:61:in `create'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (62.5ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)

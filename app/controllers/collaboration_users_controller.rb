@@ -5,8 +5,8 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users.xml
   def index
     @collaboration_users = CollaborationUser.find_all_by_collaboration_id(params[:collaboration_id])
-    @collaboration = Collaboration.find(params[:collaboration_id])
     @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,8 +18,8 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/1.xml
   def show
     @collaboration_user = CollaborationUser.find(params[:id])
-    @collaboration = Collaboration.find(params[:collaboration_id])
     @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,8 +31,8 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/new.xml
   def new
     @collaboration_user = CollaborationUser.new
-    @collaboration = Collaboration.find(params[:collaboration_id])
     @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,15 +43,22 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/1/edit
   def edit
     @collaboration_user = CollaborationUser.find(params[:id])
-    @collaboration = Collaboration.find(params[:collaboration_id])
     @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
   end
 
   # POST /collaboration_users
   # POST /collaboration_users.xml
   def create
     @collaboration_user = CollaborationUser.new(params[:collaboration_user])
+    @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
+
+    # TODO: could enforce this in the model
+    @collaboration_user.collaboration_id = @collaboration.id
+    
+    @user_to_add = User.find_by_email(params[:email])
+    @collaboration_user.user_id = @user_to_add.id
 
     respond_to do |format|
       if @collaboration_user.save
@@ -69,13 +76,15 @@ class CollaborationUsersController < ApplicationController
   # PUT /collaboration_users/1.xml
   def update
     @collaboration_user = CollaborationUser.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
       if @collaboration_user.update_attributes(params[:collaboration_user])
         format.html { redirect_to(collaboration_collaboration_user_path(
           :collaboration_id => @collaboration_user.collaboration_id,
           :id => @collaboration_user.id), 
-          :notice => 'CollaborationUser was successfully updated.') }
+          :notice => 'Collaboration User was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -89,6 +98,7 @@ class CollaborationUsersController < ApplicationController
   def destroy
     @collaboration_user = CollaborationUser.find(params[:id])
     @collaboration_user.destroy
+    @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
