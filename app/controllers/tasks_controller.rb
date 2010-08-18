@@ -55,11 +55,11 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
     @task.created_by = session[:user_id]
     @current_user = User.find(session[:user_id])
-    @collaboration = Collaboration.find(params[:collaboration_id])
+    @task.collaboration_id = params[:collaboration_id]
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(@task, :notice => 'Task was successfully created.') }
+        format.html { redirect_to(collaboration_tasks_path(@collaboration), :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }
@@ -77,7 +77,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(collaboration_tasks_path(@collaboration), :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

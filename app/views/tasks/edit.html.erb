@@ -1,16 +1,11 @@
 <h1>Editing task</h1>
 
-<% form_for(@task) do |f| %>
+<% form_for [@collaboration, @task] do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :id %>
     <%=h @task.id %>
-  </p>
-
-  <p>
-    <%= f.label :Collaboration %>
-    <%= f.text_field :collaboration_id %>
   </p>
 
   <p>

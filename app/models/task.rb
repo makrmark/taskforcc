@@ -10,8 +10,9 @@ class Task < ActiveRecord::Base
     :foreign_key => 'assigned_to'
 
   belongs_to :collaborations
+  validates_associated :collaboration => "could not be found"  
   
-  validates_presence_of :title, :description, :status, :resolution, :created_by, :assigned_to, :type
+  validates_presence_of :title, :description, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id
 
   validates_inclusion_of :status, 
     :in => %w{New Assigned On-Hold Resolved Closed}, 

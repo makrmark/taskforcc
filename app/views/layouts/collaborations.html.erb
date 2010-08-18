@@ -10,6 +10,16 @@
 </head>
 <body>
 
+<div id="header">
+  <h1>taskfor.cc</h1>
+  <ul class='tab user'>
+    <li class='tab'>
+      <%=h @current_user.full_name %></li>
+    <li class='tab'>
+      <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%></li>
+  </ul>
+</div>
+
 <div id="sidebar">
   <b>My Open Collaborations:</b>
   <ul>
@@ -30,34 +40,28 @@
   </div>
 </div>
 
-<div class="nav-tabs">
-  <% unless params[:controller].eql?("collaborations") && 
-    ( params[:action].eql?("index") || params[:action].eql?("new") ) %>
-    <ul class='tab nav'>
-      <li class='tab <%= "selected" if params[:controller].eql?("collaborations") %>'>
-          <%= link_to 'Collaboration', collaboration_path(@collaboration) %></li>
-      <li class='tab <%= "selected" if params[:controller].eql?("tasks") %>'>
-        <%= link_to 'Tasks', collaboration_tasks_path(@collaboration) %></li>
-      <li class='tab <%= "selected" if params[:controller].eql?("collaboration_users") %>'>
-        <%= link_to 'Team', collaboration_collaboration_users_path(@collaboration)  %></li>
-      <li class='tab'>
-        Topics</li>
-      <li class='tab'>
-        Milestones</li>
-      <li class='tab'>
-        Meetings</li>
-    </ul>
-  <% end %>
-  
-  <ul class='tab user'>
-    <li class='tab'>
-      <%=h @current_user.full_name %></li>
-    <li class='tab'>
-      <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%></li>
-  </ul>
-</div>
 
 <div id="content">
+  <div class="nav-tabs">
+    <% unless params[:controller].eql?("collaborations") && 
+      ( params[:action].eql?("index") || params[:action].eql?("new") ) %>
+      <ul class='tab nav'>
+        <li class='tab <%= "selected" if params[:controller].eql?("collaborations") %>'>
+            <%= link_to 'Dashboard', collaboration_path(@collaboration) %></li>
+        <li class='tab <%= "selected" if params[:controller].eql?("tasks") %>'>
+          <%= link_to 'Tasks', collaboration_tasks_path(@collaboration) %></li>
+        <li class='tab <%= "selected" if params[:controller].eql?("collaboration_users") %>'>
+          <%= link_to 'Team', collaboration_collaboration_users_path(@collaboration)  %></li>
+        <li class='tab'>
+          Topics</li>
+        <li class='tab'>
+          Iterations</li>
+        <li class='tab'>
+          Reviews</li>
+      </ul>
+    <% end %>    
+  </div>
+
   <div id="notices">
     <p style="color: green"><%= notice %></p>
   </div>

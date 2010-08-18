@@ -56,14 +56,28 @@ class CollaborationUsersController < ApplicationController
 
     # TODO: could enforce this in the model
     @collaboration_user.collaboration_id = @collaboration.id
-    
-    @user_to_add = User.find_by_email(params[:email])
-    @collaboration_user.user_id = @user_to_add.id
+
+    # see if there is an existing user to add
+    # TODO: Otherwise ask the user to confirm whether to invite them to join    
+    logger.debug "Searching for " + @collaboration_user.email
+
+    user_to_add = User.find_by_email(@collaboration_user.email)
+    if user_to_add.nil? then
+      logger.debug "NO matching user found for " + @collaboration_user.email
+      logger.debug "Creating a new one... "
+      user_to_add = User.new( :email => @collaboration_user.email,
+        :full_name => @collaboration_user.email[/^[^@]*/] )
+      user_to_add.password = "foobar"
+      user_to_add.save
+    else
+      logger.debug "Matching user found for " + @collaboration_user.email + " : " + user_to_add.to_yaml
+    end
+    @collaboration_user.user_id = user_to_add.id
 
     respond_to do |format|
       if @collaboration_user.save
         format.html { redirect_to(collaboration_collaboration_users_path(@collaboration), 
-            :notice => 'CollaborationUser was successfully created.') }
+            :notice => 'Invitation Sent!') }
         format.xml  { render :xml => @collaboration_user, :status => :created, :location => @collaboration_user }
       else
         format.html { render :action => "new" }

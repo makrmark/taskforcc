@@ -2,8 +2,8 @@ class CollaborationsController < ApplicationController
   # GET /collaborations
   # GET /collaborations.xml
   def index
-    @collaborations = Collaboration.all
     @current_user = User.find(session[:user_id])
+    @collaborations = @current_user.collaborations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,11 +47,30 @@ class CollaborationsController < ApplicationController
   def create
     @collaboration = Collaboration.new(params[:collaboration])
     @collaboration.created_by = session[:user_id]
+    @current_user = User.find(session[:user_id])
 
     respond_to do |format|
       if @collaboration.save
-        format.html { redirect_to(@collaboration, :notice => 'Collaboration was successfully created.') }
-        format.xml  { render :xml => @collaboration, :status => :created, :location => @collaboration }
+
+        # add the user to the collaboration
+        @collaboration_user = CollaborationUser.new(
+          :user_id => session[:user_id],
+          :collaboration_id => @collaboration.id,
+          :manager => true,
+          :email => @current_user.email
+        )
+        
+        logger.debug "Creating associated CollaborationUser :" + @collaboration_user.to_yaml
+        if @collaboration_user.save
+          logger.debug "Creating associated CollaborationUser : Success!"
+          format.html { redirect_to(@collaboration, :notice => 'Collaboration was successfully created.') }
+          format.xml  { render :xml => @collaboration, :status => :created, :location => @collaboration }
+        else
+          logger.debug "Creating associated CollaborationUser : " + @collaboration_user.errors.to_yaml
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @collaboration_user.errors, :status => :unprocessable_entity }
+        end
+                
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @collaboration.errors, :status => :unprocessable_entity }

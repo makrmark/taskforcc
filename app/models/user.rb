@@ -64,5 +64,5 @@ private
     string_to_hash = password + "collab" + salt
     Digest::SHA1.hexdigest(string_to_hash)
   end
-  
+
 end
