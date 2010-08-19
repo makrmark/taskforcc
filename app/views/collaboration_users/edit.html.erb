@@ -4,16 +4,16 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :collaboration_id %><br />
+    <%= f.label :collaboration_id %>
     <%=h @collaboration_user.collaboration.subject %>
   </p>
   <p>
-    <%= f.label :user_id %><br />
+    <%= f.label :user_id %>
     <%= titled_text(@collaboration_user.user.full_name,
      @collaboration_user.user.email) %>
   </p>
   <p>
-    <%= f.label :manager %><br />
+    <%= f.label :manager %>
     <%= f.check_box :manager %>
   </p>
   <p>

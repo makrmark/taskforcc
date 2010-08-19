@@ -4,19 +4,19 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :subject %><br />
+    <%= f.label :subject %>
     <%= f.text_field :subject %>
   </p>
   <p>
-    <%= f.label :status %><br />
+    <%= f.label :status %>
     <%= f.select :status, %w{ Open On-Hold Closed } %>
   </p>
   <p>
-    <%= f.label :created_by %><br />
+    <%= f.label :created_by %>
     <%=h @collaboration.user_created_by.full_name %>
   </p>
   <p>
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </p>
     <%= f.submit 'Update' %>

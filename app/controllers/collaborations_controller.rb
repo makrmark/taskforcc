@@ -50,6 +50,9 @@ class CollaborationsController < ApplicationController
     @current_user = User.find(session[:user_id])
 
     respond_to do |format|
+
+      # TODO: use transactions here
+      # http://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
       if @collaboration.save
 
         # add the user to the collaboration
@@ -57,7 +60,8 @@ class CollaborationsController < ApplicationController
           :user_id => session[:user_id],
           :collaboration_id => @collaboration.id,
           :manager => true,
-          :email => @current_user.email
+          # TODO: this is a workaround for having email in the 
+          :email => @current_user.email 
         )
         
         logger.debug "Creating associated CollaborationUser :" + @collaboration_user.to_yaml

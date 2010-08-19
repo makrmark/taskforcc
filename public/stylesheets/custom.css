@@ -27,6 +27,7 @@ div#sidebar {
   min-height: 1000px;
   float:left;
   background: lightblue;
+  clear: both;
 }
 
 div#content {
@@ -38,7 +39,6 @@ div.nav-tabs {
   height: 40px;
   width: 100%;
 }
-
 ul.tab {
   display: inline;
   padding-left: 10px;
@@ -46,6 +46,7 @@ ul.tab {
 }
 ul.tab.user {
   float: right;
+  font-weight: bold;
 }
 ul.tab.nav {
   float: left;  
@@ -73,3 +74,46 @@ li.tab.selected {
   background: lightgrey;
 }
 
+ul.tab.user>li>a:link { color: orange; }
+ul.tab.user>li>a:visited { color: orange; }
+
+/* http://www.webmasterworld.com/forum83/4694.htm */
+div.login {
+  text-align: center;
+  width: 500px;
+  height: 400px;
+  margin: 0px auto -1px auto;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+/*
+input.login {
+  font-size: 1.2em;
+  font-weight: normal;  
+}
+*/
+
+/* http://cssbutton.com/forms/ */
+.input {
+    border: 1px solid #006;
+    background: #ffc;
+}
+.input:hover {
+    border: 1px solid #f00;
+    background: blue;
+}
+.button {
+    border: 1px solid #006;
+    background: #9cf;
+}
+.button:hover {
+    border: 1px solid #f00;
+    background: blue;
+}
+label {
+    display: block;
+    width: 150px;
+    float: left;
+    margin: 2px 4px 6px 4px;
+    text-align: right;
+}
