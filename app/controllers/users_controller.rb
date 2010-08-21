@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
+
   # GET /users
   # GET /users.xml
   def index
     @users = User.all
+    @current_user = User.find(session[:user_id])
+    @collaborations = @current_user.collaborations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +17,8 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    @collaborations = @current_user.collaborations
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +30,8 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
+    @current_user = User.find(session[:user_id])
+    @collaborations = @current_user.collaborations
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +42,16 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    @collaborations = @current_user.collaborations
   end
 
   # POST /users
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+    @current_user = User.find(session[:user_id])
+    @collaborations = @current_user.collaborations
 
     respond_to do |format|
       if @user.save
@@ -57,6 +68,7 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    @current_user = User.find(session[:user_id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

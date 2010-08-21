@@ -12,8 +12,8 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :manager %>
-    <%= f.check_box :manager %>
+    <%= f.label :role %>
+    <%= f.select :role, %w{Manager Team Observer Restricted} %>
   </p>
   <p>
     <%= f.submit 'Invite' %>

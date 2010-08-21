@@ -11,54 +11,30 @@
 <body>
 
 <div id="header">
-  <h1>taskfor.cc</h1>
+  <h1>task<em>for.cc</em></h1>
   <ul class='tab user'>
     <li class='tab'>
-      <%=h @current_user.full_name %></li>
+      <%= link_to @current_user.full_name, @current_user %></li>
     <li class='tab'>
       <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%></li>
   </ul>
 </div>
 
 <div id="sidebar">
-  <b>My Open Collaborations:</b>
-  <ul>
-    <% @current_user.collaborations.each do |collab| %>
-      <li><%= link_to collab.subject, collab %></li>
-    <% end %>
-    <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
-  </ul>
-  <div width='100%' align='right'>
-  <%= link_to 'List All &gt; ', collaborations_path %>
-  <br />
-  </div>
+
+  <%= render 'shared/collaborations_sidebar' %>
   
   <hr>
-      
+
   <div class="contextual-sidebar">
     
   </div>
 </div>
 
 <div id="content">
+
   <div class="nav-tabs">
-    <% unless params[:controller].eql?("collaborations") && 
-      ( params[:action].eql?("index") || params[:action].eql?("new") ) %>
-      <ul class='tab nav'>
-        <li class='tab <%= "selected" if params[:controller].eql?("collaborations") %>'>
-            <%= link_to 'Dashboard', collaboration_path(@collaboration) %></li>
-        <li class='tab <%= "selected" if params[:controller].eql?("tasks") %>'>
-          <%= link_to 'Tasks', collaboration_tasks_path(@collaboration) %></li>
-        <li class='tab <%= "selected" if params[:controller].eql?("collaboration_users") %>'>
-          <%= link_to 'Team', collaboration_collaboration_users_path(@collaboration)  %></li>
-        <li class='tab'>
-          Topics</li>
-        <li class='tab'>
-          Iterations</li>
-        <li class='tab'>
-          Reviews</li>
-      </ul>
-    <% end %>    
+    <%= render(:partial => 'shared/nav_tabs' )%>  
   </div>
 
   <div id="notices">
@@ -66,7 +42,7 @@
   </div>
 
   <%= yield %>
-
+    
 </div>
 
 <div class="footer">

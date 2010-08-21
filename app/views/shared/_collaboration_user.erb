@@ -1,7 +1,8 @@
   <tr>
     <td><%= titled_text(collaboration_user.user.full_name,
      collaboration_user.user.email) %></td>
-    <td><%=h collaboration_user.manager %></td>
+    <td><%=h collaboration_user.user.email %></td>
+    <td><%=h collaboration_user.role %></td>
     <td><%= link_to 'Show', collaboration_collaboration_user_path(
       :collaboration_id => collaboration_user.collaboration_id,
       :id => collaboration_user.id

@@ -1,45 +1,46 @@
+<% form_for [@collaboration, @task] do |f| %>
+  <%= f.error_messages %>
+
   <p>
-    <b>ID</b>
+    <%= f.label :id %>
     <%=h @task.id %>
   </p>
 
   <p>
-    <b>Title</b>
+    <%= f.label :title %>
     <%=h @task.title %>
   </p>
 
   <p>
-    <b>Type</b>
-    <%=h @task.type %>
-  </p>
-
-  <p>
-    <b>Status</b>
+    <%= f.label :status %>
     <%=h @task.status %>
   </p>
 
   <p>
-    <b>Resolution</b>
+    <%= f.label :resolution %>
     <%=h @task.resolution %>
   </p>
 
   <p>
-    <b>Created By</b>
+    <%= f.label :created_by %>
     <%=h @task.user_created_by.full_name %>
   </p>
 
   <p>
-    <b>Assigned To</b>
+    <%= f.label :assigned_to %>
     <%=h @task.user_assigned_to.full_name %>
   </p>
 
   <p>
-    <b>Description</b>
+    <%= f.label :description %>
     <%=h @task.description %>
   </p>
+  
+  <%= link_to 'Edit', edit_collaboration_task_path(
+        :collaboration_id => @collaboration.id,
+        :id => @task.id
+    )  %> |
+  <%= link_to 'Back', :back %>
 
-<%= link_to 'Edit', edit_collaboration_task_path(
-      :collaboration_id => @collaboration.id,
-      :id => @task.id
-  )  %> |
-<%= link_to 'Close', collaboration_tasks_path(@collaboration) %>
+<% end %>
+

@@ -1,5 +1,3 @@
-<h1>Editing Collaboration User</h1>
-
 <% form_for([@collaboration, @collaboration_user]) do |f| %>
   <%= f.error_messages %>
 
@@ -13,8 +11,8 @@
      @collaboration_user.user.email) %>
   </p>
   <p>
-    <%= f.label :manager %>
-    <%= f.check_box :manager %>
+    <%= f.label :role %>
+    <%= f.select :role, %w{Manager Team Observer Restricted} %>
   </p>
   <p>
     <%= f.submit 'Update' %>

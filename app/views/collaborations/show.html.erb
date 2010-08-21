@@ -1,27 +1,21 @@
-<h1>Collaboration Details</h1>
-
-<p>
-  <b>Subject:</b>
-  <%=h @collaboration.subject %>
-</p>
-
-
-<p>
-  <b>Status:</b>
-  <%=h @collaboration.status %>
-</p>
-
-<p>
-  <b>Created By</b>
-  <span title="<%= @collaboration.user_created_by.email %>">
-  <%=h @collaboration.user_created_by.full_name %>
-  </span>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @collaboration.description %>
-</p>
+<% form_for(@collaboration) do |f| %>
+  <p>
+    <%= f.label :subject %>
+    <%=h @collaboration.subject %>
+  </p>
+  <p>
+    <%= f.label :status %>
+    <%=h @collaboration.status %>
+  </p>
+  <p>
+    <%= f.label :created_by %>
+    <%=h @collaboration.user_created_by.full_name %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%=h @collaboration.description %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
 <%= link_to 'Back', collaborations_path %>

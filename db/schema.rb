@@ -9,14 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100811111411) do
+ActiveRecord::Schema.define(:version => 20100820123119) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
     t.integer  "user_id"
-    t.boolean  "manager"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role",             :default => "Team", :null => false
   end
 
   create_table "collaborations", :force => true do |t|
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20100811111411) do
     t.string   "hashed_password"
     t.string   "salt"
     t.string   "lang"
+    t.string   "time_zone"
   end
 
 end

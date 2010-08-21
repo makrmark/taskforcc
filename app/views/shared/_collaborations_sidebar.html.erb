@@ -1,0 +1,51 @@
+  <b>My Open Collaborations:</b>
+  <ul>
+    <% @current_user.collaborations.each do |collab| %>
+      <li><%= link_to collab.subject, collab %></li>
+    <% end %>
+    <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+  </ul>
+  <div width='100%' align='right'>
+    <%= link_to 'List All &gt; ', collaborations_path %>
+    <br />
+  </div>
+
+  <% if (params[:controller].eql?("collaborations") && 
+      params[:id]) || params[:controller].eql?("collaboration_users") %> 
+      
+    <hr />
+    <b>Topics:</b>
+  
+    <div width='100%' align='right'>
+      <%= link_to 'New Topic &gt; ' %>
+      <br />
+    </div>
+    <hr />  
+    <b>Team (<%= @collaboration.collaboration_users.count %>):</b>
+
+    <ul>
+      <%= render (:partial => 'shared/team_member', :collection => @collaboration.collaboration_users ) %>
+    </ul>
+    
+    <div width='100%' align='right'>
+      <%= link_to 'Invite Someone &gt; ' %>
+      <br />
+    </div>
+    
+    <hr />
+    <b>Upcoming Milestones:</b>
+  
+    <div width='100%' align='right'>
+      <%= link_to 'New Milestone &gt; ' %>
+      <br />
+    </div>
+  
+    <hr />
+    <b>Upcoming Reviews:</b>  
+  
+    <div width='100%' align='right'>
+      <%= link_to 'New Review &gt; ' %>
+      <br />
+    </div>
+
+  <% end %>

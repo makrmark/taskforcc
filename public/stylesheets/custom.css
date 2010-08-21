@@ -1,21 +1,22 @@
+/* http://www.html-color-names.com/lightblue.php */
 body {
   margin: 0px;
   border: 0px;
   padding: 0px;  
-  color: black;
-  background: white;
+  color: #1A1A1A;
+  background: #EFFBFE;
 }
 
 div#header {
-  background: darkblue;
+  background: #7998A1;
   clear: both;
   height: 40px;
   color: orange;
 }
 
 div#header>h1 {
-  border: 0px;
   margin: 10px;
+  border: 0px;
   padding: 0px;
   clear: none;
   float: left;
@@ -23,21 +24,28 @@ div#header>h1 {
 
 div#sidebar {
   width: 250px;
-  margin: 0;
-  min-height: 1000px;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
   float:left;
-  background: lightblue;
   clear: both;
+  min-height: 500px;
+
+  background-image:url('/images/sidebar-background.png');
+  background-repeat:repeat-x;
 }
 
 div#content {
-  background: white;
+  margin-left: 250px;
+  padding-left: 0px;
 }
 
 div.nav-tabs {
   background: lightblue;
   height: 40px;
   width: 100%;
+  background-image:url('/images/sidebar-background.png');
+  background-repeat:repeat-x;
 }
 ul.tab {
   display: inline;
@@ -80,7 +88,7 @@ ul.tab.user>li>a:visited { color: orange; }
 /* http://www.webmasterworld.com/forum83/4694.htm */
 div.login {
   text-align: center;
-  width: 500px;
+  width: 550px;
   height: 400px;
   margin: 0px auto -1px auto;
   font-weight: bold;
@@ -112,8 +120,36 @@ input.login {
 }
 label {
     display: block;
-    width: 150px;
+    width: 200px;
     float: left;
     margin: 2px 4px 6px 4px;
     text-align: right;
+    font-weight: bold;
+}
+
+.login p, input {
+  font-size: 16px;
+  font-weight: bold;  
+}
+
+input {
+  font-size: 1em;
+  font-weight: normal;
+}
+select {
+  font-size: 1em;
+}
+textarea {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 1em;  
+}
+
+
+th {
+  text-align:left;
+}
+tr.odd {
+}
+tr.even {
+  background-color: #DFF7FE;
 }

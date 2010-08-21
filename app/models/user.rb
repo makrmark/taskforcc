@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password  
   validate :password_non_blank
 
+  # http://www.sitepoint.com/blogs/2008/10/06/timezones-in-rails-21/
+
   def self.authenticate(email, password)
     user = self.find_by_email(email)
     if user
@@ -65,4 +67,19 @@ private
     Digest::SHA1.hexdigest(string_to_hash)
   end
 
+  # http://www.aidanf.net/rails_user_authentication_tutorial
+  def self.random_string(len)
+    #generate a random password consisting of strings and digits
+    chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
+    newpass = ""
+    1.upto(len) { |i| newpass << chars[rand(chars.size-1)] }
+    return newpass
+  end
+  def send_new_password
+    new_pass = User.random_string(10)
+    self.password = self.password_confirmation = new_pass
+    self.save
+    Notifications.deliver_forgot_password(self.email, self.login, new_pass)
+  end
+  
 end

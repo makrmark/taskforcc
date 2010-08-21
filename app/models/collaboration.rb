@@ -8,8 +8,6 @@ class Collaboration < ActiveRecord::Base
     :primary_key => 'id',
     :foreign_key => 'created_by'
 
-  has_many :users, :through => :collaboration_users
-
   validates_presence_of :subject, :description, :status, :created_by
 
   validates_inclusion_of :status, 

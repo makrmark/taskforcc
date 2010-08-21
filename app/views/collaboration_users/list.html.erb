@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>User</th>
-    <th>Manager</th>
+    <th>Role</th>
   </tr>
 
 <% @collaboration_users.each do |collaboration_user| %>
@@ -11,7 +11,7 @@
     <td><%= titled_text( collaboration_user.user.full_name,
        collaboration_user.user.email)
       %></td>
-    <td><%=h collaboration_user.manager %></td>
+    <td><%=h collaboration_user.role %></td>
     <td><%= link_to 'Show', collaboration_users_path %></td>
     <td><%= link_to 'Edit', edit_collaborations_user_path(collaboration_user) %></td>
     <td><%= link_to 'Destroy', collaboration_users, :confirm => 'Are you sure?', :method => :delete %></td>

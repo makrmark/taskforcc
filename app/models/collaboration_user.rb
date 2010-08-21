@@ -10,7 +10,13 @@ class CollaborationUser < ActiveRecord::Base
     :on => :create, 
     :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
-  validates_presence_of :collaboration_id, :user_id
+  validates_presence_of :collaboration_id, :user_id, :role
+  validates_inclusion_of :role, 
+    :in => %w{Manager Team Observer Restricted}
+
+  validates_uniqueness_of :user_id, :scope => :collaboration_id,
+    :message => "is already in the team"
+
   # not sure why, but this doesn't seem to work
 #  validates_associated :user, :message => "invited does not exist"
   validates_associated :collaboration, :message => "does not exist"
