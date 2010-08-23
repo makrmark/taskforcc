@@ -20,4 +20,20 @@
 <%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
 <%= link_to 'Back', collaborations_path %>
 
-<br />
+<hr />
+
+<h2>All Tasks</h2>
+
+<table>
+  <tr>
+    <th width='50'>ID</th>
+    <th width='200'>Title</th>
+    <th width='100'>Type</th>
+    <th width='100'>Status</th>
+    <th width='150'>Created By</th>
+    <th width='150'>Assigned To</th>
+  </tr>
+
+  <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
+
+</table>

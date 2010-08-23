@@ -1,6 +1,10 @@
 class CollaborationUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :collaboration
+  
+  has_many :collaboration_user_tasks,
+    :class_name => 'Task',
+    :foreign_key => 'assigned_to'
 
   # used to lookup a user by email when creating the association
   attr_accessor :email

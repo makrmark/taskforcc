@@ -12,19 +12,22 @@
 
 <div id="header">
   <h1>task<em>for.cc</em></h1>
-  <ul class='tab user'>
-    <li class='tab'>
-      <%= link_to @current_user.full_name, @current_user %></li>
-    <li class='tab'>
-      <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%></li>
-  </ul>
 </div>
 
 <div id="sidebar">
 
+  <ul>
+    <li>
+      <%= link_to @current_user.full_name, @current_user %> |
+      <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%>
+    </li>
+  </ul>
+
+  <hr />
+
   <%= render 'shared/collaborations_sidebar' %>
   
-  <hr>
+  <hr />
 
   <div class="contextual-sidebar">
     
@@ -33,9 +36,12 @@
 
 <div id="content">
 
+
+  <!--
   <div class="nav-tabs">
-    <%= render(:partial => 'shared/nav_tabs' )%>  
+    <%# render(:partial => 'shared/nav_tabs' )%>  
   </div>
+  -->
 
   <div id="notices">
     <p style="color: green"><%= notice %></p>

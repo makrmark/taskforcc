@@ -2,7 +2,18 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   has_many :collaboration_users
-  has_many :collaborations, :through => :collaboration_users
+  has_many :collaborations, 
+    :through => :collaboration_users
+
+  # User -> Collaborations -> Tasks (collaboration_id)
+  # TODO: can we do this using more standard syntax?
+  has_many :collaboration_tasks, 
+    :class_name => 'Task',
+    :finder_sql => 'SELECT DISTINCT t.* ' +
+      ' FROM collaboration_users cu, tasks t ' +
+      ' WHERE cu.user_id = #{id} ' +
+      ' AND t.collaboration_id = cu.collaboration_id ' +
+      ' ORDER BY t.updated_at DESC ;' # TODO: index on updated
 
   has_many :collaborations_created_by,
     :class_name => 'Collaboration',
