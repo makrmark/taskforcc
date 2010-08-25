@@ -22,18 +22,12 @@
 
 <hr />
 
-<h2>All Tasks</h2>
-
-<table>
-  <tr>
-    <th width='50'>ID</th>
-    <th width='200'>Title</th>
-    <th width='100'>Type</th>
-    <th width='100'>Status</th>
-    <th width='150'>Created By</th>
-    <th width='150'>Assigned To</th>
-  </tr>
+<h2>Tasks for <%=h @collaboration.subject %></h2>
 
   <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
+
+  <%= link_to 'New task', new_collaboration_task_path(
+      :collaboration_id => @collaboration.id
+  ) %>
 
 </table>

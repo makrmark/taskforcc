@@ -59,7 +59,7 @@ class CollaborationsController < ApplicationController
         @collaboration_user = CollaborationUser.new(
           :user_id => session[:user_id],
           :collaboration_id => @collaboration.id,
-          :manager => true,
+          :role => 'Manager',
           # TODO: this is a workaround for having email in the 
           :email => @current_user.email 
         )

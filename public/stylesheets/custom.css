@@ -5,6 +5,9 @@ body {
   padding: 0px;  
   color: #1A1A1A;
   background: #EFFBFE;
+  font-size: 0.8em;
+  font-family: tahoma, arial, helvetica;
+  line-height: 1.2em;
 }
 
 div#header {
@@ -23,7 +26,7 @@ div#header>h1 {
 }
 
 div#sidebar {
-  width: 250px;
+  width: 200px;
   border: 0px;
   padding: 0px;
   margin: 0px;
@@ -36,8 +39,15 @@ div#sidebar {
 }
 
 div#content {
-  margin-left: 250px;
+  margin-left: 200px;
   padding-left: 0px;
+  width: 600px;
+}
+
+div#footer {
+  margin-left: 200px;
+  padding-left: 0px;
+  width: 600px;
 }
 
 div.nav-tabs {
@@ -152,4 +162,74 @@ tr.odd {
 }
 tr.even {
   background-color: #DFF7FE;
+}
+
+div.task {
+  width: 100%;
+  margin: 2px;
+  padding: 2px;
+}
+
+div.task-detail {
+  background-color: white;
+  border: 0px;
+  height: 45px
+}
+
+div.task-collaboration {
+  background-color: #eeeeee;
+  font-weight: bold;
+  height: 15px;
+  border: 1px;
+  border-color: darkgrey;
+  border-style: solid;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;  
+  background-color: #dddddd;
+  float: left;
+}
+
+div.icon {
+  width: 20px;
+  height: 20px;  
+  float: right;
+  border: 0px;
+}
+
+
+span.task-actions {
+  float: right;
+  font-size: 0.7em;
+}
+
+span.task-updated {
+  font-size: 0.8em;
+  color: grey;
+}
+
+span.user-name {
+  color: blue;
+  font-weight: bold;
+}
+
+div.task-more {
+  height: 20px;
+  width: 90%;
+  background-color: #eeeeee;  
+  clear: right;
+  float: right;
+  border: 1px;
+  border-color: darkgrey;
+  border-style: solid;
+  margin-bottom: 3px;
+}
+
+hr, hr.task-separator {
+  clear: right;
+  height: 1px;
+  border: 0px;
+  background-color: lightgrey;
 }

@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
     :primary_key => 'id',
     :foreign_key => 'assigned_to'
 
-  belongs_to :collaborations
+  belongs_to :collaboration
   validates_associated :collaboration => "could not be found"  
   
   validates_presence_of :title, :description, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id

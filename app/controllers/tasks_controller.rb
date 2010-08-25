@@ -56,6 +56,8 @@ class TasksController < ApplicationController
     @task.created_by = session[:user_id]
     @current_user = User.find(session[:user_id])
     @task.collaboration_id = params[:collaboration_id]
+    @collaboration = Collaboration.find(params[:collaboration_id])
+    @user_list = select_user_list(@collaboration)
 
     respond_to do |format|
       if @task.save
