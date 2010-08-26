@@ -14,7 +14,7 @@
     <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
       task.user_assigned_to.email) %></span>
           
-      <%= task.title %>
+      <b><%= task.title %></b>
 
     <br />
     <br />
@@ -45,7 +45,9 @@
   </div>
   
   <div class="task-more">
-    
+    <span class="task-actions more">
+      Follow Comment 
+    </span>
   </div>
 
   <br />

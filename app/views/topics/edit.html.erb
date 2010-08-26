@@ -1,0 +1,25 @@
+<%= render 'shared/collaboration_header' %>
+
+<h1>Editing topic</h1>
+
+<% form_for [@collaboration, @topic] do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :controller %>
+    <%= f.select :controller, @user_list %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', collaboration_task_path(
+      :collaboration_id => @collaboration.id,
+      :id => @topic.id
+  ) %> |
+<%= link_to 'Close', @collaboration %>

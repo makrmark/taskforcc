@@ -1,0 +1,18 @@
+<div class="collaboration">
+  <h2 class="collaboration">
+    <%=h @collaboration.subject %>    
+  </h2>
+  <span class="collaboration-description">
+    <%=h @collaboration.description %>
+  </span>
+  <br />
+  <span class="collaboration-status">
+    Started <%= time_ago_in_words @collaboration.created_at %> ago by <span class="user-name"><%= titled_text(@collaboration.user_created_by.full_name,
+      @collaboration.user_created_by.email) %></span>, status 
+      <%=h @collaboration.status %>
+  </span>  
+  <span class="collaboration-actions">
+    <%= link_to 'Edit', edit_collaboration_path(@collaboration) %>
+    <%= link_to 'Close', collaborations_path %>    
+  </span>  
+</div>

@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+  belongs_to :topic
   belongs_to :user_created_by,
     :class_name => 'User',
     :primary_key => 'id',
@@ -11,8 +12,9 @@ class Task < ActiveRecord::Base
 
   belongs_to :collaboration
   validates_associated :collaboration => "could not be found"  
+  validates_associated :topic => "could not be found"
   
-  validates_presence_of :title, :description, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id
+  validates_presence_of :title, :description, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id, :topic_id
 
   validates_inclusion_of :status, 
     :in => %w{New Assigned On-Hold Resolved Closed}, 

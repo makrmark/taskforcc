@@ -5,4 +5,5 @@ module ApplicationHelper
   def titled_text(text, title)
     span = '<span class="titled-text" title="' + h(title) + '">' + h(text) + '</span>'
   end
+  
 end

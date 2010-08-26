@@ -1,6 +1,7 @@
 class Collaboration < ActiveRecord::Base
   has_many :tasks
   has_many :collaboration_users
+  has_many :topics
   has_many :users, :through => :collaboration_users
 
   belongs_to :user_created_by,

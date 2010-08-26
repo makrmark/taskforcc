@@ -1,33 +1,10 @@
-<% form_for(@collaboration) do |f| %>
-  <p>
-    <%= f.label :subject %>
-    <%=h @collaboration.subject %>
-  </p>
-  <p>
-    <%= f.label :status %>
-    <%=h @collaboration.status %>
-  </p>
-  <p>
-    <%= f.label :created_by %>
-    <%=h @collaboration.user_created_by.full_name %>
-  </p>
-  <p>
-    <%= f.label :description %>
-    <%=h @collaboration.description %>
-  </p>
-<% end %>
 
-<%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
-<%= link_to 'Back', collaborations_path %>
+<%= render 'shared/collaboration_header' %>
 
 <hr />
 
-<h2>Tasks for <%=h @collaboration.subject %></h2>
+<%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
 
-  <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
-
-  <%= link_to 'New task', new_collaboration_task_path(
-      :collaboration_id => @collaboration.id
-  ) %>
-
-</table>
+<%= link_to 'New task', new_collaboration_task_path(
+    :collaboration_id => @collaboration.id
+) %>

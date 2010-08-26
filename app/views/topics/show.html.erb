@@ -1,0 +1,28 @@
+<%= render 'shared/collaboration_header' %>
+
+<div class="collaboration topic">
+  <h3 class="topic">
+    <%=h @topic.name %>    
+  </h2>
+  <div>
+    <span class="collaboration-status">
+      Controlled by: <span class="user-name"><%= titled_text(@topic.user.full_name,
+        @topic.user.email) %></span>
+    </span>
+    <span class="collaboration-actions">
+      <%= link_to 'Edit', edit_collaboration_topic_path(
+              :collaboration_id => @collaboration.id,
+              :id => @topic.id
+          ) %> |
+      <%= link_to 'Close', @collaboration %>  
+    </span>
+  </div>
+</div>
+
+<hr />
+
+<%= render(:partial => 'shared/task', :collection => @topic.tasks )%>
+
+<%= link_to 'New task', new_collaboration_task_path(
+    :collaboration_id => @collaboration.id
+) %>

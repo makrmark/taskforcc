@@ -2,8 +2,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :collaborations, :has_many => 'collaboration_users'
   map.resources :collaborations, :has_many => 'tasks'
+  map.resources :collaborations, :has_many => 'topics'
   map.resources :users
-  map.resources :tasks
+#  map.resources :tasks
+#  map.resources :topics
 
   # The priority is based upon order of creation: first created -> highest priority.
 

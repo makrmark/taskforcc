@@ -1,4 +1,4 @@
-  <b>My Open Collaborations:</b>
+  <b>Open Taskforcces:</b>
   <ul>
     <% @current_user.collaborations.each do |collab| %>
       <li><%= link_to collab.subject, collab %></li>
@@ -15,9 +15,12 @@
       
     <hr />
     <b>Topics:</b>
+      <ul>
+        <%= render (:partial => 'shared/topic_li', :collection => @collaboration.topics ) %>
+      </ul>
   
     <div width='100%' align='right'>
-      <%= link_to 'New Topic &gt; ' %>
+      <%= link_to 'New topic &gt;', new_collaboration_topic_path(@collaboration) %>
       <br />
     </div>
     <hr />  

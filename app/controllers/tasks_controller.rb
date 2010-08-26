@@ -34,6 +34,7 @@ class TasksController < ApplicationController
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
+    @topic_list = select_topic_list(@collaboration)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,6 +48,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
+    @topic_list = select_topic_list(@collaboration)
   end
 
   # POST /tasks
@@ -58,6 +60,7 @@ class TasksController < ApplicationController
     @task.collaboration_id = params[:collaboration_id]
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
+    @topic_list = select_topic_list(@collaboration)
 
     respond_to do |format|
       if @task.save
@@ -77,6 +80,7 @@ class TasksController < ApplicationController
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
+    @topic_list = select_topic_list(@collaboration)
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -105,11 +109,5 @@ class TasksController < ApplicationController
     end
   end
   
-  private 
 
-  def select_user_list(collaboration)
-    # to be updated once Collaborations is implemented
-    users = collaboration.users
-    user_list = users.map { |u| [ u.full_name + ' <' + u.email + '>', u.id] }
-  end
 end

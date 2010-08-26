@@ -136,12 +136,10 @@ label {
     text-align: right;
     font-weight: bold;
 }
-
 .login p, input {
   font-size: 16px;
   font-weight: bold;  
 }
-
 input {
   font-size: 1em;
   font-weight: normal;
@@ -154,69 +152,54 @@ textarea {
   font-size: 1em;  
 }
 
-
-th {
-  text-align:left;
-}
-tr.odd {
-}
-tr.even {
-  background-color: #DFF7FE;
-}
-
-div.task {
-  width: 100%;
-  margin: 2px;
-  padding: 2px;
-}
-
-div.task-detail {
-  background-color: white;
-  border: 0px;
-  height: 45px
-}
-
-div.task-collaboration {
-  background-color: #eeeeee;
-  font-weight: bold;
-  height: 15px;
-  border: 1px;
-  border-color: darkgrey;
-  border-style: solid;
-}
-
 .avatar {
   width: 45px;
   height: 45px;  
   background-color: #dddddd;
   float: left;
 }
-
 div.icon {
   width: 20px;
   height: 20px;  
   float: right;
   border: 0px;
 }
-
-
-span.task-actions {
-  float: right;
-  font-size: 0.7em;
-}
-
-span.task-updated {
-  font-size: 0.8em;
-  color: grey;
-}
-
 span.user-name {
   color: blue;
   font-weight: bold;
 }
 
+
+div.task {
+  width: 100%;
+  margin: 2px;
+  padding: 2px;
+}
+div.task-detail {
+  background-color: white;
+  border: 0px;
+  height: 45px
+}
+div.task-collaboration {
+  background-color: #eeeeee;
+  font-weight: normal;
+  height: 15px;
+  border: 1px;
+  border-color: darkgrey;
+  border-style: solid;
+}
+span.task-actions {
+  float: right;
+  font-size: 0.8em;
+}
+span.task-actions.more {
+  float: left;
+}
+span.task-updated {
+  font-size: 0.8em;
+  color: grey;
+}
 div.task-more {
-  height: 20px;
   width: 90%;
   background-color: #eeeeee;  
   clear: right;
@@ -226,10 +209,41 @@ div.task-more {
   border-style: solid;
   margin-bottom: 3px;
 }
-
 hr, hr.task-separator {
   clear: right;
   height: 1px;
   border: 0px;
   background-color: lightgrey;
+}
+
+div.collaboration {
+  background-color: lightgrey;
+  border: 1px;
+  border-color: darkgrey;
+  border-style: solid;
+  margin: 2px;
+  padding: 2px;
+}
+h2.collaboration {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+span.collaboration-description {
+  font-size: 1.0em;  
+}
+span.collaboration-status {
+  font-size: 0.8em;
+  color: grey;
+}
+span.collaboration-actions {
+  float: right;
+  font-size: 0.8em;
+}
+
+div.collaboration.topic {
+  background-color: #eeeeee;
+}
+h3.topic {
+  margin-top: 3px;
+  margin-bottom: 3px;
 }

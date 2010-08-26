@@ -1,3 +1,5 @@
+<%= render 'shared/collaboration_header' %>
+
 <h1>New task</h1>
 
 <% form_for [@collaboration, @task] do |f| %>
@@ -6,6 +8,11 @@
   <p>
     <%= f.label :title %>
     <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :topic %>
+    <%= f.select :topic_id, @topic_list %>
   </p>
 
   <p>
