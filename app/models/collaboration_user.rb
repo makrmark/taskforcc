@@ -3,10 +3,14 @@ class CollaborationUser < ActiveRecord::Base
   belongs_to :collaboration
   has_many :topics
   
-  has_many :collaboration_user_tasks,
+  has_many :tasks_assigned_to,
     :class_name => 'Task',
     :foreign_key => 'assigned_to'
 
+  has_many :tasks_created_by,
+    :class_name => 'Task',
+    :foreign_key => 'created_by'
+    
   # used to lookup a user by email when creating the association
   attr_accessor :email
   validates_presence_of :email, 
@@ -34,4 +38,10 @@ class CollaborationUser < ActiveRecord::Base
 #    @email=eml
 #  end
 
+
+  def assigned_or_created
+    with_scope( :find => { :conditions => [ 'sender_id = ?', sender.id ] } ) do
+      received_whispers.find(:all)
+    end
+  end
 end

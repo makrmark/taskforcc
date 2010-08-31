@@ -1,6 +1,5 @@
 /* http://www.html-color-names.com/lightblue.php */
 body {
-  margin: 0px;
   border: 0px;
   padding: 0px;  
   color: #1A1A1A;
@@ -8,24 +7,40 @@ body {
   font-size: 0.8em;
   font-family: tahoma, arial, helvetica;
   line-height: 1.2em;
+  margin: 0px auto -1px auto;
+}
+
+#container {
+  width: 1000px;
+}
+#left {
+  float: left;
+  width: 200px;
+}
+#content {
+  padding: 0 210px 0 210px;
+}
+#right {
+  float: right;
+  width: 200px;
+}
+.clear {
+  clear: both;
 }
 
 div#header {
   background: #7998A1;
-  clear: both;
   height: 40px;
   color: orange;
 }
-
 div#header>h1 {
   margin: 10px;
   border: 0px;
   padding: 0px;
-  clear: none;
-  float: left;
 }
 
-div#sidebar {
+/*
+div#left {
   width: 200px;
   border: 0px;
   padding: 0px;
@@ -94,6 +109,9 @@ li.tab.selected {
 
 ul.tab.user>li>a:link { color: orange; }
 ul.tab.user>li>a:visited { color: orange; }
+
+*/
+
 
 /* http://www.webmasterworld.com/forum83/4694.htm */
 div.login {
@@ -171,17 +189,14 @@ span.user-name {
 
 
 div.task {
-  width: 100%;
   margin: 2px;
   padding: 2px;
 }
 div.task-detail {
-  background-color: white;
   border: 0px;
   height: 45px
 }
 div.task-collaboration {
-  background-color: #eeeeee;
   font-weight: normal;
   height: 15px;
   border: 1px;
@@ -196,13 +211,13 @@ span.task-actions.more {
   float: left;
 }
 span.task-updated {
+  width: 400px;
   font-size: 0.8em;
   color: grey;
 }
 div.task-more {
-  width: 90%;
-  background-color: #eeeeee;  
-  clear: right;
+  width: 500px;
+  margin-left: 100px;
   float: right;
   border: 1px;
   border-color: darkgrey;
@@ -210,7 +225,6 @@ div.task-more {
   margin-bottom: 3px;
 }
 hr, hr.task-separator {
-  clear: right;
   height: 1px;
   border: 0px;
   background-color: lightgrey;

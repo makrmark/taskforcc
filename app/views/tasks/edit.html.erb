@@ -14,6 +14,11 @@
   </p>
 
   <p>
+    <%= f.label :topic %>
+    <%= f.select :topic_id, @topic_list %>
+  </p>
+
+  <p>
     <%= f.label :status %>
     <%= f.select :status, %w{New Assigned On-Hold Resolved Closed} %>
   </p>

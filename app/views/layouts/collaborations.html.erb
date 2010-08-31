@@ -10,53 +10,59 @@
 </head>
 <body>
 
-<div id="header">
-  <h1>task<em>for.cc</em></h1>
-</div>
+<div id="container">
 
-<div id="sidebar">
+    <div id="header">
+      <h1>task<em>for.cc</em></h1>
+    </div>
 
-  <ul>
-    <li>
-      <%= link_to @current_user.full_name, @current_user %> |
-      <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%>
-    </li>
-  </ul>
+    <div id="left">
+      <ul>
+        <li>
+          <%= link_to @current_user.full_name, @current_user %> |
+          <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%>
+        </li>
+      </ul>
+      <hr />
+      <b>Open Taskforcc:</b>
+      <ul>
+        <% @current_user.collaborations.each do |collab| %>
+          <li><%= link_to collab.subject, collab %></li>
+        <% end %>
+        <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
+      </ul>
+      <div width='100%' align='right'>
+        <%= link_to 'List All &gt; ', collaborations_path %>
+        <br />
+      </div>
+      <hr />
+    </div>
 
-  <hr />
+    <div id="right">
+      <%= render 'shared/collaborations_sidebar' %>
+      
+      <hr />
+    </div>
+       
+    <div id="content">
 
-  <%= render 'shared/collaborations_sidebar' %>
-  
-  <hr />
-
-  <div class="contextual-sidebar">
+      <div id="notices">
+        <p style="color: green"><%= notice %></p>
+      </div>
     
-  </div>
-</div>
+      <%= yield %>
 
-<div id="content">
+    </div>
 
+    <div class="clear"></div>
 
-  <!--
-  <div class="nav-tabs">
-    <%# render(:partial => 'shared/nav_tabs' )%>  
-  </div>
-  -->
+    <div id="footer">
+      <hr />
+      <%=h (params[:controller] + ' / '+ params[:action])  %>
+      <%=h params.to_yaml %>
 
-  <div id="notices">
-    <p style="color: green"><%= notice %></p>
-  </div>
-
-  <%= yield %>
-    
-</div>
-
-<div id="footer">
-<hr />
-<%=h (params[:controller] + ' / '+ params[:action])  %>
-<%=h params.to_yaml %>
+    </div>
 
 </div>
-
 </body>
 </html>

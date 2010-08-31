@@ -1,26 +1,16 @@
-  <b>Open Taskforcces:</b>
-  <ul>
-    <% @current_user.collaborations.each do |collab| %>
-      <li><%= link_to collab.subject, collab %></li>
-    <% end %>
-    <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
-  </ul>
-  <div width='100%' align='right'>
-    <%= link_to 'List All &gt; ', collaborations_path %>
-    <br />
-  </div>
 
-  <% if (params[:controller].eql?("collaborations") && 
-      params[:id]) || params[:controller].eql?("collaboration_users") %> 
+  <% if (params[:controller].eql?("collaborations") && params[:id]) || 
+    params[:controller].eql?("collaboration_users") || 
+    params[:controller].eql?("topics")
+    %> 
       
-    <hr />
     <b>Topics:</b>
       <ul>
         <%= render (:partial => 'shared/topic_li', :collection => @collaboration.topics ) %>
+        <li><em><%= link_to 'New Topic', new_collaboration_topic_path(@collaboration) %></em></li>
       </ul>
   
     <div width='100%' align='right'>
-      <%= link_to 'New topic &gt;', new_collaboration_topic_path(@collaboration) %>
       <br />
     </div>
     <hr />  
@@ -28,12 +18,9 @@
 
     <ul>
       <%= render (:partial => 'shared/team_member', :collection => @collaboration.collaboration_users ) %>
+      <li><em><%= link_to 'Invite Someone' %></em></li>
     </ul>
     
-    <div width='100%' align='right'>
-      <%= link_to 'Invite Someone &gt; ' %>
-      <br />
-    </div>
     
     <hr />
     <b>Upcoming Milestones:</b>
