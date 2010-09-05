@@ -83,6 +83,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.xml
+=begin
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -92,4 +93,5 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+=end
 end

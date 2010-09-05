@@ -13,7 +13,7 @@
       <%= link_to 'Edit', edit_collaboration_collaboration_user_path(
             :collaboration_id => @collaboration_user.collaboration_id,
             :id => @collaboration_user.id
-          ) %> |
+          ) %> &bull;
       <%= link_to 'Close', collaboration_collaboration_users_path(
             :collaboration_id => @collaboration_user.collaboration_id
           ) %>
@@ -25,29 +25,10 @@
 
 <%= render(:partial => 'shared/task', :collection => @collaboration_user.tasks_assigned_to )%>
 
-<hr />
-
-<% form_for([@collaboration, @collaboration_user]) do |f| %>
-
-  <p>
-    <%= f.label :collaboration_id %>
-    <%=h @collaboration_user.collaboration.subject %>
-  </p>
-  <p>
-    <%= f.label :user_id %>
-    <%= titled_text(@collaboration_user.user.full_name,
-     @collaboration_user.user.email) %>
-  </p>
-  <p>
-    <%= f.label :role %>
-    <%= @collaboration_user.role %>
-  </p>
-<% end %>
-
 <%= link_to 'Edit', edit_collaboration_collaboration_user_path(
       :collaboration_id => @collaboration_user.collaboration_id,
       :id => @collaboration_user.id
-    ) %> |
+    ) %> &bull;
 <%= link_to 'Back', collaboration_collaboration_users_path(
       :collaboration_id => @collaboration_user.collaboration_id
     ) %>

@@ -1,5 +1,7 @@
 <%= render 'shared/collaboration_header' %>
 
+<%= render 'shared/topic_header' %>
+
 
 <% form_for [@collaboration, @task] do |f| %>
   <%= f.error_messages %>
@@ -43,7 +45,7 @@
         :collaboration_id => @collaboration.id,
         :id => @task.id
     )  %> |
-  <%= link_to 'Back', :back %>
+  <%= link_to 'Close', session[:return_to] || :back %>
 
 <% end %>
 

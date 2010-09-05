@@ -5,6 +5,9 @@ class CollaborationsController < ApplicationController
     @current_user = User.find(session[:user_id])
     @collaborations = @current_user.collaborations
 
+    # when you list the tasks, set the return-to path
+    session[:return_to] = request.request_uri
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @collaborations }
@@ -16,6 +19,9 @@ class CollaborationsController < ApplicationController
   def show
     @collaboration = Collaboration.find(params[:id])
     @current_user = User.find(session[:user_id])
+
+    # when you list the tasks, set the return-to path
+    session[:return_to] = request.request_uri
 
     respond_to do |format|
       format.html # show.html.erb
@@ -100,6 +106,7 @@ class CollaborationsController < ApplicationController
 
   # DELETE /collaborations/1
   # DELETE /collaborations/1.xml
+=begin
   def destroy
     @collaboration = Collaboration.find(params[:id])
     @collaboration.destroy
@@ -109,4 +116,5 @@ class CollaborationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+=end
 end

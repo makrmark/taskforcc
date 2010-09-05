@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
   validates_associated :collaboration => "could not be found"  
   validates_associated :topic => "could not be found"
   
-  validates_presence_of :title, :description, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id, :topic_id
+  validates_presence_of :title, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id, :topic_id
 
   validates_inclusion_of :status, 
     :in => %w{New Assigned On-Hold Resolved Closed}, 

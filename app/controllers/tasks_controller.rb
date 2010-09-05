@@ -8,6 +8,9 @@ class TasksController < ApplicationController
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
 
+    # when you list the tasks, set the return-to path
+    session[:return_to] = request.request_uri
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
@@ -18,6 +21,7 @@ class TasksController < ApplicationController
   # GET /tasks/1.xml
   def show
     @task = Task.find(params[:id])
+    @topic = @task.topic;
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
 
@@ -46,6 +50,7 @@ class TasksController < ApplicationController
   def edit
     @current_user = User.find(session[:user_id])
     @task = Task.find(params[:id])
+    @topic = @task.topic;
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
     @topic_list = select_topic_list(@collaboration)
@@ -58,6 +63,7 @@ class TasksController < ApplicationController
     @task.created_by = session[:user_id]
     @current_user = User.find(session[:user_id])
     @task.collaboration_id = params[:collaboration_id]
+    
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
     @topic_list = select_topic_list(@collaboration)
@@ -95,6 +101,7 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
+=begin
   def destroy
     @task = Task.find(params[:id])
     @current_user = User.find(session[:user_id])
@@ -108,6 +115,6 @@ class TasksController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+=end
 
 end

@@ -10,9 +10,6 @@
         <li><em><%= link_to 'New Topic', new_collaboration_topic_path(@collaboration) %></em></li>
       </ul>
   
-    <div width='100%' align='right'>
-      <br />
-    </div>
     <hr />  
     <b>Team (<%= @collaboration.collaboration_users.count %>):</b>
 
@@ -24,18 +21,16 @@
     
     <hr />
     <b>Upcoming Milestones:</b>
-  
-    <div width='100%' align='right'>
-      <%= link_to 'New Milestone &gt; ' %>
-      <br />
-    </div>
-  
+
+    <ul>
+      <li><em><%= link_to 'New Milestone' %></em></li>
+    </ul>
+    
     <hr />
     <b>Upcoming Reviews:</b>  
   
-    <div width='100%' align='right'>
-      <%= link_to 'New Review &gt; ' %>
-      <br />
-    </div>
+    <ul>
+      <li><em><%= link_to 'New Review' %></em></li>
+    </ul>
 
   <% end %>

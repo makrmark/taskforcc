@@ -2,27 +2,38 @@
 body {
   border: 0px;
   padding: 0px;  
+  margin: 0px;
   color: #1A1A1A;
   background: #EFFBFE;
-  font-size: 0.8em;
+  font-size: 100%;
   font-family: tahoma, arial, helvetica;
-  line-height: 1.2em;
-  margin: 0px auto -1px auto;
 }
 
 #container {
   width: 1000px;
+  font-size: 0.8em;
 }
 #left {
   float: left;
   width: 200px;
+  padding: 4px;
+  min-height: 500px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: lightgrey;
 }
 #content {
-  padding: 0 210px 0 210px;
+  padding: 0px 210px 0px 210px;
+  min-height: 500px;
 }
 #right {
   float: right;
   width: 200px;
+  padding: 4px;
+  min-height: 500px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-color: lightgrey;
 }
 .clear {
   clear: both;
@@ -30,13 +41,30 @@ body {
 
 div#header {
   background: #7998A1;
-  height: 40px;
   color: orange;
 }
 div#header>h1 {
-  margin: 10px;
+  margin: 0px;
   border: 0px;
-  padding: 0px;
+  padding: 5px;
+}
+
+ul {
+  padding-left: 15px;
+  list-style: square;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: blue;
+  text-decoration: underline;
+  background-color: transparent;
+}
+a:visited {
+  color: black;
 }
 
 /*
@@ -170,63 +198,83 @@ textarea {
   font-size: 1em;  
 }
 
-.avatar {
+img.avatar {
   width: 45px;
   height: 45px;  
   background-color: #dddddd;
-  float: left;
-}
-div.icon {
-  width: 20px;
-  height: 20px;  
   float: right;
-  border: 0px;
 }
 span.user-name {
   color: blue;
-  font-weight: bold;
+  text-decoration: none;
 }
-
+span.user-name:hover {
+  color: black;
+}
 
 div.task {
-  margin: 2px;
-  padding: 2px;
+  line-height: 1.2em;
+  margin-bottom: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: lightgrey;
 }
-div.task-detail {
-  border: 0px;
-  height: 45px
+div.task:hover {
+  background-color: #F4FEFF;
 }
-div.task-collaboration {
-  font-weight: normal;
-  height: 15px;
-  border: 1px;
-  border-color: darkgrey;
-  border-style: solid;
-}
-span.task-actions {
-  float: right;
-  font-size: 0.8em;
-}
-span.task-actions.more {
+div.task-left {
   float: left;
+  width: 25px;
+  min-height: 50px;
+  margin-right: 2px;
 }
-span.task-updated {
-  width: 400px;
-  font-size: 0.8em;
-  color: grey;
-}
-div.task-more {
-  width: 500px;
-  margin-left: 100px;
+div.task-right {
   float: right;
+  width: 140px;
+  min-height: 50px;
+  margin-left: 2px;  
+  text-align: right;
+}
+div.task-content {
+  padding: 0px 140px 0px 25px;  
+}
+
+div.task-header {
+  color: grey;
+  margin-bottom: 2px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: lightgrey;
+}
+span.task-assigned {
+  float: right;
+  text-align: right;
+}
+span.task-updates {
+  font-size: 0.8em;
+  color: darkgrey;
+}
+.task-actions {
+  font-size: 0.8em;
+  color: darkgrey;
+}
+img.task-icon {
+  width: 20px;
+  height: 20px;  
+  border: 0px;
+  margin: 3px;
+}
+div.task-footer {
   border: 1px;
-  border-color: darkgrey;
+  background-color: #DFF4FF;
+  border-color: #EFFBFE;
   border-style: solid;
   margin-bottom: 3px;
+  text-align: right;
 }
-hr, hr.task-separator {
-  height: 1px;
+hr {
   border: 0px;
+  height: 1px;
   background-color: lightgrey;
 }
 
@@ -239,8 +287,8 @@ div.collaboration {
   padding: 2px;
 }
 h2.collaboration {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 span.collaboration-description {
   font-size: 1.0em;  

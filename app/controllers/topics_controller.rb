@@ -21,6 +21,9 @@ class TopicsController < ApplicationController
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
 
+    # when you list the tasks, set the return-to path
+    session[:return_to] = request.request_uri
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @topic }
