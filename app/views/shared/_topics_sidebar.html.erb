@@ -1,0 +1,14 @@
+  <% if (params[:controller].eql?("collaborations") && params[:id]) || 
+    params[:controller].eql?("collaboration_users") || 
+    params[:controller].eql?("topics")
+    %> 
+      
+    <h4>Topics:</h4>
+      <ul>
+        <%= render (:partial => 'shared/topic_li', :collection => @collaboration.topics ) %>
+        <li><em><%= link_to 'New Topic', new_collaboration_topic_path(@collaboration) %></em></li>
+      </ul>
+  
+    <hr />  
+
+  <% end %>

@@ -1,0 +1,7 @@
+author: Matt McCray
+summary: Helper for generating gravatar URLs.
+homepage: http://mattmccray.com
+plugin: http://mattmccray.com/svn/rails/plugins/gravatar_helper
+license: MIT
+version: 0.2
+rails_version: 1.0+

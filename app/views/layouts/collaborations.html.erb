@@ -19,12 +19,12 @@
     <div id="left">
       <ul>
         <li>
-          <%= link_to @current_user.full_name, @current_user %> |
-          <%= link_to 'Logout', { :action => 'logout', :controller => 'access'}%>
+          <%= link_to @current_user.full_name, @current_user %> &bull;
+          <%= link_to 'Log Out', { :action => 'logout', :controller => 'access'}%>
         </li>
       </ul>
       <hr />
-      <b>Open Taskforcc:</b>
+      <h4>Open Taskforcc:</h4>
       <ul>
         <% @current_user.collaborations.each do |collab| %>
           <li><%= link_to collab.subject, collab %></li>
@@ -36,6 +36,8 @@
         <br />
       </div>
       <hr />
+      <%= render 'shared/topics_sidebar' %>
+
     </div>
 
     <div id="right">

@@ -1,33 +1,26 @@
-
   <% if (params[:controller].eql?("collaborations") && params[:id]) || 
     params[:controller].eql?("collaboration_users") || 
     params[:controller].eql?("topics")
     %> 
       
-    <b>Topics:</b>
-      <ul>
-        <%= render (:partial => 'shared/topic_li', :collection => @collaboration.topics ) %>
-        <li><em><%= link_to 'New Topic', new_collaboration_topic_path(@collaboration) %></em></li>
-      </ul>
-  
-    <hr />  
-    <b>Team (<%= @collaboration.collaboration_users.count %>):</b>
+    <h4>Team (<%= @collaboration.collaboration_users.count %>):</h4>
 
     <ul>
       <%= render (:partial => 'shared/team_member', :collection => @collaboration.collaboration_users ) %>
-      <li><em><%= link_to 'Invite Someone' %></em></li>
+      <li><em><%= link_to 'Invite Someone', new_collaboration_collaboration_user_path(@collaboration) %></em></li>
+      
     </ul>
     
     
     <hr />
-    <b>Upcoming Milestones:</b>
+    <h4>Upcoming Milestones:</h4>
 
     <ul>
       <li><em><%= link_to 'New Milestone' %></em></li>
     </ul>
     
     <hr />
-    <b>Upcoming Reviews:</b>  
+    <h4>Upcoming Reviews:</h4>  
   
     <ul>
       <li><em><%= link_to 'New Review' %></em></li>

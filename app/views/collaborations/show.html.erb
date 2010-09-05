@@ -3,8 +3,21 @@
 
 <hr />
 
-<%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
+<% if @collaboration.tasks.empty? %>
 
-<%= link_to 'New task', new_collaboration_task_path(
-    :collaboration_id => @collaboration.id
-) %>
+  <div class="empty-message">
+    No tasks match this selection &bull;
+    
+    <%= link_to 'New task', new_collaboration_task_path(
+        :collaboration_id => @collaboration.id
+    ) %>
+  
+  </div>
+
+<% else %>
+  <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
+<% end%>
+
+<%= button_to 'New task', new_collaboration_task_path(
+    :collaboration_id => @collaboration.id), 
+    :method => 'get' %>

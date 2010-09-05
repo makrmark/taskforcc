@@ -69,6 +69,14 @@ class CollaborationsController < ApplicationController
           # TODO: this is a workaround for having email in the 
           :email => @current_user.email 
         )
+        unfiled_topic = Topic.new(
+          :controller => session[:user_id],
+          :collaboration_id => @collaboration.id,
+          :is_system => true,
+          :system_name => 'unfiled',
+          :name => 'Unfiled'
+        )
+        unfiled_topic.save
         
         logger.debug "Creating associated CollaborationUser :" + @collaboration_user.to_yaml
         if @collaboration_user.save

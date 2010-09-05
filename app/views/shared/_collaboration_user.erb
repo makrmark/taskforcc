@@ -6,15 +6,14 @@
     <td><%= link_to 'Show', collaboration_collaboration_user_path(
       :collaboration_id => collaboration_user.collaboration_id,
       :id => collaboration_user.id
-    ) %></td>
-    
-    <td><%= link_to 'Edit', edit_collaboration_collaboration_user_path(
+    ) %> &bull;
+    <%= link_to 'Edit', edit_collaboration_collaboration_user_path(
       :collaboration_id => collaboration_user.collaboration_id,
       :id => collaboration_user.id
-    ) %></td>
-    <td><%= link_to 'Remove User', collaboration_collaboration_user_path(
+    ) %> &bull;
+    <%= link_to 'Remove', collaboration_collaboration_user_path(
       :collaboration_id => collaboration_user.collaboration_id,
       :id => collaboration_user.id
     ),
-    :confirm => 'Really remove from collaboration?', :method => :delete %></td>
+    :confirm => 'Really remove from this Taskforcc?', :method => :delete %></td>
   </tr>

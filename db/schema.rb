@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100826120129) do
+ActiveRecord::Schema.define(:version => 20100905133638) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20100826120129) do
     t.integer  "collaboration_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_system",        :default => false, :null => false
+    t.string   "system_name"
   end
 
   create_table "users", :force => true do |t|

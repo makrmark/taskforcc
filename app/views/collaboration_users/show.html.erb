@@ -22,13 +22,11 @@
 </div>
 
 <hr />
+<h4>Tasks &bull; New</h4>
+<hr />
 
 <%= render(:partial => 'shared/task', :collection => @collaboration_user.tasks_assigned_to )%>
 
-<%= link_to 'Edit', edit_collaboration_collaboration_user_path(
-      :collaboration_id => @collaboration_user.collaboration_id,
-      :id => @collaboration_user.id
-    ) %> &bull;
-<%= link_to 'Back', collaboration_collaboration_users_path(
-      :collaboration_id => @collaboration_user.collaboration_id
-    ) %>
+<%= button_to 'New task', new_collaboration_task_path(
+    :collaboration_id => @collaboration.id), 
+    :method => 'get' %>

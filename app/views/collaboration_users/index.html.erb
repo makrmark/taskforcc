@@ -1,11 +1,13 @@
 <%= render 'shared/collaboration_header' %>
 
-<table>
+<h3>Team:</h3>
+
+<table width='100%'>
   <tr>
-    <th width='150'>User</th>
-    <th width='200'>Email</th>
-    <th width='100'>Role</th>
-    <th colspan='3'></th>
+    <th>User</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th></th>
   </tr>
 
   <%= render(:partial => 'shared/collaboration_user', :collection => @collaboration_users )%>
@@ -14,4 +16,4 @@
 
 <br />
 
-<%= link_to 'Invite Someone to Collaborate', new_collaboration_collaboration_user_path %>
+<%= button_to 'Invite Someone', new_collaboration_collaboration_user_path, :method=> 'get' %>
