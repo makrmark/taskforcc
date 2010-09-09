@@ -21,12 +21,24 @@
   </div>
 </div>
 
-<hr />
-<h4>Tasks &bull; New</h4>
-<hr />
+<h4>Tasks</h4>
+<% if @collaboration_user.tasks_assigned_to.empty? %>
 
-<%= render(:partial => 'shared/task', :collection => @collaboration_user.tasks_assigned_to )%>
+  <div class="empty-message">
+    No tasks match this selection &bull;
+    
+    <%= link_to 'New task', new_collaboration_task_path(
+        :collaboration_id => @collaboration.id,
+        :assigned_to => @collaboration_user.user_id
+    ) %>
+  
+  </div>
+
+<% else %>
+  <%= render(:partial => 'shared/task', :collection => @collaboration_user.tasks_assigned_to )%>
+<% end%>
 
 <%= button_to 'New task', new_collaboration_task_path(
-    :collaboration_id => @collaboration.id), 
+    :collaboration_id => @collaboration.id,
+    :assigned_to => @collaboration_user.user_id),
     :method => 'get' %>

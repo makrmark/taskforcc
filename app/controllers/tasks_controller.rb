@@ -39,6 +39,9 @@ class TasksController < ApplicationController
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
     @topic_list = select_topic_list(@collaboration)
+    
+    @task.topic_id    = params[:topic_id] if params[:topic_id]
+    @task.assigned_to = params[:assigned_to] if params[:assigned_to]
 
     respond_to do |format|
       format.html # new.html.erb

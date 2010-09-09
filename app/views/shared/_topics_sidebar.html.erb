@@ -3,12 +3,11 @@
     params[:controller].eql?("topics")
     %> 
       
-    <h4>Topics:</h4>
+    <h4>Topics 
+      &bull; <%= link_to 'New', new_collaboration_topic_path(@collaboration) %> 
+      &bull; <%= link_to 'List', collaboration_topics_path(@collaboration) %></h4>
       <ul>
         <%= render (:partial => 'shared/topic_li', :collection => @collaboration.topics ) %>
-        <li><em><%= link_to 'New Topic', new_collaboration_topic_path(@collaboration) %></em></li>
       </ul>
   
-    <hr />  
-
   <% end %>

@@ -3,8 +3,8 @@ body {
   border: 0px;
   padding: 0px;  
   margin: 0px;
-  color: #1A1A1A;
-  background: #EFFBFE;
+  color: black;
+  background: white;
   font-size: 100%;
   font-family: tahoma, arial, helvetica;
 }
@@ -12,6 +12,9 @@ body {
 h4 {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+h4.sidebar>span, h4.sidebar>span>a {
+  color: lightgrey;
 }
 
 #container {
@@ -45,7 +48,7 @@ h4 {
 }
 
 div#header {
-  background: #7998A1;
+  background: navy;
   color: orange;
 }
 div#header>h1 {
@@ -58,6 +61,8 @@ ul {
   padding-left: 15px;
   list-style: square;
   margin-top: 5px;
+  font-size: 0.9em;
+  line-height: 1.4em;
 }
 
 a {
@@ -327,3 +332,5 @@ h3.topic {
   margin-top: 3px;
   margin-bottom: 3px;
 }
+
+

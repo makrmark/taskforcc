@@ -13,10 +13,26 @@
 <div id="container">
 
     <div id="header">
-      <h1>task<em>for.cc</em></h1>
+      <h1>taskfor.cc</h1>
     </div>
 
     <div id="left">
+      <h4 class="sidebar">Taskforcc <span class='sidebar-actions'>
+        &bull; <%= link_to 'New', new_collaboration_path %>
+        &bull; <%= link_to 'List', collaborations_path %>
+        </span></h4>
+      <ul>
+        <% @current_user.collaborations.each do |collab| %>
+          <li><%= link_to collab.subject, collab %></li>
+        <% end %>
+      </ul>
+      <hr />
+      <%= render 'shared/topics_sidebar' %>
+
+    </div>
+
+    <div id="right">
+      <h4>Identity:</h4>
       <ul>
         <li>
           <%= link_to @current_user.full_name, @current_user %> &bull;
@@ -24,26 +40,8 @@
         </li>
       </ul>
       <hr />
-      <h4>Open Taskforcc:</h4>
-      <ul>
-        <% @current_user.collaborations.each do |collab| %>
-          <li><%= link_to collab.subject, collab %></li>
-        <% end %>
-        <li><em><%= link_to 'New Collaboration', new_collaboration_path %></em></li>
-      </ul>
-      <div width='100%' align='right'>
-        <%= link_to 'List All &gt; ', collaborations_path %>
-        <br />
-      </div>
-      <hr />
-      <%= render 'shared/topics_sidebar' %>
+      <%= render 'shared/collaborations_sidebar' %>      
 
-    </div>
-
-    <div id="right">
-      <%= render 'shared/collaborations_sidebar' %>
-      
-      <hr />
     </div>
        
     <div id="content">

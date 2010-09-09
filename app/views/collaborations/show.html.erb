@@ -1,6 +1,7 @@
 
 <%= render 'shared/collaboration_header' %>
 
+<h4>Tasks</h4>
 <hr />
 
 <% if @collaboration.tasks.empty? %>
@@ -13,7 +14,6 @@
     ) %>
   
   </div>
-
 <% else %>
   <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
 <% end%>

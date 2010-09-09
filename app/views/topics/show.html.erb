@@ -2,6 +2,7 @@
 
 <%= render 'shared/topic_header' %>
 
+<h4>Tasks</h4>
 <hr />
 
 <% if @topic.tasks.empty? %>
@@ -10,7 +11,8 @@
   No tasks match this selection &bull;
   
   <%= link_to 'New task', new_collaboration_task_path(
-    :collaboration_id => @collaboration.id
+    :collaboration_id => @collaboration.id,
+    :topic_id => @topic.id
   ) %>
 
 </div>
@@ -20,5 +22,6 @@
 <% end %>
 
 <%= button_to 'New task', new_collaboration_task_path(
-    :collaboration_id => @collaboration.id), 
+    :collaboration_id => @collaboration.id,
+    :topic_id => @topic.id), 
     :method => 'get' %>

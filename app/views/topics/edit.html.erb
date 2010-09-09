@@ -1,6 +1,7 @@
 <%= render 'shared/collaboration_header' %>
 
-<h1>Editing topic</h1>
+<h4>Editing Topic</h4>
+<hr />
 
 <% form_for [@collaboration, @topic] do |f| %>
   <%= f.error_messages %>
@@ -18,8 +19,8 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', collaboration_task_path(
+<%= link_to 'Show', collaboration_topic_path(
       :collaboration_id => @collaboration.id,
       :id => @topic.id
   ) %> |
-<%= link_to 'Close', @collaboration %>
+<%= link_to 'Close', session[:return_to] || :back %>
