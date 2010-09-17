@@ -1,52 +1,50 @@
 <div class="task">
 
-  <div class="task-header">
-    <%= task.collaboration.subject %> &raquo; <%= task.topic.name %> 
-  </div>
-  
   <div class="task-left">
     <img title="Task" class="task-icon" src="/images/TaskIcon.gif" />    
   </div>
-  
+
   <div class="task-right">
     <img title="Responsible" class="avatar" 
       src="/images/Anonymous.jpeg" /> 
-    <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
-      task.user_assigned_to.email) %></span>
     <br />
-    <span class="task-actions"><a>Reassign</a></span>    
   </div>
   
   <div class="task-content">
-      <%= link_to task.title , collaboration_task_path(
-          :collaboration_id => task.collaboration_id,
-          :id => task.id
-      ) %> 
-        
-    <span class="task-actions">
-      &bull;
-      <%= link_to 'Edit', edit_collaboration_task_path(
-          :collaboration_id => task.collaboration_id,
-          :id => task.id
-      ) %>
-    </span>      
+    <div class="task-header">
+      <%= inverse_breadcrumb :collaboration => task.collaboration, 
+        :topic => task.topic,
+        :user => task.user_assigned_to %>      
 
-    <span class="task-actions more">
-      &bull; Follow &bull; Comment   
+      <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
+        task.user_assigned_to.email) %></span>
+      <span class="task-actions"> &bull; <a>Reassign</a></span>    
+    </div>  
+
+    <b><%= link_to task.title , collaboration_task_path(
+        :collaboration_id => task.collaboration_id,
+        :id => task.id
+    ) %></b> 
+
+    <span class="task-updates">
+      <nobr><%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
+      task.user_created_by.email) %></span></nobr>.
     </span>
-
+    
+    <span class="task-actions">
+      <nobr>
+        &bull;
+        <%= link_to 'Edit', edit_collaboration_task_path(
+            :collaboration_id => task.collaboration_id,
+            :id => task.id
+        ) %>
+       &bull; Watch &bull; Comment   
+      </nobr>
+    </span>
 
     <br />
-  
-    <span class="task-updates">
-      Created <%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
-      task.user_created_by.email) %></span>.      
-    </span>
 
-    <div class="task-footer">
-      Comments and extra info goes here
-    </div>
-
+    <div class="task-footer"></div>
     
   </div>
   

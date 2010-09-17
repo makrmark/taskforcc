@@ -1,7 +1,9 @@
-
-<%= render 'shared/collaboration_header' %>
-
-<h4>Tasks</h4>
+<h4><%= breadcrumb %> &raquo; Tasks</h4>
+<hr />
+<form class="qt">
+  <input class="qtt" type="text" />
+  <input class="qtb" type="submit" value="Quick Task" />
+</form>
 <hr />
 
 <% if @collaboration.tasks.empty? %>

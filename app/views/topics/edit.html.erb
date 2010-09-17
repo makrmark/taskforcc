@@ -1,6 +1,6 @@
-<%= render 'shared/collaboration_header' %>
-
-<h4>Editing Topic</h4>
+<h4><%= get_breadcrumb :collaboration => @collaboration, 
+        :topic => @topic,
+        :collaboration_user => @collaboration_user %> Edit</h4>
 <hr />
 
 <% form_for [@collaboration, @topic] do |f| %>

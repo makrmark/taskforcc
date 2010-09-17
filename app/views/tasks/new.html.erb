@@ -1,6 +1,5 @@
-<%= render 'shared/collaboration_header' %>
-
-<h4>New Task</h4>
+<h4><%= breadcrumb %> &raquo; New</h4>
+<hr />
 
 <% form_for [@collaboration, @task] do |f| %>
   <%= f.error_messages %>

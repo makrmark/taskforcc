@@ -1,2 +1,2 @@
-module CollaborationsHelper
+module CollaborationsHelper 
 end

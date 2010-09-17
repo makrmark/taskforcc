@@ -17,13 +17,13 @@ class Task < ActiveRecord::Base
   validates_presence_of :title, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id, :topic_id
 
   validates_inclusion_of :status, 
-    :in => %w{New Assigned On-Hold Resolved Closed}, 
-    :message => "should be New, Assigned, On-Hold, Resolved, or Closed"
+    :in => %w{New Assigned Accepted On-Hold Resolved Closed}, 
+    :message => " invalid"
   validate :next_state?
 
   validates_inclusion_of :resolution, 
     :in => %w{Unresolved Completed Duplicate Invalid}, 
-    :message => "should be Unresolved, Completed, Duplicate, or Invalid"
+    :message => " invalid"
   validate :resolution_if_resolved?
 
   validates_inclusion_of :type, 
