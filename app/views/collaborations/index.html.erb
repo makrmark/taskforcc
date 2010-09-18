@@ -1,9 +1,12 @@
 <h4>All Tasks</h4>
 <hr />
 
-<div class="task-container">
+<% if @current_user.collaboration_tasks.empty? %>
 
-  <%= render(:partial => 'shared/task', :collection => @current_user.collaboration_tasks )%>
-
-<br />
+<div class="empty-message">
+  No Tasks.
 </div>
+
+<% else %>
+  <%= render(:partial => 'shared/task', :collection => @current_user.collaboration_tasks )%>
+<% end %>

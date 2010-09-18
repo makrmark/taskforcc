@@ -6,7 +6,8 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>taskfor.cc &raquo; <%= breadcrumb %></title>
   <%= stylesheet_link_tag 'scaffold' %>
-  <%= stylesheet_link_tag 'custom' %>
+  <%= stylesheet_link_tag 'custom' %>  
+  <%= javascript_include_tag :defaults %>
 </head>
 <body>
 
@@ -21,12 +22,19 @@
         &bull; <%= link_to 'New', new_collaboration_path %>
         &bull; <%= link_to 'List', collaborations_path %>
         </span></h4>
-      <ul>
-        <% @current_user.collaborations.each do |collab| %>
-          <li><%= link_to collab.subject, collab %></li>
-        <% end %>
-      </ul>
-      <hr />
+
+      <% if @current_user.collaborations.empty? %>
+        <div class="empty-message">
+          No taskforcc.
+        </div>
+      <% else %>
+        <ul>
+          <% @current_user.collaborations.each do |collab| %>
+            <li><%= link_to collab.subject, collab %></li>
+          <% end %>
+        </ul>
+      <% end %>        
+      <hr />      
       <%= render 'shared/topics_sidebar' %>
 
     </div>

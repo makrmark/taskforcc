@@ -1,20 +1,30 @@
-<h4><%= breadcrumb %> &raquo; Tasks</h4>
+<h4><%= breadcrumb %> Tasks</h4>
 <hr />
-<% if @collaboration_user.tasks_assigned_to.empty? %>
-
-  <div class="empty-message">
-    No tasks match this selection &bull;
-    
-    <%= link_to 'New task', new_collaboration_task_path(
-        :collaboration_id => @collaboration.id,
-        :assigned_to => @collaboration_user.user_id
-    ) %>
+<% remote_form_for [@collaboration, @task], :html => {:class => 'qtf'} do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag 'task[topic_id]', @collaboration.unfiled_topic.id %>
+  <%= hidden_field_tag 'task[assigned_to]', @collaboration_user.user_id %>
+  <%= f.text_field :title, :class => 'qtt' %>
+  <%= f.submit 'Task Here', :class => 'qtb' %>
+<% end %>
+<hr />
+<div id="task-container">
+  <% if @collaboration_user.tasks_assigned_to.empty? %>
   
-  </div>
-
-<% else %>
-  <%= render(:partial => 'shared/task', :collection => @collaboration_user.tasks_assigned_to )%>
-<% end%>
+    <div class="empty-message" id="task-empty-message">
+      No tasks match this selection &bull;
+      
+      <%= link_to 'New task', new_collaboration_task_path(
+          :collaboration_id => @collaboration.id,
+          :assigned_to => @collaboration_user.user_id
+      ) %>
+    
+    </div>
+  <% else %>
+    <div id="task-empty-message"></div>
+    <%= render(:partial => 'shared/task', :collection => @collaboration_user.tasks_assigned_to )%>
+  <% end%>
+</div>
 
 <%= button_to 'New task', new_collaboration_task_path(
     :collaboration_id => @collaboration.id,

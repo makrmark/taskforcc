@@ -73,8 +73,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(collaboration_tasks_path(@collaboration), :notice => 'Task was successfully created.') }
+        format.html { redirect_to(request.referrer, :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
