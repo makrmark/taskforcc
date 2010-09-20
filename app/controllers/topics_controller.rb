@@ -1,6 +1,23 @@
 class TopicsController < ApplicationController
   layout "collaborations"
 
+=begin
+  def add_task    
+    @collaboration = Collaboration.find(params[:collaboration_id])
+    @topic = Topic.find(params[:id])
+    @current_user = User.find(session[:user_id])
+
+    @task = Task.find(params[:task_id])
+    @task.topic_id = @topic.id
+
+    respond_to do |format|
+      if @task.save
+         format.js
+       end
+    end    
+  end
+=end
+
   # GET /topics
   # GET /topics.xml
   def index

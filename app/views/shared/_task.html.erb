@@ -33,7 +33,10 @@
     
     <span class="task-actions">
       <nobr>
-        &bull;
+        <% task_status_links(task).each_pair do |label, link| %>
+          <%= link_to(label, link) %>
+        <% end %>
+        
         <%= link_to 'Edit', edit_collaboration_task_path(
             :collaboration_id => task.collaboration_id,
             :id => task.id
@@ -49,4 +52,4 @@
   </div>
   
 </div>
-  
+<%= draggable_element dom_id(task), :ghosting => true, :revert => true %>  

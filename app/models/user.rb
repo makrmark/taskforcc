@@ -3,7 +3,8 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   has_many :collaboration_users
   has_many :collaborations, 
-    :through => :collaboration_users
+    :through => :collaboration_users,
+    :order => "SUBJECT ASC"
 
   # User -> Collaborations -> Tasks (collaboration_id)
   # TODO: can we do this using more standard syntax?

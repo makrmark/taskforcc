@@ -1,8 +1,8 @@
 class Collaboration < ActiveRecord::Base
-  has_many :tasks
+  has_many :tasks, :order => "id DESC"
   has_many :collaboration_users
-  has_many :topics
-  has_many :users, :through => :collaboration_users
+  has_many :topics, :order => "system_name DESC, name ASC"
+  has_many :users, :through => :collaboration_users, :order => "full_name ASC"
   has_one  :unfiled_topic, 
     :class_name => 'Topic', 
     :conditions => "system_name ='unfiled'"

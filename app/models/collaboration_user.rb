@@ -5,11 +5,13 @@ class CollaborationUser < ActiveRecord::Base
   
   has_many :tasks_assigned_to,
     :class_name => 'Task',
-    :foreign_key => 'assigned_to'
+    :foreign_key => 'assigned_to', 
+    :order => "id DESC"
 
   has_many :tasks_created_by,
     :class_name => 'Task',
-    :foreign_key => 'created_by'
+    :foreign_key => 'created_by', 
+    :order => "id DESC"
     
   # used to lookup a user by email when creating the association
   attr_accessor :email

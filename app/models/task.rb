@@ -29,10 +29,52 @@ class Task < ActiveRecord::Base
   validates_inclusion_of :type, 
     :in => %w{Task},
     :message => "should be Task"
+
+
+  # valid next status given the current status
+  # this becomes more complex when user roles are taken into account  
+  def self.valid_next_states(status)
+    case status
+      when 'New'
+        # Assign it for resolution or Resolve it (in case of mistake
+        ['Assigned', 'Resolve']
+      when 'Assigned'
+        # Accept it or Reject it (or Re-Assign it)
+        ['Accepted', 'Rejected']
+      when 'Accepted'
+        # Accept it or Reject it (or Re-Assign it)
+        ['Resolved', 'Rejected', 'Assigned']
+      when ['Rejected', 'Resolved']
+        # Re-assign it or Close it
+        ['Assigned', 'Closed']
+      when 'Closed'
+        # Re-Open and Assign it
+        ['Assigned']
+      else
+        # when no previous status
+        ['New', 'Assigned']
+    end
+  end
+  
+  # valid resolutions according to the given status
+  def self.valid_resolutions(stat)
+    case stat
+      when ['New', 'Assigned', 'Accepted']
+        ['Unresolved']
+      when 'Rejected'
+        ['Duplicate', 'Invalid', 'Not Responsible']
+      when 'Resolved'
+        ['Completed', 'Suspended']
+      when 'Closed'
+        ['Duplicate', 'Invalid', 'Completed', 'Suspended']
+      else
+       ['Unresolved']
+    end
+  end
         
 private
 
-#if the task is Resolved or Closed then the Resolution should be specified
+  #if the task is Resolved or Closed then the Resolution should be specified
   def resolution_if_resolved?
     if ( (status == "Closed" || status == "Resolved") && 
         (resolution.blank? || resolution == "Unresolved") )
@@ -42,8 +84,8 @@ private
     end
   end
 
-# check that the next state is valid, based on previous state  
-# for now this is really simple
+  # check that the next state is valid, based on previous state  
+  # for now this is really simple
   def next_state?
     if (status_changed?)
       if (status == "Closed" and status_was != "Resolved")
@@ -51,4 +93,5 @@ private
       end
     end
   end
+
 end

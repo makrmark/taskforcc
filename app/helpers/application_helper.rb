@@ -23,4 +23,43 @@ module ApplicationHelper
 #    span += " #{h[:user].full_name}" if @collaboration_user.nil?
     span
   end
+
+  # generate the action links for a task
+  def task_status_links(task)
+    links = {}
+         
+    Task.valid_next_states(task.status).each do |stat|
+      Task.valid_resolutions(stat).each do |res|
+        logger.debug "Found valid state/resolution: #{stat} #{res}"
+        label = label_for_status_link(stat,res)
+        logger.debug "Found valid state/resolution label: #{label}"
+        links[label] = url_for([task.collaboration, task]) if label
+      end
+    end
+
+    links
+  end
+  
+  def label_for_status_link(next_status, valid_resolution)
+    case next_status
+      when 'Assigned'
+        nil # Assignment happens by changing the Assigned_To field
+      when 'Accepted'
+        'Accept'
+      when 'Resolved'
+        case valid_resolution
+        when 'Completed': 'Completed'
+        when 'Suspended': 'Suspend'
+        end
+      when 'Rejected'
+        case valid_resolution
+        when 'Invalid': 'Invalid!'
+        when 'Duplicate': 'Duplicate!'
+        when 'Not Responsible': 'Not for me!'
+        end
+      when 'Closed'
+        'Close'
+    end
+  end
+
 end

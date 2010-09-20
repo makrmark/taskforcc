@@ -1,5 +1,9 @@
 class TasksController < ApplicationController
   layout "collaborations"
+  
+  def chgstate
+    
+  end
 
   # GET /tasks
   # GET /tasks.xml
