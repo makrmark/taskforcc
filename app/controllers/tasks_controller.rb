@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
   layout "collaborations"
   
-  def chgstate
-    
-  end
-
   # GET /tasks
   # GET /tasks.xml
   def index
@@ -106,7 +102,26 @@ class TasksController < ApplicationController
       end
     end
   end
+  
+  def chgstatus
+    @task = Task.find(params[:id])
 
+    @task.status     = params[:status]
+    @task.resolution = params[:resolution]
+#    @task.updated_by = session[:user_id]
+
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to(collaboration_task_path(@task.collaboration, @task), :notice => 'Task was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+      end
+    end
+    
+  end
+  
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
 =begin

@@ -14,36 +14,34 @@
     <div class="task-header">
       <%= inverse_breadcrumb :collaboration => task.collaboration, 
         :topic => task.topic,
-        :user => task.user_assigned_to %>      
+        :user => task.user_assigned_to %>
 
       <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
         task.user_assigned_to.email) %></span>
-      <span class="task-actions"> &bull; <a>Reassign</a></span>    
-    </div>  
+
+       <ul class="ta"><li class="ta">Reassign</li></ul>
+    </div>
 
     <b><%= link_to task.title , collaboration_task_path(
         :collaboration_id => task.collaboration_id,
         :id => task.id
-    ) %></b> 
-
-    <span class="task-updates">
-      <nobr><%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
-      task.user_created_by.email) %></span></nobr>.
-    </span>
+    ) %></b>
     
-    <span class="task-actions">
-      <nobr>
-        <% task_status_links(task).each_pair do |label, link| %>
-          <%= link_to(label, link) %>
-        <% end %>
-        
-        <%= link_to 'Edit', edit_collaboration_task_path(
-            :collaboration_id => task.collaboration_id,
-            :id => task.id
-        ) %>
-       &bull; Watch &bull; Comment   
-      </nobr>
-    </span>
+    <span class="tta"><%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
+      task.user_created_by.email) %></span></span>
+    
+    <ul class="ta">
+      <li class="ta"><%= link_to 'Edit', edit_collaboration_task_path(
+          :collaboration_id => task.collaboration_id,
+          :id => task.id
+      ) %></li>     
+      <li class="ta">Watch</li> 
+      <li class="ta">Comment</li>   
+
+      <% task_status_links(task).each do |link| %>
+        <li class="ta"><%= link %></li>
+      <% end %>      
+    </ul>
 
     <br />
 

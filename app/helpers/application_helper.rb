@@ -26,15 +26,27 @@ module ApplicationHelper
 
   # generate the action links for a task
   def task_status_links(task)
-    links = {}
+    links = []
          
     Task.valid_next_states(task.status).each do |stat|
       Task.valid_resolutions(stat).each do |res|
         logger.debug "Found valid state/resolution: #{stat} #{res}"
         label = label_for_status_link(stat,res)
         logger.debug "Found valid state/resolution label: #{label}"
-        links[label] = url_for([task.collaboration, task]) if label
+        links << link_to(label, 
+          chgstatus_collaboration_task_path({
+            :id => task.id,
+            :collaboration_id => task.collaboration_id,
+            :status => stat,
+            :resolution => res
+            }
+          ), {
+          :method => 'post'
+          }
+        ) if label
       end
+      
+      links
     end
 
     links

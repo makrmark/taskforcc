@@ -1,9 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :collaborations, :has_many => 'collaboration_users'
-  map.resources :collaborations, :has_many => 'tasks'
-  map.resources :collaborations, :has_many => 'topics'
+  map.resources :collaborations do |collaboration|
+    collaboration.resources  :collaboration_users
+    collaboration.resources  :tasks, :member => {:chgstatus => :post}
+    collaboration.resources  :topics
+  end
+
+#  map.resources :collaborations, :has_many => 'tasks'
+#  map.resources :collaborations, :has_many => 'topics'
   map.resources :users
+
 #  map.resources :tasks
 #  map.resources :topics
 
