@@ -6,7 +6,7 @@ class AccessController < ApplicationController
           session[:user_id] = user.id
           uri = session[:original_uri]
           session[:original_uri] = nil
-          redirect_to( uri || url_for (:controller => 'collaborations') )
+          redirect_to( uri || url_for(:controller => 'collaborations') )
       else
         flash.now[:notice] = "Invalid email/password combination"
       end
@@ -41,7 +41,7 @@ class AccessController < ApplicationController
           session[:user_id] = @user.id
           uri = session[:original_uri]
           session[:original_uri] = nil
-          format.html { redirect_to( uri || url_for (:controller => 'collaborations') ) }
+          format.html { redirect_to( uri || url_for(:controller => 'collaborations') ) }
         else
           format.html { render :action => "signup" }
         end

@@ -1,97 +1,138 @@
 class Task < ActiveRecord::Base
   belongs_to :topic
+  
   belongs_to :user_created_by,
     :class_name => 'User',
     :primary_key => 'id',
     :foreign_key => 'created_by'
 
+  belongs_to :user_updated_by,
+    :class_name => 'User',
+    :primary_key => 'id',
+    :foreign_key => 'updated_by'
+
   belongs_to :user_assigned_to,
     :class_name => 'User',
     :primary_key => 'id',
-    :foreign_key => 'assigned_to'
-
+    :foreign_key => 'assigned_to'  
+    
   belongs_to :collaboration
   validates_associated :collaboration => "could not be found"  
   validates_associated :topic => "could not be found"
   
-  validates_presence_of :title, :status, :resolution, :created_by, :assigned_to, :type, :collaboration_id, :topic_id
+  validates_presence_of :title, :type, :status, :resolution, 
+    :created_by, :updated_by, :assigned_to, 
+    :collaboration_id, :topic_id
 
-  validates_inclusion_of :status, 
-    :in => %w{New Assigned Accepted On-Hold Resolved Closed}, 
-    :message => " invalid"
-  validate :next_state?
-
-  validates_inclusion_of :resolution, 
-    :in => %w{Unresolved Completed Duplicate Invalid}, 
-    :message => " invalid"
-  validate :resolution_if_resolved?
+  validate :valid_state_transition?
+  validate :valid_state_for_role?
+  validate :valid_resolution?
 
   validates_inclusion_of :type, 
     :in => %w{Task},
     :message => "should be Task"
 
-
   # valid next status given the current status
-  # this becomes more complex when user roles are taken into account  
   def self.valid_next_states(status)
     case status
-      when 'New'
-        # Assign it for resolution or Resolve it (in case of mistake
-        ['Assigned', 'Resolve']
-      when 'Assigned'
-        # Accept it or Reject it (or Re-Assign it)
-        ['Accepted', 'Rejected']
-      when 'Accepted'
-        # Accept it or Reject it (or Re-Assign it)
-        ['Resolved', 'Rejected', 'Assigned']
-      when ['Rejected', 'Resolved']
-        # Re-assign it or Close it
-        ['Assigned', 'Closed']
-      when 'Closed'
-        # Re-Open and Assign it
-        ['Assigned']
-      else
-        # when no previous status
-        ['New', 'Assigned']
+    when 'New' then
+      # Assign it for resolution or Resolve it (in case of mistake)
+      ['Assigned', 'Resolved']
+    when 'Assigned' then
+      # Accept it or Reject it (or Re-Assign it)
+      ['Accepted', 'Rejected']
+    when 'Accepted' then
+      # Accept it or Reject it (or Re-Assign it)
+      ['Resolved', 'Rejected', 'Assigned']
+    when 'Rejected', 'Resolved' then
+      # Re-assign it or Close it
+      ['Assigned', 'Closed']
+    when 'Closed' then
+      # Re-Open and Assign it
+      ['Assigned']
+    else
+      # when no previous status
+      ['New', 'Assigned']
     end
   end
   
   # valid resolutions according to the given status
   def self.valid_resolutions(stat)
     case stat
-      when ['New', 'Assigned', 'Accepted']
-        ['Unresolved']
-      when 'Rejected'
-        ['Duplicate', 'Invalid', 'Not Responsible']
-      when 'Resolved'
-        ['Completed', 'Suspended']
-      when 'Closed'
-        ['Duplicate', 'Invalid', 'Completed', 'Suspended']
-      else
-       ['Unresolved']
+    when 'Resolved' then
+      ['Completed', 'Suspended']
+    when 'Rejected' then
+      ['Duplicate', 'Invalid', 'Not Responsible']
+    when 'Closed' then
+      ['Duplicate', 'Invalid', 'Completed', 'Suspended']
+    else
+      ['Unresolved']
     end
   end
-        
+  
+  def self.valid_states_by_collaboration_role(role)
+    case role
+    when 'Manager' then # Can do anything
+      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', 'Closed']
+    when 'Team' then # Only can't Close
+      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+    when 'Restricted' then # Re-assign, Accept, or Reject
+      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+    else # Others can't do anything
+      []
+    end    
+  end
+  
+  def self.valid_states_by_topic_role(is_controller)
+    if is_controller # only controller can Close
+      ['Closed']
+    else
+      []
+    end
+  end
+
 private
 
   #if the task is Resolved or Closed then the Resolution should be specified
-  def resolution_if_resolved?
-    if ( (status == "Closed" || status == "Resolved") && 
-        (resolution.blank? || resolution == "Unresolved") )
-        
-      errors.add(:resolution, "should be specified")
-      
+  def valid_resolution?
+    if !Task.valid_resolutions(status).include?(resolution)
+      errors.add(:resolution, "invalid")
     end
   end
 
-  # check that the next state is valid, based on previous state  
-  # for now this is really simple
-  def next_state?
-    if (status_changed?)
-      if (status == "Closed" and status_was != "Resolved")
-        errors.add(:status, "should be Resolved before Closed")
+  # check that the next state is valid, based on previous state and user roles
+  def valid_state_transition?
+    if status_changed?
+      if !Task.valid_next_states(status_was).include?(status)
+        errors.add(:status, "invalid transition")
       end
+    end    
+  end
+
+  # a single validation since the roles can intersect
+  def valid_state_for_role?
+    
+    vsbcr = Task.valid_states_by_collaboration_role(collaboration_role(updated_by))
+    vsbtr = Task.valid_states_by_topic_role(is_topic_controller(updated_by))
+
+    vsbr = vsbtr | vsbcr
+
+    if ! vsbr.include?(status)
+      errors.add(:status, "invalid for role")
     end
+  end
+
+  def is_topic_controller(uid)
+    unless self.topic.nil? 
+      self.topic.controller == uid
+    end
+  end
+
+  def collaboration_role(uid)
+    cu = CollaborationUser.find(:first, 
+      :conditions => ["collaboration_id = ? AND user_id = ?", collaboration_id, uid])
+    
+    role = cu.role unless cu.nil?
   end
 
 end

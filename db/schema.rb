@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905133638) do
+ActiveRecord::Schema.define(:version => 20100925142208) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20100905133638) do
     t.integer  "assigned_to"
     t.integer  "collaboration_id"
     t.integer  "topic_id"
+    t.integer  "updated_by"
   end
 
   add_index "tasks", ["collaboration_id"], :name => "index_tasks_on_collaboration_id"

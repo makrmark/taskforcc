@@ -64,6 +64,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @task.created_by = session[:user_id]
+    @task.updated_by = session[:user_id]
     @current_user = User.find(session[:user_id])
     @task.collaboration_id = params[:collaboration_id]
     
@@ -88,6 +89,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @current_user = User.find(session[:user_id])
+    @task.updated_by = session[:user_id]
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
     @topic_list = select_topic_list(@collaboration)
@@ -108,7 +110,7 @@ class TasksController < ApplicationController
 
     @task.status     = params[:status]
     @task.resolution = params[:resolution]
-#    @task.updated_by = session[:user_id]
+    @task.updated_by = session[:user_id]
 
     respond_to do |format|
       if @task.save

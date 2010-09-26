@@ -1,7 +1,6 @@
 class CollaborationUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :collaboration
-  has_many :topics
   
   has_many :tasks_assigned_to,
     :class_name => 'Task',
