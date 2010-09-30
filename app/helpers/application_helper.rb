@@ -90,34 +90,28 @@ module ApplicationHelper
   end
   
   def link_for_chgstatus(task, stat, res, label)
-    link_to(label, 
-          chgstatus_collaboration_task_path({
-            :id => task.id,
-            :collaboration_id => task.collaboration_id,
-            :status => stat,
-            :resolution => res
-            }
-          ), {
-          :method => 'post'
-          }
-        )
+    link_to_remote(label, 
+      :url => chgstatus_collaboration_task_path({
+        :collaboration_id => task.collaboration_id,
+        :id => task.id,
+        :status => stat,
+        :resolution => res
+        }
+      )
+    )
   end
 
   # TODO: Assign to self sets status as 'Accepted'
   def link_for_chgassign(task, uid, label)
-    link_to(label, 
-          chgstatus_collaboration_task_path({
-            :id => task.id,
-            :collaboration_id => task.collaboration_id,
-            :status => 'Assigned',
-            :resolution => 'Unresolved',
-            :assigned_to => uid
-            }
-          ), {
-          :method => 'post'
-          }
-        )
-  end
-
-  
+    link_to_remote(label, 
+      :url => chgstatus_collaboration_task_path({
+        :collaboration_id => task.collaboration_id,
+        :id => task.id,
+        :status => 'Assigned',
+        :resolution => 'Unresolved',
+        :assigned_to => uid
+        }
+      )
+    )
+  end  
 end

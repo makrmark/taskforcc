@@ -1,5 +1,3 @@
 # http://marklunds.com/s5/rails101/html/ajax.html
-page.visual_effect :pulse, 'task-empty-message'
 page.insert_html :top, 'task-container', :partial => 'shared/task', :object => @task
 page.visual_effect :highlight, dom_id(@task), :duration => 3
-page['new_task'].reset

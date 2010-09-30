@@ -6,12 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     collaboration.resources  :topics
   end
 
-#  map.resources :collaborations, :has_many => 'tasks'
-#  map.resources :collaborations, :has_many => 'topics'
   map.resources :users
-
-#  map.resources :tasks
-#  map.resources :topics
 
   # The priority is based upon order of creation: first created -> highest priority.
 

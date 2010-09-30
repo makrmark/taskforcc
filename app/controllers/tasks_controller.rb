@@ -113,13 +113,18 @@ class TasksController < ApplicationController
     @task.updated_by = session[:user_id]
     @task.assigned_to= params[:assigned_to] if params[:assigned_to]
 
+    @current_user = User.find(session[:user_id])
+    @collaboration = Collaboration.find(params[:collaboration_id])
+
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(collaboration_task_path(@task.collaboration, @task), :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(request.referrer, :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
+        format.js
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
     
