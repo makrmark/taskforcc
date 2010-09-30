@@ -2,7 +2,7 @@
     
   <h4>Team (<%= @collaboration.collaboration_users.count %>):</h4>
 
-  <ul>
+  <ul class="sidebar">
     <%= render (:partial => 'shared/team_member', :collection => @collaboration.collaboration_users ) %>
     <li><em><%= link_to 'Invite Someone', new_collaboration_collaboration_user_path(@collaboration) %></em></li>
     
@@ -12,14 +12,14 @@
   <hr />
   <h4>Upcoming Milestones:</h4>
 
-  <ul>
+  <ul class="sidebar">
     <li><em><%= link_to 'New Milestone' %></em></li>
   </ul>
   
   <hr />
   <h4>Upcoming Reviews:</h4>  
 
-  <ul>
+  <ul class="sidebar">
     <li><em><%= link_to 'New Review' %></em></li>
   </ul>
 

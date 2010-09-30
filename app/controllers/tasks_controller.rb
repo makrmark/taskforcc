@@ -111,6 +111,7 @@ class TasksController < ApplicationController
     @task.status     = params[:status]
     @task.resolution = params[:resolution]
     @task.updated_by = session[:user_id]
+    @task.assigned_to= params[:assigned_to] if params[:assigned_to]
 
     respond_to do |format|
       if @task.save

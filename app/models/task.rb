@@ -32,6 +32,15 @@ class Task < ActiveRecord::Base
     :in => %w{Task},
     :message => "should be Task"
 
+  # Return the states possible by the current user and for current task status
+  def valid_states_by_user(uid)
+    vsbcs = Task.valid_next_states(status)
+    vsbcr = Task.valid_states_by_collaboration_role(collaboration_role(uid))
+    vsbtr = Task.valid_states_by_topic_role(is_topic_controller(uid))
+
+    vsbu = vsbcs & (vsbcr | vsbtr)
+  end
+
   # valid next status given the current status
   def self.valid_next_states(status)
     case status

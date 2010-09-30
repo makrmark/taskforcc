@@ -1,7 +1,7 @@
 <div class="task" id="<%=dom_id(task)%>">
 
   <div class="task-left">
-    <img title="Task" class="task-icon" src="/images/TaskIcon.gif" />    
+    <img title="Task" class="task-icon" src="/images/clipboard.png" />    
   </div>
 
   <div class="task-right">
@@ -12,16 +12,30 @@
   
   <div class="task-content">
     <div class="task-header">
+      <ul class="tam">
+        <li><%= link_to 'Edit', edit_collaboration_task_path(
+            :collaboration_id => task.collaboration_id,
+            :id => task.id
+        ) %></li>     
+        <li>Watch</li> 
+        <li>Comment</li>   
+      </ul>
+
       <%= inverse_breadcrumb :collaboration => task.collaboration, 
         :topic => task.topic,
         :user => task.user_assigned_to %>
 
       <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
         task.user_assigned_to.email) %></span>
-
-       <ul class="ta"><li class="ta">Reassign</li></ul>
     </div>
 
+    <ul class="tam">
+      <% task.valid_states_by_user(@current_user).each do |status| %>
+        <%= menu_for_status(task, status) %>
+      <% end %>
+    </ul>
+
+    [<%= task.status %>::<%= task.resolution %>]
     <b><%= link_to task.title , collaboration_task_path(
         :collaboration_id => task.collaboration_id,
         :id => task.id
@@ -30,19 +44,6 @@
     <span class="tta"><%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
       task.user_created_by.email) %></span></span>
     
-    <ul class="ta">
-      <li class="ta"><%= link_to 'Edit', edit_collaboration_task_path(
-          :collaboration_id => task.collaboration_id,
-          :id => task.id
-      ) %></li>     
-      <li class="ta">Watch</li> 
-      <li class="ta">Comment</li>   
-
-      <% task_status_links(task).each do |link| %>
-        <li class="ta"><%= link %></li>
-      <% end %>      
-    </ul>
-
     <br />
 
     <div class="task-footer"></div>
