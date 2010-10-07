@@ -6,6 +6,7 @@ class Collaboration < ActiveRecord::Base
   has_one  :unfiled_topic, 
     :class_name => 'Topic', 
     :conditions => "system_name ='unfiled'"
+  has_many :favourites
 
   belongs_to :user_created_by,
     :class_name => 'User',

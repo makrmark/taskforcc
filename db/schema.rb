@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100925142208) do
+ActiveRecord::Schema.define(:version => 20101007114042) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(:version => 20100925142208) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "favourites", :force => true do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.integer  "collaboration_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favourites", ["collaboration_id"], :name => "index_favourites_on_collaboration_id"
+  add_index "favourites", ["task_id"], :name => "index_favourites_on_task_id"
+  add_index "favourites", ["user_id"], :name => "index_favourites_on_user_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

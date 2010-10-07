@@ -17,8 +17,6 @@
             :collaboration_id => task.collaboration_id,
             :id => task.id
         ) %></li>     
-        <li>Watch</li> 
-        <li>Comment</li>   
       </ul>
 
       <%= inverse_breadcrumb :collaboration => task.collaboration, 
@@ -40,13 +38,27 @@
         :collaboration_id => task.collaboration_id,
         :id => task.id
     ) %></b>
-    
-    <span class="tta"><%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
+
+    <br />    
+    <span class="tta">
+      <%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
       task.user_created_by.email) %></span></span>
     
     <br />
 
-    <div class="task-footer"></div>
+    <div class="task-footer">
+      <ul class="tam">
+        <li>Description</li>
+        <li>Comments</li>
+        <li>Next Steps</li>
+        <li>Attachments</li>
+      </ul>
+      
+      <div class="task-details">      
+        <%= h task.description -%>
+      </div>
+
+    </div>
     
   </div>
   
