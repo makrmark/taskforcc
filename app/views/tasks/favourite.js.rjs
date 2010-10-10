@@ -1,0 +1,2 @@
+page.replace_html "fav_#{dom_id(@task)}", :partial => 'shared/task_favourite', :object => @task
+# page.visual_effect :highlight, "fav_#{dom_id(@task)}", :duration => 1

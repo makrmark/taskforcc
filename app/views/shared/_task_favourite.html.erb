@@ -1,0 +1,20 @@
+<% favourite = Favourite.find(:first, 
+    :conditions => ["task_id = ? AND user_id = ?", task_favourite.id, session[:user_id]]) %>
+
+<% ttl = favourite.nil? ? "Favourite" : "Defavourite" %>
+<% cls = favourite.nil? ? "tf" : "tf f" %>
+
+<%= button_to_remote( '' ,
+    { 
+      :url => favourite_collaboration_task_path (
+      :collaboration_id => task_favourite.collaboration_id,
+      :id => task_favourite.id
+      )
+    },
+    {
+      :method => 'post',
+      :class => cls,
+      :title => ttl
+    }
+  )
+%>

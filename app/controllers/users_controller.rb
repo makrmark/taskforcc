@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout "collaborations"
 
   # GET /users
   # GET /users.xml

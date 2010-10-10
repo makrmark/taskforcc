@@ -27,11 +27,11 @@ module ApplicationHelper
   def menu_for_status(task, stat)
     case stat
     when 'Assigned' # submenu is the collaboration user list
-      "<li>#{label_for_status(stat)}+ #{submenu_for_assignment(task)}</li>"
+      "<li>#{label_for_status(stat)}▼ #{submenu_for_assignment(task)}</li>"
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
-      "<li>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}</li>"
+      "<li>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
-      "<li>#{label_for_status(stat)}+ #{submenu_for_resolution(task, stat)}</li>"
+      "<li>#{label_for_status(stat)}▼ #{submenu_for_resolution(task, stat)} </li>"
     end
   end
 

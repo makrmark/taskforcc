@@ -1,6 +1,37 @@
 class TasksController < ApplicationController
   layout "collaborations"
-  
+
+  def favourite
+    @task = Task.find(params[:id])
+#    @current_user = User.find(session[:user_id])
+
+    # refactor into Task model
+    favourite = Favourite.find(:first, 
+      :conditions => ["task_id = ? AND user_id = ?", params[:id], session[:user_id]])
+
+    # TODO: does the current user have access to this collaboration?
+    # can we do this using filters?
+
+    # does the favourite already exist?
+    # if yes, destroy it
+    if favourite
+      favourite.destroy
+    # if no, create it
+    else
+      favourite = Favourite.new()
+      favourite.user_id = session[:user_id]
+      favourite.collaboration_id = params[:collaboration_id]
+      favourite.task_id = params[:id]
+      favourite.save
+    end    
+
+    respond_to do |format|
+      format.html { redirect_to(request.referrer, :notice => 'Task was successfully favourited.') }
+      format.xml  { head :ok }
+      format.js
+    end
+  end
+    
   # GET /tasks
   # GET /tasks.xml
   def index

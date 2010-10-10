@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
   before_filter :authorize, :except => [:login, :signup, :dosignup]
+  # TODO: check the user has access to the relevant Collaborations
+  # TODO: check the user has access to the relevant Tasks (eg: Restricted users may not)
   
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -12,6 +14,7 @@ class ApplicationController < ActionController::Base
   
 protected
 
+  # TODO: move these into Helpers
   def select_user_list(collaboration)
     # to be updated once Collaborations is implemented
     users = collaboration.users

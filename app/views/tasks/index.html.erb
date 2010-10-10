@@ -1,7 +1,7 @@
 <h4><%= breadcrumb %> &raquo; Tasks</h4>
 <hr />
 
-<%= render(:partial => 'shared/task', :collection => @tasks )%>
+<%= render(:partial => 'shared/task_container', :collection => @topic.tasks )%>
 
 <%= link_to 'New task', new_collaboration_task_path(
       :collaboration_id => @collaboration.id

@@ -22,7 +22,7 @@
     </div>
   <% else %>
     <div id="task-empty-message"></div>
-    <%= render(:partial => 'shared/task', :collection => @collaboration.tasks )%>
+    <%= render(:partial => 'shared/task_container', :collection => @collaboration.tasks )%>
   <% end%>
 </div>
 

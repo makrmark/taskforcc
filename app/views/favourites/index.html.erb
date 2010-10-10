@@ -1,0 +1,18 @@
+<h4><%= breadcrumb %> &raquo; Favourite Tasks</h4>
+<hr />
+
+<div id="task-container">
+  <% if @collaboration.favourites(@current_user.id).empty? %>
+
+    <div id="task-empty-message" class="empty-message">
+      You have not yet marked any Tasks as Favourite.  
+    </div>
+  
+  <% else %>
+    <div id="task-empty-message"></div>
+    
+    <% @collaboration.favourites(@current_user.id).each do |fav| %>
+      <%= render(:partial => 'shared/task_container', :object => fav.task ) %>
+    <% end %>
+  <% end %>
+</div>

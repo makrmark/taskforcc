@@ -11,7 +11,7 @@ class CollaborationUser < ActiveRecord::Base
     :class_name => 'Task',
     :foreign_key => 'created_by', 
     :order => "id DESC"
-    
+        
   # used to lookup a user by email when creating the association
   attr_accessor :email
   validates_presence_of :email, 
@@ -45,4 +45,5 @@ class CollaborationUser < ActiveRecord::Base
       received_whispers.find(:all)
     end
   end
+
 end

@@ -6,5 +6,5 @@
     No Tasks.
   </div>
 <% else %>
-  <%= render(:partial => 'shared/task', :collection => @current_user.collaboration_tasks )%>
+  <%= render(:partial => 'shared/task_container', :collection => @current_user.collaboration_tasks )%>
 <% end %>

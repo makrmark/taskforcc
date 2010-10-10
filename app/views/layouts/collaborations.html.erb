@@ -14,7 +14,7 @@
 <div id="container">
 
     <div id="header">
-      <h1>taskfor.cc</h1>
+      <div class="logo"></div>
     </div>
 
     <div id="left">
@@ -49,9 +49,11 @@
     </div>
 
     <div id="right">
+      <%= render 'shared/favourites_sidebar' %>
+      <hr />
       <%= render 'shared/topics_sidebar' %>
       <hr />
-      <%= render 'shared/collaborations_sidebar' %>      
+      <%= render 'shared/teams_sidebar' %>
 
     </div>
        

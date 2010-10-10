@@ -9,13 +9,36 @@
   <%= stylesheet_link_tag 'custom' %>
 </head>
 <body>
-<div id="header">
-  <h1>taskfor.cc</h1>
+<div id="container">
+
+    <div id="header">
+      <div class="logo"></div>
+    </div>
+
+    <div id="left">
+    </div>
+
+    <div id="right">
+    </div>
+       
+    <div id="content">
+      <div id="notices">
+        <p style="color: green"><%= notice %></p>
+      </div>    
+      <%= yield %>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="footer">
+      <hr />
+      <%=h (params[:controller] + ' / '+ params[:action])  %>
+      <%=h params.to_yaml %>
+    </div>
+
 </div>
+  
 
-<p style="color: green"><%= notice %></p>
-
-<%= yield %>
 
 </body>
 </html>

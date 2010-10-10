@@ -18,5 +18,11 @@ class Collaboration < ActiveRecord::Base
   validates_inclusion_of :status, 
     :in => %w{Open On-Hold Closed}, 
     :message => "should be Open, On-Hold, or Closed"
+
+  def favourites(uid)
+    Favourite.find(:all,
+      :conditions => ["collaboration_id = ? AND user_id = ?", self.id, uid],
+      :order => 'created_at DESC')
+  end
   
 end

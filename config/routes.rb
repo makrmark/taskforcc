@@ -2,8 +2,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :collaborations do |collaboration|
     collaboration.resources  :collaboration_users
-    collaboration.resources  :tasks, :member => {:chgstatus => :post}
+    collaboration.resources  :tasks, 
+      :member => {
+        :chgstatus => :post,
+        :favourite => :post
+      }
     collaboration.resources  :topics
+    collaboration.resources  :favourites
   end
 
   map.resources :users

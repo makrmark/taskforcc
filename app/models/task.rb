@@ -47,16 +47,16 @@ class Task < ActiveRecord::Base
     case status
     when 'New' then
       # Assign it for resolution or Resolve it (in case of mistake)
-      ['Assigned', 'Resolved']
+      ['Resolved', 'Assigned']
     when 'Assigned' then
       # Accept it or Reject it (or Re-Assign it)
-      ['Accepted', 'Rejected']
+      ['Accepted', 'Rejected', 'Assigned']
     when 'Accepted' then
       # Accept it or Reject it (or Re-Assign it)
       ['Resolved', 'Rejected', 'Assigned']
     when 'Rejected', 'Resolved' then
       # Re-assign it or Close it
-      ['Assigned', 'Closed']
+      ['Closed', 'Assigned']
     when 'Closed' then
       # Re-Open and Assign it
       ['Assigned']
