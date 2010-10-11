@@ -5,10 +5,12 @@ ActionController::Routing::Routes.draw do |map|
     collaboration.resources  :tasks, 
       :member => {
         :chgstatus => :post,
-        :favourite => :post
+        :favourite => :post,
+        :comment   => :post
       }
     collaboration.resources  :topics
     collaboration.resources  :favourites
+    collaboration.resources  :comments
   end
 
   map.resources :users

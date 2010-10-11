@@ -5,6 +5,7 @@ class FavouritesController < ApplicationController
   def index
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
+    @comment = Comment.new
   end
   
 end

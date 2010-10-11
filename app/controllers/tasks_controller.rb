@@ -1,6 +1,25 @@
 class TasksController < ApplicationController
   layout "collaborations"
 
+  # Add a comment to a Task
+  def comment
+    @task = Task.find(params[:id])
+    @current_user = User.find(session[:user_id])
+
+    @comment = Comment.new(params[:comment])
+    @comment.user_id = session[:user_id]
+    @comment.task_id = params[:id]
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to(request.referrer, :notice => 'Your comment was added successfully.') }
+        format.xml  { head :ok }
+        format.js
+      end
+    end
+  end
+
+  # Favourite or UnFavourite a Task
   def favourite
     @task = Task.find(params[:id])
 #    @current_user = User.find(session[:user_id])
@@ -55,6 +74,7 @@ class TasksController < ApplicationController
     @topic = @task.topic;
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,6 +1,7 @@
 <% unless @collaboration.nil? %> 
     
-  <h4>Team</h4>
+  <h4><%= link_to 'Team',
+    collaboration_collaboration_users_path(@collaboration) %></h4>
 
   <ul class="sidebar">
     <%= render (:partial => 'shared/team_member', :collection => @collaboration.collaboration_users ) %>

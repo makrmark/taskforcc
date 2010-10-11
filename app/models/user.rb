@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :collaborations, 
     :through => :collaboration_users,
     :order => "SUBJECT ASC"
+  has_many :comments
+  has_many :favourites
 
   # User -> Collaborations -> Tasks (collaboration_id)
   # TODO: can we do this using more standard syntax?

@@ -110,6 +110,13 @@ hr {
 /* Task Action Menu
 http://www.lwis.net/free-css-drop-down-menu/dropdown.simple.horizontal.html
 */
+.tam {
+  visibility: hidden;
+  color: #555577;
+}
+div.task:hover ul.tam  {
+  visibility: visible;
+}
 ul.tam, ul.tam li, ul.tam ul {
   list-style: none;
   margin: 0;
@@ -118,6 +125,8 @@ ul.tam, ul.tam li, ul.tam ul {
 ul.tam {
   position: relative;
   float: right;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 ul.tam li {
   float: left;
@@ -129,21 +138,16 @@ ul.tam li {
   background-color: inherit;
   padding-left: 3px;
   padding-right: 3px;
-  color: #DDDDDD;
 }
 ul.tam li:hover {
   background-color: lightblue;
-  color: black;
 }
 ul.tam li a {
   text-decoration: none;
-  color: #DDDDDD;
 }
 ul.tam li a:hover {
   text-decoration: underline;
-  color: black;
 }
-
 ul.tam li.hover, ul.tam li:hover {
   position: relative;
   cursor: default;

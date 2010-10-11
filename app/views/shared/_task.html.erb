@@ -41,7 +41,7 @@
       <li>Attachments</li>
     </ul>
     <div class="task-details">      
-      <%= h task.description -%>
+      <%= render :partial => 'shared/task_comments', :object => task %>
     </div>
   </div>  
 </div>

@@ -38,7 +38,9 @@
     <%= f.label :description %>
     <%=h @task.description %>
   </p>
-  
+
+<br />
+<br />
   <%= link_to 'Edit', edit_collaboration_task_path(
         :collaboration_id => @collaboration.id,
         :id => @task.id
@@ -46,4 +48,6 @@
   <%= link_to 'Close', session[:return_to] || :back %>
 
 <% end %>
+<hr />  
 
+<%= render :partial => 'shared/task_comments', :object => @task %>

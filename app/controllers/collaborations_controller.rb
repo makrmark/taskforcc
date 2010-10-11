@@ -20,6 +20,7 @@ class CollaborationsController < ApplicationController
     @collaboration = Collaboration.find(params[:id])
     @current_user = User.find(session[:user_id])
     @task = Task.new()
+    @comment = Comment.new
 
     # when you list the tasks, set the return-to path
     session[:return_to] = request.request_uri

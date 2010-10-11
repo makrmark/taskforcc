@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101007114042) do
+ActiveRecord::Schema.define(:version => 20101011173617) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(:version => 20101007114042) do
     t.string   "role",             :default => "Team", :null => false
   end
 
+  add_index "collaboration_users", ["collaboration_id"], :name => "index_collaboration_users_on_collaboration_id"
+  add_index "collaboration_users", ["user_id"], :name => "index_collaboration_users_on_user_id"
+
   create_table "collaborations", :force => true do |t|
     t.string   "subject"
     t.text     "description"
@@ -27,6 +30,17 @@ ActiveRecord::Schema.define(:version => 20101007114042) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["task_id"], :name => "index_comments_on_task_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "favourites", :force => true do |t|
     t.integer  "task_id"
@@ -65,7 +79,14 @@ ActiveRecord::Schema.define(:version => 20101007114042) do
     t.integer  "updated_by"
   end
 
+  add_index "tasks", ["assigned_to"], :name => "index_tasks_on_assigned_to"
   add_index "tasks", ["collaboration_id"], :name => "index_tasks_on_collaboration_id"
+  add_index "tasks", ["created_at"], :name => "index_tasks_on_created_at"
+  add_index "tasks", ["created_by"], :name => "index_tasks_on_created_by"
+  add_index "tasks", ["status"], :name => "index_tasks_on_status"
+  add_index "tasks", ["topic_id"], :name => "index_tasks_on_topic_id"
+  add_index "tasks", ["updated_at"], :name => "index_tasks_on_updated_at"
+  add_index "tasks", ["updated_by"], :name => "index_tasks_on_updated_by"
 
   create_table "topics", :force => true do |t|
     t.string   "name"
@@ -77,6 +98,10 @@ ActiveRecord::Schema.define(:version => 20101007114042) do
     t.string   "system_name"
   end
 
+  add_index "topics", ["collaboration_id"], :name => "index_topics_on_collaboration_id"
+  add_index "topics", ["controller"], :name => "index_topics_on_controller"
+  add_index "topics", ["is_system"], :name => "index_topics_on_is_system"
+
   create_table "users", :force => true do |t|
     t.string   "full_name"
     t.string   "email"
@@ -87,5 +112,8 @@ ActiveRecord::Schema.define(:version => 20101007114042) do
     t.string   "lang"
     t.string   "time_zone"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["full_name"], :name => "index_users_on_full_name"
 
 end
