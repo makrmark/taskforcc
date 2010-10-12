@@ -313,8 +313,11 @@ img.task-icon {
 div.task-footer {
 }
 div.task-details {
-  font-size: 0.8em;
-  color: lightgrey;  
+  border-style: solid;
+  border-width: 1px;
+  border-color: #AAAACC;
+  background-color: #E0E0FF;
+  margin-bottom: 5px;
 }
 
 /* Task Favourites */
@@ -384,4 +387,18 @@ input.qtb {
   font-size: 1.2em;
   font-weight: bold;
   width: 110px;
+}
+
+/* Comment Styles */
+div.cc {
+}
+div.comment {
+  padding: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: white;
+}
+input.cf {
+  width: 96%;
+  margin: 2px;
 }
