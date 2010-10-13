@@ -166,6 +166,7 @@ class TasksController < ApplicationController
 
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
+    @comment = Comment.new()
 
     respond_to do |format|
       if @task.save

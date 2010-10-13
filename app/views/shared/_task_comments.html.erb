@@ -5,5 +5,6 @@
   :url => comment_collaboration_task_path(@collaboration.id, task_comments.id), 
   :html => {:class => 'cf'} do |f| %>
   <%= f.error_messages %>
-  <%= f.text_field :comment, :class => 'cf' %>
+  <%= f.text_field :comment, :class => 'cf', 
+    :placeholder => 'Your comments..', :maxlength => "255" %>
 <% end %>  

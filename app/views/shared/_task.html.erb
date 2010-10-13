@@ -24,7 +24,7 @@
       :collaboration_id => task.collaboration_id,
       :id => task.id
   ) %></b>  
-  <span id="fav_<%= dom_id(task) %>">
+  <span id="fav_<%= dom_id(task) %>" class="fav">
   <%= render 'shared/task_favourite', :object => task %>
   </span>
   <br />    
@@ -34,12 +34,25 @@
   <br />
 
   <div class="task-footer">
-    <ul class="tam">
-      <li>Description</li>
-      <li>Comments</li>
-      <li>Attachments</li>
-    </ul>
-    <div class="task-details">      
+      <ul class="tam footer">
+        <li><i class="Description"></i><%= link_to_function "Description" do |page|
+            page["#{dom_id(task)}_description"].show
+            page["#{dom_id(task)}_comments"].hide
+          end %></li>
+        <li><i class="Comments"></i><%= link_to_function "Comments" do |page|
+            page["#{dom_id(task)}_description"].hide
+            page["#{dom_id(task)}_comments"].show
+          end %></li>
+        <li><i class="Attachments"></i>Attachments</li>
+      </ul>
+
+    <% dst = "display:none;" unless task.comments.empty? %>
+    <div class="task-details" id="<%= dom_id(task) %>_description" style="<%= dst %>">
+      <%= task.description %>
+    </div>
+
+    <% cst = "display:none;" if task.comments.empty? %>
+    <div class="task-details" id="<%= dom_id(task) %>_comments" style="<%= cst %>">
       <%= render :partial => 'shared/task_comments', :object => task %>
     </div>
   </div>  

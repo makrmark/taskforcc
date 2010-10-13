@@ -1,4 +1,4 @@
 <div class='comment' id='<%= dom_id(comment) %>'>
-  <%= comment.comment %><br />
+  <%= comment.comment %>
   <span class='tta'><%= time_ago_in_words comment.created_at %> ago by <span class="user-name"><%= titled_text(comment.user.full_name, comment.user.email) %></span></span>
 </div>
