@@ -194,10 +194,10 @@ ul.tam li i, h4 i {
   display: inline-block;
   height: 15px;
   width: 15px;
-  background-image: url('/images/sprites.png');  
-  background-color: transparent;
   margin-right: 3px;
   vertical-align: top;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
 }
 ul.tam li i.Assign  { background-position: -65px -20px; }
 ul.tam li i.Accept  { background-position: -49px -20px; }
@@ -210,6 +210,15 @@ ul.tam.footer li i.Attachments { background-position: -33px -36px; }
 i.Favourites { background-position: -33px -20px; }
 i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
+i.clipboard  {
+  display: inline-block;
+  height: 45px;
+  width: 38px;
+  vertical-align: middle;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  background-position: -1px  -68px;
+}
 
 /* http://www.webmasterworld.com/forum83/4694.htm */
 div.login {
@@ -283,6 +292,7 @@ img.avatar {
 }
 span.user-name {
   color: blue;
+  font-weight: bold;
   text-decoration: none;
 }
 span.user-name:hover {
@@ -309,7 +319,6 @@ div.task-left {
 div.task-right {
   float: right;
   margin-left: 2px;  
-  text-align: right;
 }
 div.task-content {
   padding: 0px 50px 0px 50px;  
@@ -349,6 +358,9 @@ div.task-footer {
   min-height: 20px;
 }
 div.task-details {
+}
+span.CAPS {
+  font-variant: small-caps;
 }
 
 /* Task Favourites */

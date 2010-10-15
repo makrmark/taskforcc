@@ -1,5 +1,5 @@
 <div class="task-left">
-  <img title="Task" class="task-icon" src="/images/clipboard.png" />    
+  <i class="clipboard"></i>
 </div>
 <div class="task-right">
   <img title="Responsible" class="avatar" 
@@ -18,8 +18,12 @@
       :user => task.user_assigned_to %>
     <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
       task.user_assigned_to.email) %></span>
+      <span class="CAPS">
+        [<%= task.status %><%= case task.status
+          when "Resolved", "Rejected", "Closed" then ":#{task.resolution}"
+          end %>]
+      </span>
   </div>
-  [<%= task.status %>::<%= task.resolution %>]
   <b><%= link_to task.title , collaboration_task_path(
       :collaboration_id => task.collaboration_id,
       :id => task.id
