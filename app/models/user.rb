@@ -90,6 +90,7 @@ private
     1.upto(len) { |i| newpass << chars[rand(chars.size-1)] }
     return newpass
   end
+
   def send_new_password
     new_pass = User.random_string(10)
     self.password = self.password_confirmation = new_pass

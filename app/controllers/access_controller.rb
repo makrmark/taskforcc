@@ -41,6 +41,8 @@ class AccessController < ApplicationController
           session[:user_id] = @user.id
           uri = session[:original_uri]
           session[:original_uri] = nil
+          AccountMailer.deliver_welcome(@user)
+
           format.html { redirect_to( uri || url_for(:controller => 'collaborations') ) }
         else
           format.html { render :action => "signup" }

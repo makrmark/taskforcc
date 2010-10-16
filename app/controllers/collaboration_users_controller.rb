@@ -65,6 +65,7 @@ class CollaborationUsersController < ApplicationController
 
     # see if there is an existing user to add
     # TODO: Otherwise ask the user to confirm whether to invite them to join    
+    # TODO: use transactions here
     logger.debug "Searching for " + @collaboration_user.email
 
     user_to_add = User.find_by_email(@collaboration_user.email)
@@ -75,6 +76,10 @@ class CollaborationUsersController < ApplicationController
         :full_name => @collaboration_user.email[/^[^@]*/] )
       user_to_add.password = "foobar"
       user_to_add.save
+
+      # Sent the welcome email for the new user
+      AccountMailer.deliver_welcome(user_to_add)
+      
     else
       logger.debug "Matching user found for " + @collaboration_user.email + " : " + user_to_add.to_yaml
     end
@@ -82,6 +87,10 @@ class CollaborationUsersController < ApplicationController
 
     respond_to do |format|
       if @collaboration_user.save
+
+        # send the invite email
+        AccountMailer.deliver_invite(user_to_add, @current_user, @collaboration)
+        
         format.html { redirect_to(collaboration_collaboration_users_path(@collaboration), 
             :notice => 'Invitation Sent!') }
         format.xml  { render :xml => @collaboration_user, :status => :created, :location => @collaboration_user }

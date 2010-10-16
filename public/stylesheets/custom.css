@@ -6,7 +6,7 @@ body {
   color: black;
   background: f1f1f1;
   font-size: 100%;
-  font-family: tahoma, arial, helvetica;
+  font-family: "lucida grande", tahoma, arial, helvetica;
 }
 
 h4 {
@@ -190,7 +190,7 @@ ul.tam li:hover > ul {
 }
 
 /* Icons for the lists */
-ul.tam li i, h4 i {
+ul.tam li i, h4 i, i.ts {
   display: inline-block;
   height: 15px;
   width: 15px;
@@ -235,7 +235,25 @@ i.tt.Decision { background-position: -66px  -68px;  }
 i.tt.Query    { background-position: -85px  -68px;  }
 i.tt.Issue    { background-position: -47px  -87px;  }
 i.tt.Risk     { background-position: -66px  -87px;  }
-i.tt:hover { background-color: lightblue; }
+i.tt:hover    { background-color: lightblue; cursor: pointer; }
+i.ts {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  vertical-align: middle;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  position: relative;
+  top: 0px;
+  left: 30px;
+}
+i.ts.New        { background-position: -81px -36px; }
+i.ts.Assigned   { background-position: -65px -20px; }
+i.ts.Accepted   { background-position: -49px -20px; }
+i.ts.Rejected   { background-position: -97px -20px; }
+i.ts.Resolved   { background-position: -81px -20px; }
+i.ts.Closed     { background-position: -49px -20px; }
+
 
 /* http://www.webmasterworld.com/forum83/4694.htm */
 div.login {
@@ -326,9 +344,6 @@ div.task {
   border-color: lightgrey;
   min-height: 60px;
 }
-div.task:hover {
-  background-color: #eFeFFF;
-}
 div.task-left {
   float: left;
   margin-right: 2px;
@@ -344,9 +359,10 @@ div.task-content {
 div.task-header {
   color: grey;
   margin-bottom: 2px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  border-style: solid;
+  border-width: 1px;
   border-color: lightgrey;
+  background-color:#F4F4F4;
 }
 span.task-assigned {
   float: right;
@@ -398,7 +414,8 @@ input[type="button"].tf {
   white-space: normal;
 }
 input[type="button"].tf:hover {
-  background-position: -17px -20px;  
+  background-position: -17px -20px;
+  cursor: pointer;
 }
 input[type="button"].tf.f, input[type="button"].tf.f:hover  {
   background-position: -33px -20px;    
@@ -462,6 +479,7 @@ div.comment {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: white;
+  font-size: 11px;
 }
 input.cf {
   width: 95%;

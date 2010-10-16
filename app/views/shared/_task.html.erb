@@ -3,7 +3,13 @@
   <%= render 'shared/task_favourite', :object => task %>
   </span>
   <br />
-  <i class="tt Task"></i>
+  <i class="tt <%= task.type %>" title="<%= task.type %>"></i>
+  <br />
+  <% stat = task.status %>
+  <% res = case stat
+      when "Resolved", "Rejected", "Closed" then ":#{task.resolution}" else ""
+      end %>
+  <i class="ts <%= stat %>" title="<%= stat + res %>"></i>  
 </div>
 <div class="task-right">
   <img title="Responsible" class="avatar" 
@@ -22,11 +28,6 @@
       :user => task.user_assigned_to %>
     <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
       task.user_assigned_to.email) %></span>
-      <span class="CAPS">
-        [<%= task.status %><%= case task.status
-          when "Resolved", "Rejected", "Closed" then ":#{task.resolution}"
-          end %>]
-      </span>
   </div>
   <b><%= link_to task.title , collaboration_task_path(
       :collaboration_id => task.collaboration_id,
@@ -38,7 +39,7 @@
     task.user_created_by.email) %></span></span>  
   <br />
 
-  <div class="task-footer">
+  <div class="task-footer" style="display:visible;">
       <ul class="tam footer">
         <li><i class="Description"></i><%= link_to_function "Description" do |page|
             page["#{dom_id(task)}_description"].show

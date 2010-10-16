@@ -121,7 +121,8 @@ class TasksController < ApplicationController
     
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
-    @topic_list = select_topic_list(@collaboration)
+    @topic_list = select_topic_list(@collaboration)    
+    @comment = Comment.new()
 
     respond_to do |format|
       if @task.save
