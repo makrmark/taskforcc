@@ -1,55 +1,8 @@
 <h4><%= breadcrumb %></h4>
 <hr />
 
-<% form_for [@collaboration, @task] do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :id %>
-    <%=h @task.id %>
-  </p>
-
-  <p>
-    <%= f.label :title %>
-    <%=h @task.title %>
-  </p>
-
-  <p>
-    <%= f.label :status %>
-    <%=h @task.status %>
-  </p>
-
-  <p>
-    <%= f.label :resolution %>
-    <%=h @task.resolution %>
-  </p>
-
-  <p>
-    <%= f.label :created_by %>
-    <%=h @task.user_created_by.full_name %>
-  </p>
-
-  <p>
-    <%= f.label :assigned_to %>
-    <%=h @task.user_assigned_to.full_name %>
-  </p>
-
-  <p>
-    <%= f.label :description %>
-    <%=h @task.description %>
-  </p>
-
-<br />
-<br />
-  <%= link_to 'Edit', edit_collaboration_task_path(
-        :collaboration_id => @collaboration.id,
-        :id => @task.id
-    )  %> |
-  <%= link_to 'Close', session[:return_to] || :back %>
-
-<% end %>
-<hr />  
-
-<div class="task-details">
-  <%= render :partial => 'shared/task_comments', :object => @task %>
+<div class="task" id="<%= dom_id(@task) %>">
+  <%= render 'shared/task', :object => @task %>
 </div>
+
+

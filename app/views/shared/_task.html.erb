@@ -1,5 +1,9 @@
 <div class="task-left">
-  <i class="clipboard"></i>
+  <span id="fav_<%= dom_id(task) %>" class="fav">
+  <%= render 'shared/task_favourite', :object => task %>
+  </span>
+  <br />
+  <i class="tt Task"></i>
 </div>
 <div class="task-right">
   <img title="Responsible" class="avatar" 
@@ -28,9 +32,6 @@
       :collaboration_id => task.collaboration_id,
       :id => task.id
   ) %></b>  
-  <span id="fav_<%= dom_id(task) %>" class="fav">
-  <%= render 'shared/task_favourite', :object => task %>
-  </span>
   <br />    
   <span class="tta">
     <%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,

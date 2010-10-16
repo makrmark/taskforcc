@@ -210,15 +210,32 @@ ul.tam.footer li i.Attachments { background-position: -33px -36px; }
 i.Favourites { background-position: -33px -20px; }
 i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
-i.clipboard  {
+div.task-left {
   display: inline-block;
   height: 45px;
-  width: 38px;
+  width: 45px;
   vertical-align: middle;
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   background-position: -1px  -68px;
 }
+i.tt {
+  display: inline-block;
+  height: 19px;
+  width: 19px;
+  vertical-align: middle;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  position: relative;
+  top: 0px;
+  left: 13px;
+}
+i.tt.Task     { background-position: -47px  -68px;  }
+i.tt.Decision { background-position: -66px  -68px;  }
+i.tt.Query    { background-position: -85px  -68px;  }
+i.tt.Issue    { background-position: -47px  -87px;  }
+i.tt.Risk     { background-position: -66px  -87px;  }
+i.tt:hover { background-color: lightblue; }
 
 /* http://www.webmasterworld.com/forum83/4694.htm */
 div.login {
@@ -365,8 +382,9 @@ span.CAPS {
 
 /* Task Favourites */
 span.fav {
-  vertical-align: top;
   display: inline-block;
+  position: relative;
+  left: 30px;
 }
 input[type="button"].tf {
   height: 15px;
