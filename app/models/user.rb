@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
       ' FROM collaboration_users cu, tasks t ' +
       ' WHERE cu.user_id = #{id} ' +
       ' AND t.collaboration_id = cu.collaboration_id ' +
-      ' GROUP BY t.updated_at '
+      ' GROUP BY t.id, t.updated_at '
       ' ORDER BY t.updated_at DESC ;' # TODO: index on updated
 
   has_many :collaborations_created_by,
