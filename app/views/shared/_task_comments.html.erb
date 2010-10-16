@@ -2,7 +2,7 @@
   <%= render :partial => 'shared/comment', :collection => task_comments.comments %>
 </div>
 <% remote_form_for @comment, 
-  :url => comment_collaboration_task_path(@collaboration.id, task_comments.id), 
+  :url => comment_collaboration_task_path(task_comments.collaboration_id, task_comments.id), 
   :html => {:class => 'cf'} do |f| %>
   <%= f.error_messages %>
   <%= f.text_field :comment, :class => 'cf', 

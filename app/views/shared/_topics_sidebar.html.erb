@@ -1,9 +1,9 @@
 <% unless @collaboration.nil? %> 
-    
+<div class="sidebar">            
   <h4><i class="Topics"></i><%= link_to 'Topics', collaboration_topics_path(@collaboration) %></h4>
 
   <ul class="sidebar">
     <%= render (:partial => 'shared/topic_li', :collection => @collaboration.topics ) %>
   </ul>
-
+</div>
 <% end %>

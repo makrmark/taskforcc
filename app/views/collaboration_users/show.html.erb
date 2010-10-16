@@ -8,6 +8,11 @@
   <%= f.submit 'Task Here', :class => 'qtb' %>
 <% end %>
 <hr />
+<%= render(:partial => 'shared/collaboration_user', 
+  :object => @collaboration_user,
+  :locals => { :show_actions => false } )%>
+<hr />
+
 <div id="task-container">
   <% if @collaboration_user.tasks_assigned_to.empty? %>
   

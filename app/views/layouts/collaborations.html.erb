@@ -18,15 +18,7 @@
     </div>
 
     <div id="left">
-
-      <h4>Identity:</h4>
-      <ul class="sidebar">
-        <li>
-          <%= link_to @current_user.full_name, @current_user %> &bull;
-          <%= link_to 'Log Out', { :action => 'logout', :controller => 'access'}%>
-        </li>
-      </ul>
-      <hr />
+      <%= render 'shared/user_profile', :object => @current_user %>
 
       <h4 class="sidebar">Taskforcc <span class='sidebar-actions'>
         &bull; <%= link_to 'New', new_collaboration_path %>
@@ -50,9 +42,7 @@
 
     <div id="right">
       <%= render 'shared/favourites_sidebar' %>
-      <hr />
       <%= render 'shared/topics_sidebar' %>
-      <hr />
       <%= render 'shared/teams_sidebar' %>
 
     </div>

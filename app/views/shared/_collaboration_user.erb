@@ -1,19 +1,32 @@
-  <tr>
-    <td><%= titled_text(collaboration_user.user.full_name,
-     collaboration_user.user.email) %></td>
-    <td><%=h collaboration_user.user.email %></td>
-    <td><%=h collaboration_user.role %></td>
-    <td><%= link_to 'Show', collaboration_collaboration_user_path(
-      :collaboration_id => collaboration_user.collaboration_id,
-      :id => collaboration_user.id
-    ) %> &bull;
-    <%= link_to 'Edit', edit_collaboration_collaboration_user_path(
-      :collaboration_id => collaboration_user.collaboration_id,
-      :id => collaboration_user.id
-    ) %> &bull;
-    <%= link_to 'Remove', collaboration_collaboration_user_path(
-      :collaboration_id => collaboration_user.collaboration_id,
-      :id => collaboration_user.id
-    ),
-    :confirm => 'Really remove from this Taskforcc?', :method => :delete %></td>
-  </tr>
+<div class="profile" id="<%= dom_id(collaboration_user) %>">
+  <img title="Responsible" class="avatar" 
+    src="/images/Anonymous.jpeg" /> 
+
+  <ul class="profile">
+    <li>
+      <%= titled_text(collaboration_user.user.full_name,
+           collaboration_user.user.email) %>
+    </li>
+    <li>
+      Role: <%=h collaboration_user.role %>
+    </li>
+    <% if show_actions %>
+    <li>
+      <%= link_to 'Show', collaboration_collaboration_user_path(
+        :collaboration_id => collaboration_user.collaboration_id,
+        :id => collaboration_user.id
+      ) %> &bull;
+      <%= link_to 'Edit', edit_collaboration_collaboration_user_path(
+        :collaboration_id => collaboration_user.collaboration_id,
+        :id => collaboration_user.id
+      ) %> &bull;
+      <%= link_to 'Remove', collaboration_collaboration_user_path(
+        :collaboration_id => collaboration_user.collaboration_id,
+        :id => collaboration_user.id
+      ),
+      :confirm => 'Really remove from this Taskforcc?', :method => :delete %>
+    </li>    
+    <% end %>
+  </ul>
+  <hr />
+</div>

@@ -1,15 +1,1 @@
-<h1>Listing users</h1>
-
-<table>
-  <tr>
-    <th>Full name</th>
-    <th>Email</th>
-  </tr>
-
-  <%= render(:partial => 'shared/user', :collection => @users )%>
-
-</table>
-
-<br />
-
-<%= link_to 'New user', new_user_path %>
+Only Admin can list all users

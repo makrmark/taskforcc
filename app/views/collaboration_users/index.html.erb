@@ -1,18 +1,7 @@
 <h4><%= breadcrumb %> &raquo; Team</h4>
 <hr />
-
-<table width='100%'>
-  <tr>
-    <th>User</th>
-    <th>Email</th>
-    <th>Role</th>
-    <th></th>
-  </tr>
-
-  <%= render(:partial => 'shared/collaboration_user', :collection => @collaboration_users )%>
-
-</table>
-
-<br />
+  <%= render(:partial => 'shared/collaboration_user', 
+    :collection => @collaboration_users,
+    :locals => { :show_actions => true } )%>
 
 <%= button_to 'Invite Someone', new_collaboration_collaboration_user_path, :method=> 'get' %>

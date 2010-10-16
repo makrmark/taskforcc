@@ -8,16 +8,10 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :favourites
 
-  # User -> Collaborations -> Tasks (collaboration_id)
-  # TODO: can we do this using more standard syntax?
-  has_many :collaboration_tasks, 
-    :class_name => 'Task',
-    :finder_sql => 'SELECT DISTINCT t.* ' +
-      ' FROM collaboration_users cu, tasks t ' +
-      ' WHERE cu.user_id = #{id} ' +
-      ' AND t.collaboration_id = cu.collaboration_id ' +
-      ' GROUP BY t.id, t.updated_at '
-      ' ORDER BY t.updated_at DESC ;' # TODO: index on updated
+  # User -> CollaborationUsers -> Tasks (collaboration_id)
+  has_many :tasks,
+    :through => :collaboration_users,
+    :order   => "updated_at DESC"
 
   has_many :collaborations_created_by,
     :class_name => 'Collaboration',
@@ -36,15 +30,12 @@ class User < ActiveRecord::Base
 
   # from here: http://www.regular-expressions.info/email.html
   validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
-  validates_confirmation_of :email
   validates_uniqueness_of :email
 
   attr_accessor :password_confirmation
-  validates_confirmation_of :password  
   validate :password_non_blank
 
   # http://www.sitepoint.com/blogs/2008/10/06/timezones-in-rails-21/
-
   def self.authenticate(email, password)
     user = self.find_by_email(email)
     if user

@@ -16,6 +16,11 @@ h4 {
 h4.sidebar>span, h4.sidebar>span>a {
   color: lightgrey;
 }
+div.sidebar {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: lightgrey;
+}
 span.staricon {
   height: 15px;
   width: 15px;
@@ -325,9 +330,23 @@ img.avatar {
   background-color: #dddddd;
   float: right;
 }
+div.profile {
+  min-height: 50px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: lightgrey;  
+}
+div.profile img.avatar {
+  float: left;
+  display: block;
+  margin-right: 10px;
+}
+ul.profile {
+  list-style: none;
+}
+
 span.user-name {
   color: blue;
-  font-weight: bold;
   text-decoration: none;
 }
 span.user-name:hover {

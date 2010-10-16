@@ -1,12 +1,4 @@
-<p>
-  <b>Full name:</b>
-  <%=h @user.full_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
+<%= render 'shared/user_profile', :object => @user %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
