@@ -1,7 +1,7 @@
 <% favourite = Favourite.find(:first, 
     :conditions => ["task_id = ? AND user_id = ?", task_favourite.id, session[:user_id]]) %>
 
-<% ttl = favourite.nil? ? "Favourite" : "Defavourite" %>
+<% ttl = favourite.nil? ? "Watch" : "Stop Watching" %>
 <% cls = favourite.nil? ? "tf" : "tf f" %>
 
 <%= button_to_remote( '' ,

@@ -6,5 +6,13 @@
     No Tasks.
   </div>
 <% else %>
+  <%# http://railsapi.com/doc/rails-v3.0.0/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html -%>
+  <%= link_to_function 'Show/Hide Details' do |page|
+      page.select('div.task-footer').each do |value|
+        value.toggle
+      end     
+    end
+  %>
+  <hr />
   <%= render(:partial => 'shared/task_container', :collection => @current_user.tasks )%>
 <% end %>

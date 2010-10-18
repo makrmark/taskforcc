@@ -1,12 +1,14 @@
 class CollaborationUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :collaboration
-  has_many   :tasks,
+
+  has_many :tasks,
     :primary_key => 'collaboration_id',
     :foreign_key => 'collaboration_id'
   
   has_many :tasks_assigned_to,
     :class_name => 'Task',
+    :primary_key => 'user_id',
     :foreign_key => 'assigned_to', 
     :order => "id DESC"
 

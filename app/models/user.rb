@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
   has_many :favourites
 
   # User -> CollaborationUsers -> Tasks (collaboration_id)
+  # See: CollaborationUserTask model class
+  has_many :collaboration_user_tasks
   has_many :tasks,
-    :through => :collaboration_users,
+    :through => :collaboration_user_tasks,
     :order   => "updated_at DESC"
 
   has_many :collaborations_created_by,

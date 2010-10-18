@@ -1,5 +1,17 @@
 class Task < ActiveRecord::Base
   belongs_to :topic
+
+  belongs_to :collaboration
+
+  # See: CollaborationUserTask model class
+  belongs_to :collaboration_user_task,
+    :primary_key => 'collaboration_id',
+    :foreign_key => 'collaboration_id'
+
+  # Task -> CollaborationUsers(collaboration_id) -> Users 
+  has_many :users, 
+    :through => :collaboration_users
+    
   has_many :favourites
   has_many :comments
   
@@ -18,7 +30,6 @@ class Task < ActiveRecord::Base
     :primary_key => 'id',
     :foreign_key => 'assigned_to'  
     
-  belongs_to :collaboration
   validates_associated :collaboration => "could not be found"  
   validates_associated :topic => "could not be found"
   
@@ -31,9 +42,8 @@ class Task < ActiveRecord::Base
   validate :valid_resolution?
 
   validates_inclusion_of :type, 
-    :in => %w{Task},
-    :message => "should be Task"
-
+    :in => %w{Task Risk Issue Query Defect Decision}
+    
   # Return the states possible by the current user and for current task status
   def valid_states_by_user(uid)
     vsbcs = Task.valid_next_states(status)
