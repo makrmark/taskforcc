@@ -1,0 +1,26 @@
+<div class="profile" id="<%= dom_id(user_detailed_profile) %>">
+  <img title="<%= user_detailed_profile.full_name %>" class="avatar" 
+    src="/images/Anonymous.jpeg" /> 
+
+  <div style="padding-left:20px;">
+  <ul class="profile">
+    <li>
+      <span class="user-name">
+        <%= titled_text user_detailed_profile.full_name, user_detailed_profile.email %>
+      </span>
+    </li>
+    <li>
+      <%= user_detailed_profile.job_title %>
+    </li>
+    <li>
+      <%= user_detailed_profile.organisation %>
+    </li>
+    <li>
+      <%= user_detailed_profile.country %>
+    </li>
+    <li>
+      <%= user_detailed_profile.phone_number %>
+    </li>
+  </ul>  
+  </div>
+</div>

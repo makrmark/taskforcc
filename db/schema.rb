@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101011173617) do
+ActiveRecord::Schema.define(:version => 20101028094750) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -111,6 +111,11 @@ ActiveRecord::Schema.define(:version => 20101011173617) do
     t.string   "salt"
     t.string   "lang"
     t.string   "time_zone"
+    t.boolean  "change_pass",     :default => false
+    t.string   "organisation"
+    t.string   "country"
+    t.string   "job_title"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

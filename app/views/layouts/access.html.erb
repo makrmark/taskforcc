@@ -7,38 +7,40 @@
   <title>Access: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'custom' %>
+
+<meta name="description" content="taskfor.cc is a platform for removing some of the barriers to working efficiently with others." /> 
+
 </head>
 <body>
-<div id="container">
 
-    <div id="header">
-      <div class="logo"></div>
-    </div>
+<div id="access_header">
+  <a href="/" title="taskfor.cc start">
+    <i class="biglogo"></i>
+  </a>
 
-    <div id="left">
-    </div>
+  <% unless action_name == 'login' %>  
+    <%= render :partial => 'login' %>
+  <% end %>
+  
+</div>
 
-    <div id="right">
-    </div>
-       
-    <div id="content">
-      <div id="notices">
-        <p style="color: green"><%= notice %></p>
-      </div>    
-      <%= yield %>
-    </div>
+<%= render :partial => 'signup_bar' %>
 
-    <div class="clear"></div>
+<div id="access_body">
+  <div id="access_left">
+    <div class="signup_subtitle">taskfor.cc makes your team more productive.</div>     
+  </div>
+  <div id="access_right">  
+    <%= yield %>
+  </div>  
+</div>
+<div class="clear"></div>
 
-    <div id="footer">
-      <hr />
-      <%=h (params[:controller] + ' / '+ params[:action])  %>
-      <%=h params.to_yaml %>
-    </div>
-
+<div id="footer">
+  <hr />
+  <%=h (params[:controller] + ' / '+ params[:action])  %>
+  <%=h params.to_yaml %>
 </div>
   
-
-
 </body>
 </html>

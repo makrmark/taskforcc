@@ -27,15 +27,19 @@ class User < ActiveRecord::Base
     :class_name => 'Task',
     :foreign_key => 'assigned_to'
   
+  # http://api.rubyonrails.org/classes/ActiveRecord/Validations/ClassMethods.html
   validates_presence_of :full_name, :email
-  validates_length_of :full_name, :minimum => 2
 
-  # from here: http://www.regular-expressions.info/email.html
+  attr_accessor :password_confirmation, :email_confirmation
+  validates_presence_of :password, :unless => :skip_password_check?
+
+  validates_confirmation_of :password, :email
+  validate :password_non_blank
+  
+  # http://www.regular-expressions.info/email.html
   validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
   validates_uniqueness_of :email
 
-  attr_accessor :password_confirmation
-  validate :password_non_blank
 
   # http://www.sitepoint.com/blogs/2008/10/06/timezones-in-rails-21/
   def self.authenticate(email, password)
@@ -52,8 +56,7 @@ class User < ActiveRecord::Base
   # a virtual attribute
   def password
     @password
-  end
-  
+  end  
   def password=(pwd)
     @password = pwd
     return if pwd.blank?
@@ -61,6 +64,31 @@ class User < ActiveRecord::Base
     self.hashed_password = User.encrypted_password(self.password, self.salt)
   end
   
+  def skip_password_check?
+    @skip_password_check
+  end
+  def skip_password_check=(skip)
+    @skip_password_check = skip
+  end
+
+  # Invite a user to taskfor.cc
+  def self.invite(email, invited_by)
+      user_to_invite = User.new( :email => email,
+        :full_name => email[/^[^@]*/] )
+      user_to_invite.password = self.random_string(8)
+      user_to_invite.change_pass = true
+      user_to_invite.save
+
+      # Sent the welcome email for the new user
+      AccountMailer.deliver_invite_to_service(user_to_invite, invited_by)
+      
+      return user_to_invite
+  end
+  
+  def self.random_password
+    random_string(8)
+  end
+
 private
   def password_non_blank
     errors.add(:password, "Missing password") if hashed_password.blank?
@@ -75,6 +103,13 @@ private
     Digest::SHA1.hexdigest(string_to_hash)
   end
 
+  def send_new_password
+    new_pass = User.random_string(10)
+    self.password = self.password_confirmation = new_pass
+    self.save
+    Notifications.deliver_forgot_password(self.email, self.login, new_pass)
+  end
+
   # http://www.aidanf.net/rails_user_authentication_tutorial
   def self.random_string(len)
     #generate a random password consisting of strings and digits
@@ -82,13 +117,6 @@ private
     newpass = ""
     1.upto(len) { |i| newpass << chars[rand(chars.size-1)] }
     return newpass
-  end
-
-  def send_new_password
-    new_pass = User.random_string(10)
-    self.password = self.password_confirmation = new_pass
-    self.save
-    Notifications.deliver_forgot_password(self.email, self.login, new_pass)
   end
   
 end

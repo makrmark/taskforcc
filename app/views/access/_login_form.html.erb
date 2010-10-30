@@ -1,0 +1,50 @@
+<div class="signup_title">Log in</div>
+<div class="signup_subtitle">Get straight to work!</div>
+
+<% form_tag url_for(:controller => 'access', :action => 'login'), :method => 'post' do %>
+<table class="signup">
+  <tbody>
+    <tr>
+      <td colspan="2">
+        <%# f.error_messages %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= label_tag :email %>
+      </td>
+      <td>
+        <%= text_field_tag :email, params[:email] %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= label_tag :password %>
+      </td>
+      <td>
+        <%= password_field_tag :password %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+          <%= submit_tag "Login" , :class=> "signup" %>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>
+      </td>
+      <td>
+        Forgotten your password?
+      </td>
+    </tr>
+  </tfoot>
+</table>
+<% end %>
+
+<div id="notices">
+  <p style="color: green"><%= notice %></p>
+</div>    

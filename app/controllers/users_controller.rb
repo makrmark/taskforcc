@@ -65,6 +65,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @current_user = User.find(session[:user_id])
+    
+    @user.skip_password_check = true
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -74,5 +76,29 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  # screen to change your password
+  # GET
+  def chgpass
+    @user = User.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    
+  end
+
+  # action to update your password  
+  # PUT
+  def setpass
+    @current_user = User.find(session[:user_id])
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to(@user, :notice => 'Password was successfully updated.') }
+      else
+        format.html { render :action => "chgpass" }
+      end
+    end
+  end
+
 
 end

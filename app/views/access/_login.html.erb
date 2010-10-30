@@ -1,0 +1,31 @@
+<% form_tag url_for(:controller => 'access', :action => 'login') do %>
+<table class="login">
+  <tbody>
+    <tr>
+      <td>  
+        <label for="email">Email</label>
+      </td>
+      <td>  
+        <label for="password">Password</label>
+      </td>
+      <td>    
+      </td>
+    </tr>
+    <tr>
+      <td>  
+        <%= text_field_tag :email, params[:email], :class=>"login" %>
+      </td>
+      <td>  
+        <%= password_field_tag :password, params[:password], :class=>"login" %>
+      </td>
+      <td>    
+        <%= submit_tag "Log in", :class=> "login" %>
+      </td>          
+    </tr>
+    <tr>
+      <td></td>
+      <td class="forgotten" colspan="2">Forgotten your password?</td>
+    </tr>
+  </tbody>
+</table>
+<% end %>

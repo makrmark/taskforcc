@@ -2,7 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :authorize, :except => [:login, :signup, :dosignup]
+  before_filter :authorize, :except => [:login, :signup, :dosignup, :start]
+
   # TODO: check the user has access to the relevant Collaborations
   # TODO: check the user has access to the relevant Tasks (eg: Restricted users may not)
   
@@ -29,8 +30,8 @@ protected
   def authorize
     unless User.find_by_id(session[:user_id])
       session[:original_uri] = request.request_uri
-      flash[:notice] = "Please log in"
-      redirect_to :controller => 'access', :action=> 'login'
+      flash[:notice] = "You must log in to access this resource"
+      redirect_to start_access_path
     end
   end
 end

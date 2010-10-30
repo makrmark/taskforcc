@@ -72,13 +72,8 @@ class CollaborationUsersController < ApplicationController
     if user_to_add.nil? then
       logger.debug "NO matching user found for " + @collaboration_user.email
       logger.debug "Creating a new one... "
-      user_to_add = User.new( :email => @collaboration_user.email,
-        :full_name => @collaboration_user.email[/^[^@]*/] )
-      user_to_add.password = "foobar"
-      user_to_add.save
-
-      # Sent the welcome email for the new user
-      AccountMailer.deliver_welcome(user_to_add)
+      
+      user_to_add = User.invite(@collaboration_user.email, @current_user)
       
     else
       logger.debug "Matching user found for " + @collaboration_user.email + " : " + user_to_add.to_yaml
