@@ -14,7 +14,7 @@
 <div id="container">
 
     <div id="header">
-      <div class="logo"></div>
+      <%= link_to '<div class="logo" title="Home"></div>', collaborations_path() %>
     </div>
 
     <div id="left">
@@ -44,6 +44,7 @@
       <%= render 'shared/favourites_sidebar' %>
       <%= render 'shared/topics_sidebar' %>
       <%= render 'shared/teams_sidebar' %>
+      <%= render 'shared/tags_sidebar' %>
 
     </div>
        

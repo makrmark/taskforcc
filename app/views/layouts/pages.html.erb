@@ -14,37 +14,25 @@
 <body>
 
 <div id="access_header">
-  <a href="/" title="taskfor.cc start">
+  <a href="/" title="taskfor.cc">
     <i class="biglogo"></i>
   </a>
 
   <% unless action_name == 'login' %>  
-    <%= render :partial => 'login' %>
+    <%= render :partial => 'access/login' %>
   <% end %>
   
 </div>
 
-<%= render :partial => 'signup_bar' %>
+<%= render :partial => 'access/signup_bar' %>
 
-<div id="access_body">
-  <div id="access_left">
-    <div class="signup_subtitle">taskfor.cc makes your team more productive.</div>
-    
-    <ul>
-      <li><%= link_to 'About taskfor.cc', url_for(:controller => 'pages', :action => 'about') %></li>
-      <li><%= link_to 'Contact', url_for(:controller => 'pages', :action => 'contact') %></li>
-    </ul>
-  </div>
-  <div id="access_right">  
+<div id="pages_body">
     <%= yield %>
-  </div>  
 </div>
 <div class="clear"></div>
 
 <div id="footer">
   <hr />
-  <%=h (params[:controller] + ' / '+ params[:action])  %>
-  <%=h params.to_yaml %>
 </div>
   
 </body>

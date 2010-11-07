@@ -1,5 +1,6 @@
 # http://marklunds.com/s5/rails101/html/ajax.html
-# BUG: not properly refreshing the page
 page.insert_html :top, 'task-container', :partial => 'shared/task_container', :object => @task
-page.visual_effect :highlight, dom_id(@task), :duration => 3
+page.visual_effect :highlight, dom_id(@task), :duration => 1
 page.hide 'task-empty-message'
+
+page['foo'].reset

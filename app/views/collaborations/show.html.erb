@@ -1,6 +1,6 @@
 <h4><%= breadcrumb %> Tasks</h4>
 <hr />
-<% remote_form_for [@collaboration, @task], :html => {:class => 'qtf'} do |f| %>
+<% remote_form_for [@collaboration, @task], :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
   <%= f.error_messages %>
   <%= hidden_field_tag 'task[topic_id]', @collaboration.unfiled_topic.id %>
   <%= hidden_field_tag 'task[assigned_to]', @current_user.id %>

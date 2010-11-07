@@ -1,33 +1,66 @@
-<fieldset>
-<legend>Edit User</legend>
-
 <% form_for(@user) do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %>
-  </p>
-  <p>
-    <%= f.label :job_title %>
-    <%= f.text_field :job_title %>
-  </p>
-  <p>
-    <%= f.label :organisation %>
-    <%= f.text_field :organisation %>
-  </p>
-  <p>
-    <%= f.label :country %>
-    <%= f.text_field :country %>
-  </p>
-  <p>
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<table class="signup">
+  <thead>
+    <tr>
+      <th colspan="2">Update Profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">
+        <%= f.error_messages %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :full_name %>
+      </td>
+      <td>
+        <%= f.text_field :full_name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :job_title %>
+      </td>
+      <td>
+        <%= f.text_field :job_title %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :organisation %>
+      </td>
+      <td>
+        <%= f.text_field :organisation %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :country %>
+      </td>
+      <td>
+        <%= f.text_field :country %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :phone_number %>
+      </td>
+      <td>
+        <%= f.text_field :phone_number %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <%= f.submit 'Update', :class=> "signup" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-</fieldset>
+<% end %>
 
 <%= link_to 'Cancel', @user %>

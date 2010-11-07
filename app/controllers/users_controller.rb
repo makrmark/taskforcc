@@ -90,6 +90,7 @@ class UsersController < ApplicationController
   def setpass
     @current_user = User.find(session[:user_id])
     @user = User.find(params[:id])
+    @user.change_pass = false
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

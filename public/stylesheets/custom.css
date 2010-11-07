@@ -642,3 +642,10 @@ div#access_signup_bar form {
 div#access_signup_bar input {
   background-color: darkgreen;
 }
+
+div#pages_body {
+  margin-left: 100px;
+  width: 50%;
+  font-size: 14px;
+  color: navy;
+}
