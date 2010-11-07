@@ -95,7 +95,8 @@ module ApplicationHelper
         :collaboration_id => task.collaboration_id,
         :id => task.id,
         :status => stat,
-        :resolution => res
+        :resolution => res,
+        :method => 'post' # TODO: should be put?
         }
       )
     )

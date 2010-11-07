@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     collaboration.resources  :collaboration_users
     collaboration.resources  :tasks, 
       :member => {
-        :chgstatus => :put,
+        :chgstatus => :post,
         :favourite => :post,
         :comment   => :post
       }

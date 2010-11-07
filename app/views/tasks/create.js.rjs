@@ -3,4 +3,4 @@ page.insert_html :top, 'task-container', :partial => 'shared/task_container', :o
 page.visual_effect :highlight, dom_id(@task), :duration => 1
 page.hide 'task-empty-message'
 
-page['foo'].reset
+page['task_here_form'].reset
