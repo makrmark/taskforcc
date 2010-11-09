@@ -1,6 +1,8 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  after_create :create_personal_collaboration
+
   has_many :collaboration_users
   has_many :collaborations, 
     :through => :collaboration_users,
@@ -90,6 +92,21 @@ class User < ActiveRecord::Base
   end
 
 private
+
+  # create the Personal collaboration for the user
+  def create_personal_collaboration
+    logger.debug 'In create_personal_collaboration'
+    
+    collaboration = Collaboration.new(
+      :is_system => true,
+      :subject => 'Personal',
+      :description => 'Your private and personal taskforcc.',
+      :created_by => self.id,
+      :status => 'Open'
+    )    
+    logger.debug collaboration.errors.to_yaml unless collaboration.save
+  end
+
   def password_non_blank
     errors.add(:password, "Missing password") if hashed_password.blank?
   end

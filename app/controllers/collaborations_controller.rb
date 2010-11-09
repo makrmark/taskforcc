@@ -63,35 +63,8 @@ class CollaborationsController < ApplicationController
       # TODO: use transactions here
       # http://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
       if @collaboration.save
-
-        # add the user to the collaboration
-        @collaboration_user = CollaborationUser.new(
-          :user_id => session[:user_id],
-          :collaboration_id => @collaboration.id,
-          :role => 'Manager',
-          # TODO: this is a workaround for having email in the 
-          :email => @current_user.email 
-        )
-        unfiled_topic = Topic.new(
-          :controller => session[:user_id],
-          :collaboration_id => @collaboration.id,
-          :is_system => true,
-          :system_name => 'unfiled',
-          :name => 'Unfiled'
-        )
-        unfiled_topic.save
-        
-        logger.debug "Creating associated CollaborationUser :" + @collaboration_user.to_yaml
-        if @collaboration_user.save
-          logger.debug "Creating associated CollaborationUser : Success!"
           format.html { redirect_to(@collaboration, :notice => 'Collaboration was successfully created.') }
           format.xml  { render :xml => @collaboration, :status => :created, :location => @collaboration }
-        else
-          logger.debug "Creating associated CollaborationUser : " + @collaboration_user.errors.to_yaml
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @collaboration_user.errors, :status => :unprocessable_entity }
-        end
-                
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @collaboration.errors, :status => :unprocessable_entity }

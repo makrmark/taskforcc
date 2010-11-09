@@ -1,4 +1,6 @@
 class Collaboration < ActiveRecord::Base
+  after_create :setup_collaboration
+
   has_many :tasks, :order => "id DESC"
   has_many :collaboration_users
   has_many :topics, :order => "system_name DESC, name ASC"
@@ -25,4 +27,31 @@ class Collaboration < ActiveRecord::Base
       :order => 'created_at DESC')
   end
   
+private
+
+  # Add the user to the collaboration as a Manager
+  # And setup the default 'Unfiled' topic with the user as Controller
+  def setup_collaboration
+    
+    logger.debug "In setup_collaboration"
+    
+    cu = CollaborationUser.new(
+      :user_id => self.created_by,
+      :collaboration_id => self.id,
+      :role => 'Manager',
+      :email => 'foo@bar.com' # TODO: this is ugly - fix it!
+    )
+    logger.debug cu.errors.to_yaml unless cu.save 
+
+    unfiled_topic = Topic.new(
+      :controller => self.created_by,
+      :collaboration_id => self.id,
+      :is_system => true,
+      :system_name => 'unfiled',
+      :name => 'Unfiled'
+    )
+    unfiled_topic.save    
+    
+  end
+
 end
