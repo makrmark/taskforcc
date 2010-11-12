@@ -2,6 +2,8 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   after_create :create_personal_collaboration
+#  https://github.com/GUI/after_commit
+#  after_commit :send_welcome
 
   has_many :collaboration_users
   has_many :collaborations, 
@@ -91,11 +93,20 @@ class User < ActiveRecord::Base
     random_string(8)
   end
 
+  # once the user creation is confirmed, send the welcome message  
+  # normally triggered from after_commit callback
+  def send_welcome
+      AccountMailer.deliver_welcome(self)
+  end
+
+
+protected
+
+
 private
 
   # create the Personal collaboration for the user
   def create_personal_collaboration
-    logger.debug 'In create_personal_collaboration'
     
     collaboration = Collaboration.new(
       :is_system => true,
@@ -104,9 +115,10 @@ private
       :created_by => self.id,
       :status => 'Open'
     )    
-    logger.debug collaboration.errors.to_yaml unless collaboration.save
+    collaboration.save!
+    
   end
-
+  
   def password_non_blank
     errors.add(:password, "Missing password") if hashed_password.blank?
   end

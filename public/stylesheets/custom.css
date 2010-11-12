@@ -13,6 +13,7 @@ h4 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+h4.breadcrumb>span, h4.breadcrumb>span>a, 
 h4.sidebar>span, h4.sidebar>span>a {
   color: lightgrey;
 }
@@ -215,6 +216,7 @@ ul.tam.footer li i.Attachments { background-position: -33px -36px; }
 i.Favourites { background-position: -33px -20px; }
 i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
+i.Tags       { background-position: -33px -52px; }
 div.task-left {
   display: inline-block;
   height: 45px;

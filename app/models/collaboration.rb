@@ -8,6 +8,7 @@ class Collaboration < ActiveRecord::Base
   has_one  :unfiled_topic, 
     :class_name => 'Topic', 
     :conditions => "system_name ='unfiled'"
+
   has_many :favourites
 
   belongs_to :user_created_by,
@@ -20,7 +21,12 @@ class Collaboration < ActiveRecord::Base
   validates_inclusion_of :status, 
     :in => %w{Open On-Hold Closed}, 
     :message => "should be Open, On-Hold, or Closed"
-
+        
+  validates_inclusion_of :is_system, 
+    :in => [false], 
+    :on => :update,
+    :message => " cannot update system record"
+  
   def favourites(uid)
     Favourite.find(:all,
       :conditions => ["collaboration_id = ? AND user_id = ?", self.id, uid],
@@ -29,19 +35,29 @@ class Collaboration < ActiveRecord::Base
   
 private
 
+=begin
+  # returns true if it is not a system (eg: Personal) collaboration
+  def non_system
+    if is_system
+      self.errors.add(:is_system, ": can't update system records")
+      return false;
+    else
+      return true;
+    end    
+  end
+=end
+
   # Add the user to the collaboration as a Manager
   # And setup the default 'Unfiled' topic with the user as Controller
   def setup_collaboration
-    
-    logger.debug "In setup_collaboration"
-    
+        
     cu = CollaborationUser.new(
       :user_id => self.created_by,
       :collaboration_id => self.id,
       :role => 'Manager',
       :email => 'foo@bar.com' # TODO: this is ugly - fix it!
     )
-    logger.debug cu.errors.to_yaml unless cu.save 
+    cu.save!
 
     unfiled_topic = Topic.new(
       :controller => self.created_by,
@@ -50,8 +66,16 @@ private
       :system_name => 'unfiled',
       :name => 'Unfiled'
     )
-    unfiled_topic.save    
-    
+    unfiled_topic.save!
+
+    archived_topic = Topic.new(
+      :controller => self.created_by,
+      :collaboration_id => self.id,
+      :is_system => true,
+      :system_name => 'archived',
+      :name => 'Archived'
+    )
+    archived_topic.save!
   end
 
 end

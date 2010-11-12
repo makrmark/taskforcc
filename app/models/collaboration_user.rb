@@ -32,10 +32,6 @@ class CollaborationUser < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :collaboration_id,
     :message => "is already in the team"
 
-  # not sure why, but this doesn't seem to work
-#  validates_associated :user, :message => "invited does not exist"
-  validates_associated :collaboration, :message => "does not exist"
-
   # virtual attribute for email
 #  def email
 #    @email

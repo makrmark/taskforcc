@@ -36,6 +36,12 @@
     </ul>
   </div>
   <div id="access_right">  
+
+    <div id="notices">
+      <p style="color: green"><%= notice %></p>
+      <p style="color: green"><%= flash[:error] %></p>
+    </div>
+
     <%= yield %>
   </div>  
 </div>

@@ -5,6 +5,5 @@ class Topic < ActiveRecord::Base
   has_many :favourites
 
   validates_presence_of :name, :controller, :collaboration_id
-  validates_associated :collaboration
   
 end

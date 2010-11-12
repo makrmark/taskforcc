@@ -46,6 +46,7 @@ class AccessController < ApplicationController
   end
 
   def dosignup
+
     if request.post?
       @user = User.new(params[:user])
       @user.password = User.random_password
@@ -56,16 +57,18 @@ class AccessController < ApplicationController
           # session[:user_id] = @user.id
           # uri = session[:original_uri]
           # session[:original_uri] = nil
-
-          AccountMailer.deliver_welcome(@user)
-
+          
+          @user.send_welcome
+  
           flash[:notice] = "You will receive a confirmation email including your login credentials."
           format.html { redirect_to( url_for :action => 'login' ) }
         else
+          # TODO: How can you differentiate between a Commit error and a Validation error.
+          flash[:error] = "Errors occurred during signup."
           format.html { render :action => "signup" }
-        end
+        end          
       end
-    end
+    end    
   end
     
   def welcome

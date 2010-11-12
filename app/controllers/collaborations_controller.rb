@@ -66,6 +66,7 @@ class CollaborationsController < ApplicationController
           format.html { redirect_to(@collaboration, :notice => 'Collaboration was successfully created.') }
           format.xml  { render :xml => @collaboration, :status => :created, :location => @collaboration }
       else
+        flash[:error] = "Errors creating taskforcc."
         format.html { render :action => "new" }
         format.xml  { render :xml => @collaboration.errors, :status => :unprocessable_entity }
       end
@@ -76,6 +77,7 @@ class CollaborationsController < ApplicationController
   # PUT /collaborations/1.xml
   def update
     @collaboration = Collaboration.find(params[:id])
+    @current_user = User.find(session[:user_id])
 
     respond_to do |format|
       if @collaboration.update_attributes(params[:collaboration])

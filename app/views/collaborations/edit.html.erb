@@ -1,7 +1,7 @@
 <h4><%= breadcrumb %> &raquo; Edit</h4>
 <hr />
 
-<% form_for(@collaboration) do |f| %>
+<% form_for @collaboration do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -25,4 +25,3 @@
 <% end %>
 
 <%= link_to 'Close', @collaboration %>
-<%# link_to 'Destroy', @collaboration, :confirm => 'Are you sure?', :method => :delete %>
