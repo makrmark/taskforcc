@@ -380,10 +380,13 @@ div.task-content {
 div.task-header {
   color: grey;
   margin-bottom: 2px;
+  padding-left: 2px;
+/*
   border-style: solid;
   border-width: 1px;
   border-color: lightgrey;
   background-color:#F4F4F4;
+  */
 }
 span.task-assigned {
   float: right;
@@ -408,7 +411,7 @@ div.task-footer {
   border-style: solid;
   border-width: 1px;
   border-color: #AAAACC;
-  background-color: #E0E0FF;
+  background-color: #F4F4F4;
   min-height: 20px;
 }
 div.task-details {
@@ -650,4 +653,44 @@ div#pages_body {
   width: 50%;
   font-size: 14px;
   color: navy;
+}
+
+/* multifunction tabs */
+.mf-tab {
+  margin: 0;
+  padding: 0;  
+  list-style: none;
+}
+ul.mf-tab li.mf-tab {
+  display: inline-block;  
+}
+ul.mf-tab {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: lightgrey;
+}
+
+li.mf-tab {
+  width: 130px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+  border-bottom-style: none;
+  text-align: center;
+  color: grey;
+  background-color: white;
+}
+li.mf-tab.active {
+  font-weight: bold;
+  background-color: #F4F4F4;
+}
+
+div#mf-tab-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+  border-top-width: 0px;
+  background-color: #F4F4F4;
+  padding: 3px;
+  margin-bottom: 10px;
 }

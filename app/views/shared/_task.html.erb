@@ -33,9 +33,8 @@
       :collaboration_id => task.collaboration_id,
       :id => task.id
   ) %></b>  
-  <br />    
   <span class="tta">
-    <%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
+    Updated <%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
     task.user_created_by.email) %></span></span>  
   <br />
 

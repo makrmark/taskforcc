@@ -1,0 +1,62 @@
+<%# TODO: refactor the javascript into a separate function %>
+<%# TODO: render this using a partial %>
+<ul id="mf-tab-list" class="mf-tab">
+  <li class="mf-tab active" id="taskhere-tab"><%= link_to_function 'Task Here' do |page|
+      page.select('div.mf-tab.body').each do |value|
+        value.hide()
+      end
+      page.select('li.mf-tab.active').each do |value|
+        value.removeClassName('active')
+      end
+
+      page['taskhere'].show()
+      page['taskhere-tab'].addClassName('active');
+    end
+    %></li>
+  <li class="mf-tab" id="search-tab"><%= link_to_function 'Search Here' do |page|
+      page.select('div.mf-tab.body').each do |value|
+        value.hide()
+      end
+      page.select('li.mf-tab.active').each do |value|
+        value.removeClassName('active')
+      end
+
+      page['search'].show()
+      page['search-tab'].addClassName('active');
+    end
+    %></li>       
+  <li class="mf-tab" id="details-tab"><%= link_to_function 'Taskforcc Details' do |page|
+      page.select('div.mf-tab.body').each do |value|
+        value.hide()
+      end
+      page.select('li.mf-tab.active').each do |value|
+        value.removeClassName('active')
+      end
+
+      page['details'].show()
+      page['details-tab'].addClassName('active');
+    end
+    %></li>
+</ul>
+<div id="mf-tab-container">
+  <div id="taskhere" class='mf-tab body'>
+    <% remote_form_for [@collaboration, @task], :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
+      <%= f.error_messages %>
+      <%= hidden_field_tag 'task[topic_id]', @collaboration.unfiled_topic.id %>
+      <%= hidden_field_tag 'task[assigned_to]', @current_user.id %>
+      <%= f.text_field :title, :class => 'qtt' %>
+      <%= f.submit 'Task Here', :class => 'qtb' %>
+    <% end %>
+  </div>    
+  <div id="search" style="display:none;" class='mf-tab body'>
+    <p>Search</p>
+  </div>
+  <div id="details" style="display:none;" class='mf-tab body'>
+    <b>Status:</b> <%= @collaboration.status -%><br />
+    <%# http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#method-i-simple_format -%>
+    <b>Description:</b> <%= simple_format @collaboration.description -%><br />
+    <% unless @collaboration.is_system %>
+      <%= link_to 'Edit', edit_collaboration_path(@collaboration) -%>
+    <% end %>
+  </div>    
+</div>
