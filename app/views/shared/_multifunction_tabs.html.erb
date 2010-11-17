@@ -1,7 +1,19 @@
 <%# TODO: refactor the javascript into a separate function %>
-<%# TODO: render this using a partial %>
 <ul id="mf-tab-list" class="mf-tab">
-  <li class="mf-tab active" id="taskhere-tab"><%= link_to_function 'Task Here' do |page|
+  <li class="mf-tab active" id="search-tab"><%= link_to_function 'Search Here' do |page|
+      page.select('div.mf-tab.body').each do |value|
+        value.hide()
+      end
+      page.select('li.mf-tab.active').each do |value|
+        value.removeClassName('active')
+      end
+
+      page['search'].show()
+      page['search-tab'].addClassName('active');
+    end
+    %></li>
+  <% unless @collaboration.nil? -%>
+  <li class="mf-tab" id="taskhere-tab"><%= link_to_function 'Task Here' do |page|
       page.select('div.mf-tab.body').each do |value|
         value.hide()
       end
@@ -13,18 +25,6 @@
       page['taskhere-tab'].addClassName('active');
     end
     %></li>
-  <li class="mf-tab" id="search-tab"><%= link_to_function 'Search Here' do |page|
-      page.select('div.mf-tab.body').each do |value|
-        value.hide()
-      end
-      page.select('li.mf-tab.active').each do |value|
-        value.removeClassName('active')
-      end
-
-      page['search'].show()
-      page['search-tab'].addClassName('active');
-    end
-    %></li>       
   <li class="mf-tab" id="details-tab"><%= link_to_function 'Taskforcc Details' do |page|
       page.select('div.mf-tab.body').each do |value|
         value.hide()
@@ -37,19 +37,66 @@
       page['details-tab'].addClassName('active');
     end
     %></li>
+  <% end -%>
+  <% unless @topic.nil? -%>
+  <li class="mf-tab" id="topic-tab"><%= link_to_function 'Topic Details' do |page|
+      page.select('div.mf-tab.body').each do |value|
+        value.hide()
+      end
+      page.select('li.mf-tab.active').each do |value|
+        value.removeClassName('active')
+      end
+
+      page['topic'].show()
+      page['topic-tab'].addClassName('active');
+    end
+    %></li>
+  <% end -%>
+  <% unless @collaboration_user.nil? -%>
+  <li class="mf-tab" id="user-tab"><%= link_to_function 'User Details' do |page|
+      page.select('div.mf-tab.body').each do |value|
+        value.hide()
+      end
+      page.select('li.mf-tab.active').each do |value|
+        value.removeClassName('active')
+      end
+
+      page['user'].show()
+      page['user-tab'].addClassName('active');
+    end
+    %></li>
+  <% end -%>
 </ul>
 <div id="mf-tab-container">
-  <div id="taskhere" class='mf-tab body'>
-    <% remote_form_for [@collaboration, @task], :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
+  <div id="search" class='mf-tab body'>
+    <%# http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.htm %>
+    <% form_tag request.path, :method => 'get', 
+      :class => 'qtf', :id=>'search_form' do %>
+      <%= text_field_tag :title, params[:title], :class => 'qtt' %>
+      <%= submit_tag 'Search Here', :class => 'qtb' %>
+    <% end -%>
+  </div>
+  <% unless @collaboration.nil? -%>
+  <div id="taskhere" class='mf-tab body' style="display:none;">
+    <% remote_form_for [@collaboration, @task], 
+      :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
       <%= f.error_messages %>
-      <%= hidden_field_tag 'task[topic_id]', @collaboration.unfiled_topic.id %>
-      <%= hidden_field_tag 'task[assigned_to]', @current_user.id %>
+
+      <% if @topic.nil? -%>
+        <%= hidden_field_tag 'task[topic_id]', @collaboration.unfiled_topic.id %>
+      <% else -%>
+        <%= hidden_field_tag 'task[topic_id]', @topic.id %>
+      <% end -%>
+
+      <% if @collaboration_user.nil? -%>
+        <%= hidden_field_tag 'task[assigned_to]', @current_user.id %>
+      <% else -%>
+        <%= hidden_field_tag 'task[assigned_to]', @collaboration_user.user_id %>
+      <% end -%>
+
       <%= f.text_field :title, :class => 'qtt' %>
       <%= f.submit 'Task Here', :class => 'qtb' %>
     <% end %>
-  </div>    
-  <div id="search" style="display:none;" class='mf-tab body'>
-    <p>Search</p>
   </div>
   <div id="details" style="display:none;" class='mf-tab body'>
     <b>Status:</b> <%= @collaboration.status -%><br />
@@ -59,4 +106,31 @@
       <%= link_to 'Edit', edit_collaboration_path(@collaboration) -%>
     <% end %>
   </div>    
+  <% end -%>
+  
+  <% unless @topic.nil? -%>
+  <div id="topic" style="display:none;" class='mf-tab body'>
+    <b>Controller:</b> <%= @topic.user.full_name %>    
+  </div>    
+  <% end -%>
+
+  <% unless @collaboration_user.nil? -%>
+  <div id="user" style="display:none;" class='mf-tab body'>
+    <%= render(:partial => 'shared/collaboration_user', 
+      :object => @collaboration_user,
+      :locals => { :show_actions => false } )%>
+  </div>    
+  <% end -%>
+
 </div>
+<ul id="mf-tab-list" class="mf-tab">
+  <%# http://railsapi.com/doc/rails-v3.0.0/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html -%>
+  <li class="mf-tab" id="showhide-tab">
+    <%= link_to_function 'Task Details' do |page|
+        page.select('div.task-footer').each do |value|
+          value.toggle
+        end     
+      end
+    %>
+  </li>
+</ul>

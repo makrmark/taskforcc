@@ -1,17 +1,5 @@
 <h4><%= breadcrumb %> Tasks</h4>
-<hr />
-<% remote_form_for [@collaboration, @task], :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
-  <%= f.error_messages %>
-  <%= hidden_field_tag 'task[topic_id]', @collaboration.unfiled_topic.id %>
-  <%= hidden_field_tag 'task[assigned_to]', @collaboration_user.user_id %>
-  <%= f.text_field :title, :class => 'qtt' %>
-  <%= f.submit 'Task Here', :class => 'qtb' %>
-<% end %>
-<hr />
-<%= render(:partial => 'shared/collaboration_user', 
-  :object => @collaboration_user,
-  :locals => { :show_actions => false } )%>
-<hr />
+<%= render :partial => 'shared/multifunction_tabs' %>
 
 <div id="task-container">
   <% if @collaboration_user.tasks_assigned_to.empty? %>
@@ -27,7 +15,8 @@
     </div>
   <% else %>
     <div id="task-empty-message"></div>
-    <%= render(:partial => 'shared/task_container', :collection => @collaboration_user.tasks_assigned_to )%>
+    <%= render(:partial => 'shared/task_container', 
+      :collection => @collaboration_user.find_tasks_assigned_to(params) )%>
   <% end%>
 </div>
 

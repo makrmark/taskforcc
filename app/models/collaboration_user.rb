@@ -32,19 +32,16 @@ class CollaborationUser < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :collaboration_id,
     :message => "is already in the team"
 
-  # virtual attribute for email
-#  def email
-#    @email
-#  end
-#  def email=(eml)
-#    @email=eml
-#  end
+  def find_tasks_assigned_to(p)
+    self.tasks_assigned_to.title_filter(p[:title] || "")
+  end
 
-
+=begin
   def assigned_or_created
     with_scope( :find => { :conditions => [ 'sender_id = ?', sender.id ] } ) do
       received_whispers.find(:all)
     end
   end
+=end
 
 end

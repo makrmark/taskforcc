@@ -1,16 +1,9 @@
-<h4 class="breadcrumb"><%= breadcrumb %> Tasks
-<span> &bull;
-  <%= link_to_function 'Details' do |page|
-    page.select('div.task-footer').each do |value|
-      value.toggle
-    end
-  end %></span>
- </h4>
+<h4 class="breadcrumb"><%= breadcrumb %> Tasks</h4>
 
 <%= render :partial => 'shared/multifunction_tabs' %>
 
 <div id="task-container">
-  <% if @collaboration.tasks.empty? %>
+  <% if @collaboration.find_tasks(params).empty? %>
   
     <div class="empty-message" id="task-empty-message">
       No tasks match this selection &bull;
@@ -22,7 +15,8 @@
     </div>
   <% else %>
     <div id="task-empty-message"></div>
-    <%= render(:partial => 'shared/task_container', :collection => @collaboration.tasks )%>
+    <%= render :partial => 'shared/task_container', 
+      :collection => @collaboration.find_tasks(params) %>
   <% end%>
 </div>
 

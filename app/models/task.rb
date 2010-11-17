@@ -1,6 +1,5 @@
 class Task < ActiveRecord::Base
   belongs_to :topic
-
   belongs_to :collaboration
 
   # See: CollaborationUserTask model class
@@ -29,6 +28,11 @@ class Task < ActiveRecord::Base
     :class_name => 'User',
     :primary_key => 'id',
     :foreign_key => 'assigned_to'  
+
+  # http://railscasts.com/episodes/108-named-scope
+  # http://refactormycode.com/codes/788-advanced-search-form-named-scopes
+  # http://apidock.com/rails/ActiveRecord/NamedScope/ClassMethods/named_scope
+  named_scope :title_filter, lambda {|t| {:conditions => ["title like ?", "%#{t}%"]}}
     
   validates_associated :collaboration => "could not be found"  
   validates_associated :topic => "could not be found"
@@ -45,6 +49,8 @@ class Task < ActiveRecord::Base
     :in => %w{Task Risk Issue Query Defect Decision}
     
   # Return the states possible by the current user and for current task status
+  # TODO: review acts_as_state_machine
+  # http://agilewebdevelopment.com/plugins/acts_as_state_machine
   def valid_states_by_user(uid)
     vsbcs = Task.valid_next_states(status)
     vsbcr = Task.valid_states_by_collaboration_role(collaboration_role(uid))

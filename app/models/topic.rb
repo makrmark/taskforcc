@@ -5,5 +5,9 @@ class Topic < ActiveRecord::Base
   has_many :favourites
 
   validates_presence_of :name, :controller, :collaboration_id
+
+  def find_tasks(p)
+      self.tasks.title_filter(p[:title] || "")
+  end
   
 end

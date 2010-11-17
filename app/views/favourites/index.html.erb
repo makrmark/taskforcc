@@ -12,7 +12,8 @@
     <div id="task-empty-message"></div>
     
     <% @collaboration.favourites(@current_user.id).each do |fav| %>
-      <%= render(:partial => 'shared/task_container', :object => fav.task ) %>
+      <%= render(:partial => 'shared/task_container', 
+        :object => fav.task ) %>
     <% end %>
   <% end %>
 </div>

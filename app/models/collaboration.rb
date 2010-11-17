@@ -27,25 +27,18 @@ class Collaboration < ActiveRecord::Base
     :on => :update,
     :message => " cannot update system record"
   
+  # TODO: implement search on Favourites
   def favourites(uid)
     Favourite.find(:all,
       :conditions => ["collaboration_id = ? AND user_id = ?", self.id, uid],
       :order => 'created_at DESC')
   end
-  
-private
 
-=begin
-  # returns true if it is not a system (eg: Personal) collaboration
-  def non_system
-    if is_system
-      self.errors.add(:is_system, ": can't update system records")
-      return false;
-    else
-      return true;
-    end    
+  def find_tasks(p)
+      self.tasks.title_filter(p[:title] || "")
   end
-=end
+    
+private
 
   # Add the user to the collaboration as a Manager
   # And setup the default 'Unfiled' topic with the user as Controller
