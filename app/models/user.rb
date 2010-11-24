@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :collaboration_users
   has_many :collaborations, 
     :through => :collaboration_users,
-    :order => "SUBJECT ASC"
+    :order => "IS_SYSTEM DESC, SUBJECT ASC"
   has_many :comments
   has_many :favourites
 

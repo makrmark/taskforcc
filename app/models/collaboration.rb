@@ -3,7 +3,7 @@ class Collaboration < ActiveRecord::Base
 
   has_many :tasks, :order => "id DESC"
   has_many :collaboration_users
-  has_many :topics, :order => "system_name DESC, name ASC"
+  has_many :topics, :order => "sortorder ASC, name ASC"
   has_many :users, :through => :collaboration_users, :order => "full_name ASC"
   has_one  :unfiled_topic, 
     :class_name => 'Topic', 
@@ -57,7 +57,8 @@ private
       :collaboration_id => self.id,
       :is_system => true,
       :system_name => 'unfiled',
-      :name => 'Unfiled'
+      :name => 'Unfiled',
+      :sortorder => -1000
     )
     unfiled_topic.save!
 
@@ -66,7 +67,8 @@ private
       :collaboration_id => self.id,
       :is_system => true,
       :system_name => 'archived',
-      :name => 'Archived'
+      :name => 'Archived',
+      :sortorder => 1000
     )
     archived_topic.save!
   end

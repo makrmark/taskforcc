@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101108172935) do
+ActiveRecord::Schema.define(:version => 20101124153643) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20101108172935) do
     t.datetime "updated_at"
     t.boolean  "is_system",        :default => false, :null => false
     t.string   "system_name"
+    t.integer  "sortorder",        :default => 0,     :null => false
   end
 
   add_index "topics", ["collaboration_id"], :name => "index_topics_on_collaboration_id"

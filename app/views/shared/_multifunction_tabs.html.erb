@@ -101,7 +101,8 @@
   <div id="details" style="display:none;" class='mf-tab body'>
     <b>Status:</b> <%= @collaboration.status -%><br />
     <%# http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#method-i-simple_format -%>
-    <b>Description:</b> <%= simple_format @collaboration.description -%><br />
+    <b>Description:</b> <%= simple_format @collaboration.description -%>
+    <br />
     <% unless @collaboration.is_system %>
       <%= link_to 'Edit', edit_collaboration_path(@collaboration) -%>
     <% end %>
@@ -111,6 +112,10 @@
   <% unless @topic.nil? -%>
   <div id="topic" style="display:none;" class='mf-tab body'>
     <b>Controller:</b> <%= @topic.user.full_name %>    
+    <br />
+    <% unless @topic.is_system %>
+      <%= link_to 'Edit', edit_collaboration_topic_path(@collaboration, @topic) -%>
+    <% end %>
   </div>    
   <% end -%>
 

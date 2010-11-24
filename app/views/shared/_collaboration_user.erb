@@ -15,7 +15,9 @@
       <%= link_to 'Show', collaboration_collaboration_user_path(
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
-      ) %> &bull;
+      ) %>
+<% unless @collaboration.is_system %>
+ &bull;
       <%= link_to 'Edit', edit_collaboration_collaboration_user_path(
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
@@ -28,5 +30,5 @@
     </li>    
     <% end %>
   </ul>
-  <hr />
+<% end %>
 </div>

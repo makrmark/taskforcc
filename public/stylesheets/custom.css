@@ -7,6 +7,7 @@ body {
   background: f1f1f1;
   font-size: 100%;
   font-family: "lucida grande", tahoma, arial, helvetica;
+  overflow-y: scroll;
 }
 
 h4 {
@@ -170,20 +171,22 @@ ul.tam ul {
   visibility: hidden;
   position: absolute;
   top: 100%;
-  width: 100%;  
+  width: 10em;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
 }
 ul.tam ul li {
   float: none;
   z-index: 250;
   position: relative;
 
-  font-size: 1.0em;
   background-color: white;
+  font-size: 1.0em;
   line-height: 1.2em;
-  width: 10em;
-  border-style: solid;
-  border-color: lightgrey;
-  border-width: thin;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  border-bottom-width: thin;
 }
 /* we don't go 3 deep
 ul.tam ul ul {
@@ -363,7 +366,7 @@ div.task {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-color: lightgrey;
-  min-height: 60px;
+  min-height: 55px;
 }
 div.task-left {
   float: left;
@@ -374,19 +377,14 @@ div.task-right {
   margin-left: 2px;  
 }
 div.task-content {
-  padding: 0px 50px 0px 50px;  
+  padding: 0px 50px 0px 50px;
 }
 
 div.task-header {
   color: grey;
   margin-bottom: 2px;
   padding-left: 2px;
-/*
-  border-style: solid;
-  border-width: 1px;
-  border-color: lightgrey;
-  background-color:#F4F4F4;
-  */
+  height: 17px;
 }
 span.task-assigned {
   float: right;
@@ -412,7 +410,7 @@ div.task-footer {
   border-width: 1px;
   border-color: #AAAACC;
   background-color: #F4F4F4;
-  min-height: 20px;
+  min-height: 40px;
 }
 div.task-details {
 }

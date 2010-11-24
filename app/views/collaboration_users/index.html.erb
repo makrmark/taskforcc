@@ -4,4 +4,7 @@
     :collection => @collaboration_users,
     :locals => { :show_actions => true } )%>
 
-<%= button_to 'Invite Someone', new_collaboration_collaboration_user_path, :method=> 'get' %>
+<% unless @collaboration.is_system %>
+  <%= button_to 'Invite Someone', new_collaboration_collaboration_user_path, :method=> 'get' %>
+<% end %>
+  

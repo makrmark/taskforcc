@@ -24,33 +24,38 @@ module ApplicationHelper
     span
   end
 
+  #
+  # Menu for changing topics
+  # 
+  def menu_for_topics(collaboration, task)
+      "<li><i class='Topics'></i>Topics ▼ #{submenu_for_topics(collaboration, task)}</li>"
+  end
+  def submenu_for_topics(collaboration, task)
+    menu_items = ""
+    collaboration.topics.each do |t|
+      menu_items << "<li>#{link_for_chgtopic(task, t)}</li>" unless
+        t.id == task.topic_id # can't assign to already-assigned topic
+    end
+    "<ul class='dir' id='tasm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
+  end
+
+  #
+  # Menu for changing status
+  #
   def menu_for_status(task, stat)
     case stat
     when 'Assigned' # submenu is the collaboration user list
-      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)}▼ #{submenu_for_assignment(task)}</li>"
+      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)} ▼ #{submenu_for_assignment(task)}</li>"
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
       "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
-      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)}▼ #{submenu_for_resolution(task, stat)} </li>"
+      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)} ▼ #{submenu_for_resolution(task, stat)} </li>"
     end
   end
 
-=begin
-  # for the submenu toggling
-  # http://www.devarticles.com/c/a/Ruby-on-Rails/Introducing-scriptaculous/2/
-  def toggle_link_for_assignment(task, stat)
-    label = label_for_status(stat)
-    link_to_function label,
-        "new Effect.toggle('tasm_assigned_#{dom_id(task)}')"    
-  end
-
-  def toggle_link_for_resolution(task, stat)
-    label = label_for_status(stat)
-    link_to_function label,
-        "new Effect.toggle('trsm_#{stat}_#{dom_id(task)}')"
-  end
-=end
-
+  #
+  # SubMenu for changing Assignment
+  #
   def submenu_for_assignment(task)
     menu_items = ""
     menu_items = "<li>#{link_for_chgassign(task, @current_user.id, 'Me')}</li>"
@@ -64,6 +69,9 @@ module ApplicationHelper
     "<ul class='dir' id='tasm_assigned_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
+  #
+  # SubMenu for Resolution
+  #
   def submenu_for_resolution(task, stat)
     menu_items = ""
     
@@ -77,7 +85,7 @@ module ApplicationHelper
   def label_for_status(stat)
     case stat
     when 'Assigned'
-      'Assign'
+      'Team'
     when 'Accepted'
       'Accept'
     when 'Resolved'
@@ -115,4 +123,16 @@ module ApplicationHelper
       )
     )
   end  
+  
+  def link_for_chgtopic(task, t)
+    link_to_remote(t.name, 
+      :url => chgstatus_collaboration_task_path({
+        :collaboration_id => task.collaboration_id,
+        :id => task.id,
+        :topic_id => t.id
+        }
+      )
+    )
+  end
+
 end

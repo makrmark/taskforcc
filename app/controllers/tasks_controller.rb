@@ -160,10 +160,11 @@ class TasksController < ApplicationController
   def chgstatus
     @task = Task.find(params[:id])
 
-    @task.status     = params[:status]
-    @task.resolution = params[:resolution]
-    @task.updated_by = session[:user_id]
+    @task.topic_id   = params[:topic_id]    if params[:topic_id]
+    @task.status     = params[:status]      if params[:status]
+    @task.resolution = params[:resolution]  if params[:resolution]
     @task.assigned_to= params[:assigned_to] if params[:assigned_to]
+    @task.updated_by = session[:user_id]
 
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
