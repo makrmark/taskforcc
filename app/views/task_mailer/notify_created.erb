@@ -1,0 +1,12 @@
+A new Task has been created and assigned to you:
+
+Title: <%= @task.title %>
+Created By: <%= @task.user_created_by.full_name %>
+Created At: <%= @task.created_at %>
+
+Filed under:
+Taskforcc: <%= @task.collaboration.subject %>
+Topic: <%= @task.topic.name %>
+
+-- The taskfor.cc team
+http://taskfor.cc/

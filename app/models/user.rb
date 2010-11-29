@@ -1,7 +1,6 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-  after_create :create_personal_collaboration
 #  https://github.com/GUI/after_commit
 #  after_commit :send_welcome
 
@@ -104,20 +103,6 @@ protected
 
 
 private
-
-  # create the Personal collaboration for the user
-  def create_personal_collaboration
-    
-    collaboration = Collaboration.new(
-      :is_system => true,
-      :subject => 'Personal',
-      :description => 'Your private and personal taskforcc.',
-      :created_by => self.id,
-      :status => 'Open'
-    )    
-    collaboration.save!
-    
-  end
   
   def password_non_blank
     errors.add(:password, "Missing password") if hashed_password.blank?

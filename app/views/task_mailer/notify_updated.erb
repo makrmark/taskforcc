@@ -1,0 +1,14 @@
+A Task assigned to you has been updated:
+
+Title: <%= @task.title %>
+Status: <%= @task.status %>
+Resolution: <%= @task.resolution %>
+Updated By: <%= @task.user_updated_by.full_name %>
+Updated At: <%= @task.updated_at %>
+
+Filed under:
+Taskforcc: <%= @task.collaboration.subject %>
+Topic: <%= @task.topic.name %>
+
+-- The taskfor.cc team
+http://taskfor.cc/
