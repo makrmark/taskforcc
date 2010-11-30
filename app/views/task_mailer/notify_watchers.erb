@@ -1,13 +1,12 @@
-A Task assigned to you has been updated:
+A Task you are watching has been updated:
 
 Title: <%= @task.title %>
-Filed under: <%= @task.collaboration.subject %> » <%= @task.topic.name %>
 Status: <%= @task.status %>
 Resolution: <%= @task.resolution %>
+Filed under: <%= @task.collaboration.subject %> » <%= @task.topic.name %>
 
 Updated By: <%= @task.user_updated_by.full_name %>
 Updated At: <%= @task.updated_at %>
-
 
 -- The taskfor.cc team
 http://taskfor.cc/

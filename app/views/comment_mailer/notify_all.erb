@@ -1,0 +1,12 @@
+<%= @comment.user.full_name %> has commented on a Task at <%= @comment.created_at %>.
+
+Comments:
+<%= @comment.comment %>
+
+Task Title: <%= @task.title %>
+Task Status: <%= @task.status %>
+Resolution: <%= @task.resolution %>
+Filed under: <%= @task.collaboration.subject %> » <%= @task.topic.name %>
+
+-- The taskfor.cc team
+http://taskfor.cc/

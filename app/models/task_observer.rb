@@ -4,5 +4,6 @@ class TaskObserver < ActiveRecord::Observer
   end
   def after_update(task)
     TaskMailer.deliver_notify_updated(task)
+    TaskMailer.deliver_notify_watchers(task)
   end
 end
