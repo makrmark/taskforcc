@@ -1,7 +1,0 @@
-Usage, in a view:
-
-  <img src="<%= gravatar_url 'darthapo@gmail.com' %>" />
-
-Advanced stuff:
-
-  <img src="<%= gravatar_url 'darthapo@gmail.com', :default=>'no-icon.png', :size=>100 %>" />
