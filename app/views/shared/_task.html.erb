@@ -21,7 +21,7 @@
       <% task.valid_states_by_user(@current_user).each do |status| %>
         <%= menu_for_status(task, status) %>
       <% end %>
-      <%= menu_for_topics(@collaboration, task) %>
+      <%= menu_for_topics(task.collaboration, task) %>
     </ul>
     <%= inverse_breadcrumb :collaboration => task.collaboration, 
       :topic => task.topic,
