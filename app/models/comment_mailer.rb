@@ -17,7 +17,7 @@ class CommentMailer < ActionMailer::Base
 
     subject    "New Task Comments: #{task.title}"
     recipients all_recipients
-    from       'notifications@taskfor.cc'
+    from       "Taskforcc <notifications@taskfor.cc>"
     sent_on    Time.now
     body       :comment => comment, :task => task
   end

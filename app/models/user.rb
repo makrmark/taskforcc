@@ -1,9 +1,6 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-#  https://github.com/GUI/after_commit
-#  after_commit :send_welcome
-
   has_many :collaboration_users
   has_many :collaborations, 
     :through => :collaboration_users,
@@ -42,7 +39,6 @@ class User < ActiveRecord::Base
   # http://www.regular-expressions.info/email.html
   validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
   validates_uniqueness_of :email
-
 
   # http://www.sitepoint.com/blogs/2008/10/06/timezones-in-rails-21/
   def self.authenticate(email, password)

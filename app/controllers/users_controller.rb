@@ -100,6 +100,9 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
+  def avatar 
+    @current_user = User.find(session[:user_id])    
+  end
 
 end

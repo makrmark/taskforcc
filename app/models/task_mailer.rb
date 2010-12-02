@@ -3,7 +3,7 @@ class TaskMailer < ActionMailer::Base
   def notify_created(task)
     subject    "Task Updated: #{task.title}"
     recipients task.user_assigned_to.email
-    from       'notifications@taskfor.cc'
+    from       "Taskforcc <notifications@taskfor.cc>"
     sent_on    Time.now    
     body       :task => task
   end
@@ -11,7 +11,7 @@ class TaskMailer < ActionMailer::Base
   def notify_updated(task)
     subject    "Assigned Task Updated: #{task.title}"
     recipients task.user_assigned_to.email
-    from       'notifications@taskfor.cc'
+    from       "Taskforcc <notifications@taskfor.cc>"
     sent_on    Time.now
     body       :task => task
   end
@@ -25,7 +25,7 @@ class TaskMailer < ActionMailer::Base
     
     subject    "Watched Task Updated: #{task.title}"
     recipients watchers
-    from       'notifications@taskfor.cc'
+    from       "Taskforcc <notifications@taskfor.cc>"
     sent_on    Time.now
     body       :task => task
   end

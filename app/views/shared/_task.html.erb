@@ -12,8 +12,7 @@
   <i class="ts <%= stat %>" title="<%= stat + res %>"></i>  
 </div>
 <div class="task-right">
-  <img title="Responsible" class="avatar" 
-    src="/images/Anonymous.jpeg" /> 
+  <%= avatar_for(task.user_assigned_to) %>
   <br />
 </div>
 <div class="task-content">

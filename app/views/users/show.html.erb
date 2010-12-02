@@ -1,4 +1,5 @@
 <%= render 'shared/user_detailed_profile', :object => @user %>
 
-<%= link_to 'Edit Profile', edit_user_path(@user) %> |
-<%= link_to 'Change Password', chgpass_user_path(@user) %>
+<%= link_to 'Edit Profile', edit_user_path(@user) %> &bull;
+<%= link_to 'Change Password', chgpass_user_path(@user) %> &bull;
+<%= link_to 'Change Image', avatar_user_path(@user) %>

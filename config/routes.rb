@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, 
     :member => {
+      :avatar  => :get,
       :chgpass => :get,
       :setpass => :put
     }

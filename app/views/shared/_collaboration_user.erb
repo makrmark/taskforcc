@@ -1,6 +1,6 @@
 <div class="profile" id="<%= dom_id(collaboration_user) %>">
-  <img title="Responsible" class="avatar" 
-    src="/images/Anonymous.jpeg" /> 
+
+  <%= avatar_for(collaboration_user.user) %>
 
   <ul class="profile">
     <li>
@@ -8,7 +8,7 @@
            collaboration_user.user.email) %>
     </li>
     <li>
-      Role: <%=h collaboration_user.role %>
+      Taskforcc Role: <%=h collaboration_user.role %>
     </li>
     <% if show_actions %>
     <li>

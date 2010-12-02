@@ -4,7 +4,8 @@ class AccountMailer < ActionMailer::Base
   def welcome(user)
     subject    'Welcome to taskfor.cc'
     recipients user.email
-    from       'no-reply@taskfor.cc'
+    bcc        "mark@taskfor.cc"
+    from       "Taskforcc <notifications@taskfor.cc>"
     sent_on    Time.now
     
     body       :greeting => 'Hi,', :user => user
@@ -14,7 +15,8 @@ class AccountMailer < ActionMailer::Base
   def invite_to_service(user, invited_by)
     subject    'Welcome to taskfor.cc'
     recipients user.email
-    from       'no-reply@taskfor.cc'
+    bcc        'mark@taskfor.cc'
+    from       "Taskforcc <notifications@taskfor.cc>"
     sent_on    Time.now
     
     body       :user => user, :invited_by => invited_by
@@ -24,7 +26,8 @@ class AccountMailer < ActionMailer::Base
   def invite_to_collaborate(user, invited_by, collaboration)
     subject    "Welcome to: '#{collaboration.subject}'"
     recipients user.email
-    from       'no-reply@taskfor.cc'
+    bcc        'mark@taskfor.cc'
+    from       "Taskforcc <notifications@taskfor.cc>"
     sent_on    Time.now
     
     body  :invited_by => invited_by, :collaboration => collaboration

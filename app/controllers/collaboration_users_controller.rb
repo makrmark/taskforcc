@@ -84,7 +84,7 @@ class CollaborationUsersController < ApplicationController
       if @collaboration_user.save
 
         # send the invite email
-        AccountMailer.deliver_invite(user_to_add, @current_user, @collaboration)
+        AccountMailer.deliver_invite_to_collaborate(user_to_add, @current_user, @collaboration)
         
         format.html { redirect_to(collaboration_collaboration_users_path(@collaboration), 
             :notice => 'Invitation Sent!') }

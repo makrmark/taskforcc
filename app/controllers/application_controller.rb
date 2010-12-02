@@ -29,7 +29,7 @@ protected
   end
 
   def authorize
-    if params[:controller].eql? "pages"      
+    if params[:controller].eql? "pages"
       return
     end
     unless User.find_by_id(session[:user_id])
@@ -37,19 +37,6 @@ protected
       flash[:notice] = "You must log in to access this resource"
       redirect_to url_for :controller => 'access', :action => 'login'
     end
-  end
-  
-
-  # http://overhrd.com/?p=28
-  # plain old gravatar url <%= gravatar_url_for 'greenisus@gmail.com' %>    
-  # gravatar url with a rating threshold <%= gravatar_url_for 'greenisus@gmail.com', { :rating => 'R' } %>    
-  # show the avatar   <%= image_tag(gravatar_url_for 'greenisus@gmail.com')%>   
-  # show the avatar with size specified, in case it's served slowly  <%= image_tag(gravatar_url_for('greenisus@gmail.com'), { :width => 80, :height => 80 }) %>    
-  # link the avatar to some/url  <%= link_to(image_tag(gravatar_url_for 'greenisus@gmail.com'), 'some/url')%> 
-  def gravatar_url_for(email, options = {})      
-    url_for({ :gravatar_id => Digest::MD5.hexdigest(email), :host => 'www.gravatar.com',                     
-          :protocol => 'http://', :only_path => false, :controller => 'avatar.php'                
-          }.merge(options))  
   end  
 
 end
