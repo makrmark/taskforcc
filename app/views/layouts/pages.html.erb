@@ -27,10 +27,9 @@
 <%= render :partial => 'access/signup_bar' %>
 
 <div id="pages_body">
-<h1>Taskforcc is currently in ALPHA TEST</h1>
-<p>You may lose any data entered into this system at any time without warning</p>
 
-
+    <%= render :partial => 'shared/dev_disclaimer.html.erb' %>
+    
     <%= yield %>
 </div>
 <div class="clear"></div>

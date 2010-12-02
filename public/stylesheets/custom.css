@@ -692,3 +692,15 @@ div#mf-tab-container {
   padding: 3px;
   margin-bottom: 10px;
 }
+
+
+.disclaimer {
+  color: red;
+}
+div.disclaimer {
+  border-width: 5px;
+  border-style: dashed;
+  border-color: red;
+  padding: 10px;
+  text-align: center;
+}
