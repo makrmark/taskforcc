@@ -14,10 +14,15 @@ h4 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-h4.breadcrumb>span, h4.breadcrumb>span>a, 
-h4.sidebar>span, h4.sidebar>span>a {
+h4.breadcrumb>span, h4.breadcrumb>span>a,
+h4.sidebar>span>a  {
   color: lightgrey;
 }
+h4.sidebar>span {
+  color: lightgrey;
+  float: right;
+}
+
 div.sidebar {
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -124,6 +129,9 @@ http://www.lwis.net/free-css-drop-down-menu/dropdown.simple.horizontal.html
 div.task:hover ul.tam  {
   visibility: visible;
 }
+div.task:hover ul.tam.assignment {
+  color: black;  
+}
 ul.tam, ul.tam li, ul.tam ul {
   list-style: none;
   margin: 0;
@@ -143,6 +151,13 @@ ul.tam.footer {
   border-bottom-color: white;
   visibility: visible;
 }
+ul.tam.assignment {
+  float: left;
+  visibility: visible;
+  color: lightgrey;
+}
+
+
 ul.tam li {
   float: left;
   line-height: 1em;
@@ -156,6 +171,9 @@ ul.tam li {
 }
 ul.tam li:hover {
   background-color: lightblue;
+}
+ul.tam li.noaction:hover {
+  background-color: inherit;  
 }
 ul.tam li a {
   text-decoration: none;
@@ -220,7 +238,7 @@ i.Favourites { background-position: -33px -20px; }
 i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
 i.Tags       { background-position: -33px -52px; }
-div.task-left {
+div.task-right {
   display: inline-block;
   height: 45px;
   width: 45px;

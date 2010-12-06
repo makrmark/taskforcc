@@ -28,7 +28,7 @@ module ApplicationHelper
   # Menu for changing topics
   # 
   def menu_for_topics(collaboration, task)
-      "<li><i class='Topics'></i>Topics ▼ #{submenu_for_topics(collaboration, task)}</li>"
+      "<li>#{task.topic.name} ▼ &raquo; #{submenu_for_topics(collaboration, task)}</li>"
   end
   def submenu_for_topics(collaboration, task)
     menu_items = ""
@@ -40,12 +40,23 @@ module ApplicationHelper
   end
 
   #
+  # Menu for changing Assignment
+  #
+  def menu_for_assignment(cusr, task)    
+    if task.valid_states_by_user(cusr).include?('Assigned')
+      "<li>#{task.user_assigned_to.full_name} ▼ #{submenu_for_assignment(task)}</li>"
+    else 
+      "<li>#{task.user_assigned_to.full_name}</li>"
+    end
+  end
+
+  #
   # Menu for changing status
   #
   def menu_for_status(task, stat)
     case stat
     when 'Assigned' # submenu is the collaboration user list
-      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)} ▼ #{submenu_for_assignment(task)}</li>"
+      # do nothing - see menu_for_assignment
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
       "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
@@ -58,7 +69,7 @@ module ApplicationHelper
   #
   def submenu_for_assignment(task)
     menu_items = ""
-    menu_items = "<li>#{link_for_chgassign(task, @current_user.id, 'Me')}</li>"
+    menu_items = "<li>#{link_for_chgassign(task, @current_user.id, 'Myself')}</li>"
 
     # TODO: this is quite a long chain - inefficient
     task.collaboration.users.each do |u|

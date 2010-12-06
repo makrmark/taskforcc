@@ -63,8 +63,8 @@ class Task < ActiveRecord::Base
   def self.valid_next_states(status)
     case status
     when 'New' then
-      # Assign it for resolution or Resolve it (in case of mistake)
-      ['Resolved', 'Assigned']
+      # Assign it for resolution or Resolve/Reject it (in case of mistake)
+      ['Resolved', 'Rejected', 'Assigned']
     when 'Assigned' then
       # Accept it or Reject it (or Re-Assign it)
       ['Accepted', 'Rejected', 'Assigned']

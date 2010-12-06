@@ -1,6 +1,9 @@
 <div class="task-left">
+  <%= avatar_for(task.user_assigned_to) %>
+</div>
+<div class="task-right">
   <span id="fav_<%= dom_id(task) %>" class="fav">
-  <%= render 'shared/task_favourite', :object => task %>
+    <%= render 'shared/task_favourite', :object => task %>
   </span>
   <br />
   <i class="tt <%= task.type %>" title="<%= task.type %>"></i>
@@ -11,23 +14,18 @@
       end %>
   <i class="ts <%= stat %>" title="<%= stat + res %>"></i>  
 </div>
-<div class="task-right">
-  <%= avatar_for(task.user_assigned_to) %>
-  <br />
-</div>
 <div class="task-content">
   <div class="task-header">
-    <ul class="tam">
+    <ul class="tam">      
       <% task.valid_states_by_user(@current_user).each do |status| %>
         <%= menu_for_status(task, status) %>
       <% end %>
-      <%= menu_for_topics(task.collaboration, task) %>
     </ul>
-    <%= inverse_breadcrumb :collaboration => task.collaboration, 
-      :topic => task.topic,
-      :user => task.user_assigned_to %>
-    <span class="user-name"><%= titled_text(task.user_assigned_to.full_name,
-      task.user_assigned_to.email) %></span>
+    <ul class="tam assignment">
+      <li class="noaction"><%= task.collaboration.subject %> &raquo; </li>
+      <%= menu_for_topics(task.collaboration, task) %>
+      <%= menu_for_assignment(@current_user, task) %>
+    </ul>
   </div>
   <b><%= link_to task.title , collaboration_task_path(
       :collaboration_id => task.collaboration_id,
