@@ -10,7 +10,7 @@
 
 <% @topics.each do |topic| %>
   <tr>
-    <td><%= link_to topic.name, collaboration_topic_path(
+    <td><%= link_to h(topic.name), collaboration_topic_path(
           :collaboration_id => topic.collaboration_id,
           :id => topic.id
       ) %></td>

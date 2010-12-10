@@ -1,12 +1,5 @@
-<li id="<%=dom_id(topic_li)%>"><%= link_to topic_li.name, 
+<li id="<%=dom_id(topic_li)%>"><%= link_to h(topic_li.name), 
   collaboration_topic_path(
     :collaboration_id => topic_li.collaboration_id,
     :id => topic_li.id
   ) %></li>
-
-<%= drop_receiving_element dom_id(topic_li),
-  :accept => 'task',
-  :hoverclass => 'hover',
-  :with => "'task_id=' + encodeURIComponent(element.id.split('_'.last()))",
-  :url  => url_for([@collaboration, topic_li]) + '/add_task'
-%>

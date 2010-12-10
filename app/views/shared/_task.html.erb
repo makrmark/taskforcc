@@ -22,12 +22,12 @@
       <% end %>
     </ul>
     <ul class="tam assignment">
-      <li class="noaction"><%= task.collaboration.subject %> &raquo; </li>
+      <li class="noaction"><%=h task.collaboration.subject %> &raquo; </li>
       <%= menu_for_topics(task.collaboration, task) %>
       <%= menu_for_assignment(@current_user, task) %>
     </ul>
   </div>
-  <b><%= link_to task.title , collaboration_task_path(
+  <b><%= link_to h(task.title) , collaboration_task_path(
       :collaboration_id => task.collaboration_id,
       :id => task.id
   ) %></b>  
@@ -51,7 +51,7 @@
 
     <% dst = "display:none;" unless task.comments.empty? %>
     <div class="task-details" id="<%= dom_id(task) %>_description" style="<%= dst %>">
-      <%= task.description %>
+      <%= h(task.description) %>
     </div>
 
     <% cst = "display:none;" if task.comments.empty? %>

@@ -75,5 +75,8 @@ class AccessController < ApplicationController
     
   def welcome
   end
+  
+  def denied
+  end
 
 end

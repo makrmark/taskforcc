@@ -8,27 +8,19 @@ module ApplicationHelper
 
   def breadcrumb
     span = ""
-    span += "#{@collaboration.subject}" unless @collaboration.nil?
-    span += " &raquo; #{@topic.name} " unless @topic.nil?
-    span += " &raquo; #{@collaboration_user.user.full_name}" unless 
+    span += "#{h @collaboration.subject}" unless @collaboration.nil?
+    span += " &raquo; #{h @topic.name} " unless @topic.nil?
+    span += " &raquo; #{h @collaboration_user.user.full_name}" unless 
       @collaboration_user.nil? || @collaboration_user.user.nil?
-    span += " &raquo; #{@task.title}" unless @task.nil?
+    span += " &raquo; #{h @task.title}" unless @task.nil?
     span
   end
   
-  def inverse_breadcrumb(h)
-    span = ""
-    span += "#{h[:collaboration].subject} &raquo;" if @collaboration.nil?
-    span += " #{h[:topic].name} &raquo;" if @topic.nil?
-#    span += " #{h[:user].full_name}" if @collaboration_user.nil?
-    span
-  end
-
   #
   # Menu for changing topics
   # 
   def menu_for_topics(collaboration, task)
-      "<li>#{task.topic.name} ▼ &raquo; #{submenu_for_topics(collaboration, task)}</li>"
+      "<li>#{h task.topic.name} ▼ &raquo; #{submenu_for_topics(collaboration, task)}</li>"
   end
   def submenu_for_topics(collaboration, task)
     menu_items = ""
@@ -44,9 +36,9 @@ module ApplicationHelper
   #
   def menu_for_assignment(cusr, task)    
     if task.valid_states_by_user(cusr).include?('Assigned')
-      "<li>#{task.user_assigned_to.full_name} ▼ #{submenu_for_assignment(task)}</li>"
+      "<li>#{h task.user_assigned_to.full_name} ▼ #{submenu_for_assignment(task)}</li>"
     else 
-      "<li>#{task.user_assigned_to.full_name}</li>"
+      "<li>#{h task.user_assigned_to.full_name}</li>"
     end
   end
 
@@ -87,7 +79,6 @@ module ApplicationHelper
     menu_items = ""
     
     Task.valid_resolutions(stat).each do |res|
-      logger.debug "Found valid state/resolution: #{stat} #{res}"
       menu_items << "<li>#{link_for_chgstatus(task, stat, res, res)}</li>"
     end    
     "<ul class='dir' id='trsm_#{stat}_#{dom_id(task)}'>#{menu_items}</ul>"
@@ -123,7 +114,7 @@ module ApplicationHelper
 
   # TODO: Assign to self sets status as 'Accepted'
   def link_for_chgassign(task, uid, label)
-    link_to_remote(label, 
+    link_to_remote(h(label), 
       :url => chgstatus_collaboration_task_path({
         :collaboration_id => task.collaboration_id,
         :id => task.id,
@@ -136,7 +127,7 @@ module ApplicationHelper
   end  
   
   def link_for_chgtopic(task, t)
-    link_to_remote(t.name, 
+    link_to_remote(h(t.name), 
       :url => chgstatus_collaboration_task_path({
         :collaboration_id => task.collaboration_id,
         :id => task.id,

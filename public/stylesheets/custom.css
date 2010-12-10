@@ -126,11 +126,14 @@ http://www.lwis.net/free-css-drop-down-menu/dropdown.simple.horizontal.html
   visibility: hidden;
   color: #555577;
 }
-div.task:hover ul.tam  {
+div.task ul.tam>li>a,
+div.task ul.tam {
   visibility: visible;
+  color: lightgrey;
 }
-div.task:hover ul.tam.assignment {
-  color: black;  
+div.task:hover ul.tam>li>a,
+div.task:hover ul.tam  {
+  color: black;
 }
 ul.tam, ul.tam li, ul.tam ul {
   list-style: none;
@@ -226,11 +229,17 @@ ul.tam li i, h4 i, i.ts {
   background-image: url('/images/sprites.png');  
   background-color: transparent;
 }
-ul.tam li i.Assign  { background-position: -65px -20px; }
-ul.tam li i.Accept  { background-position: -49px -20px; }
-ul.tam li i.Reject  { background-position: -97px -20px; }
-ul.tam li i.Resolve { background-position: -81px -20px; }
-ul.tam li i.Close   { background-position: -49px -20px; }
+i.Assign  { background-position: -65px -52px; }
+i.Accept  { background-position: -49px -52px; }
+i.Reject  { background-position: -97px -52px; }
+i.Resolve { background-position: -81px -52px; }
+i.Close   { background-position: -49px -52px; }
+div.task:hover i.Assign  { background-position: -65px -20px; }
+div.task:hover i.Accept  { background-position: -49px -20px; }
+div.task:hover i.Reject  { background-position: -97px -20px; }
+div.task:hover i.Resolve { background-position: -81px -20px; }
+div.task:hover i.Close   { background-position: -49px -20px; }
+
 ul.tam.footer li i.Description { background-position: -17px -36px; }
 ul.tam.footer li i.Comments    { background-position: -1px -36px; }
 ul.tam.footer li i.Attachments { background-position: -33px -36px; }
