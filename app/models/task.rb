@@ -33,10 +33,7 @@ class Task < ActiveRecord::Base
   # http://refactormycode.com/codes/788-advanced-search-form-named-scopes
   # http://apidock.com/rails/ActiveRecord/NamedScope/ClassMethods/named_scope
   named_scope :title_filter, lambda {|t| {:conditions => ["title like ?", "%#{t}%"]}}
-    
-  validates_associated :collaboration => "could not be found"  
-  validates_associated :topic => "could not be found"
-  
+      
   validates_presence_of :title, :type, :status, :resolution, 
     :created_by, :updated_by, :assigned_to, 
     :collaboration_id, :topic_id
@@ -51,10 +48,13 @@ class Task < ActiveRecord::Base
   # Return the states possible by the current user and for current task status
   # TODO: review acts_as_state_machine
   # http://agilewebdevelopment.com/plugins/acts_as_state_machine
-  def valid_states_by_user(uid)
+  def valid_states_by_user(user)
+    
+    was_assigned = user.id == assigned_to
+    
     vsbcs = Task.valid_next_states(status)
-    vsbcr = Task.valid_states_by_collaboration_role(collaboration_role(uid))
-    vsbtr = Task.valid_states_by_topic_role(is_topic_controller(uid))
+    vsbcr = Task.valid_states_by_collaboration_role(collaboration_role(user.id), was_assigned)
+    vsbtr = Task.valid_states_by_topic_role(is_topic_controller(user.id))
 
     vsbu = vsbcs & (vsbcr | vsbtr)
   end
@@ -97,14 +97,22 @@ class Task < ActiveRecord::Base
     end
   end
   
-  def self.valid_states_by_collaboration_role(role)
+  def self.valid_states_by_collaboration_role(role, was_assigned)
     case role
-    when 'Manager' then # Can do anything
+    when 'Manager' then # Can do anything, anytime
       ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', 'Closed']
     when 'Team' then # Only can't Close
-      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+      if was_assigned
+        ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+      else
+        ['Assigned']
+      end
     when 'Restricted' then # Re-assign, Accept, or Reject
-      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+      if was_assigned
+        ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+      else
+        []
+      end
     else # Others can't do anything
       []
     end    
