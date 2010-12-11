@@ -2,11 +2,11 @@ class TaskObserver < ActiveRecord::Observer
   # http://ar.rubyonrails.org/classes/ActiveRecord/Dirty.html
   # If a Task status has changed, make sure it is assigned to the correct user
   def before_update(task)
-    if task.status_changed?      
+    if task.status_changed?
       case task.status
-      when ['Resolved', 'Rejected', 'Closed']
+      when 'Resolved', 'Rejected', 'Closed'
         task.assigned_to = task.topic.controller
-      when ['Accepted']
+      when 'Accepted'
         task.assigned_to = task.updated_by
       end
     end             

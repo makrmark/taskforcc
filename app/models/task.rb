@@ -146,8 +146,10 @@ private
 
   # a single validation since the roles can intersect
   def valid_state_for_role?
+
+    was_assigned = updated_by == assigned_to
     
-    vsbcr = Task.valid_states_by_collaboration_role(collaboration_role(updated_by))
+    vsbcr = Task.valid_states_by_collaboration_role(collaboration_role(updated_by), was_assigned)
     vsbtr = Task.valid_states_by_topic_role(is_topic_controller(updated_by))
 
     vsbr = vsbtr | vsbcr
