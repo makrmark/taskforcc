@@ -217,6 +217,20 @@ ul.tam ul ul {
 */
 ul.tam li:hover > ul {
   visibility: visible;
+
+  /* http://www.tobypitman.com/jquery-style-menu-with-css3/ */
+  /* http://www.webdesignerwall.com/tutorials/css3-dropdown-menu/ */
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+
+  box-shadow: 2px 2px 4px #888;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+
+  transition: all 0.1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.3s ease-out;
 }
 
 /* Icons for the lists */
