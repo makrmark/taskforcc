@@ -173,7 +173,7 @@ ul.tam li {
   padding-right: 3px;
 }
 ul.tam li:hover {
-  background-color: lightblue;
+  background-color: lightgrey;
 }
 ul.tam li.noaction:hover {
   background-color: inherit;  

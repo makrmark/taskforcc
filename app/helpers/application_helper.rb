@@ -20,7 +20,7 @@ module ApplicationHelper
   # Menu for changing topics
   # 
   def menu_for_topics(collaboration, task)
-      "<li>#{h task.topic.name} ▼ &raquo; #{submenu_for_topics(collaboration, task)}</li>"
+      "<li>#{h task.topic.name} <small>▼</small> &raquo; #{submenu_for_topics(collaboration, task)}</li>"
   end
   def submenu_for_topics(collaboration, task)
     menu_items = ""
@@ -36,7 +36,7 @@ module ApplicationHelper
   #
   def menu_for_assignment(cusr, task)    
     if task.valid_states_by_user(cusr).include?('Assigned')
-      "<li>#{h task.user_assigned_to.full_name} ▼ #{submenu_for_assignment(task)}</li>"
+      "<li>#{h task.user_assigned_to.full_name} <small>▼</small> #{submenu_for_assignment(task)}</li>"
     else 
       "<li>#{h task.user_assigned_to.full_name}</li>"
     end
@@ -52,7 +52,7 @@ module ApplicationHelper
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
       "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
-      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)} ▼ #{submenu_for_resolution(task, stat)} </li>"
+      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)} <small>▼</small> #{submenu_for_resolution(task, stat)} </li>"
     end
   end
 
