@@ -27,10 +27,25 @@
       <%= menu_for_assignment(@current_user, task) %>
     </ul>
   </div>
-  <b><%= link_to h(task.title) , collaboration_task_path(
+	<%# http://www.paulwelty.com/ruby-on-rails/ruby-on-rails-using-a-different-controller-with-in_place_editor_field/ %>
+	<%# http://weeatbricks.com/2007/09/01/in_place_editor_field-method-in-ruby-on-rails/ %>	
+	<% @task = task %>
+	<%= in_place_editor_field "task", "title", 
+		{ :id => "task_title_#{@task.id}", :cancel_text => 'cancel', :save_text => 'ok', :size => 200 }, 
+		{ :url => set_task_title_collaboration_task_path(
+			:collaboration_id => task.collaboration_id,
+			:id => task.id
+		  ) } %>
+<!-- 
+
+{ :controller => 'tasks', :action => 'set_task_title', :id => @task.id} }
+
+  <small><%= link_to "more", collaboration_task_path(
       :collaboration_id => task.collaboration_id,
       :id => task.id
-  ) %></b>  
+  ) %></small> 
+-->
+<br>
   <span class="tta">
     Updated <%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
     task.user_created_by.email) %></span></span>  
@@ -51,7 +66,20 @@
 
     <% dst = "display:none;" unless task.comments.empty? %>
     <div class="task-details" id="<%= dom_id(task) %>_description" style="<%= dst %>">
-      <%= h(task.description) %>
+
+	<% @task = task %>
+	<span class="in_place_edit_hint" id='edit_task_description_<%= task.id %>'> &hellip; </span>
+	<%# http://www.w3schools.com/CSS/pr_text_white-space.asp %>
+	<span style="white-space: pre-line">
+	<%= in_place_editor_field "task", "description", 
+		{ :id => "task_description_#{@task.id}" }, 
+		{ :url => set_task_description_collaboration_task_path(
+			:collaboration_id => task.collaboration_id,
+			:id => task.id
+		  ),
+		:rows => 3, :cols => 50, :cancel_text => 'cancel', :save_text => 'ok', 
+		:external_control => "edit_task_description_#{task.id}" } %>
+	</span>
     </div>
 
     <% cst = "display:none;" if task.comments.empty? %>

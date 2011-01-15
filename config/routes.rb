@@ -6,7 +6,9 @@ ActionController::Routing::Routes.draw do |map|
       :member => {
         :chgstatus => :post,
         :favourite => :post,
-        :comment   => :post
+        :comment   => :post,
+        :set_task_title => :post,
+        :set_task_description => :post
       }
     collaboration.resources  :topics
     collaboration.resources  :favourites

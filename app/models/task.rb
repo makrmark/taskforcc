@@ -37,7 +37,9 @@ class Task < ActiveRecord::Base
   validates_presence_of :title, :type, :status, :resolution, 
     :created_by, :updated_by, :assigned_to, 
     :collaboration_id, :topic_id
-
+    
+  validates_length_of :title, :maximum => 150
+  
   validate :valid_state_transition?
   validate :valid_state_for_role?
   validate :valid_resolution?

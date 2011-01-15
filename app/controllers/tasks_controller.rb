@@ -1,5 +1,15 @@
 class TasksController < ApplicationController
   layout "collaborations"
+  
+  in_place_edit_for :task, :description
+
+  # in_place_edit_for :task, :title
+  # http://railsforum.com/viewtopic.php?id=1624
+  def set_task_title
+      @task = Task.find(params[:id])
+      @task.update_attributes(:title => params[:value])
+      render :text => @task.reload.title # reload so it returns the old name if it wasn't saved
+  end
 
   # Add a comment to a Task
   def comment
@@ -57,6 +67,7 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
+    @comment = Comment.new
 
     # when you list the tasks, set the return-to path
     session[:return_to] = request.request_uri

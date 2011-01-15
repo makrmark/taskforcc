@@ -160,7 +160,6 @@ ul.tam.assignment {
   color: lightgrey;
 }
 
-
 ul.tam li {
   float: left;
   line-height: 1em;
@@ -234,7 +233,7 @@ ul.tam li:hover > ul {
 }
 
 /* Icons for the lists */
-ul.tam li i, h4 i, i.ts {
+ul.tam li i, h4 i, i.ts  {
   display: inline-block;
   height: 15px;
   width: 15px;
@@ -254,9 +253,9 @@ div.task:hover i.Reject  { background-position: -97px -20px; }
 div.task:hover i.Resolve { background-position: -81px -20px; }
 div.task:hover i.Close   { background-position: -49px -20px; }
 
-ul.tam.footer li i.Description { background-position: -17px -36px; }
-ul.tam.footer li i.Comments    { background-position: -1px -36px; }
-ul.tam.footer li i.Attachments { background-position: -33px -36px; }
+i.Description { background-position: -17px -36px; }
+i.Comments    { background-position: -1px -36px; }
+i.Attachments { background-position: -33px -36px; }
 i.Favourites { background-position: -33px -20px; }
 i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
@@ -745,3 +744,13 @@ div.disclaimer {
   padding: 10px;
   text-align: center;
 }
+
+.in_place_edit_hint {
+	color: lightgrey;
+}
+.in_place_edit_hint:hover {
+	color: black;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
