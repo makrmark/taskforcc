@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   layout "collaborations"
-  
+
+# TODO: this is not necessary right now  
   in_place_edit_for :task, :description
 
   # in_place_edit_for :task, :title

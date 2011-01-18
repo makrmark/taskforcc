@@ -1,4 +1,16 @@
 class CollaborationsController < ApplicationController
+
+# TODO: Not needed yet  
+#  in_place_edit_for :collaboration, :description
+
+  # in_place_edit_for :collaboration, :subject
+  # http://railsforum.com/viewtopic.php?id=1624
+#  def set_collaboration_subject
+#      @collaboration = Collaboration.find(params[:id])
+#      @collaboration.update_attributes(:subject => params[:value])
+#      render :text => @collaboration.reload.subject # reload so it returns the old name if it wasn't saved
+#  end
+  
   # GET /collaborations
   # GET /collaborations.xml
   def index

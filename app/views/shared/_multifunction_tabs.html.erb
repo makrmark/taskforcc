@@ -99,6 +99,7 @@
     <% end %>
   </div>
   <div id="details" style="display:none;" class='mf-tab body'>
+    <b>Subject:</b> <%= @collaboration.subject -%><br />
     <b>Status:</b> <%= @collaboration.status -%><br />
     <%# http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#method-i-simple_format -%>
     <b>Description:</b> <%= simple_format @collaboration.description -%>

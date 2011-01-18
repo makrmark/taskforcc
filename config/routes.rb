@@ -21,6 +21,11 @@ ActionController::Routing::Routes.draw do |map|
       :chgpass => :get,
       :setpass => :put
     }
+  map.resources :collaborations,
+    :member => {
+      :set_collaboration_description => :post,
+      :set_collaboration_subject => :post
+    }    
 
   map.connect 'access/:action', :controller => 'access'
 
