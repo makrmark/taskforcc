@@ -1,6 +1,7 @@
 <%# TODO: refactor the javascript into a separate function %>
 <ul id="mf-tab-list" class="mf-tab">
-  <li class="mf-tab active" id="search-tab"><%= link_to_function 'Search Here' do |page|
+  <li class="mf-tab <%= "active" unless session[:active_tab].eql?("taskhere") -%>" 
+	id="search-tab"><%= link_to_function 'Search Here' do |page|
       page.select('div.mf-tab.body').each do |value|
         value.hide()
       end
@@ -13,7 +14,8 @@
     end
     %></li>
   <% unless @collaboration.nil? -%>
-  <li class="mf-tab" id="taskhere-tab"><%= link_to_function 'Task Here' do |page|
+  <li class="mf-tab  <%= "active" if session[:active_tab].eql?("taskhere") -%>" 
+	id="taskhere-tab"><%= link_to_function 'Task Here' do |page|
       page.select('div.mf-tab.body').each do |value|
         value.hide()
       end
@@ -68,7 +70,7 @@
   <% end -%>
 </ul>
 <div id="mf-tab-container">
-  <div id="search" class='mf-tab body'>
+  <div id="search" class='mf-tab body' style="<%= "display:none;" if session[:active_tab].eql?("taskhere") -%>">
     <%# http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.htm %>
     <% form_tag request.path, :method => 'get', 
       :class => 'qtf', :id=>'search_form' do %>
@@ -77,7 +79,7 @@
     <% end -%>
   </div>
   <% unless @collaboration.nil? -%>
-  <div id="taskhere" class='mf-tab body' style="display:none;">
+  <div id="taskhere" class='mf-tab body' style="<%= "display:none;" unless session[:active_tab].eql?("taskhere") -%>">
     <% remote_form_for [@collaboration, @task], 
       :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
       <%= f.error_messages %>

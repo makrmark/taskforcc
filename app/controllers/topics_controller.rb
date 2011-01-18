@@ -44,6 +44,11 @@ class TopicsController < ApplicationController
     # when you list the tasks, set the return-to path
     session[:return_to] = request.request_uri
 
+    if params[:commit].eql?("Search Here")
+      session[:active_tab] = "search"
+      logger.debug("Active tab set to search")
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @topic }

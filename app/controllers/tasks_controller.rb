@@ -130,11 +130,16 @@ class TasksController < ApplicationController
     @task.updated_by = session[:user_id]
     @current_user = User.find(session[:user_id])
     @task.collaboration_id = params[:collaboration_id]
-    
+        
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
     @topic_list = select_topic_list(@collaboration)    
     @comment = Comment.new()
+
+    if params[:commit].eql?("Task Here")
+      session[:active_tab] = "taskhere" 
+      logger.debug("Active tab set to taskhere")
+    end
 
     respond_to do |format|
       if @task.save
