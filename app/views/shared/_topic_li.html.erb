@@ -1,4 +1,9 @@
-<li id="<%=dom_id(topic_li)%>"><%= link_to h(topic_li.name), 
+<%
+	unless @topic.nil?
+ 		class_attribute = "class=\"active\"" if @topic == topic_li
+	end
+-%>
+<li <%= class_attribute -%>	id="<%= dom_id(topic_li) %>"><%= link_to h(topic_li.name), 
   collaboration_topic_path(
     :collaboration_id => topic_li.collaboration_id,
     :id => topic_li.id

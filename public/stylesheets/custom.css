@@ -4,7 +4,7 @@ body {
   padding: 0px;  
   margin: 0px;
   color: black;
-  background: f1f1f1;
+  background-color: white;
   font-size: 100%;
   font-family: "lucida grande", tahoma, arial, helvetica;
   overflow-y: scroll;
@@ -96,11 +96,25 @@ a:visited {
 }
 
 ul.sidebar {
-  padding-left: 15px;
-  list-style: square;
+  padding-left: 0px;
+  list-style: none;
   margin-top: 5px;
   font-size: 1em;
   line-height: 1.4em;
+}
+ul.sidebar>li {
+	border: 0px;
+	border-bottom: 1px;
+	border-style: solid;
+	border-color: white;
+/*	background-color: #f0f0f0; */
+	padding-left: 10px;
+}
+ul.sidebar>li:hover {
+	background-color: #e0e0e0;
+}
+ul.sidebar>li.active {
+	background-color: #c0c0c0;
 }
 
 div.empty-message {

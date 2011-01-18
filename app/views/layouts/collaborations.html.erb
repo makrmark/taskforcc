@@ -34,7 +34,12 @@
       <% else %>
         <ul class="sidebar">
           <% @current_user.collaborations.each do |collab| %>
-            <li><%= link_to h(collab.subject), collab %></li>
+			<%
+				unless @collaboration.nil?
+			 		class_attribute = "class=\"active\"" if @collaboration == collab
+				end
+			-%>
+            <li <%= class_attribute -%>><%= link_to h(collab.subject), collab %></li>
           <% end %>
         </ul>
       <% end %>        
