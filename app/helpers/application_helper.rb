@@ -20,15 +20,24 @@ module ApplicationHelper
   # Menu for changing topics
   # 
   def menu_for_topics(collaboration, task)
-      "<li>#{h task.topic.name} <small>▼</small> &raquo; #{submenu_for_topics(collaboration, task)}</li>"
+    link = link_to_function(task.topic.name) do |page|
+      page.select("ul.dir").each do |menu|
+        menu.addClassName("inactive")
+      end
+      page["tasm_topics_#{dom_id(task)}"].removeClassName("inactive")
+      page["tasm_topics_#{dom_id(task)}"].toggle
+    end
+    
+    "<li>#{link} <small>▼</small> &raquo; #{submenu_for_topics(collaboration, task)}</li>"
   end
+  
   def submenu_for_topics(collaboration, task)
     menu_items = ""
     collaboration.topics.each do |t|
       menu_items << "<li>#{link_for_chgtopic(task, t)}</li>" unless
         t.id == task.topic_id # can't assign to already-assigned topic
     end
-    "<ul class='dir' id='tasm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
+    "<ul style=\"display: none;\" class='dir' id='tasm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
   #
@@ -36,7 +45,16 @@ module ApplicationHelper
   #
   def menu_for_assignment(cusr, task)    
     if task.valid_states_by_user(cusr).include?('Assigned')
-      "<li>#{h task.user_assigned_to.full_name} <small>▼</small> #{submenu_for_assignment(task)}</li>"
+
+      link = link_to_function(task.user_assigned_to.full_name) do |page|
+        page.select("ul.dir").each do |menu|
+          menu.addClassName("inactive")
+        end
+        page["tasm_assigned_#{dom_id(task)}"].removeClassName("inactive")
+        page["tasm_assigned_#{dom_id(task)}"].toggle
+      end
+      
+       "<li>#{link} <small>▼</small> #{submenu_for_assignment(task)}</li>"
     else 
       "<li>#{h task.user_assigned_to.full_name}</li>"
     end
@@ -46,13 +64,21 @@ module ApplicationHelper
   # Menu for changing status
   #
   def menu_for_status(task, stat)
+    link = link_to_function(label_for_status(stat)) do |page|
+      page.select("ul.dir").each do |menu|
+        menu.addClassName("inactive")
+      end
+      page["trsm_#{stat}_#{dom_id(task)}"].removeClassName("inactive")
+      page["trsm_#{stat}_#{dom_id(task)}"].toggle
+    end
+
     case stat
     when 'Assigned' # submenu is the collaboration user list
       # do nothing - see menu_for_assignment
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
       "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
-      "<li><i class='#{label_for_status(stat)}'></i>#{label_for_status(stat)} <small>▼</small> #{submenu_for_resolution(task, stat)} </li>"
+      "<li><i class='#{label_for_status(stat)}'></i>#{link} <small>▼</small> #{submenu_for_resolution(task, stat)} </li>"
     end
   end
 
@@ -69,7 +95,7 @@ module ApplicationHelper
         u.id == task.assigned_to || # can't assign to already-assigned user
         u.id == @current_user.id    # can't assign to self (separate entry used)
     end
-    "<ul class='dir' id='tasm_assigned_#{dom_id(task)}'>#{menu_items}</ul>"
+    "<ul style=\"display: none;\" class='dir' id='tasm_assigned_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
   #
@@ -81,7 +107,7 @@ module ApplicationHelper
     Task.valid_resolutions(stat).each do |res|
       menu_items << "<li>#{link_for_chgstatus(task, stat, res, res)}</li>"
     end    
-    "<ul class='dir' id='trsm_#{stat}_#{dom_id(task)}'>#{menu_items}</ul>"
+    "<ul style=\"display: none;\" class='dir' id='trsm_#{stat}_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
   def label_for_status(stat)

@@ -184,6 +184,10 @@ ul.tam li {
   background-color: inherit;
   padding-left: 3px;
   padding-right: 3px;
+
+  position: relative;
+  cursor: default;
+
 }
 ul.tam li:hover {
   background-color: lightgrey;
@@ -197,18 +201,26 @@ ul.tam li a {
 ul.tam li a:hover {
   text-decoration: underline;
 }
-ul.tam li.hover, ul.tam li:hover {
-  position: relative;
-  cursor: default;
-}
 ul.tam ul {
-  visibility: hidden;
+  visibility: visible;
   position: absolute;
   top: 100%;
   width: 10em;
   border-width: 1px;
   border-color: black;
   border-style: solid;
+
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+
+  box-shadow: 2px 2px 4px #888;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+
+  transition: all 0.1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.3s ease-out;
 }
 ul.tam ul li {
   float: none;
@@ -228,22 +240,11 @@ ul.tam ul ul {
   left: 99%;
 }
 */
-ul.tam li:hover > ul {
-  visibility: visible;
 
-  /* http://www.tobypitman.com/jquery-style-menu-with-css3/ */
-  /* http://www.webdesignerwall.com/tutorials/css3-dropdown-menu/ */
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-
-  box-shadow: 2px 2px 4px #888;
-  -webkit-box-shadow: 2px 2px 4px #888;
-  -moz-box-shadow: 2px 2px 4px #888;
-
-  transition: all 0.1s ease-out;
-  -webkit-transition: all 0.1s ease-out;
-  -moz-transition: all 0.3s ease-out;
+/* http://www.tobypitman.com/jquery-style-menu-with-css3/ */
+/* http://www.webdesignerwall.com/tutorials/css3-dropdown-menu/ */
+ul.tam ul.inactive {
+  display: none;
 }
 
 /* Icons for the lists */
@@ -453,12 +454,6 @@ span.tta {
   color: darkgrey;
 }
 
-img.task-icon {
-  width: 45px;
-  height: 45px;  
-  border: 0px;
-  margin: 3px;
-}
 div.task-footer {
   border-style: solid;
   border-width: 1px;
@@ -466,8 +461,32 @@ div.task-footer {
   background-color: #F4F4F4;
   min-height: 40px;
 }
-div.task-details {
+div.task-title {
+	font-size: larger;
 }
+
+/* Task Details Styles */
+div.task-details {
+	padding: 5px;
+}
+div.task-details textarea.editor_field {
+	width: 95%;
+	height: 5em;
+}
+div.task-details span.in_place_edit_hint {
+	color: lightgrey;
+}
+div.task-details span.in_place_edit_hint:hover {
+	color: black;
+	text-decoration: underline;
+	cursor: pointer;
+}
+div.task-details span.in_place_edit_container {
+	white-space: pre-line; 
+	font-size: smaller; 
+	color:grey;"
+}
+
 span.CAPS {
   font-variant: small-caps;
 }
@@ -497,41 +516,10 @@ input[type="button"].tf.f, input[type="button"].tf.f:hover  {
   background-position: -33px -20px;    
 }
 
-/*
-div.collaboration {
-  background-color: lightgrey;
-  border: 1px;
-  border-color: darkgrey;
-  border-style: solid;
-  margin: 2px;
-  padding: 2px;
-}
-h2.collaboration {
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-span.collaboration-description {
-  font-size: 1.0em;  
-}
-span.collaboration-status {
-  font-size: 0.8em;
-  color: grey;
-}
-span.collaboration-actions {
-  float: right;
-  font-size: 0.8em;
-}
-
-div.collaboration.topic {
-  background-color: #eeeeee;
-}
-*/
-
 h3.topic {
   margin-top: 3px;
   margin-bottom: 3px;
 }
-
 
 form.qtf {
   text-align: center;
@@ -551,7 +539,7 @@ input.qtb {
 div.cc {
 }
 div.comment {
-  padding: 2px;
+  padding: 5px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: white;
@@ -559,7 +547,6 @@ div.comment {
 }
 input.cf {
   width: 95%;
-  margin: 2px;
 }
 
 /* Access page styles */
@@ -764,14 +751,5 @@ div.disclaimer {
   border-color: red;
   padding: 10px;
   text-align: center;
-}
-
-.in_place_edit_hint {
-	color: lightgrey;
-}
-.in_place_edit_hint:hover {
-	color: black;
-	text-decoration: underline;
-	cursor: pointer;
 }
 
