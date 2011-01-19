@@ -178,7 +178,6 @@ ul.tam li {
   float: left;
   line-height: 1em;
   vertical-align: middle;
-  zoom: 1;
   z-index: 110;
 
   background-color: inherit;
@@ -187,7 +186,6 @@ ul.tam li {
 
   position: relative;
   cursor: default;
-
 }
 ul.tam li:hover {
   background-color: lightgrey;
@@ -209,7 +207,10 @@ ul.tam ul {
   border-width: 1px;
   border-color: black;
   border-style: solid;
+  z-index: 200;
+  background-color: white;
 
+/* http://css3.bradshawenterprises.com/ */
   border-radius: 2px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -218,9 +219,13 @@ ul.tam ul {
   -webkit-box-shadow: 2px 2px 4px #888;
   -moz-box-shadow: 2px 2px 4px #888;
 
-  transition: all 0.1s ease-out;
-  -webkit-transition: all 0.1s ease-out;
-  -moz-transition: all 0.3s ease-out;
+/* transitions not really working since this element is rendered on load */
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+}
+ul.tam.footer, ul.tam.footer li {
+	z-index: 1;
 }
 ul.tam ul li {
   float: none;
@@ -234,12 +239,6 @@ ul.tam ul li {
   border-bottom-color: lightgrey;
   border-bottom-width: thin;
 }
-/* we don't go 3 deep
-ul.tam ul ul {
-  top: 1px;
-  left: 99%;
-}
-*/
 
 /* http://www.tobypitman.com/jquery-style-menu-with-css3/ */
 /* http://www.webdesignerwall.com/tutorials/css3-dropdown-menu/ */
