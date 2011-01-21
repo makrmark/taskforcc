@@ -1,50 +1,22 @@
-<div class="signup_title">Log in</div>
-<div class="signup_subtitle">Get straight to work!</div>
+<h2>Log in</h2>
+<h4>Get straight to work!</h4>
 
-<% form_tag url_for(:controller => 'access', :action => 'login'), :method => 'post' do %>
-<table class="signup">
-  <tbody>
-    <tr>
-      <td colspan="2">
-        <%# f.error_messages %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= label_tag :email %>
-      </td>
-      <td>
-        <%= text_field_tag :email, params[:email] %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= label_tag :password %>
-      </td>
-      <td>
-        <%= password_field_tag :password %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      </td>
-      <td>
-          <%= submit_tag "Login" , :class=> "signup" %>
-      </td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>
-      </td>
-      <td>
-        Forgotten your password?
-      </td>
-    </tr>
-  </tfoot>
-</table>
+<% form_tag url_for(:controller => 'access', :action => 'login'), :method => 'post', 
+	:class => "tabulated access" do %>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div>
+    <%= label_tag "" %>
+    <%= submit_tag "Login" %>
+  </div>
+  <div class="form_footer">
+    <%= label_tag "" %>
+    Forgotten your password?
+  </div>
 <% end %>
-
-<div id="notices">
-  <p style="color: green"><%= notice %></p>
-</div>    

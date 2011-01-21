@@ -10,6 +10,10 @@
     <%= f.text_field :subject %>
   </div>
   <div>
+    <%= f.label :status %>
+    <%= f.select :status, %w{ Open On-Hold Closed } %>
+  </div>
+  <div>
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>

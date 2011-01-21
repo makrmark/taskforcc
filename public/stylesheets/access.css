@@ -1,4 +1,10 @@
 /* Access page styles */
+a, a:visited, a:hover {
+	color: navy;
+}
+a:active {
+	color: red;
+}
 
 /* http://www.webmasterworld.com/forum83/4694.htm */
 div.login {
@@ -25,19 +31,30 @@ div#access_signup_bar {
   vertical-align:middle;
 }
 div#access_left {
-  margin-left: 100px;
-  width: 30%;
-  height: 500px;
+  width: 40%;
+  min-height: 500px;
   float: left;
   background-color: transparent;
   padding-top: 20px;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 div#access_right {
   width: 50%;
   float: right;
-  height: 500px;
+  min-height: 500px;
   background-color: transparent;
   padding-top: 20px;
+}
+
+div#access_body h1, 
+div#access_body h2, 
+div#access_body h3, 
+div#access_body h4, 
+div#access_body h5, 
+div#access_body h6
+{
+	color: navy;
 }
 
 div#access_header form {
@@ -61,7 +78,6 @@ table.login {
   display: inline;
   font-size: 12px;
 }
-
 table.login label {
   font-size: 12px;
   width: 100%;
@@ -71,59 +87,10 @@ table.login label {
   display: inline;
   margin-bottom: 2px;
 }
-
 table.login td.forgotten {
     color: lightblue;
 }
 
-input[type="submit"] {
-  display: inline;
-  font-size: 12px;
-  font-weight: bold;
-  color: white;
-  background-color: blue;
-  border-style: outset;
-  border-width: 1px;
-}
-
-input[type="text"].login, input[type="password"].login {
-  font-size: 12px;
-  border-width: 1px;
-  border-color: navy;
-  border-style: solid;
-  padding: 2px;
-}
-
-div.signup_title {
-  font-size: 24px;
-  font-weight: bold;
-  color: navy;
-}
-div.signup_subtitle {
-  font-size: 14px;
-  font-weight: bold;
-  color: navy;
-}
-table.signup label {
-  font-size: 14px;
-  font-weight: normal;
-  color: navy;
-  text-align: right;
-  display: inline;
-  margin-bottom: 2px;
-  padding-right: 5px;
-  width: 120px;
-}
-table.signup tfoot td {
-  font-size: 12px;
-  color: navy;
-}
-table.signup input[type="text"], 
-table.signup input[type="password"] {
-  font-size: 16px;
-  padding: 3px;
-  border-color: navy;
-}
 input[type="submit"].signup {
   display: inline;
   font-size: 14px;
@@ -154,14 +121,16 @@ div#pages_body {
   color: navy;
 }
 
-.disclaimer {
+div#disclaimer h1,
+div#disclaimer h5 {
   color: red;
 }
-div.disclaimer {
+div#disclaimer {
   border-width: 5px;
   border-style: dashed;
   border-color: red;
   padding: 10px;
   text-align: center;
+	margin-top: 50px;
 }
 

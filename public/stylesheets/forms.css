@@ -55,9 +55,41 @@ form.tabulated select {
 form.tabulated input[type="text"] {
 	width: 60%;
 }
-form.tabulated input[type="submit"] {
+form.tabulated input[type="password"] {
+	width: 40%;
+}
+form.tabulated input[type="submit"], 
+form.tabulated input[type="button"], 
+form.tabulated input[type="reset"], 
+{
 	margin: 2px 4px 6px 4px;
 	width: auto;
+}
+
+/*
+* Customisation for the Access pages
+*/
+form.tabulated.access {
+	margin-top: 20px;
+}
+form.tabulated.access * {
+	font-size: 0.8em;
+}
+form.tabulated.access label {
+	color: navy;
+	font-weight: bold;
+}
+form.tabulated.access input[type="text"],
+form.tabulated.access input[type="password"] {
+	font-size: 1.0em;
+	width: 40%;
+}
+form.tabulated.access input[type="submit"] {
+	font-size: 1.0em;
+}
+form.tabulated.access div.form_footer {
+	font-size: 0.7em;
+	color: navy;
 }
 
 /*

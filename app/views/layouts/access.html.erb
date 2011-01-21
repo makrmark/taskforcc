@@ -10,6 +10,7 @@
   <%= stylesheet_link_tag 'reset' %>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'custom' %>
+  <%= stylesheet_link_tag 'forms' %>
   <%= stylesheet_link_tag 'access' %>
 
 <meta name="description" content="taskfor.cc is a platform for removing some of the barriers to working efficiently with others." /> 
@@ -32,15 +33,15 @@
 
 <div id="access_body">
   <div id="access_left">
-
-    <%= render :partial => 'shared/dev_disclaimer.html.erb' %>
-
-    <div class="signup_subtitle">taskfor.cc makes your team more productive.</div>
+    <h4>taskfor.cc makes your team more productive.</h4>
     
     <ul>
       <li><%= link_to 'About taskfor.cc', url_for(:controller => 'pages', :action => 'about') %></li>
       <li><%= link_to 'Contact', url_for(:controller => 'pages', :action => 'contact') %></li>
     </ul>
+
+    <%= render :partial => 'shared/dev_disclaimer.html.erb' %>
+
   </div>
   <div id="access_right">  
     <div id="notices">
@@ -56,8 +57,6 @@
 
 <div id="footer">
   <hr />
-  <%=h (params[:controller] + ' / '+ params[:action])  %>
-  <%=h params.to_yaml %>
 </div>
   
 </body>
