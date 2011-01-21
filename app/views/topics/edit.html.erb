@@ -1,20 +1,20 @@
-<h4><%= breadcrumb  %> Edit</h4>
+<h4><%= breadcrumb  %> Edit Topic</h4>
 <hr />
 
-<% form_for [@collaboration, @topic] do |f| %>
+<% form_for [@collaboration, @topic], :html => { :class => "tabulated" } do |f| %>
   <%= f.error_messages %>
 
-  <p>
+  <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :controller %>
     <%= f.select :controller, @user_list %>
-  </p>
-  <p>
+  </div>
+  <div>
+    <%= f.label "" %>
     <%= f.submit 'Update' %>
-  </p>
+		<%= link_to 'Close', session[:return_to] || :back %>
+  </div>
 <% end %>
-
-<%= link_to 'Cancel', session[:return_to] || :back %>

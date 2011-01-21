@@ -1,5 +1,6 @@
-<p>Your profile image is displayed by Gravatar - "Your Globally Recognised Avatar".</p>
-
-<p>To set your profile image, <b><%= link_to "configure your profile at Gravatar", "http://www.gravatar.com/" %></b> using the same email address you use to login to taskfor.cc.</p>
-
+<p>Your profile image is displayed by <%= link_to "Gravatar", "http://www.gravatar.com/" %> - "Your Globally Recognised Avatar".</p>
+<br>
+<p>To set your profile image, <strong><%= link_to "configure your profile at Gravatar", "http://www.gravatar.com/" %></strong> using the same email address you used to register for taskfor.cc (<%=h @current_user.email %>).</p>
+<br>
+<%= link_to "Gravatar Website", "http://www.gravatar.com/" %> |
 <%= link_to 'Cancel', @current_user %>

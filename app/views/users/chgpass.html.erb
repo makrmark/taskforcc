@@ -1,42 +1,19 @@
-<% form_for @user, :url => setpass_user_path(@user)  do |f| %>
-<table class="signup">
-  <thead>
-    <tr>
-      <th colspan="2">Change Password</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="2">
-        <%= f.error_messages %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :new_password %>
-      </td>
-      <td>
-        <%= f.password_field :password %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :confirm_password %>
-      </td>
-      <td>
-        <%= f.password_field :password_confirmation %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      </td>
-      <td>
-        <%= f.submit 'Update', :class=> "signup" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<h4>Change Password</h4>
+<hr>
 
+<% form_for @user, :url => setpass_user_path(@user), :html => { :class => "tabulated" }  do |f| %>
+	<%= f.error_messages %>
+  <div>
+    <%= f.label :new_password %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :confirm_password %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= f.label "" %>
+    <%= f.submit 'Update', :class=> "signup" %>
+		<%= link_to 'Cancel', @user %>
+  </div>
 <% end %>
-
-<%= link_to 'Cancel', @user %>

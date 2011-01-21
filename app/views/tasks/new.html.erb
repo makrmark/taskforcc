@@ -1,35 +1,30 @@
-<h4><%= breadcrumb %> &raquo; New</h4>
+<h4><%= breadcrumb %> New Task</h4>
 <hr />
 
-<% form_for [@collaboration, @task] do |f| %>
+<% form_for [@collaboration, @task], :html => { :class => "tabulated" } do |f| %>
   <%= f.error_messages %>
-
-  <p>
+  <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
-  </p>
-
-  <p>
+  </div>
+  <div>
     <%= f.label :topic %>
     <%= f.select :topic_id, @topic_list %>
-  </p>
-
-  <p>
+  </div>
+  <div>
     <%= f.label :assigned_to %>
     <%= f.select :assigned_to, @user_list %>
-  </p>
-
-  <p>
+  </div>
+  <div>
     <%= f.label :description %>
     <%= f.text_area :description %>
-  </p>
-
-  <p>
+  </div>
+  <div>
+    <%= f.label "" %>
     <%= f.submit 'Create' %>
-  </p>
+		<%= link_to 'Close', collaboration_tasks_path(
+		      :collaboration_id => @collaboration.id,
+		      :id => @task.id
+		  ) %>  </div>
 <% end %>
 
-<%= link_to 'Close', collaboration_tasks_path(
-      :collaboration_id => @collaboration.id,
-      :id => @task.id
-  ) %>

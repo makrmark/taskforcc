@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <title>Access: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'reset' %>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'custom' %>
+  <%= stylesheet_link_tag 'access' %>
 
 <meta name="description" content="taskfor.cc is a platform for removing some of the barriers to working efficiently with others." /> 
 
@@ -49,6 +51,7 @@
     <%= yield %>
   </div>  
 </div>
+
 <div class="clear"></div>
 
 <div id="footer">

@@ -1,26 +1,22 @@
 <h4><%= breadcrumb %> &raquo; New Taskforcc</h4>
 <hr />
 
-<% form_for(@collaboration) do |f| %>
+<% form_for(@collaboration, :html => { :class=>"tabulated"} ) do |f| %>
   <div>
     <%= f.error_messages %>
   </div>
-
-  <p>
+  <div>
     <%= f.label :subject %>
     <%= f.text_field :subject %>
-  </p>
-  <p>
-    <%= f.label :status %>
-    <%= f.select :status, %w{ Open On-Hold } %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :description %>
     <%= f.text_area :description %>
-  </p>
-  <p>
+  </div>
+  <div>
+    <%= f.label "" %>
     <%= f.submit 'Create' %>
-  </p>
+		<%= link_to 'Cancel', :back %>
+  </div>
 <% end %>
 
-<%= link_to 'Cancel', :back %>

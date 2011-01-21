@@ -1,31 +1,26 @@
-<h4><%= breadcrumb %> &raquo; Invite</h4>
+<h4><%= breadcrumb %> &raquo; Update</h4>
 <hr />
 
-<% form_for([@collaboration, @collaboration_user]) do |f| %>
+<% form_for [@collaboration, @collaboration_user], :html => { :class => "tabulated" } do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :collaboration_id %>
-    <%=h @collaboration_user.collaboration.subject %>
-  </p>
-  <p>
-    <%= f.label :user_id %>
-    <%= titled_text(@collaboration_user.user.full_name,
-     @collaboration_user.user.email) %>
-  </p>
-  <p>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
     <%= f.label :role %>
     <%= f.select :role, %w{Manager Team Observer Restricted} %>
-  </p>
-  <p>
+  </div>
+  <div>
+    <%= f.label "" %>
     <%= f.submit 'Update' %>
-  </p>
+		<%= link_to 'Show', collaboration_collaboration_user_path(
+		      :collaboration_id => @collaboration_user.collaboration_id,
+		      :id => @collaboration_user.id
+		    ) %> |
+		<%= link_to 'Back', collaboration_collaboration_users_path(
+		      :collaboration_id => @collaboration_user.collaboration_id
+		    ) %>
+	</div>
 <% end %>
-
-<%= link_to 'Show', collaboration_collaboration_user_path(
-      :collaboration_id => @collaboration_user.collaboration_id,
-      :id => @collaboration_user.id
-    ) %> |
-<%= link_to 'Back', collaboration_collaboration_users_path(
-      :collaboration_id => @collaboration_user.collaboration_id
-    ) %>

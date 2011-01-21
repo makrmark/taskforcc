@@ -1,24 +1,21 @@
 <h4><%= breadcrumb %> &raquo; Invite</h4>
 <hr />
 
-<% form_for [@collaboration, @collaboration_user] do |f| %>
+<% form_for [@collaboration, @collaboration_user], :html => { :class => "tabulated" } do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :collaboration_id %>
-    <%=h @collaboration.subject %>
-  </p>
-  <p>
+  <div>
     <%= f.label :email %>
     <%= f.text_field :email %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :role %>
     <%= f.select :role, %w{Manager Team Observer Restricted} %>
-  </p>
-  <p>
+  </div>
+  <div>
+    <%= f.label "" %>
     <%= f.submit 'Invite' %>
-  </p>
+		<%= link_to 'Cancel', :back %>
+  </div>
 <% end %>
 
-<%= link_to 'Cancel', :back %>

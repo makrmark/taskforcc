@@ -1,27 +1,27 @@
 <h4><%= breadcrumb %> &raquo; Edit</h4>
 <hr />
 
-<% form_for @collaboration do |f| %>
+<% form_for @collaboration, :html=> {:class=>"tabulated"} do |f| %>
   <%= f.error_messages %>
-
-  <p>
+  <div>
     <%= f.label :subject %>
     <%= f.text_field :subject %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :status %>
     <%= f.select :status, %w{ Open On-Hold Closed } %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :created_by %>
     <%=h @collaboration.user_created_by.full_name %>
-  </p>
-  <p>
+  </div>
+  <div>
     <%= f.label :description %>
     <%= f.text_area :description %>
-  </p>
+  </div>
+  	<%= f.label "" %>
     <%= f.submit 'Update' %>
-  </p>
+		<%= link_to 'Close', @collaboration %>
+  </div>
 <% end %>
 
-<%= link_to 'Close', @collaboration %>

@@ -1,3 +1,6 @@
+<h4>Profile for <%=h @user.full_name %></h4>
+<hr>
+
 <%= render 'shared/user_detailed_profile', :object => @user %>
 
 <%= link_to 'Edit Profile', edit_user_path(@user) %> &bull;

@@ -1,56 +1,46 @@
-<h4><%= breadcrumb %> &raquo; Edit</h4>
+<h4><%= breadcrumb %> Edit Task</h4>
 <hr />
 
-<% form_for [@collaboration, @task] do |f| %>
+<% form_for [@collaboration, @task], :html => { :class => "tabulated" } do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :id %>
-    <%=h @task.id %>
-  </p>
-
-  <p>
+  <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
-  </p>
-
-  <p>
+  </div>
+  <div>
     <%= f.label :topic %>
     <%= f.select :topic_id, @topic_list %>
-  </p>
-
-  <p>
-    <%= f.label :status %>
-    <%= f.select :status, %w{New Assigned On-Hold Resolved Closed} %>
-  </p>
-
-  <p>
-    <%= f.label :resolution %>
-    <%= f.select :resolution, %w{Unresolved Completed Duplicate Invalid} %>
-  </p>
-
-  <p>
+  </div>
+  <div>
     <%= f.label :created_by %>
     <%=h @task.user_created_by.full_name %>
-  </p>
-
-  <p>
+  </div>
+  <div>
     <%= f.label :assigned_to %>
     <%= f.select :assigned_to, @user_list %>
-  </p>
+  </div>
 
-  <p>
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, %w{New Assigned On-Hold Resolved Closed} %>
+  </div>
+  <div>
+    <%= f.label :resolution %>
+    <%= f.select :resolution, %w{Unresolved Completed Duplicate Invalid} %>
+  </div>
+
+  <div>
     <%= f.label :description %>
     <%= f.text_area :description %>
-  </p>
-
-  <p>
+  </div>
+  <div>
+    <%= f.label "" %>
     <%= f.submit 'Update' %>
-  </p>
+		<%= link_to 'Show', collaboration_task_path(
+		      :collaboration_id => @collaboration.id,
+		      :id => @task.id
+		  ) %> |
+		<%= link_to 'Close', session[:return_to] || :back %>  </div>
 <% end %>
 
-<%= link_to 'Show', collaboration_task_path(
-      :collaboration_id => @collaboration.id,
-      :id => @task.id
-  ) %> |
-<%= link_to 'Close', session[:return_to] || :back %>
+

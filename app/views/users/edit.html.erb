@@ -1,66 +1,36 @@
-<% form_for(@user) do |f| %>
-<table class="signup">
-  <thead>
-    <tr>
-      <th colspan="2">Update Profile</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="2">
-        <%= f.error_messages %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :full_name %>
-      </td>
-      <td>
-        <%= f.text_field :full_name %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :job_title %>
-      </td>
-      <td>
-        <%= f.text_field :job_title %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :organisation %>
-      </td>
-      <td>
-        <%= f.text_field :organisation %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :country %>
-      </td>
-      <td>
-        <%= f.text_field :country %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :phone_number %>
-      </td>
-      <td>
-        <%= f.text_field :phone_number %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-      </td>
-      <td>
-        <%= f.submit 'Update', :class=> "signup" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<h4>Update User Profile</h4>
+<hr>
 
+<% form_for(@user, :html => { :class => "tabulated" }) do |f| %>
+	<%= f.error_messages %>
+	<div>
+	  <%= f.label :full_name %>
+	  <%= f.text_field :full_name %>
+	</div>
+	<div>
+	  <%= f.label :job_title %>
+	  <%= f.text_field :job_title %>
+	</div>
+	<div>
+	  <%= f.label :organisation %>
+	  <%= f.text_field :organisation %>
+	</div>
+	<div>
+	</div>
+	<div>
+	  <%= f.label :country %>
+	  <%= f.text_field :country %>
+	</div>
+	<div>
+	</div>
+	<div>
+	  <%= f.label :phone_number %>
+	  <%= f.text_field :phone_number %>
+	</div>
+	<div>
+	  <%= f.label "" %>
+	  <%= f.submit 'Update', :class=> "signup" %>
+		<%= link_to 'Cancel', @user %>
+	</div>
 <% end %>
 
-<%= link_to 'Cancel', @user %>

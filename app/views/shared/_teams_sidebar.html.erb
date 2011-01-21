@@ -1,4 +1,5 @@
-<% unless @collaboration.nil? %> 
+<% unless @collaboration.nil? || 
+	(request[:controller].eql?("collaborations") && ["new","create","index"].include?(request[:action]) ) %> 
 <div class="sidebar">        
   <h4 class="sidebar">
     <i class="Team"></i>
