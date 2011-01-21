@@ -1,0 +1,76 @@
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"] {
+	color: white;
+	background-color: navy;
+	border-style: outset;
+	border-width: 1px;
+}
+input[type="button"]:hover, 
+input[type="submit"]:hover, 
+input[type="reset"]:hover {
+	color: orange;
+}
+input[type="button"]:active, 
+input[type="submit"]:active, 
+input[type="reset"]:active {
+	border-style: inset;
+	color: orange;
+}
+
+/* http://cssbutton.com/forms/ */
+
+form.tabulated {
+	font-size: 1.2em;
+}
+form.tabulated div {
+	margin-bottom: 10px;
+}
+form.tabulated label {
+  display: inline-block;
+  width: 20%;
+  float: left;
+  margin: 2px 4px 6px 4px;
+  text-align: right;
+}
+form.tabulated textarea {
+	width: 60%;
+	height: 100px;
+	margin: 2px 4px 6px 4px;
+	text-align: left;
+  border-style: solid;
+  border-width: 1px;
+	font-size: 1em;
+}
+form.tabulated input, 
+form.tabulated select {
+	margin: 2px 4px 6px 4px;
+  font-size: 1em;
+  border-style: solid;
+  border-width: 1px;
+}
+form.tabulated select {
+	font-size: 1.2em;
+}
+form.tabulated input[type="text"] {
+	width: 60%;
+}
+form.tabulated input[type="submit"] {
+	margin: 2px 4px 6px 4px;
+	width: auto;
+}
+
+/*
+* Used for the form in the multifunction tab area
+*/
+form.qtf {
+  text-align: center;
+}
+input.qtt {
+  font-size: 1.2em;
+  width: 60%;
+}
+input.qtb {
+  font-size: 1.2em;
+  width: 110px;
+}

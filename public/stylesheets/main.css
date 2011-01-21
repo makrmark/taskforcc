@@ -1,0 +1,467 @@
+#container {
+  padding-left: 3%;
+  width: 94%;
+  font-size: 0.8em;
+}
+#left {
+  float: left;
+  width: 200px;
+  padding: 4px;
+  min-height: 500px;
+}
+#content {
+  padding: 0px 215px 0px 215px;
+  min-height: 500px;	
+}
+#right {
+  float: right;
+  width: 200px;
+  padding: 4px;
+  min-height: 500px;
+}
+
+div#header {
+  background: navy;
+  color: orange;
+  height: 24px;
+  padding-top: 3px;
+  padding-left: 3px;
+}
+
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+h4.breadcrumb>span, h4.breadcrumb>span>a,
+h4.sidebar>span>a  {
+  color: lightgrey;
+}
+h4.sidebar>span {
+  color: lightgrey;
+  float: right;
+}
+
+div.sidebar {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: lightgrey;
+}
+span.staricon {
+  height: 15px;
+  width: 15px;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  background-position: -1px -20px;
+  white-space: normal;  
+}
+
+div.logo {
+  background-image: url('/images/sprites.png');  
+  height: 20px;
+  width: 115px;
+  background-position: 0px 0px;
+}
+
+ul.sidebar {
+  padding-left: 0px;
+  list-style: none;
+  margin-top: 5px;
+  font-size: 1em;
+  line-height: 1.4em;
+}
+ul.sidebar>li {
+	border: 0px;
+	border-bottom: 1px;
+	border-style: solid;
+	border-color: white;
+	padding-left: 10px;
+}
+ul.sidebar>li:hover {
+	background-color: #e0e0e0;
+}
+ul.sidebar>li.active {
+	background-color: #c0c0c0;
+}
+
+div.empty-message {
+  color: black;
+  border: 1px solid blue;
+  padding: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  background-color: #EEEEEE;
+  text-align: center;
+}
+
+
+/* Task Action Menu
+http://www.lwis.net/free-css-drop-down-menu/dropdown.simple.horizontal.html
+*/
+.tam {
+  visibility: hidden;
+  color: #555577;
+  padding: 3px;
+}
+div.task ul.tam>li>a,
+div.task ul.tam {
+  visibility: visible;
+  color: lightgrey;
+}
+div.task:hover ul.tam>li>a,
+div.task:hover ul.tam  {
+  color: black;
+}
+ul.tam, ul.tam li, ul.tam ul {
+  list-style: none;
+}
+ul.tam {
+  position: relative;
+  float: right;
+}
+
+ul.tam.footer {
+  float: left;
+  width: 100%;
+  text-align: right;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: white;
+  visibility: visible;
+  padding-left: 3px;
+}
+ul.tam.assignment {
+  float: left;
+  visibility: visible;
+  color: lightgrey;
+}
+
+ul.tam li {
+  float: left;
+  line-height: 1em;
+  vertical-align: middle;
+  z-index: 110;
+
+  background-color: inherit;
+  padding-right: 5px;
+
+  position: relative;
+  cursor: default;
+}
+ul.tam ul {
+  visibility: visible;
+  position: absolute;
+  top: 100%;
+  width: 10em;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  z-index: 200;
+  background-color: white;
+
+/* http://css3.bradshawenterprises.com/ */
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+
+  box-shadow: 2px 2px 4px #888;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+
+/* transitions not really working since this element is rendered on load */
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+}
+
+ul.tam.assignment, ul.tam.assignment>li {
+	z-index: 2;	
+}
+ul.tam.footer, ul.tam.footer>li {
+	z-index: 1;
+}
+ul.tam ul li {
+  float: none;
+  z-index: 250;
+  position: relative;
+
+  background-color: white;
+  font-size: 1.0em;
+  line-height: 1.2em;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  border-bottom-width: thin;
+}
+
+/* http://www.tobypitman.com/jquery-style-menu-with-css3/ */
+/* http://www.webdesignerwall.com/tutorials/css3-dropdown-menu/ */
+ul.tam ul.inactive {
+  display: none;
+}
+
+/* Icons for the lists */
+ul.tam li i, h4 i, i.ts  {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin-right: 3px;
+  vertical-align: top;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+}
+i.Assign  { background-position: -65px -52px; }
+i.Accept  { background-position: -49px -52px; }
+i.Reject  { background-position: -97px -52px; }
+i.Resolve { background-position: -81px -52px; }
+i.Close   { background-position: -49px -52px; }
+div.task:hover i.Assign  { background-position: -65px -20px; }
+div.task:hover i.Accept  { background-position: -49px -20px; }
+div.task:hover i.Reject  { background-position: -97px -20px; }
+div.task:hover i.Resolve { background-position: -81px -20px; }
+div.task:hover i.Close   { background-position: -49px -20px; }
+
+i.Description { background-position: -17px -36px; }
+i.Comments    { background-position: -1px -36px; }
+i.Attachments { background-position: -33px -36px; }
+i.Favourites { background-position: -33px -20px; }
+i.Team       { background-position: -49px -36px; }
+i.Topics     { background-position: -65px -36px; }
+i.Tags       { background-position: -33px -52px; }
+div.task-right {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  vertical-align: middle;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  background-position: -1px  -68px;
+}
+i.tt {
+  display: inline-block;
+  height: 19px;
+  width: 19px;
+  vertical-align: middle;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  position: relative;
+  top: 0px;
+  left: 13px;
+}
+i.tt.Task     { background-position: -47px  -68px;  }
+i.tt.Decision { background-position: -66px  -68px;  }
+i.tt.Query    { background-position: -85px  -68px;  }
+i.tt.Issue    { background-position: -47px  -87px;  }
+i.tt.Risk     { background-position: -66px  -87px;  }
+i.tt:hover    { background-color: lightblue; cursor: pointer; }
+i.ts {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  vertical-align: middle;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  position: relative;
+  top: 0px;
+  left: 30px;
+}
+i.ts.New        { background-position: -81px -36px; }
+i.ts.Assigned   { background-position: -65px -20px; }
+i.ts.Accepted   { background-position: -49px -20px; }
+i.ts.Rejected   { background-position: -97px -20px; }
+i.ts.Resolved   { background-position: -81px -20px; }
+i.ts.Closed     { background-position: -49px -20px; }
+
+div.profile {
+  min-height: 50px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: lightgrey;  
+}
+img.avatar {
+  width: 45px;
+  height: 45px;  
+	margin: 2px;
+}
+div.profile img.avatar {
+	float: left;
+}
+ul.profile {
+  list-style: none;
+  padding-left: 60px;
+}
+
+span.user-name {
+  color: blue;
+  text-decoration: none;
+}
+
+
+/* Task Stuff */
+div.task {
+  line-height: 1.2em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: lightgrey;
+  min-height: 55px;
+}
+div.task-left {
+  float: left;
+  margin-right: 2px;
+}
+div.task-right {
+  float: right;
+  margin-left: 2px;  
+}
+div.task-content {
+  padding: 0px 50px 0px 50px;
+}
+
+div.task-header {
+  color: grey;
+  margin-bottom: 2px;
+  padding-left: 2px;
+  height: 17px;
+}
+span.task-assigned {
+  float: right;
+  text-align: right;
+}
+span.task-updates {
+  font-size: 0.8em;
+  color: darkgrey;
+}
+span.tta {
+  font-size: 0.8em;
+  color: darkgrey;
+}
+
+div.task-footer {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #AAAACC;
+  background-color: #F4F4F4;
+  min-height: 40px;
+}
+div.task-title {
+	font-size: larger;
+}
+
+/* Task Details Styles */
+div.task-details {
+	padding: 5px;
+}
+div.task-details textarea.editor_field {
+	width: 95%;
+	height: 5em;
+}
+div.task-details span.in_place_edit_hint {
+	color: lightgrey;
+}
+div.task-details span.in_place_edit_hint:hover {
+	color: black;
+	text-decoration: underline;
+	cursor: pointer;
+}
+div.task-details span.in_place_edit_container {
+	white-space: pre-line; 
+	font-size: smaller; 
+	color:grey;"
+}
+div.task-title input.editor_field {
+	width: 60%;
+}
+
+/* Task Favourites */
+span.fav {
+  display: inline-block;
+  position: relative;
+  left: 30px;
+}
+input[type="button"].tf {
+  height: 15px;
+  width: 15px;
+  background-image: url('/images/sprites.png');  
+  background-color: transparent;
+  background-position: -1px -20px;
+  padding: 0px;
+  border-width: 0px;
+  spacing: 0px;
+  white-space: normal;
+}
+input[type="button"].tf:hover {
+  background-position: -17px -20px;
+  cursor: pointer;
+}
+input[type="button"].tf.f, input[type="button"].tf.f:hover  {
+  background-position: -33px -20px;    
+}
+
+h3.topic {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+
+/* Comment Styles */
+div.cc {
+}
+div.comment {
+  padding: 5px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  font-size: 11px;
+}
+input.cf {
+  width: 95%;
+}
+
+
+/* multifunction tabs */
+.mf-tab {
+  margin: 0;
+  padding: 0;  
+  list-style: none;
+}
+ul.mf-tab li.mf-tab {
+  display: inline-block;  
+}
+ul.mf-tab {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: lightgrey;
+}
+
+li.mf-tab {
+  width: 130px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+  border-bottom-style: none;
+  text-align: center;
+  color: grey;
+  background-color: white;
+}
+li.mf-tab.active {
+  font-weight: bold;
+  background-color: #F4F4F4;
+}
+div.mf-tab.body {
+	padding: 3px;
+}
+li#search-tab, div#search {
+	background-color: #E0F0E0;
+}
+li#taskhere-tab, div#taskhere {
+	background-color: #E0E0F0;	
+}
+div#mf-tab-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+  border-top-width: 0px;
+  background-color: #F4F4F4;
+  padding: 0px;
+  margin-bottom: 10px;
+}

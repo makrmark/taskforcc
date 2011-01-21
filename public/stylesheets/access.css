@@ -1,0 +1,167 @@
+/* Access page styles */
+
+/* http://www.webmasterworld.com/forum83/4694.htm */
+div.login {
+  text-align: center;
+  width: 550px;
+  height: 400px;
+  margin: 0px auto -1px auto;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+div#access_header {
+  background-color: navy;
+  height: 80px;
+  padding-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;  
+  vertical-align: bottom;
+  margin-bottom: 0px;
+}
+div#access_signup_bar {
+  background-color: lightblue;
+  padding-left: 100px;
+  vertical-align:middle;
+}
+div#access_left {
+  margin-left: 100px;
+  width: 30%;
+  height: 500px;
+  float: left;
+  background-color: transparent;
+  padding-top: 20px;
+}
+div#access_right {
+  width: 50%;
+  float: right;
+  height: 500px;
+  background-color: transparent;
+  padding-top: 20px;
+}
+
+div#access_header form {
+  display:inline;
+}
+i.biglogo {
+  height: 54px;
+  width: 294px;
+  background-image: url('/images/taskforcc-logo.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  display: inline-block;
+  white-space: normal;
+  margin-top: 10px;
+}
+
+table.login {
+  float: right;
+  text-align: left;
+  background-color: navy;
+  display: inline;
+  font-size: 12px;
+}
+
+table.login label {
+  font-size: 12px;
+  width: 100%;
+  font-weight: normal;
+  color: white;
+  text-align: left;
+  display: inline;
+  margin-bottom: 2px;
+}
+
+table.login td.forgotten {
+    color: lightblue;
+}
+
+input[type="submit"] {
+  display: inline;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: blue;
+  border-style: outset;
+  border-width: 1px;
+}
+
+input[type="text"].login, input[type="password"].login {
+  font-size: 12px;
+  border-width: 1px;
+  border-color: navy;
+  border-style: solid;
+  padding: 2px;
+}
+
+div.signup_title {
+  font-size: 24px;
+  font-weight: bold;
+  color: navy;
+}
+div.signup_subtitle {
+  font-size: 14px;
+  font-weight: bold;
+  color: navy;
+}
+table.signup label {
+  font-size: 14px;
+  font-weight: normal;
+  color: navy;
+  text-align: right;
+  display: inline;
+  margin-bottom: 2px;
+  padding-right: 5px;
+  width: 120px;
+}
+table.signup tfoot td {
+  font-size: 12px;
+  color: navy;
+}
+table.signup input[type="text"], 
+table.signup input[type="password"] {
+  font-size: 16px;
+  padding: 3px;
+  border-color: navy;
+}
+input[type="submit"].signup {
+  display: inline;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  background-color: navy;
+  border-style: outset;
+  border-width: 1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div#access_signup_bar form {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+div#access_signup_bar input {
+  background-color: darkgreen;
+}
+
+div#pages_body {
+  margin-left: 100px;
+  width: 50%;
+  font-size: 14px;
+  color: navy;
+}
+
+.disclaimer {
+  color: red;
+}
+div.disclaimer {
+  border-width: 5px;
+  border-style: dashed;
+  border-color: red;
+  padding: 10px;
+  text-align: center;
+}
+
