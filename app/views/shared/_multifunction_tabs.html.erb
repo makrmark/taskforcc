@@ -76,6 +76,10 @@
       :class => 'qtf', :id=>'search_form' do %>
       <%= text_field_tag :title, params[:title], :class => 'qtt' %>
       <%= submit_tag 'Search Here', :class => 'qtb' %>
+			<div class="qtf options">
+			<%= check_box_tag :include_closed, :included_closed, params[:include_closed] %>
+			<%= label_tag :include_closed, "Include Closed Tasks" %>
+			</div>
     <% end -%>
   </div>
   <% unless @collaboration.nil? -%>

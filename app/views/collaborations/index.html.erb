@@ -7,5 +7,5 @@
     No Tasks.
   </div>
 <% else %>
-  <%= render(:partial => 'shared/task_container', :collection => @current_user.tasks )%>
+  <%= render(:partial => 'shared/task_container', :collection => @current_user.find_tasks(params) )%>
 <% end %>

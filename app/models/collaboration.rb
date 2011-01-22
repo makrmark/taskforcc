@@ -34,7 +34,7 @@ class Collaboration < ActiveRecord::Base
   end
 
   def find_tasks(p)
-      self.tasks.title_filter(p[:title] || "")
+      self.tasks.title_filter(p[:title] || "").status_filter(p[:include_closed]? 'Closed' : nil )
   end
     
 private

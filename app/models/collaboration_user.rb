@@ -33,15 +33,7 @@ class CollaborationUser < ActiveRecord::Base
     :message => "is already in the team"
 
   def find_tasks_assigned_to(p)
-    self.tasks_assigned_to.collaboration_filter(p[:collaboration_id]).title_filter(p[:title] || "")
+    self.tasks_assigned_to.collaboration_filter(p[:collaboration_id]).title_filter(p[:title] || "").status_filter(p[:include_closed]? 'Closed' : nil )
   end
-
-=begin
-  def assigned_or_created
-    with_scope( :find => { :conditions => [ 'sender_id = ?', sender.id ] } ) do
-      received_whispers.find(:all)
-    end
-  end
-=end
 
 end

@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
   has_many :tasks_assigned_to,
     :class_name => 'Task',
     :foreign_key => 'assigned_to'
+    
+  def find_tasks(p)
+    self.tasks.title_filter(p[:title] || "").status_filter(p[:include_closed]? 'Closed' : nil )
+  end
   
   # http://api.rubyonrails.org/classes/ActiveRecord/Validations/ClassMethods.html
   validates_presence_of :full_name, :email

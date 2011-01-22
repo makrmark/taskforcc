@@ -32,8 +32,15 @@ class Task < ActiveRecord::Base
   # http://railscasts.com/episodes/108-named-scope
   # http://refactormycode.com/codes/788-advanced-search-form-named-scopes
   # http://apidock.com/rails/ActiveRecord/NamedScope/ClassMethods/named_scope
-  named_scope :title_filter, lambda {|t| {:conditions => ["title like ?", "%#{t}%"]}}
-  named_scope :collaboration_filter, lambda { |t| { :conditions => { :collaboration_id => t } } }
+  named_scope :title_filter, lambda {|t| 
+    { :conditions => ["title like ?", "%#{t}%"]}
+  }
+  named_scope :collaboration_filter, lambda { |t| 
+    { :conditions => { :collaboration_id => t } } 
+  }
+  named_scope :status_filter, lambda { |t| 
+    { :conditions => { "status" => ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', t] }}
+  }
       
   validates_presence_of :title, :type, :status, :resolution, 
     :created_by, :updated_by, :assigned_to, 

@@ -121,13 +121,13 @@ ul.tam {
 
 ul.tam.footer {
   float: left;
-  width: 100%;
+	width: 100%;
   text-align: right;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: white;
   visibility: visible;
-  padding-left: 3px;
+  padding: 3px 0px 3px 0px;
 }
 ul.tam.assignment {
   float: left;
@@ -355,13 +355,13 @@ div.task-details textarea.editor_field {
 	width: 95%;
 	height: 5em;
 }
-div.task-details span.in_place_edit_hint {
+div.task-details a.in_place_edit_hint {
+	font-size: smaller;
+	float: right;
 	color: lightgrey;
 }
-div.task-details span.in_place_edit_hint:hover {
+div.task-details a.in_place_edit_hint:hover {
 	color: black;
-	text-decoration: underline;
-	cursor: pointer;
 }
 div.task-details span.in_place_edit_container {
 	white-space: pre-line; 
@@ -407,16 +407,16 @@ h3.topic {
 div.cc {
 }
 div.comment {
-  padding: 5px;
+  padding: 0px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: white;
-  font-size: 11px;
+  font-size: smaller;
 }
 input.cf {
-  width: 95%;
+  width: 98%;
+  margin: 1% 1% 0% 1%;
 }
-
 
 /* multifunction tabs */
 .mf-tab {
