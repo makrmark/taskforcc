@@ -39,7 +39,7 @@ class Task < ActiveRecord::Base
     { :conditions => { :collaboration_id => t } } 
   }
   named_scope :status_filter, lambda { |t| 
-    { :conditions => { "status" => ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', t] }}
+    { :conditions => { "status" => Task.include_status_from_filter(t) }}
   }
       
   validates_presence_of :title, :type, :status, :resolution, 
@@ -136,7 +136,23 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def self.include_status_from_filter(fltr)
+    logger.debug("Including from Status Filter: #{fltr}")
+    case fltr
+    when 'All Open Tasks' then
+      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+    when 'All Tasks' then
+      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', 'Closed']
+    when 'New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', 'Closed' then
+      fltr
+    else
+      ['New', 'Assigned', 'Accepted', 'Rejected', 'Resolved']
+    end
+    
+  end
+
 private
+
 
   #if the task is Resolved or Closed then the Resolution should be specified
   def valid_resolution?

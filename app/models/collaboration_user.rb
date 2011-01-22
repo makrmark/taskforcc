@@ -33,7 +33,7 @@ class CollaborationUser < ActiveRecord::Base
     :message => "is already in the team"
 
   def find_tasks_assigned_to(p)
-    self.tasks_assigned_to.collaboration_filter(p[:collaboration_id]).title_filter(p[:title] || "").status_filter(p[:include_closed]? 'Closed' : nil )
+    self.tasks_assigned_to.collaboration_filter(p[:collaboration_id]).title_filter(p[:title] || "").status_filter(p[:include_status])
   end
 
 end

@@ -7,7 +7,7 @@ class Topic < ActiveRecord::Base
   validates_presence_of :name, :controller, :collaboration_id
 
   def find_tasks(p)
-      self.tasks.title_filter(p[:title] || "").status_filter(p[:include_closed]? 'Closed' : nil )
+      self.tasks.title_filter(p[:title] || "").status_filter(p[:include_status])
   end
   
 end
