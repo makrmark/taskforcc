@@ -9,7 +9,7 @@ class CollaborationUser < ActiveRecord::Base
   has_many :tasks_assigned_to,
     :class_name => 'Task',
     :primary_key => 'user_id',
-    :foreign_key => 'assigned_to', 
+    :foreign_key => 'assigned_to',
     :order => "id DESC"
 
   has_many :tasks_created_by,
@@ -33,7 +33,7 @@ class CollaborationUser < ActiveRecord::Base
     :message => "is already in the team"
 
   def find_tasks_assigned_to(p)
-    self.tasks_assigned_to.title_filter(p[:title] || "")
+    self.tasks_assigned_to.collaboration_filter(p[:collaboration_id]).title_filter(p[:title] || "")
   end
 
 =begin
