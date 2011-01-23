@@ -3,7 +3,7 @@
 require 'digest/md5'
 
 class ApplicationController < ActionController::Base
-  before_filter :authorize, :except => [:login, :signup, :dosignup, :start, :denied, :welcome]
+  before_filter :authorize, :except => [:login, :signup, :dosignup, :start, :denied, :welcome, :logout]
 
   # TODO: check the user has access to the relevant Collaborations
   # TODO: check the user has access to the relevant Tasks (eg: Restricted users may not)

@@ -32,7 +32,7 @@ class AccessController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:notice] = "You have been logged out"
-    redirect_to root_path
+    redirect_to url_for(:controller => :access, :action => :login)
   end
 
   def signup
