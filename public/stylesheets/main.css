@@ -46,14 +46,16 @@ div.sidebar {
   border-bottom-width: 1px;
   border-bottom-color: lightgrey;
 }
+/*
 span.staricon {
   height: 15px;
   width: 15px;
   background-image: url('/images/sprites.png');  
   background-color: transparent;
-  background-position: -1px -20px;
+  background-position: -1px -25px;
   white-space: normal;  
 }
+*/
 
 div.logo {
   background-image: url('/images/sprites.png');  
@@ -243,7 +245,7 @@ i.tt {
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   position: relative;
-  top: 0px;
+  top: -3px;
   left: 13px;
 }
 i.tt.Task     { background-position: -47px  -68px;  }
@@ -260,7 +262,7 @@ i.ts {
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   position: relative;
-  top: 0px;
+  top: -2px;
   left: 30px;
 }
 i.ts.New        { background-position: -81px -36px; }
@@ -376,7 +378,8 @@ div.task-title input.editor_field {
 span.fav {
   display: inline-block;
   position: relative;
-  left: 30px;
+  top: -3px; 
+	left: 30px;
 }
 input[type="button"].tf {
   height: 15px;
@@ -386,7 +389,6 @@ input[type="button"].tf {
   background-position: -1px -20px;
   padding: 0px;
   border-width: 0px;
-  spacing: 0px;
   white-space: normal;
 }
 input[type="button"].tf:hover {
