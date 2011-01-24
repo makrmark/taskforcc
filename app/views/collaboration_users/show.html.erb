@@ -2,16 +2,10 @@
 <%= render :partial => 'shared/multifunction_tabs' %>
 
 <div id="task-container">
-  <% if @collaboration_user.tasks_assigned_to.empty? %>
+  <% if @collaboration_user.find_tasks_assigned_to(params).empty? %>
   
     <div class="empty-message" id="task-empty-message">
-      No tasks match this selection &bull;
-      
-      <%= link_to 'New task', new_collaboration_task_path(
-          :collaboration_id => @collaboration.id,
-          :assigned_to => @collaboration_user.user_id
-      ) %>
-
+      No tasks match this selection
     </div>
   <% else %>
     <div id="task-empty-message"></div>
@@ -20,7 +14,9 @@
   <% end%>
 </div>
 
-<%= button_to 'New task', new_collaboration_task_path(
-    :collaboration_id => @collaboration.id,
-    :assigned_to => @collaboration_user.user_id),
-    :method => 'get' %>
+<% unless @collaboration.nil?  || ! @current_user.can_create_task?(@task) -%>
+	<%= button_to 'New task', new_collaboration_task_path(
+	    :collaboration_id => @collaboration.id,
+	    :assigned_to => @collaboration_user.user_id),
+	    :method => 'get' %>
+<% end -%>

@@ -6,12 +6,7 @@
   <% if @collaboration.find_tasks(params).empty? %>
   
     <div class="empty-message" id="task-empty-message">
-      No tasks match this selection &bull;
-      
-      <%= link_to 'New task', new_collaboration_task_path(
-          :collaboration_id => @collaboration.id
-      ) %>
-    
+      No tasks match this selection.      
     </div>
   <% else %>
     <div id="task-empty-message"></div>
@@ -20,6 +15,8 @@
   <% end %>
 </div>
 
-<%= button_to 'New task', new_collaboration_task_path(
-    :collaboration_id => @collaboration.id), 
-    :method => 'get' %>
+<% unless @collaboration.nil?  || ! @current_user.can_create_task?(@task) -%>
+	<%= button_to 'New task', new_collaboration_task_path(
+	    :collaboration_id => @collaboration.id), 
+	    :method => 'get' -%>
+<% end -%>

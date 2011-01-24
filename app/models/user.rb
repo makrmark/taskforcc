@@ -98,26 +98,15 @@ class User < ActiveRecord::Base
       AccountMailer.deliver_welcome(self)
   end
 
-
   def can_create_task?(task)
     cu = CollaborationUser.find(:first, 
       :conditions => ["collaboration_id = ? AND user_id = ?", task.collaboration_id, self.id])
-    
+
+    # TODO: Should use the State Transitions in Task here, but it's more expensive
     cu.role.eql?('Observer') ? false : true;
   end
   
-  def can_view_task?(task)
-    if ['Manager', 'Team', 'Observer'].include?(self.role)
-      true
-    elsif self.role.eql?('Restricted') && self.user_id == task.assigned_to
-      true
-    else
-      false
-    end
-  end
-
 protected
-
 
 private
   
