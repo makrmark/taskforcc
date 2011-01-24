@@ -13,7 +13,7 @@
       page['search-tab'].addClassName('active');
     end
     %></li>
-  <% unless @collaboration.nil? -%>
+  <% unless @collaboration.nil?  || ! @current_user.can_create_task?(@task) -%>
   <li class="mf-tab  <%= "active" if session[:active_tab].eql?("taskhere") -%>" 
 	id="taskhere-tab"><%= link_to_function 'Task Here' do |page|
       page.select('div.mf-tab.body').each do |value|
@@ -77,12 +77,12 @@
       <%= text_field_tag :title, params[:title], :class => 'qtt' %>
       <%= submit_tag 'Search Here', :class => 'qtb' %>
 			<div class="qtf options">
-			<%= label_tag :include_status, "Filter Tasks" %>
+			<%= label_tag :include_status, "Filter Results" %>
 			<%= select_tag :include_status, options_for_select(['All Open Tasks', 'All Tasks', 'New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', 'Closed'], params[:include_status] || 'All Open Tasks')%>
 			</div>
     <% end -%>
   </div>
-  <% unless @collaboration.nil? -%>
+  <% unless @collaboration.nil? || ! @current_user.can_create_task?(@task) -%>
   <div id="taskhere" class='mf-tab body' style="<%= "display:none;" unless session[:active_tab].eql?("taskhere") -%>">
     <% remote_form_for [@collaboration, @task], 
       :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>

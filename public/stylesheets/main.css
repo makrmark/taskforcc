@@ -298,6 +298,31 @@ span.user-name {
   text-decoration: none;
 }
 
+table.acl {
+	width: 100%;
+	font-size: smaller;
+	border: 1px solid lightgrey;
+}
+table.acl th {
+	text-align: left;
+	background-color: #eeeeee;
+	width: 20%;
+	border: 1px solid lightgrey;
+}
+table.acl td {
+	width: 20%;
+	border: 1px solid lightgrey;
+}
+table.acl td.green {
+	background-color: #ddffdd;
+}
+table.acl td.yellow {
+	background-color: #ffffdd;
+}
+table.acl td.red {
+	background-color: #ffdddd;	
+}
+
 
 /* Task Stuff */
 div.task {
@@ -376,6 +401,9 @@ div.task-title input.editor_field {
 	width: 60%;
 }
 
+.inplaceeditor-saving { background: url(/images/ajax-loader.gif) bottom right no-repeat; }
+
+
 /* Task Favourites */
 span.fav {
   display: inline-block;
@@ -405,7 +433,6 @@ h3.topic {
   margin-top: 3px;
   margin-bottom: 3px;
 }
-
 
 /* Comment Styles */
 div.cc {

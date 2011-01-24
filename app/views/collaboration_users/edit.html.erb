@@ -1,13 +1,9 @@
-<h4><%= breadcrumb %> &raquo; Update</h4>
+<h4><%= breadcrumb %> &raquo; Change Role</h4>
 <hr />
 
 <% form_for [@collaboration, @collaboration_user], :html => { :class => "tabulated" } do |f| %>
   <%= f.error_messages %>
 
-  <div>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
   <div>
     <%= f.label :role %>
     <%= f.select :role, %w{Manager Team Observer Restricted} %>
@@ -15,12 +11,12 @@
   <div>
     <%= f.label "" %>
     <%= f.submit 'Update' %>
-		<%= link_to 'Show', collaboration_collaboration_user_path(
-		      :collaboration_id => @collaboration_user.collaboration_id,
-		      :id => @collaboration_user.id
-		    ) %> |
-		<%= link_to 'Back', collaboration_collaboration_users_path(
+		<%= link_to 'Cancel', collaboration_collaboration_users_path(
 		      :collaboration_id => @collaboration_user.collaboration_id
 		    ) %>
 	</div>
+	
+	<hr>
+	<%= render :partial => "role_access"%>
+
 <% end %>

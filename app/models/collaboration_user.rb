@@ -36,4 +36,31 @@ class CollaborationUser < ActiveRecord::Base
     self.tasks_assigned_to.collaboration_filter(p[:collaboration_id]).title_filter(p[:title] || "").status_filter(p[:include_status])
   end
 
+  # 
+  # A whole lot of methods to check what a user can or cannot do
+  #
+  def can_favourite_task?(task)
+    if ['Manager', 'Team', 'Observer'].include?(self.role)
+      true
+    else
+      false
+    end
+  end
+  def can_comment_task?(task)
+    if ['Manager', 'Team', 'Observer'].include?(self.role)
+      true
+    elsif self.role.eql?('Restricted') && self.user_id == task.assigned_to
+      true
+    else
+      false
+    end    
+  end  
+  def can_invite_user?
+    if ['Manager', 'Team'].include?(self.role)
+      true
+    else
+      false
+    end
+  end
+  
 end

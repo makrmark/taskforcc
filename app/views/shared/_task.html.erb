@@ -71,7 +71,8 @@
 						:id => task.id
 				  		),
 					:rows => 3, :cols => 50, :cancel_text => 'cancel', :save_text => 'ok', 
-					:external_control => "edit_task_description_#{task.id}" } -%></span>
+					:external_control => "edit_task_description_#{task.id}",
+					:options => {:highlight_color => "'#ffffff'"}} -%></span>
 	   </div>
 
 	   <% cst = "display:none;" if task.comments.empty? %>

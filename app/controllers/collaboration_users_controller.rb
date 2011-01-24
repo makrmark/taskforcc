@@ -21,7 +21,12 @@ class CollaborationUsersController < ApplicationController
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
 
-    @task = Task.new()
+    @task = Task.new(
+      :created_by => @current_user.id, 
+      :assigned_to => @current_user.id, 
+      :collaboration_id => @collaboration.id
+    )
+    
     @comment = Comment.new
 
     # when you list the tasks, set the return-to path

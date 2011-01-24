@@ -54,6 +54,10 @@ class Task < ActiveRecord::Base
 
   validates_inclusion_of :type, 
     :in => %w{Task Risk Issue Query Defect Decision}
+
+  def can_create?(user)
+    valid_states_by_user(user).include?('New')
+  end
     
   # Return the states possible by the current user and for current task status
   # TODO: review acts_as_state_machine
@@ -153,7 +157,6 @@ class Task < ActiveRecord::Base
 
 private
 
-
   #if the task is Resolved or Closed then the Resolution should be specified
   def valid_resolution?
     if !Task.valid_resolutions(status).include?(resolution)
@@ -194,8 +197,8 @@ private
   def collaboration_role(uid)
     cu = CollaborationUser.find(:first, 
       :conditions => ["collaboration_id = ? AND user_id = ?", collaboration_id, uid])
-    
+
     role = cu.role unless cu.nil?
   end
-
+  
 end

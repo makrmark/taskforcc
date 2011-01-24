@@ -12,17 +12,17 @@
     </li>
     <% if show_actions %>
     <li>
-      <%= link_to 'Show', collaboration_collaboration_user_path(
+      <%= link_to 'Show Tasks', collaboration_collaboration_user_path(
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
       ) %>
 <% unless @collaboration.is_system %>
  &bull;
-      <%= link_to 'Edit', edit_collaboration_collaboration_user_path(
+      <%= link_to 'Change Role', edit_collaboration_collaboration_user_path(
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
       ) %> &bull;
-      <%= link_to 'Remove', collaboration_collaboration_user_path(
+      <%= link_to 'Remove from Taskforcc', collaboration_collaboration_user_path(
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
       ),

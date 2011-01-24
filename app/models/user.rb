@@ -99,6 +99,23 @@ class User < ActiveRecord::Base
   end
 
 
+  def can_create_task?(task)
+    cu = CollaborationUser.find(:first, 
+      :conditions => ["collaboration_id = ? AND user_id = ?", task.collaboration_id, self.id])
+    
+    cu.role.eql?('Observer') ? false : true;
+  end
+  
+  def can_view_task?(task)
+    if ['Manager', 'Team', 'Observer'].include?(self.role)
+      true
+    elsif self.role.eql?('Restricted') && self.user_id == task.assigned_to
+      true
+    else
+      false
+    end
+  end
+
 protected
 
 
