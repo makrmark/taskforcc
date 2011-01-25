@@ -3,15 +3,13 @@
 </div>
 <div class="task-right">
   <span id="fav_<%= dom_id(task) %>" class="fav">
-    <%= render 'shared/task_favourite', :object => task %>
+    <%= render 'shared/task_favourite', :object => task -%>
   </span>
-  <br />
   <i class="tt <%= task.type %>" title="<%= task.type %>"></i>
-  <br />
-  <% stat = task.status %>
+  <% stat = task.status -%>
   <% res = case stat
       when "Resolved", "Rejected", "Closed" then ":#{task.resolution}" else ""
-      end %>
+      end -%>
   <i class="ts <%= stat %>" title="<%= stat + res %>"></i>  
 </div>
 <div class="task-content">

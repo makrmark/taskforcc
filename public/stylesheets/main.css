@@ -243,12 +243,11 @@ i.tt {
   display: inline-block;
   height: 19px;
   width: 19px;
-  vertical-align: middle;
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   position: relative;
-  top: -3px;
-  left: 13px;
+  top: 14px;
+  left: -6px;
 }
 i.tt.Task     { background-position: -47px  -68px;  }
 i.tt.Decision { background-position: -66px  -68px;  }
@@ -260,11 +259,10 @@ i.ts {
   display: inline-block;
   height: 15px;
   width: 15px;
-  vertical-align: middle;
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   position: relative;
-  top: -2px;
+  top: 10px;
   left: 30px;
 }
 i.ts.New        { background-position: -81px -36px; }
@@ -406,10 +404,9 @@ div.task-title input.editor_field {
 
 /* Task Favourites */
 span.fav {
-  display: inline-block;
-  position: relative;
-  top: -3px; 
+	position: relative;
 	left: 30px;
+	top: -10px;
 }
 input[type="button"].tf {
   height: 15px;
@@ -418,14 +415,15 @@ input[type="button"].tf {
   background-color: transparent;
   background-position: -1px -20px;
   padding: 0px;
-  border-width: 0px;
-  white-space: normal;
+  border: 0px;
+	margin: 0px;	
 }
 input[type="button"].tf:hover {
   background-position: -17px -20px;
   cursor: pointer;
 }
-input[type="button"].tf.f, input[type="button"].tf.f:hover  {
+input[type="button"].tf.f, 
+input[type="button"].tf.f:hover {
   background-position: -33px -20px;    
 }
 
