@@ -1,5 +1,6 @@
 <%# TODO: refactor the javascript into a separate function %>
-<% active_tab = session[:active_tab] %>
+
+<% active_tab = session[:active_tab] || "search" %>
 <% active_tab = "search" if @collaboration.nil?  || ! @current_user.can_create_task?(@task) %>
 
 <ul id="mf-tab-list" class="mf-tab">
@@ -90,19 +91,8 @@
     <% remote_form_for [@collaboration, @task], 
       :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
       <%= f.error_messages %>
-
-      <% if @topic.nil? -%>
-        <%= hidden_field_tag 'task[topic_id]', @collaboration.unfiled_topic.id %>
-      <% else -%>
-        <%= hidden_field_tag 'task[topic_id]', @topic.id %>
-      <% end -%>
-
-      <% if @collaboration_user.nil? -%>
-        <%= hidden_field_tag 'task[assigned_to]', @current_user.id %>
-      <% else -%>
-        <%= hidden_field_tag 'task[assigned_to]', @collaboration_user.user_id %>
-      <% end -%>
-
+      <%= hidden_field_tag 'task[topic_id]', @task.topic_id %>
+      <%= hidden_field_tag 'task[assigned_to]', @task.assigned_to %>
       <%= f.text_field :title, :class => 'qtt' %>
       <%= f.submit 'Task Here', :class => 'qtb' %>
     <% end %>

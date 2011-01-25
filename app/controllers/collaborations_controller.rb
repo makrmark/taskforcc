@@ -35,7 +35,8 @@ class CollaborationsController < ApplicationController
     @task = Task.new(
       :created_by => @current_user.id, 
       :assigned_to => @current_user.id, 
-      :collaboration_id => @collaboration.id
+      :collaboration_id => @collaboration.id,
+      :topic_id => @collaboration.unfiled_topic.id
     )
     @comment = Comment.new
 
