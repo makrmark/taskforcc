@@ -39,16 +39,34 @@ protected
 
       # Check they have access to the relevant resource
       # This is a simple check - either they're in the relevant collaboration or not!
-            
-      unless ( controller_name.eql?("collaborations") && params[:id].nil? ) &&
-        params[:collaboration_id].nil? 
+      if controller_name.eql?("collaborations") && 
+        params[:id].nil?
 
-        cid = params[:collaboration_id] || params[:id]
+        # impossible to ascertain if user has access if collaboration_id not specified
+
+      elsif ['topics', 'collaboration_users', 'favourites'].include?(controller_name) && 
+        params[:collaboration_id].nil?
+        
+        # impossible to ascertain if user has access if collaboration_id not specified
+
+      elsif controller_name.eql?("users") && ! params[:id].nil?
+
+        # don't let users view each other's profiles directly
+        if params[:id] != session[:user_id]
+          session.delete(:original_uri)
+          flash[:notice] = "You do not have access to this resource"
+          redirect_to url_for :controller => 'access', :action => 'denied'
+          return
+        end
+
+      else
+        cid = controller_name.eql?("collaborations") ? params[:id] : params[:collaboration_id]      
         cu = CollaborationUser.find_by_collaboration_id_and_user_id(
           cid,
           session[:user_id]
         )
-  
+
+        # if the user does not exist in the collaboration then deny access
         if cu.nil?
           session.delete(:original_uri)
           flash[:notice] = "You do not have access to this resource"
