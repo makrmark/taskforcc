@@ -48,16 +48,6 @@ div.sidebar {
 	padding-bottom: 5px;
   margin-bottom: 10px;
 }
-/*
-span.staricon {
-  height: 15px;
-  width: 15px;
-  background-image: url('/images/sprites.png');  
-  background-color: transparent;
-  background-position: -1px -25px;
-  white-space: normal;  
-}
-*/
 
 div.logo {
   background-image: url('/images/sprites.png');  
@@ -85,6 +75,7 @@ ul.sidebar>li:hover {
 }
 ul.sidebar>li.active {
 	background-color: #c0c0c0;
+	font-weight: bold;
 }
 
 div.empty-message {
@@ -203,12 +194,13 @@ ul.tam ul.inactive {
 }
 
 /* Icons for the lists */
-ul.tam li i, h4 i, i.ts  {
-  display: inline-block;
+ul.tam li i, h4 i  {	
+	display: inline-block;
+	vertical-align: text-top;
   height: 15px;
   width: 15px;
+
   margin-right: 3px;
-  vertical-align: top;
   background-image: url('/images/sprites.png');  
   background-color: transparent;
 }
@@ -231,23 +223,22 @@ i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
 i.Tags       { background-position: -33px -52px; }
 div.task-right {
-  display: inline-block;
   height: 45px;
   width: 45px;
-  vertical-align: middle;
+
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   background-position: -1px  -68px;
 }
 i.tt {
-  display: inline-block;
+	display: block;	
   height: 19px;
   width: 19px;
+	margin-left: 13px;
+
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   position: relative;
-  top: 14px;
-  left: -6px;
 }
 i.tt.Task     { background-position: -47px  -68px;  }
 i.tt.Decision { background-position: -66px  -68px;  }
@@ -256,14 +247,14 @@ i.tt.Issue    { background-position: -47px  -87px;  }
 i.tt.Risk     { background-position: -66px  -87px;  }
 i.tt:hover    { background-color: lightblue; cursor: pointer; }
 i.ts {
-  display: inline-block;
+	display: block;
   height: 15px;
   width: 15px;
+	margin-left: 30px;
+
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   position: relative;
-  top: 10px;
-  left: 30px;
 }
 i.ts.New        { background-position: -81px -36px; }
 i.ts.Assigned   { background-position: -65px -20px; }
@@ -371,7 +362,7 @@ div.task-footer {
   min-height: 40px;
 }
 div.task-title {
-	font-size: larger;
+	font-weight: bold;
 }
 
 /* Task Details Styles */
@@ -405,18 +396,18 @@ div.task-title input.editor_field {
 /* Task Favourites */
 span.fav {
 	position: relative;
-	left: 30px;
-	top: -10px;
 }
 input[type="button"].tf {
+	display: block;
   height: 15px;
   width: 15px;
+	margin-left: 30px;	
+  padding: 0px;
+  border: 0px;
+
   background-image: url('/images/sprites.png');  
   background-color: transparent;
   background-position: -1px -20px;
-  padding: 0px;
-  border: 0px;
-	margin: 0px;	
 }
 input[type="button"].tf:hover {
   background-position: -17px -20px;

@@ -1,6 +1,6 @@
 body {
   color: black;
-  font-family: "lucida grande", arial, helvetica, sans-serif;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   overflow-y: scroll;
   line-height: 1.2em;
 }

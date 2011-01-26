@@ -101,10 +101,13 @@ form.qtf {
 input.qtt {
   font-size: 1.2em;
   width: 60%;
+	margin: 2px;
 }
 input.qtb {
   font-size: 1.2em;
   width: 110px;
+	margin: 2px;
 }
 div.qtf.options {
 	text-align: left;
+}
