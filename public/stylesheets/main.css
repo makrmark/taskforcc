@@ -342,7 +342,7 @@ span.task-updates {
   font-size: 0.8em;
   color: darkgrey;
 }
-div.tta {
+span.tta, div.tta {
   font-size: 0.8em;
   color: lightgrey;
 }
