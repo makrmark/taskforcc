@@ -95,7 +95,6 @@ http://www.lwis.net/free-css-drop-down-menu/dropdown.simple.horizontal.html
 .tam {
   visibility: hidden;
   color: #555577;
-  padding: 3px;
 }
 div.task ul.tam>li>a,
 div.task ul.tam {
@@ -110,24 +109,24 @@ ul.tam, ul.tam li, ul.tam ul {
   list-style: none;
 }
 ul.tam {
-  position: relative;
   float: right;
+	height: 15px;
+}
+ul.tam.assignment {
+	float: left;
 }
 
 ul.tam.footer {
-  float: left;
-	width: 100%;
-  text-align: right;
+	float: none;
+	display: block;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: white;
-  visibility: visible;
-  padding: 3px 0px 3px 0px;
 }
 ul.tam.assignment {
   float: left;
-  visibility: visible;
   color: lightgrey;
+	z-index: 5;
 }
 
 ul.tam li {
@@ -143,7 +142,6 @@ ul.tam li {
   cursor: default;
 }
 ul.tam ul {
-  visibility: visible;
   position: absolute;
   top: 100%;
   width: 10em;
@@ -168,12 +166,6 @@ ul.tam ul {
   -moz-transition: all 0.5s ease-in-out;
 }
 
-ul.tam.assignment, ul.tam.assignment>li {
-	z-index: 2;	
-}
-ul.tam.footer, ul.tam.footer>li {
-	z-index: 1;
-}
 ul.tam ul li {
   float: none;
   z-index: 250;
@@ -287,6 +279,7 @@ span.user-name {
   text-decoration: none;
 }
 
+/* Access Control Listing Table */
 table.acl {
 	width: 100%;
 	font-size: smaller;

@@ -14,15 +14,15 @@
 </div>
 <div class="task-content">
   <div class="task-header">
-    <ul class="tam">      
-      <% task.valid_states_by_user(@current_user).each do |status| %>
-        <%= menu_for_status(task, status) %>
-      <% end %>
-    </ul>
     <ul class="tam assignment">
       <li class="noaction"><%=h task.collaboration.subject %> &raquo; </li>
       <%= menu_for_topics(task.collaboration, task) %>
       <%= menu_for_assignment(@current_user, task) %>
+    </ul>
+    <ul class="tam">      
+      <% task.valid_states_by_user(@current_user).each do |status| %>
+        <%= menu_for_status(task, status) %>
+      <% end %>
     </ul>
   </div>
 	<%# http://www.paulwelty.com/ruby-on-rails/ruby-on-rails-using-a-different-controller-with-in_place_editor_field/ %>
@@ -41,7 +41,7 @@
     task.user_created_by.email) %></span></span>  
   <br />
 
-  <div class="task-footer" style="display:visible;">
+  <div class="task-footer">
 		<ul class="tam footer">
 		  <li><i class="Description"></i><%= link_to_function "Description" do |page|
 		      page["#{dom_id(task)}_description"].show
@@ -51,7 +51,7 @@
 		      page["#{dom_id(task)}_description"].hide
 		      page["#{dom_id(task)}_comments"].show
 		    end %></li>
-		  <li><i class="Attachments"></i>Attachments</li>
+		  <!-- <li><i class="Attachments"></i>Attachments</li> -->
 		</ul>
 
 		<% dst = "display:none;" unless task.comments.empty? %>
@@ -70,7 +70,7 @@
 				  		),
 					:rows => 3, :cols => 50, :cancel_text => 'cancel', :save_text => 'ok', 
 					:external_control => "edit_task_description_#{task.id}",
-					:options => {:highlight_color => "'#ffffff'"}} -%></span>
+					:options => {:highlight_color => "='#ffffff'" }} -%></span>
 	   </div>
 
 	   <% cst = "display:none;" if task.comments.empty? %>
