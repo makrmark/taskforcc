@@ -111,6 +111,8 @@
   
   <% unless @topic.nil? -%>
   <div id="topic" style="display:none;" class='mf-tab body'>
+    <b>Name:</b> <%= @topic.name %>    
+    <br />
     <b>Controller:</b> <%= @topic.user.full_name %>    
     <br />
     <% unless @topic.is_system %>

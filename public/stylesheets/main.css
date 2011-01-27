@@ -342,20 +342,21 @@ span.task-updates {
   font-size: 0.8em;
   color: darkgrey;
 }
-span.tta {
+div.tta {
   font-size: 0.8em;
-  color: darkgrey;
+  color: lightgrey;
 }
 
 div.task-footer {
   border-style: solid;
   border-width: 1px;
-  border-color: #AAAACC;
+  border-color: darkgrey;
   background-color: #F4F4F4;
   min-height: 40px;
 }
 div.task-title {
 	font-weight: bold;
+	margin: 3px 0px 3px 0px;
 }
 
 /* Task Details Styles */
