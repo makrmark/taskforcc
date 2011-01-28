@@ -1,6 +1,7 @@
 #container {
-  padding-left: 3%;
-  width: 1000px;
+  width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
   font-size: 0.8em;
 	min-height: 600px;
 }
@@ -51,9 +52,10 @@ div.sidebar {
 
 div.logo {
   background-image: url('/images/sprites.png');  
-  height: 20px;
-  width: 115px;
+	background-repeat: none;
   background-position: 0px 0px;
+  height: 20px;
+  width: 113px;
 }
 
 ul.sidebar {
