@@ -374,6 +374,9 @@ div.task-details a.in_place_edit_hint {
 	float: right;
 	color: lightgrey;
 }
+div.task-details:hover a.in_place_edit_hint {
+	color: black;
+}
 div.task-details a.in_place_edit_hint:hover {
 	color: black;
 }

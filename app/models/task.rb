@@ -12,7 +12,8 @@ class Task < ActiveRecord::Base
     :through => :collaboration_users
     
   has_many :favourites
-  has_many :comments
+  has_many :comments,
+    :order => 'created_at ASC'
   
   belongs_to :user_created_by,
     :class_name => 'User',
