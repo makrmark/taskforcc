@@ -92,6 +92,15 @@ form.tabulated.access div.form_footer {
 	color: navy;
 }
 
+form.tabulated.login input[type="text"],
+form.tabulated.login input[type="password"] {
+	width: 150px;
+}
+form.tabulated.login input[type="submit"] {
+	font-size: 0.8em;
+}
+
+
 /*
 * Used for the form in the multifunction tab area
 */
