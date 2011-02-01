@@ -1,5 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :collaborations,
+    :collection => {
+      :list => :get      
+    }
+
   map.resources :collaborations do |collaboration|
     collaboration.resources  :collaboration_users
     collaboration.resources  :tasks, 
@@ -21,11 +26,6 @@ ActionController::Routing::Routes.draw do |map|
       :chgpass => :get,
       :setpass => :put
     }
-  map.resources :collaborations,
-    :member => {
-      :set_collaboration_description => :post,
-      :set_collaboration_subject => :post
-    }    
 
   map.connect 'access/:action', :controller => 'access'
 

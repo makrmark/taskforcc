@@ -11,6 +11,20 @@ class CollaborationsController < ApplicationController
 #      render :text => @collaboration.reload.subject # reload so it returns the old name if it wasn't saved
 #  end
   
+  def list
+    @current_user = User.find(session[:user_id])
+    @collaborations = @current_user.collaborations
+
+    # when you list the tasks, set the return-to path
+    session[:return_to] = request.request_uri
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @collaborations }
+    end
+
+  end
+  
   # GET /collaborations
   # GET /collaborations.xml
   def index

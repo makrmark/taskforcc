@@ -1,16 +1,18 @@
-<table>
+<h4>All Taskforcc</h4>
+<hr>
+<table class="acl">
   <tr>
-    <th width='300'>Subject</th>
-    <th width='100'>Status</th>
-    <th width='200'>Created by</th>
+    <th>Subject</th>
+    <th>Status</th>
+    <th>Created by</th>
+    <th>Actions</th>
   </tr>
 
   <%= render(:partial => 'shared/collaboration', :collection => @collaborations )%>
 
 </table>
 
-<br />
+<br>
 
-<%= link_to 'New collaboration', new_collaboration_path %>
+<%= button_to 'New Taskforcc', new_collaboration_path, :method => :get %>
 
-<hr />

@@ -1,11 +1,11 @@
-<h4><%= breadcrumb %> &raquo; Topics</h4>
+<h4><%= breadcrumb %> &raquo; Manage Topics</h4>
 <hr />
 
-<table width="100%%">
+<table class="acl">
   <tr>
-    <th>Name</th>
+    <th>Topic Name</th>
     <th>Controller</th>
-    <th></th>    
+    <th>Actions</th>
   </tr>
 
 <% @topics.each do |topic| %>
@@ -17,17 +17,26 @@
     <td><span class="user-name"><%= titled_text(topic.user.full_name,
       topic.user.email) %></span></td>
 
+		<td>
+			<%= link_to 'Show Tasks', collaboration_topic_path(
+	          :collaboration_id => topic.collaboration_id,
+	          :id => topic.id
+	      ) %>
     <% unless topic.is_system %>
-    <td><%= link_to 'Edit', edit_collaboration_topic_path(
-          :collaboration_id => topic.collaboration_id,
-          :id => topic.id
-      ) %></td>
+			&bull;
+	    <%= link_to 'Edit Topic', edit_collaboration_topic_path(
+	          :collaboration_id => topic.collaboration_id,
+	          :id => topic.id
+	      ) %>
+		<% else %>
+			&nbsp;
     <% end %>
-    
+    </td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New topic', new_collaboration_topic_path %>
+<%= button_to 'New topic', new_collaboration_topic_path , :method => :get %><%= link_to 'Close', session[:return_to] || :back %>

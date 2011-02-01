@@ -60,7 +60,7 @@ protected
         end
 
       else
-        cid = controller_name.eql?("collaborations") ? params[:id] : params[:collaboration_id]      
+        cid = controller_name.eql?("collaborations") ? params[:id] : params[:collaboration_id]
         cu = CollaborationUser.find_by_collaboration_id_and_user_id(
           cid,
           session[:user_id]

@@ -15,6 +15,9 @@
   <%= stylesheet_link_tag 'main' %>  
   <%= stylesheet_link_tag 'forms' %>  
   <%= javascript_include_tag :defaults %>
+
+	<meta name="description" content="taskfor.cc removes barriers to working efficiently with others." /> 
+
 </head>
 <body>
 
@@ -27,9 +30,9 @@
     <div id="left">
       <%= render 'shared/user_profile', :object => @current_user %>
 
-      <h4 class="sidebar">Taskforcc <span class='sidebar-actions'>
-        <%= link_to 'New', new_collaboration_path %> &bull; 
-        <%= link_to 'List', collaborations_path %>
+      <h4 class="sidebar"><%= link_to 'Taskforcc', list_collaborations_path, :title => "Manage Taskforcc" %>
+				<span class='sidebar-actions'>
+	        <%= link_to 'New', new_collaboration_path %>
         </span></h4>
 
       <% if @current_user.collaborations.empty? %>

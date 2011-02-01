@@ -3,9 +3,9 @@
 <div class="sidebar">            
   <h4 class="sidebar">
     <i class="Topics"></i>
-    <%= link_to 'Topics', collaboration_topics_path(@collaboration) %>
+    <%= link_to 'Topics', collaboration_topics_path(@collaboration), :title => 'Manage Topics' %>
     <span class='sidebar-actions'>
-      <%= link_to 'New', new_collaboration_topic_path(@collaboration) %>
+      <%= link_to 'New', new_collaboration_topic_path(@collaboration), :title => 'Add New Topic' %>
     </span>
   </h4>
 
