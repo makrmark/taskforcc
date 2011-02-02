@@ -28,7 +28,7 @@ module ApplicationHelper
       page["tasm_topics_#{dom_id(task)}"].toggle
     end
     
-    "<li>#{link} <small>▼</small> &raquo; #{submenu_for_topics(collaboration, task)}</li>"
+    "<li>#{link} <span class=\"arrow\">▼</span> &raquo; #{submenu_for_topics(collaboration, task)}</li>"
   end
   
   def submenu_for_topics(collaboration, task)
@@ -54,7 +54,7 @@ module ApplicationHelper
         page["tasm_assigned_#{dom_id(task)}"].toggle
       end
       
-       "<li>#{link} <small>▼</small> #{submenu_for_assignment(task)}</li>"
+       "<li>#{link} <span class=\"arrow\">▼</span> #{submenu_for_assignment(task)}</li>"
     else 
       "<li>#{h task.user_assigned_to.full_name}</li>"
     end
@@ -78,7 +78,7 @@ module ApplicationHelper
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
       "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
-      "<li><i class='#{label_for_status(stat)}'></i>#{link} <small>▼</small> #{submenu_for_resolution(task, stat)} </li>"
+      "<li><i class='#{label_for_status(stat)}'></i>#{link} <span class=\"arrow\">▼</span> #{submenu_for_resolution(task, stat)} </li>"
     end
   end
 
