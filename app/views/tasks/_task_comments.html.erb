@@ -4,7 +4,7 @@
 	<% comment_count = task_comments.comments.count %>
 	<% if comment_count < 5 %>
 
-	  <%= render :partial => 'shared/comment', :collection => task_comments.comments, 
+	  <%= render :partial => 'tasks/comment', :collection => task_comments.comments, 
 			:locals => { :show => true } -%>
 
 	<%# if more 5 just show the last 3 %>
@@ -22,7 +22,7 @@
 
 		<% cntr = 0 %>
 		<% task_comments.comments.each do |c| %>
-			<%= render :partial => 'shared/comment', :object => c, 
+			<%= render :partial => 'tasks/comment', :object => c, 
 				:locals =>  { :show => (comment_count - cntr <= 3 ? true : false)  } -%>
 			<% cntr += 1 %>
 		<% end %>
