@@ -1,6 +1,6 @@
 <h4><%= breadcrumb %> &raquo; Team</h4>
 <hr />
-  <%= render(:partial => 'shared/collaboration_user', 
+  <%= render(:partial => 'collaboration_users/collaboration_user', 
     :collection => @collaboration_users,
     :locals => { :show_actions => true } )%>
 

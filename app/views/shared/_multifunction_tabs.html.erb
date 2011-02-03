@@ -123,7 +123,7 @@
 
   <% unless @collaboration_user.nil? -%>
   <div id="user" style="display:none;" class='mf-tab body'>
-    <%= render(:partial => 'shared/collaboration_user', 
+    <%= render(:partial => 'collaboration_users/collaboration_user', 
       :object => @collaboration_user,
       :locals => { :show_actions => false } )%>
   </div>    

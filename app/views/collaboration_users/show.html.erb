@@ -9,7 +9,7 @@
     </div>
   <% else %>
     <div id="task-empty-message"></div>
-    <%= render(:partial => 'shared/task_container', 
+    <%= render(:partial => 'tasks/task_container', 
       :collection => @collaboration_user.find_tasks_assigned_to(params) )%>
   <% end%>
 </div>

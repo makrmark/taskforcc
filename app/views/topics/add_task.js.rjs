@@ -1,4 +1,4 @@
 # http://marklunds.com/s5/rails101/html/ajax.html
-page.replace_html dom_id(@task), :partial => 'shared/task', :object => @task
+page.replace_html dom_id(@task), :partial => 'tasks/task', :object => @task
 page.visual_effect :pulse, dom_id(@task)
 page.visual_effect :highlight, dom_id(@task), :duration => 3
