@@ -41,19 +41,30 @@
     task.user_created_by.email) %></span></div>  
 
   <div class="task-footer">
+		<% show_tab = task.comments.empty? 		? "description" : "comments" -%>
+		<% dcl = show_tab.eql?("description") ? "active" : "" 					-%>
+		<% dst = show_tab.eql?("description") ? "" : "display: none;" 	-%>
+	  <% ccl = show_tab.eql?("comments") 		? "active" : "" 					-%>
+	  <% cst = show_tab.eql?("comments") 		? "" : "display: none;" 	-%>
+
 		<ul class="tam footer">
-		  <li><i class="Description"></i><%= link_to_function "Description" do |page|
+		  <li id="<%= dom_id(task) %>_description_tab" 
+				class="<%= dcl %>"><i class="Description"></i><%= link_to_function "Description" do |page|
+		      page["#{dom_id(task)}_comments_tab"].removeClassName("active")
+		      page["#{dom_id(task)}_description_tab"].addClassName("active")
 		      page["#{dom_id(task)}_description"].show
 		      page["#{dom_id(task)}_comments"].hide
 		    end %></li>
-		  <li><i class="Comments"></i><%= link_to_function "Comments" do |page|
+		  <li id="<%= dom_id(task) %>_comments_tab"
+				class="<%= ccl %>"><i class="Comments"></i><%= link_to_function "Comments" do |page|
+		      page["#{dom_id(task)}_description_tab"].removeClassName("active")
+		      page["#{dom_id(task)}_comments_tab"].addClassName("active")
 		      page["#{dom_id(task)}_description"].hide
 		      page["#{dom_id(task)}_comments"].show
 		    end %></li>
 		  <!-- <li><i class="Attachments"></i>Attachments</li> -->
 		</ul>
 
-		<% dst = "display:none;" unless task.comments.empty? %>
 		<div class="task-details" id="<%= dom_id(task) %>_description" style="<%= dst %>">
 
 			<%# http://www.w3schools.com/CSS/pr_text_white-space.asp -%>
@@ -72,7 +83,6 @@
 					:options => {:highlight_color => "='#ffffff'" }} -%></span>
 	   </div>
 
-	   <% cst = "display:none;" if task.comments.empty? %>
 	   <div class="task-details" id="<%= dom_id(task) %>_comments" style="<%= cst %>">
 	     <%= render :partial => 'tasks/task_comments', :object => task %>
 	   </div>

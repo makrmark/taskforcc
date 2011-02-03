@@ -130,6 +130,9 @@ ul.tam.footer {
   border-bottom-width: 1px;
   border-bottom-color: white;
 }
+ul.tam.footer li.active {
+	font-weight: bold;
+}
 span.arrow {
 	font-size: 10px;
 }
