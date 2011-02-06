@@ -20,14 +20,8 @@ module ApplicationHelper
   # Menu for changing topics
   # 
   def menu_for_topics(collaboration, task)
-    link = link_to_function(task.topic.name) do |page|
-      page.select("ul.dir").each do |menu|
-        menu.addClassName("inactive")
-      end
-      page["tasm_topics_#{dom_id(task)}"].removeClassName("inactive")
-      page["tasm_topics_#{dom_id(task)}"].toggle
-    end
-    
+    link = link_to_function(task.topic.name, 
+      "toggle_tam_submenu('ttsm', '#{dom_id(task)}', 'topics')")
     "<li>#{link} <span class=\"arrow\">▼</span> &raquo; #{submenu_for_topics(collaboration, task)}</li>"
   end
   
@@ -37,7 +31,7 @@ module ApplicationHelper
       menu_items << "<li>#{link_for_chgtopic(task, t)}</li>" unless
         t.id == task.topic_id # can't assign to already-assigned topic
     end
-    "<ul style=\"display: none;\" class='dir' id='tasm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
+    "<ul style=\"display: none;\" class='dir' id='ttsm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
   #
@@ -45,15 +39,8 @@ module ApplicationHelper
   #
   def menu_for_assignment(cusr, task)    
     if task.valid_states_by_user(cusr).include?('Assigned')
-
-      link = link_to_function(task.user_assigned_to.full_name) do |page|
-        page.select("ul.dir").each do |menu|
-          menu.addClassName("inactive")
-        end
-        page["tasm_assigned_#{dom_id(task)}"].removeClassName("inactive")
-        page["tasm_assigned_#{dom_id(task)}"].toggle
-      end
-      
+      link = link_to_function(task.user_assigned_to.full_name,
+        "toggle_tam_submenu('tasm', '#{dom_id(task)}', 'assigned')")
        "<li>#{link} <span class=\"arrow\">▼</span> #{submenu_for_assignment(task)}</li>"
     else 
       "<li>#{h task.user_assigned_to.full_name}</li>"
@@ -64,14 +51,8 @@ module ApplicationHelper
   # Menu for changing status
   #
   def menu_for_status(task, stat)
-    link = link_to_function(label_for_status(stat)) do |page|
-      page.select("ul.dir").each do |menu|
-        menu.addClassName("inactive")
-      end
-      page["trsm_#{stat}_#{dom_id(task)}"].removeClassName("inactive")
-      page["trsm_#{stat}_#{dom_id(task)}"].toggle
-    end
-
+    link = link_to_function(label_for_status(stat),
+      "toggle_tam_submenu('trsm', '#{dom_id(task)}', '#{stat}')")
     case stat
     when 'Assigned' # submenu is the collaboration user list
       # do nothing - see menu_for_assignment

@@ -49,19 +49,11 @@
 
 		<ul class="tam footer">
 		  <li id="<%= dom_id(task) %>_description_tab" 
-				class="<%= dcl %>"><i class="Description"></i><%= link_to_function "Description" do |page|
-		      page["#{dom_id(task)}_comments_tab"].removeClassName("active")
-		      page["#{dom_id(task)}_description_tab"].addClassName("active")
-		      page["#{dom_id(task)}_description"].show
-		      page["#{dom_id(task)}_comments"].hide
-		    end %></li>
+				class="<%= dcl %>"><i class="Description"></i><%= link_to_function "Description",
+					"set_details_tab_to_description('#{dom_id(task)}')" %></li>
 		  <li id="<%= dom_id(task) %>_comments_tab"
-				class="<%= ccl %>"><i class="Comments"></i><%= link_to_function "Comments" do |page|
-		      page["#{dom_id(task)}_description_tab"].removeClassName("active")
-		      page["#{dom_id(task)}_comments_tab"].addClassName("active")
-		      page["#{dom_id(task)}_description"].hide
-		      page["#{dom_id(task)}_comments"].show
-		    end %></li>
+				class="<%= ccl %>"><i class="Comments"></i><%= link_to_function "Comments", 
+					"set_details_tab_to_comments('#{dom_id(task)}')" %></li>
 		  <!-- <li><i class="Attachments"></i>Attachments</li> -->
 		</ul>
 
