@@ -17,6 +17,8 @@ function set_details_tab_to_description(domid) {
 }
 
 // show and hide the topics menu for a task
+// TODO: I think the menuname parameter is redundant here
+// TODO: Use a seperate function to generate the ID for consistency
 function toggle_tam_submenu(submenu, domid, menuname) {
 	
 	$$("ul.dir").each(function(value, index) {

@@ -3,7 +3,6 @@
 require 'digest/md5'
 
 class ApplicationController < ActionController::Base
-  before_filter :authorize, :except => [:login, :signup, :dosignup, :start, :denied, :welcome, :logout]
 
   # TODO: check the user has access to the relevant Collaborations
   # TODO: check the user has access to the relevant Tasks (eg: Restricted users may not)
@@ -29,10 +28,6 @@ protected
   end
 
   def authorize
-    # Don't Authorise for Pages controller
-    if params[:controller].eql? "pages"
-      return
-    end
 
     # If the user is valid and logged in
     if User.find_by_id(session[:user_id])
@@ -49,10 +44,10 @@ protected
         
         # impossible to ascertain if user has access if collaboration_id not specified
 
-      elsif controller_name.eql?("users") && ! params[:id].nil?
+      elsif controller_name.eql?('users') && params.has_key?(:id)
 
         # don't let users view each other's profiles directly
-        if params[:id] != session[:user_id]
+        unless params[:id].to_s == session[:user_id].to_s          
           session.delete(:original_uri)
           flash[:notice] = "You do not have access to this resource"
           redirect_to url_for :controller => 'access', :action => 'denied'

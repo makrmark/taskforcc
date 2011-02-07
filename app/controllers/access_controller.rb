@@ -1,4 +1,5 @@
 class AccessController < ApplicationController
+
 # TODO: maybe move to Restful Authentication:
 # http://railsonedge.blogspot.com/2008/03/rails-forum-restful-authenticationpart.html
 

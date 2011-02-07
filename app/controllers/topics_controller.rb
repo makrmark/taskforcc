@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_filter :authorize
+
   layout "collaborations"
 
 =begin

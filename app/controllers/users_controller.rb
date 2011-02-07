@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authorize
+
   layout "collaborations"
 
   # GET /users

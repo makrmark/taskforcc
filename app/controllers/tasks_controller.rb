@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_filter :authorize
+
   layout "collaborations"
 
 # TODO: this is not necessary right now  

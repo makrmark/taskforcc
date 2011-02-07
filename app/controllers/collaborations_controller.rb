@@ -1,4 +1,5 @@
 class CollaborationsController < ApplicationController
+  before_filter :authorize
 
 # TODO: Not needed yet  
 #  in_place_edit_for :collaboration, :description
