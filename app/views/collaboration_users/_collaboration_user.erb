@@ -6,9 +6,13 @@
     <li>
       <%= titled_text(collaboration_user.user.full_name,
            collaboration_user.user.email) %>
+			&lt;<%= collaboration_user.user.email %>&gt;
     </li>
     <li>
-      Taskforcc Role: <%=h collaboration_user.role %>
+      Role: <%=h collaboration_user.role %>
+    </li>
+    <li>
+      Status: <%=h collaboration_user.status %>
     </li>
     <% if show_actions %>
     <li>
@@ -26,7 +30,7 @@
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
       ),
-      :confirm => 'Really remove from this Taskforcc?', :method => :delete %>
+      :confirm => "Really remove #{collaboration_user.user.full_name} from this Taskforcc?", :method => :delete %>
     </li>    
     <% end %>
   </ul>
