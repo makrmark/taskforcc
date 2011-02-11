@@ -141,7 +141,6 @@ ul.tam.footer li {
 
 }
 ul.tam.footer li.active {
-	font-weight: bold;
   background-color: #F4F4F4;
 	border-bottom-color: #F4F4F4;
 }
