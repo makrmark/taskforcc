@@ -1,0 +1,17 @@
+<h2>Forgotten Your Password?</h2>
+<h4>Recover it here!</h4>
+
+<% form_tag url_for(:controller => 'access', :action => 'recover'), :method => 'post', 
+	:class => "tabulated access" do %>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div>
+    <%= label_tag "" %>
+    <%= submit_tag "Recover" %>
+  </div>
+  <div class="form_footer">
+    You will receive a new password at the specified email address.
+  </div>
+<% end %>

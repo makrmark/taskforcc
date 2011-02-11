@@ -24,7 +24,9 @@
     </tr>
     <tr>
       <td></td>
-      <td class="forgotten" colspan="2">Forgotten your password?</td>
+      <td class="forgotten" colspan="2"><%= link_to "Forgotten your password?", url_for(:controller => 'access', 
+				:action => 'recover') %>
+	    </td>
     </tr>
   </tbody>
 </table>

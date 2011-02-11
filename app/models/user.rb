@@ -97,6 +97,9 @@ class User < ActiveRecord::Base
   def send_welcome
       AccountMailer.deliver_welcome(self)
   end
+  def send_recover
+    AccountMailer.deliver_recover(self)
+  end
 
   def can_create_task?(task)
     cu = CollaborationUser.find(:first, 

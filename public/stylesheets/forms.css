@@ -99,6 +99,9 @@ form.tabulated.login input[type="password"] {
 form.tabulated.login input[type="submit"] {
 	font-size: 0.8em;
 }
+form.tabulated.login a {
+	color: lightblue;
+}
 
 
 /*

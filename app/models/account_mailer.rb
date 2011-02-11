@@ -11,6 +11,16 @@ class AccountMailer < ActionMailer::Base
     body       :greeting => 'Hi,', :user => user
   end
 
+  # Password Recovery
+  def recover(user)
+    subject    'taskfor.cc password recovery'
+    recipients user.email
+    from       "Taskforcc <notifications@taskfor.cc>"
+    sent_on    Time.now
+    
+    body       :greeting => 'Hi,', :user => user
+  end
+
   # Invite a user to Taskforcc
   def invite_to_service(user, invited_by)
     subject    'Welcome to taskfor.cc'

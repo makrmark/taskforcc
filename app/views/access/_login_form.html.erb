@@ -1,7 +1,7 @@
 <h2>Log in</h2>
 <h4>Get straight to work!</h4>
 
-<% form_tag url_for(:controller => 'access', :action => 'login'), :method => 'post', 
+<% form_tag url_for(:controller => 'access', :action => 'login'), :method => :post, 
 	:class => "tabulated access" do %>
   <div>
     <%= label_tag :email %>
@@ -17,6 +17,7 @@
   </div>
   <div class="form_footer">
     <%= label_tag "" %>
-    Forgotten your password?
+    <%= link_to "Forgotten your password?", url_for(:controller => 'access', 
+			:action => 'recover') %>
   </div>
 <% end %>

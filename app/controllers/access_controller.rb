@@ -73,10 +73,32 @@ class AccessController < ApplicationController
       end
     end    
   end
-    
-  def welcome
+
+  def recover
+    if request.post?
+      @user = User.find_by_email(params[:email])
+
+      # the user could not be found
+      if @user.nil?
+
+        flash[:error] = "Email address not found"
+        
+        respond_to do |format|
+          format.html { render :action => "recover" }
+        end
+
+      # user found - reset their password
+      else
+        @user.password = User.random_password
+        @user.change_pass = true
+        @user.save!
+        @user.send_recover
+        flash[:notice] = "Login using your new password sent to you by email"
+        redirect_to url_for(:controller => :access, :action => :login)
+      end      
+    end    
   end
-  
+    
   def denied
   end
 
