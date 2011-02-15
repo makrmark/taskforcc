@@ -33,8 +33,9 @@ class Task < ActiveRecord::Base
   # http://railscasts.com/episodes/108-named-scope
   # http://refactormycode.com/codes/788-advanced-search-form-named-scopes
   # http://apidock.com/rails/ActiveRecord/NamedScope/ClassMethods/named_scope
+  # BUG: Search should be case-insensitive
   named_scope :title_filter, lambda { |t| 
-    words = t.split(/ /) # should really split on any white space
+    words = t.split(/ /)
     expr  = words.map {|f| "title like ?"}
     vals  = words.map {|f| "%#{f}%"}
     

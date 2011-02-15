@@ -3,7 +3,9 @@ class Collaboration < ActiveRecord::Base
   has_many :tasks, :order => "id DESC"
   has_many :collaboration_users
   has_many :topics, :order => "sortorder ASC, name ASC"
-  has_many :users, :through => :collaboration_users, :order => "full_name ASC"
+  has_many :users, 
+    :through => :collaboration_users,   
+    :order => "full_name ASC"
   has_one  :unfiled_topic, 
     :class_name => 'Topic', 
     :conditions => "system_name ='unfiled'"
@@ -25,6 +27,10 @@ class Collaboration < ActiveRecord::Base
     :in => [false], 
     :on => :update,
     :message => " cannot update system record"
+
+  def active_users
+    self.users.status_filter("Active")
+  end
   
   # TODO: implement search on Favourites
   def favourites(uid)

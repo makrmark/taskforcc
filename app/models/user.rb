@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
   has_many :tasks_assigned_to,
     :class_name => 'Task',
     :foreign_key => 'assigned_to'
+
+  named_scope :status_filter, lambda { |t|
+    { :conditions => { :status => t } }
+  }
     
   def find_tasks(p)
     self.tasks.title_filter(p[:title] || "").status_filter(p[:include_closed]? 'Closed' : nil )

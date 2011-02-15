@@ -71,7 +71,7 @@ module ApplicationHelper
     menu_items = "<li>#{link_for_chgassign(task, @current_user.id, 'Myself')}</li>"
 
     # TODO: this is quite a long chain - inefficient
-    task.collaboration.users.each do |u|
+    task.collaboration.users.status_filter("Active").each do |u|
       menu_items << "<li>#{link_for_chgassign(task, u.id, u.full_name)}</li>" unless
         u.id == task.assigned_to || # can't assign to already-assigned user
         u.id == @current_user.id    # can't assign to self (separate entry used)

@@ -3,8 +3,10 @@
  		class_attribute = "class=\"active\"" if @collaboration_user == team_member
 	end
 -%>
-<li <%= class_attribute -%>><%= link_to team_member.user.full_name, 
+<% user = team_member.user %>
+<li <%= class_attribute -%>><%= link_to user.full_name, 
   collaboration_collaboration_user_path(
     :collaboration_id => team_member.collaboration_id,
     :id => team_member.id
-  ) %></li>
+  ) %>
+<%= "(#{user.status})" unless user.status.eql?("Active") %></li>

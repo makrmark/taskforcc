@@ -9,19 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110209163903) do
+ActiveRecord::Schema.define(:version => 20110215122631) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role",             :default => "Team",    :null => false
-    t.string   "status",           :default => "Invited", :null => false
+    t.string   "role",             :default => "Team", :null => false
   end
 
   add_index "collaboration_users", ["collaboration_id"], :name => "index_collaboration_users_on_collaboration_id"
-  add_index "collaboration_users", ["status"], :name => "index_collaboration_users_on_status"
   add_index "collaboration_users", ["user_id"], :name => "index_collaboration_users_on_user_id"
 
   create_table "collaborations", :force => true do |t|
@@ -120,9 +118,11 @@ ActiveRecord::Schema.define(:version => 20110209163903) do
     t.string   "country"
     t.string   "job_title"
     t.string   "phone_number"
+    t.string   "status",          :default => "Invited", :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["full_name"], :name => "index_users_on_full_name"
+  add_index "users", ["status"], :name => "index_users_on_status"
 
 end

@@ -10,12 +10,24 @@ class AccessController < ApplicationController
   def login
     if request.post?
       @user = User.authenticate(params[:email], params[:password])
-      if @user        
+
+      # user was authenticated
+      if @user
           session[:user_id] = @user.id
 
-          # this is normally only set for first login
-          # TODO: maybe it's better to user "reg-step" - less ambiguous
+          # Activate the user account on first login
+          if @user.status.eql?("Invited")
+            flash[:notice]  = "Welcome to Taskforcc! Your account is now Active."
+            @user.status = "Active"
+            @user.skip_password_check = true
+            @user.save!
+          end
+
+          # The user should change their pass, 
+          # either on first login or after requesting a password reset
           if @user.change_pass?
+            flash[:notice] = flash[:notice] ? "#{flash[:notice]}<br>" : ""
+            flash[:notice] += "Please change your temporary password to something more secure."
             redirect_to chgpass_user_path(@user) 
           else # normally this path is used
             uri = session[:original_uri]
