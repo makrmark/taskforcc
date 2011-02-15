@@ -6,9 +6,11 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users
   # GET /collaboration_users.xml
   def index
-    @collaboration_users = CollaborationUser.find_all_by_collaboration_id(params[:collaboration_id])
     @current_user = User.find(session[:user_id])
     @collaboration = Collaboration.find(params[:collaboration_id])
+
+    @collaboration_users = @collaboration.collaboration_users
+    # CollaborationUser.find_all_by_collaboration_id(params[:collaboration_id])
 
     respond_to do |format|
       format.html # index.html.erb
