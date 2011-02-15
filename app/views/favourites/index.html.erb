@@ -1,11 +1,11 @@
-<h4><%= breadcrumb %> &raquo; Favourite Tasks</h4>
+<h4><%= breadcrumb %> &raquo; Watched Tasks</h4>
 <hr />
 
 <div id="task-container">
   <% if @collaboration.favourites(@current_user.id).empty? %>
 
     <div id="task-empty-message" class="empty-message">
-      You have not yet marked any Tasks as Favourite.  
+      You are not yet Watching any Tasks.
     </div>
   
   <% else %>

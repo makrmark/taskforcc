@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
         :set_task_description => :post
       }
     collaboration.resources  :topics
-    collaboration.resources  :favourites
+    collaboration.resources  :watched_tasks, :controller => :favourites
     collaboration.resources  :comments
   end
 
