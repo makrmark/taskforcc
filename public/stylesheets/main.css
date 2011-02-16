@@ -258,6 +258,7 @@ i.tt.Issue    { background-position: -66px  -68px;  }
 i.tt.Question { background-position: -85px  -68px;  }
 i.tt.Defect   { background-position: -47px  -87px;  }
 i.tt.Risk     { background-position: -66px  -87px;  }
+i.tt.Idea     { background-position: -85px  -87px;  }
 i.tt:hover    { background-color: lightblue; cursor: pointer; }
 ul.tt {
 	position: relative;

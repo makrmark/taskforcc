@@ -59,7 +59,7 @@ class Task < ActiveRecord::Base
   validate :valid_resolution?
 
   validates_inclusion_of :task_type, 
-    :in => %w{Task Risk Issue Question Defect}
+    :in => %w{Task Risk Issue Question Defect Idea}
 
   def can_create?(user)
     valid_states_by_user(user).include?('New')
