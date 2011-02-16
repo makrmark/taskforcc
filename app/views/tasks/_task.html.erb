@@ -5,7 +5,12 @@
   <span id="fav_<%= dom_id(task) %>" class="fav">
     <%= render 'tasks/task_favourite', :object => task -%>
   </span>
-  <i class="tt <%= task.type %>" title="<%= task.type %>"></i>
+  <%= link_to_function %Q{<i class="tt #{task.task_type}" title="#{task.task_type}"></i>} do |page|
+			page["#{dom_id(task)}_ttm"].toggle
+		end			
+	%>
+	<%= render :partial => "tasks/task_type", :locals => { :task => task } %>
+	
   <% stat = task.status -%>
   <% res = case stat
       when "Resolved", "Rejected", "Closed" then ":#{task.resolution}" else ""

@@ -85,7 +85,7 @@ class TaskTest < ActiveSupport::TestCase
     assert task.errors.invalid?(:topic_id)
     assert task.errors.invalid?(:collaboration_id)
     assert task.errors.invalid?(:status)
-    assert !task.errors.invalid?(:type)
+    assert !task.errors.invalid?(:task_type)
     assert !task.errors.invalid?(:resolution)    
   end
 

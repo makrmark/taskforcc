@@ -181,6 +181,7 @@ class TasksController < ApplicationController
 
     @task.topic_id   = params[:topic_id]    if params[:topic_id]
     @task.status     = params[:status]      if params[:status]
+    @task.task_type  = params[:task_type]   if params[:task_type]
     @task.resolution = params[:resolution]  if params[:resolution]
     @task.assigned_to= params[:assigned_to] if params[:assigned_to]
     @task.updated_by = session[:user_id]

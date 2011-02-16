@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215122631) do
+ActiveRecord::Schema.define(:version => 20110216083035) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20110215122631) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "description"
-    t.string   "type",             :default => "Task",       :null => false
+    t.string   "task_type",        :default => "Task",       :null => false
     t.string   "status",           :default => "New",        :null => false
     t.string   "resolution",       :default => "Unresolved", :null => false
     t.integer  "created_by"

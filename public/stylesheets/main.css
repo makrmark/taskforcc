@@ -242,6 +242,7 @@ div.task-right {
   background-color: transparent;
   background-position: -1px  -68px;
 }
+/* Task Type Styles */
 i.tt {
 	display: block;	
   height: 19px;
@@ -253,11 +254,26 @@ i.tt {
   position: relative;
 }
 i.tt.Task     { background-position: -47px  -68px;  }
-i.tt.Decision { background-position: -66px  -68px;  }
-i.tt.Query    { background-position: -85px  -68px;  }
-i.tt.Issue    { background-position: -47px  -87px;  }
+i.tt.Issue    { background-position: -66px  -68px;  }
+i.tt.Question { background-position: -85px  -68px;  }
+i.tt.Defect   { background-position: -47px  -87px;  }
 i.tt.Risk     { background-position: -66px  -87px;  }
 i.tt:hover    { background-color: lightblue; cursor: pointer; }
+ul.tt {
+	position: relative;
+	list-style: none;
+	background-color: white;
+	border: 1px solid grey;
+	z-index: 500;
+}
+ul.tt li {
+	background-color: white;
+	height: 21px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	z-index: 600;
+}
+
 i.ts {
 	display: block;
   height: 15px;

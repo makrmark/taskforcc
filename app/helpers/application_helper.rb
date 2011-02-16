@@ -144,6 +144,16 @@ module ApplicationHelper
     )
   end
 
+  def link_for_chgtype(task, task_type)
+    link_to_remote(%Q{<i class="tt #{task_type}" title="#{task_type}"></i>}, 
+      :url => chgstatus_collaboration_task_path({
+        :collaboration_id => task.collaboration_id,
+        :id => task.id,
+        :task_type => task_type
+        }
+      )
+    )
+  end
 
   # http://overhrd.com/?p=28
   # plain old gravatar url <%= gravatar_url_for 'greenisus@gmail.com' %>    

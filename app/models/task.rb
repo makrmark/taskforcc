@@ -48,7 +48,7 @@ class Task < ActiveRecord::Base
     { :conditions => { "status" => Task.include_status_from_filter(t) } }
   }
       
-  validates_presence_of :title, :type, :status, :resolution, 
+  validates_presence_of :title, :task_type, :status, :resolution, 
     :created_by, :updated_by, :assigned_to, 
     :collaboration_id, :topic_id
     
@@ -58,8 +58,8 @@ class Task < ActiveRecord::Base
   validate :valid_state_for_role?
   validate :valid_resolution?
 
-  validates_inclusion_of :type, 
-    :in => %w{Task Risk Issue Query Defect Decision}
+  validates_inclusion_of :task_type, 
+    :in => %w{Task Risk Issue Question Defect}
 
   def can_create?(user)
     valid_states_by_user(user).include?('New')
