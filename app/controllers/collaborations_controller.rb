@@ -47,6 +47,9 @@ class CollaborationsController < ApplicationController
   def show
     @collaboration = Collaboration.find(params[:id])
     @current_user = User.find(session[:user_id])
+    @collaboration_user = CollaborationUser.find_by_user_id_and_collaboration_id(
+      @current_user.id, @collaboration.id)
+
     @task = Task.new(
       :created_by => @current_user.id, 
       :assigned_to => @current_user.id, 

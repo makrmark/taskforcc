@@ -1,5 +1,5 @@
 <%
-	unless @collaboration_user.nil?
+	if controller_name.eql?("collaboration_users")
  		class_attribute = "class=\"active\"" if @collaboration_user == team_member
 	end
 -%>

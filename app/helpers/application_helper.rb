@@ -31,7 +31,7 @@ module ApplicationHelper
       menu_items << "<li>#{link_for_chgtopic(task, t)}</li>" unless
         t.id == task.topic_id # can't assign to already-assigned topic
     end
-    "<ul style=\"display: none;\" class='dir' id='ttsm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
+    "<ul style=\"display: none;\" class='dir shadow' id='ttsm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
   #
@@ -76,7 +76,7 @@ module ApplicationHelper
         u.id == task.assigned_to || # can't assign to already-assigned user
         u.id == @current_user.id    # can't assign to self (separate entry used)
     end
-    "<ul style=\"display: none;\" class='dir' id='tasm_assigned_#{dom_id(task)}'>#{menu_items}</ul>"
+    "<ul style=\"display: none;\" class='dir shadow' id='tasm_assigned_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
   #
@@ -88,7 +88,7 @@ module ApplicationHelper
     Task.valid_resolutions(stat).each do |res|
       menu_items << "<li>#{link_for_chgstatus(task, stat, res, res)}</li>"
     end    
-    "<ul style=\"display: none;\" class='dir' id='trsm_#{stat}_#{dom_id(task)}'>#{menu_items}</ul>"
+    "<ul style=\"display: none;\" class='dir shadow' id='trsm_#{stat}_#{dom_id(task)}'>#{menu_items}</ul>"
   end
 
   def label_for_status(stat)

@@ -1,4 +1,4 @@
-<ul id="<%= dom_id(task) -%>_ttm" style="display:none;" class="tt">
+<ul id="<%= dom_id(task) -%>_ttm" style="display:none;" class="tt shadow">
 <% for tt in %w{Task Issue Risk Defect Question Idea} %>
 	<li><%= link_for_chgtype(task, tt) %></li>
 <% end %>

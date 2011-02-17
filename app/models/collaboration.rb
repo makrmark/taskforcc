@@ -1,9 +1,11 @@
 class Collaboration < ActiveRecord::Base
 
-  has_many :tasks, :order => "id DESC"
+  has_many :tasks, 
+    :order => "id DESC"
   has_many :collaboration_users,
     :include => :user
-  has_many :topics, :order => "sortorder ASC, name ASC"
+  has_many :topics, 
+    :order => "sortorder ASC, name ASC"
   has_many :users, 
     :through => :collaboration_users,   
     :order => "full_name ASC"
@@ -32,7 +34,7 @@ class Collaboration < ActiveRecord::Base
   def active_users
     self.users.status_filter("Active")
   end
-  
+
   # TODO: implement search on Favourites
   def favourites(uid)
     Favourite.find(:all,
@@ -40,10 +42,14 @@ class Collaboration < ActiveRecord::Base
       :order => 'created_at DESC')
   end
 
-  def find_tasks(p)
-      self.tasks.title_filter(p[:title] || "").status_filter(p[:include_status])
+  def find_tasks(p, cu)
+      if cu.role.eql?('Restricted')
+        self.tasks.title_filter(p[:title] || "").status_filter(p[:include_status]).assigned_filter(cu.user_id)
+      else
+        self.tasks.title_filter(p[:title] || "").status_filter(p[:include_status])
+      end
   end
-    
+
 private
 
 end

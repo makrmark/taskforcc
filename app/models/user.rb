@@ -11,9 +11,14 @@ class User < ActiveRecord::Base
   # User -> CollaborationUsers -> Tasks (collaboration_id)
   # See: CollaborationUserTask model class
   has_many :collaboration_user_tasks
+
+  # To get all tasks for a user based on their role
+  # task.collaboration_id == collaboration_user.collaboration_id)
+  # and ( collaboration_user.role <> Restricted  ||  task.assigned_to == collaboration_user.user_id)
   has_many :tasks,
     :through => :collaboration_user_tasks,
-    :order   => "updated_at DESC"
+    :order   => "updated_at DESC",
+    :conditions => "( collaboration_users.role <> 'Restricted' OR tasks.assigned_to == collaboration_users.user_id )"
 
   has_many :collaborations_created_by,
     :class_name => 'Collaboration',
@@ -32,7 +37,7 @@ class User < ActiveRecord::Base
   }
     
   def find_tasks(p)
-    self.tasks.title_filter(p[:title] || "").status_filter(p[:include_closed]? 'Closed' : nil )
+    self.tasks.title_filter(p[:title] || "").status_filter(p[:include_status])
   end
   
   # http://api.rubyonrails.org/classes/ActiveRecord/Validations/ClassMethods.html

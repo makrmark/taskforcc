@@ -33,7 +33,7 @@ class Task < ActiveRecord::Base
   # http://railscasts.com/episodes/108-named-scope
   # http://refactormycode.com/codes/788-advanced-search-form-named-scopes
   # http://apidock.com/rails/ActiveRecord/NamedScope/ClassMethods/named_scope
-  # BUG: Search should be case-insensitive
+  # BUG: Search should be case-insensitive - create an index on lcase(title)?
   named_scope :title_filter, lambda { |t| 
     words = t.split(/ /)
     expr  = words.map {|f| "title like ?"}
@@ -45,7 +45,10 @@ class Task < ActiveRecord::Base
     { :conditions => { :collaboration_id => t } } 
   }
   named_scope :status_filter, lambda { |t| 
-    { :conditions => { "status" => Task.include_status_from_filter(t) } }
+    { :conditions => { :status => Task.include_status_from_filter(t) } }
+  }
+  named_scope :assigned_filter, lambda { |t|
+    { :conditions => { :assigned_to => t }}    
   }
       
   validates_presence_of :title, :task_type, :status, :resolution, 

@@ -14,6 +14,7 @@
   <%= stylesheet_link_tag 'custom' %>
   <%= stylesheet_link_tag 'forms' %>
   <%= stylesheet_link_tag 'access' %>
+  <%= stylesheet_link_tag 'main' %>
 
 	<meta name="description" content="taskfor.cc removes barriers to working efficiently with others." /> 
 
@@ -42,7 +43,10 @@
 <div class="clear"></div>
 
 <div id="footer">
-  <hr />
+  <%= link_to 'About', url_for(:controller => 'pages', :action => 'about') %> &bull;
+  <%= link_to 'Contact', url_for(:controller => 'pages', :action => 'contact') %> &bull;
+  <%= link_to 'Log In', url_for(:controller => 'access', :action => 'login') %> &bull;
+  <%= link_to 'Sign Up', url_for(:controller => 'access', :action => 'signup') %>
 </div>
   
 </body>

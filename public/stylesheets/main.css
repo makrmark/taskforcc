@@ -28,6 +28,19 @@ div#header {
   padding-top: 3px;
   padding-left: 3px;
 }
+div#footer {
+	border-top: 1px solid lightgrey;
+  background-color: #F4F4F4;
+	text-align: center;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	padding: 10px;
+}
+div#footer.compact {
+	font-size: smaller;
+	padding: 2px;
+}
 
 h4 {
   margin-top: 10px;
@@ -56,6 +69,22 @@ div.logo {
   background-position: 0px 0px;
   height: 20px;
   width: 113px;
+}
+
+.shadow {
+/* http://css3.bradshawenterprises.com/ */
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+
+  box-shadow: 2px 2px 4px #888;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+
+/* transitions not really working since this element is rendered on load */
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
 }
 
 ul.sidebar {
@@ -169,20 +198,6 @@ ul.dir {
   border-style: solid;
 	background-color: white;
 	z-index: 250;
-
-/* http://css3.bradshawenterprises.com/ */
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-
-  box-shadow: 2px 2px 4px #888;
-  -webkit-box-shadow: 2px 2px 4px #888;
-  -moz-box-shadow: 2px 2px 4px #888;
-
-/* transitions not really working since this element is rendered on load */
-  transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
 }
 ul.dir li, ul.dir a {
 	background-color: white;
@@ -418,7 +433,7 @@ div.task-details a.in_place_edit_hint:hover {
 div.task-details span.in_place_edit_container {
 	white-space: pre-line; 
 	font-size: smaller; 
-	color:grey;"
+	color:grey;
 }
 div.task-title input.editor_field {
 	width: 60%;

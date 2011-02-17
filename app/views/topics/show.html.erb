@@ -2,7 +2,7 @@
 <%= render :partial => 'shared/multifunction_tabs' %>
 
 <div id="task-container">
-  <% if @topic.find_tasks(params).empty? %>  
+  <% if @topic.find_tasks(params, @collaboration_user).empty? %>  
   
     <div id="task-empty-message" class="empty-message">
       No tasks match this selection
@@ -11,7 +11,7 @@
   <% else %>
     <div id="task-empty-message"></div>
     <%= render(:partial => 'tasks/task_container', 
-      :collection => @topic.find_tasks(params) )%>
+      :collection => @topic.find_tasks(params, @collaboration_user) )%>
   <% end %>
 </div>
 

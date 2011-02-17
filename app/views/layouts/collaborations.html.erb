@@ -72,13 +72,14 @@
       <%= yield %>
 
     </div>
+	</div>
 
     <div class="clear"></div>
 
-    <div id="footer">
-      <hr />
-    </div>
+		<div id="footer" class="compact">
+		  <%= link_to 'About', url_for(:controller => 'pages', :action => 'about') %> &bull;
+		  <%= link_to 'Contact', url_for(:controller => 'pages', :action => 'contact') %>
+		</div>
 
-</div>
 </body>
 </html>
