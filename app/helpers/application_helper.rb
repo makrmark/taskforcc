@@ -7,12 +7,24 @@ module ApplicationHelper
   end
 
   def breadcrumb
+    
     span = ""
-    span += "#{h @collaboration.subject}" unless @collaboration.nil?
-    span += " &raquo; #{h @topic.name} " unless @topic.nil?
-    span += " &raquo; #{h @collaboration_user.user.full_name}" unless 
-      @collaboration_user.nil? || @collaboration_user.user.nil?
-    span += " &raquo; #{h @task.title}" unless @task.nil?
+    case controller_name
+    when 'collaborations'    
+      span += "#{h @collaboration.subject} &raquo; " unless @collaboration.nil?
+    when 'topics', 'collaboration_users', 'tasks', 'favourites'
+      span += "#{h @collaboration.subject}"
+      
+      case controller_name
+      when 'topics'
+        span += " &raquo; #{h @topic.name} " unless @topic.nil?
+      when 'collaboration_users'
+        span += " &raquo; #{h @collaboration_user.user.full_name}" unless @collaboration_user.user.nil?
+      when 'tasks'
+        span += " &raquo; #{h @task.title}" unless @task.nil?
+      end      
+      span += " &raquo; "
+    end
     span
   end
   
