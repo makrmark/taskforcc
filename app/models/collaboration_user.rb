@@ -16,6 +16,11 @@ class CollaborationUser < ActiveRecord::Base
     :class_name => 'Task',
     :foreign_key => 'created_by', 
     :order => "id DESC"
+
+  has_many :counters,
+    :primary_key => 'collaboration_id',
+    :foreign_key => 'collaboration_id',
+    :order => "id DESC"
         
   # used to lookup a user by email when creating the association
   attr_accessor :email

@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(:version => 20110221103746) do
     t.integer "user_id"
     t.integer "collaboration_id"
     t.integer "topic_id"
-    t.integer "cNew",             :default => 0, :null => false
-    t.integer "cAssigned",        :default => 0, :null => false
-    t.integer "cAccepted",        :default => 0, :null => false
-    t.integer "cResolved",        :default => 0, :null => false
-    t.integer "cRejected",        :default => 0, :null => false
-    t.integer "cClosed",          :default => 0, :null => false
-    t.integer "cTotal",           :default => 0, :null => false
+    t.integer "cnt_new",          :default => 0, :null => false
+    t.integer "cnt_assigned",     :default => 0, :null => false
+    t.integer "cnt_accepted",     :default => 0, :null => false
+    t.integer "cnt_resolved",     :default => 0, :null => false
+    t.integer "cnt_rejected",     :default => 0, :null => false
+    t.integer "cnt_closed",       :default => 0, :null => false
+    t.integer "cnt_total_open",   :default => 0, :null => false
+    t.integer "cnt_total",        :default => 0, :null => false
   end
 
   add_index "counters", ["collaboration_id"], :name => "index_counters_on_collaboration_id"

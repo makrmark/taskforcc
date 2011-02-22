@@ -114,7 +114,7 @@ class Task < ActiveRecord::Base
     when 'Rejected' then
       ['Duplicate', 'Not Required', 'Invalid', 'Not Responsible', 'Won\'t Resolve']
     when 'Closed' then
-      ['Duplicate', 'Not Required', 'Invalid', 'Completed', 'Won\'t Resolve']
+      ['Duplicate', 'Not Required', 'Invalid', 'Completed', 'Mitigated', 'Answered', 'Won\'t Resolve']
     else
       ['Unresolved']
     end

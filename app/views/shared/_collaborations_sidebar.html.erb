@@ -1,0 +1,16 @@
+<div class="sidebar">
+<h4 class="sidebar"><%= link_to 'Taskforcc', list_collaborations_path, :title => "Manage Taskforcc" %>
+<span class='sidebar-actions'>
+	<%= link_to 'New', new_collaboration_path %>
+</span></h4>
+
+<% if @current_user.collaborations.empty? %>
+  <div class="empty-message">
+    No taskforcc.
+  </div>
+<% else %>
+  <ul class="sidebar">
+		<%= render :partial => 'shared/collaboration_li', :collection => @current_user.collaborations %>
+  </ul>
+<% end %>
+</div>

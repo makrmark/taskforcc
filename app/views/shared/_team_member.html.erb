@@ -2,6 +2,11 @@
 	if controller_name.eql?("collaboration_users")
  		class_attribute = "class=\"active\"" if @collaboration_user == team_member
 	end
+
+	tc = 0
+	team_member.counters.each do |c|
+		tc += c.cnt_total_open if c.user_id == team_member.user_id
+	end
 -%>
 <% user = team_member.user %>
 <li <%= class_attribute -%>><%= link_to user.full_name, 
@@ -9,4 +14,9 @@
     :collaboration_id => team_member.collaboration_id,
     :id => team_member.id
   ) %>
-<%= "(#{user.status})" unless user.status.eql?("Active") %></li>
+<%= "(#{user.status})" unless user.status.eql?("Active") %>
+
+<% if tc > 0 %>
+	<span class="counter" title="Open Tasks"><%= tc -%></span>
+<% end %>
+</li>

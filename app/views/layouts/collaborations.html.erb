@@ -30,30 +30,7 @@
     <div id="left">
       <%= render 'users/user_profile', :object => @current_user %>
 
-      <h4 class="sidebar"><%= link_to 'Taskforcc', list_collaborations_path, :title => "Manage Taskforcc" %>
-				<span class='sidebar-actions'>
-	        <%= link_to 'New', new_collaboration_path %>
-        </span></h4>
-
-      <% if @current_user.collaborations.empty? %>
-        <div class="empty-message">
-          No taskforcc.
-        </div>
-      <% else %>
-        <ul class="sidebar">
-          <% @current_user.collaborations.each do |collab| %>
-			<%
-				unless @collaboration.nil?
-			 		class_attribute = "class=\"active\"" if @collaboration == collab
-				end
-			-%>
-            <li <%= class_attribute -%>><%= link_to h(collab.subject), collab %>
-							(<%= collab.counters.sum(:cnt_total) %>)
-						</li>
-          <% end %>
-        </ul>
-      <% end %>        
-      <hr />
+      <%= render 'shared/collaborations_sidebar' %>
 
     </div>
 

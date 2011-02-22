@@ -191,7 +191,7 @@ class TasksController < ApplicationController
     @comment = Comment.new()
 
     respond_to do |format|
-      if @task.save
+      if @task.save!
         format.html { redirect_to(request.referrer, :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
         format.js

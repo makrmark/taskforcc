@@ -86,6 +86,20 @@ div.logo {
 	  -moz-border-radius: 2px;
 }
 
+span.counter {
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 2px;
+	background-color: grey;
+	color: white;
+	font-size: smaller;
+	font-weight: normal;
+	float: right;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+
 ul.sidebar {
   padding-left: 0px;
   list-style: none;

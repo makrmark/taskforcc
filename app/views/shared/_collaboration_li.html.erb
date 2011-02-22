@@ -1,0 +1,15 @@
+<%
+	unless @collaboration.nil?
+		class_attribute = "class=\"active\"" if @collaboration == collaboration_li
+	end
+
+	tc = 0
+	collaboration_li.counters.each do |c|
+		tc += c.cnt_total_open if c.user_id == @current_user.id
+	end
+%>
+<li <%= class_attribute -%>><%= link_to h(collaboration_li.subject), collaboration_li %>
+<% if tc > 0 %>
+	<span class="counter" title="Open/Assigned"><%= tc -%></span>
+<% end %>
+</li>

@@ -3,8 +3,10 @@ class Collaboration < ActiveRecord::Base
   has_many :tasks, 
     :order => "id DESC"
   has_many :collaboration_users,
-    :include => :user
+    :include => :user,
+    :include => :counters
   has_many :topics, 
+    :include => :counters,
     :order => "sortorder ASC, name ASC"
   has_many :users, 
     :through => :collaboration_users,   

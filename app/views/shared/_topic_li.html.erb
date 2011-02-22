@@ -2,9 +2,18 @@
 	unless @topic.nil?
  		class_attribute = "class=\"active\"" if @topic == topic_li
 	end
+
+	tc = 0
+	topic_li.counters.each do |c|
+		tc += c.cnt_total_open if c.user_id == @current_user.id
+	end
 -%>
 <li <%= class_attribute -%>	id="<%= dom_id(topic_li) %>"><%= link_to h(topic_li.name), 
   collaboration_topic_path(
     :collaboration_id => topic_li.collaboration_id,
     :id => topic_li.id
-  ) %></li>
+  ) %>
+	<% if tc > 0 %>
+		<span class="counter" title="Open/Assigned"><%= tc -%></span>
+	<% end %>
+</li>
