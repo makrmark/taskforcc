@@ -4,9 +4,7 @@
 	end
 
 	tc = 0
-	collaboration_li.counters.each do |c|
-		
-		c.logger.debug "Classes: #{tc.class}, #{c.cnt_total_open.class}, #{c.user_id.class}, #{@current_user.id.class}"
+	collaboration_li.counters.each do |c|		
 		tc += c.cnt_total_open if c.user_id == @current_user.id
 	end
 %>
