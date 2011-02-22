@@ -14,9 +14,11 @@
     :collaboration_id => team_member.collaboration_id,
     :id => team_member.id
   ) %>
-<%= "(#{user.status})" unless user.status.eql?("Active") %>
+<% unless user.status.eql?('Active') %>
+	<span class="bubble status"><%=user.status %></span>
+<% end %>
 
 <% if tc > 0 %>
-	<span class="counter" title="Open Tasks"><%= tc -%></span>
+	<span class="bubble counter" title="Open Tasks"><%= tc -%></span>
 <% end %>
 </li>

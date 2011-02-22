@@ -10,6 +10,6 @@
 %>
 <li <%= class_attribute -%>><%= link_to h(collaboration_li.subject), collaboration_li %>
 <% if tc > 0 %>
-	<span class="counter" title="Open/Assigned"><%= tc -%></span>
+	<span class="bubble counter" title="Open/Assigned"><%= tc -%></span>
 <% end %>
 </li>

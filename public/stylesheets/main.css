@@ -86,18 +86,23 @@ div.logo {
 	  -moz-border-radius: 2px;
 }
 
-span.counter {
+span.bubble {
 	padding-left: 5px;
 	padding-right: 5px;
-	margin-right: 2px;
-	background-color: grey;
-	color: white;
-	font-size: smaller;
-	font-weight: normal;
-	float: right;
   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
+	color: white;
+	font-size: smaller;
+	font-weight: normal;
+}
+span.bubble.counter {
+	background-color: grey;
+	margin-right: 2px;
+	float: right;
+}
+span.bubble.status {
+	background-color: darkred;
 }
 
 ul.sidebar {
