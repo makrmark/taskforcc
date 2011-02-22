@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110216083035) do
+ActiveRecord::Schema.define(:version => 20110221103746) do
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"
@@ -42,6 +42,23 @@ ActiveRecord::Schema.define(:version => 20110216083035) do
 
   add_index "comments", ["task_id"], :name => "index_comments_on_task_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "counters", :force => true do |t|
+    t.integer "user_id"
+    t.integer "collaboration_id"
+    t.integer "topic_id"
+    t.integer "cNew",             :default => 0, :null => false
+    t.integer "cAssigned",        :default => 0, :null => false
+    t.integer "cAccepted",        :default => 0, :null => false
+    t.integer "cResolved",        :default => 0, :null => false
+    t.integer "cRejected",        :default => 0, :null => false
+    t.integer "cClosed",          :default => 0, :null => false
+    t.integer "cTotal",           :default => 0, :null => false
+  end
+
+  add_index "counters", ["collaboration_id"], :name => "index_counters_on_collaboration_id"
+  add_index "counters", ["topic_id"], :name => "index_counters_on_topic_id"
+  add_index "counters", ["user_id"], :name => "index_counters_on_user_id"
 
   create_table "favourites", :force => true do |t|
     t.integer  "task_id"

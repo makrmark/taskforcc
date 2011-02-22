@@ -47,7 +47,9 @@
 			 		class_attribute = "class=\"active\"" if @collaboration == collab
 				end
 			-%>
-            <li <%= class_attribute -%>><%= link_to h(collab.subject), collab %></li>
+            <li <%= class_attribute -%>><%= link_to h(collab.subject), collab %>
+							(<%= collab.counters.sum(:cTotal) %>)
+						</li>
           <% end %>
         </ul>
       <% end %>        

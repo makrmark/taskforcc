@@ -14,6 +14,7 @@ class Collaboration < ActiveRecord::Base
     :conditions => "system_name ='unfiled'"
 
   has_many :favourites
+  has_many :counters
 
   belongs_to :user_created_by,
     :class_name => 'User',

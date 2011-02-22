@@ -73,18 +73,17 @@ div.logo {
 
 .shadow {
 /* http://css3.bradshawenterprises.com/ */
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
+	  box-shadow: 2px 2px 4px #888;
+	  -webkit-box-shadow: 2px 2px 4px #888;
+	  -moz-box-shadow: 2px 2px 4px #888;
 
-  box-shadow: 2px 2px 4px #888;
-  -webkit-box-shadow: 2px 2px 4px #888;
-  -moz-box-shadow: 2px 2px 4px #888;
-
-/* transitions not really working since this element is rendered on load */
-  transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
+	/* transitions not really working since this element is rendered on load */
+	  transition: all 0.2s ease-in-out;
+	  -webkit-transition: all 0.2s ease-in-out;
+	  -moz-transition: all 0.2s ease-in-out;
+	  border-radius: 2px;
+	  -webkit-border-radius: 2px;
+	  -moz-border-radius: 2px;
 }
 
 ul.sidebar {
@@ -200,13 +199,13 @@ ul.dir {
 	z-index: 250;
 }
 ul.dir li, ul.dir a {
+  position: relative;
 	background-color: white;
 	z-index: 1000;
 }
 ul.dir li {
 	line-height: 1.2em;
   float: none;
-  position: relative;
   line-height: 16px;
   border-bottom-style: solid;
   border-bottom-color: lightgrey;
