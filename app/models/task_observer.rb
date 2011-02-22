@@ -42,7 +42,7 @@ private
 
       # decrement the old dimensional record (this should always exist)
       c = Counter.update_all(
-        "c#{task.status_was} = c#{task.status_was} - 1, cTotal = cTotal -1 ",
+        "cnt_#{task.status_was} = cnt_#{task.status_was} - 1, cnt_total = cnt_total -1 ",
         ["collaboration_id = ? AND user_id = ? AND topic_id = ? ", 
           task.collaboration_id_was,
           task.assigned_to_was,
@@ -53,7 +53,7 @@ private
 
       # if only the status was updated, just update the relevant statuses
       Counter.update_all(
-        "c#{task.status} = c#{task.status} + 1, c#{task.status_was} = c#{task.status_was} - 1",
+        "cnt_#{task.status} = cnt_#{task.status} + 1, cnt_#{task.status_was} = cnt_#{task.status_was} - 1",
         ["collaboration_id = ? AND user_id = ? AND topic_id = ? ", 
           task.collaboration_id,
           task.assigned_to,
@@ -66,7 +66,7 @@ private
   def increment_counters(task)
     # increment the counter on the new dimensions
     cnt = Counter.update_all(
-      "c#{task.status} = c#{task.status} + 1, cTotal = cTotal + 1 ",
+      "cnt_#{task.status} = cnt_#{task.status} + 1, cnt_total = cnt_total + 1 ",
       ["collaboration_id = ? AND user_id = ? AND topic_id = ? ", 
         task.collaboration_id,
         task.assigned_to,
@@ -81,7 +81,7 @@ private
         :topic_id => task.topic_id,
         :cTotal => 1
       ) 
-      c.write_attribute("c#{task.status}", 1)
+      c.write_attribute("cnt_#{task.status}", 1)
       c.save!
     end
   end

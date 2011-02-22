@@ -4,26 +4,26 @@ class CreateCounters < ActiveRecord::Migration
       t.integer :user_id
       t.integer :collaboration_id
       t.integer :topic_id
-      t.integer :cNew,      :null => false, :default => 0
-      t.integer :cAssigned, :null => false, :default => 0
-      t.integer :cAccepted, :null => false, :default => 0
-      t.integer :cResolved, :null => false, :default => 0
-      t.integer :cRejected, :null => false, :default => 0
-      t.integer :cClosed,   :null => false, :default => 0
-      t.integer :cTotal,    :null => false, :default => 0
+      t.integer :cnt_new,      :null => false, :default => 0
+      t.integer :cnt_assigned, :null => false, :default => 0
+      t.integer :cnt_accepted, :null => false, :default => 0
+      t.integer :cnt_resolved, :null => false, :default => 0
+      t.integer :cnt_rejected, :null => false, :default => 0
+      t.integer :cnt_closed,   :null => false, :default => 0
+      t.integer :cnt_total,    :null => false, :default => 0
 
     end
 
     execute "INSERT INTO counters (user_id, collaboration_id, topic_id, " +
-        "cNew, cAssigned, cAccepted, cResolved, cRejected, cClosed, cTotal) " +
+        "cnt_new, cnt_assigned, cnt_accepted, cnt_resolved, cnt_rejected, cnt_closed, cTotal) " +
       "SELECT assigned_to, collaboration_id, topic_id, " +
-      "SUM ( CASE WHEN status='New'       THEN 1 ELSE 0 END ) as cNew, " +
-      "SUM ( CASE WHEN status='Assigned'  THEN 1 ELSE 0 END ) as cAssigned, " +
-      "SUM ( CASE WHEN status='Accepted'  THEN 1 ELSE 0 END ) as cAccepted, " +
-      "SUM ( CASE WHEN status='Resolved'  THEN 1 ELSE 0 END ) as cResolved, " +
-      "SUM ( CASE WHEN status='Rejected'  THEN 1 ELSE 0 END ) as cRejected, " +
-      "SUM ( CASE WHEN status='Closed'    THEN 1 ELSE 0 END ) as cClosed, " +
-      "COUNT(*) as cTotal " +
+      "SUM ( CASE WHEN status='New'       THEN 1 ELSE 0 END ) as cnt_new, " +
+      "SUM ( CASE WHEN status='Assigned'  THEN 1 ELSE 0 END ) as cnt_assigned, " +
+      "SUM ( CASE WHEN status='Accepted'  THEN 1 ELSE 0 END ) as cnt_accepted, " +
+      "SUM ( CASE WHEN status='Resolved'  THEN 1 ELSE 0 END ) as cnt_resolved, " +
+      "SUM ( CASE WHEN status='Rejected'  THEN 1 ELSE 0 END ) as cnt_rejected, " +
+      "SUM ( CASE WHEN status='Closed'    THEN 1 ELSE 0 END ) as cnt_closed, " +
+      "COUNT(*) as cnt_total " +
       "FROM tasks "+
       "GROUP BY assigned_to, collaboration_id, topic_id;"
 
