@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   def add_task    
     @collaboration = Collaboration.find(params[:collaboration_id])
     @topic = Topic.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
 
     @task = Task.find(params[:task_id])
     @task.topic_id = @topic.id
@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @topics = @collaboration.topics
 
@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.xml
   def show
     @topic = Topic.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @collaboration_user = CollaborationUser.find_by_user_id_and_collaboration_id(
       @current_user.id, @collaboration.id)
@@ -68,7 +68,7 @@ class TopicsController < ApplicationController
   # GET /topics/new.xml
   def new
     @topic = Topic.new
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
 
@@ -81,7 +81,7 @@ class TopicsController < ApplicationController
   # GET /topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
 
@@ -91,7 +91,7 @@ class TopicsController < ApplicationController
   # POST /topics.xml
   def create
     @topic = Topic.new(params[:topic])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
 
@@ -110,7 +110,7 @@ class TopicsController < ApplicationController
   # PUT /topics/1.xml
   def update
     @topic = Topic.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
 

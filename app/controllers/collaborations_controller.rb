@@ -13,7 +13,7 @@ class CollaborationsController < ApplicationController
 #  end
   
   def list
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaborations = @current_user.collaborations
 
     # when you list the tasks, set the return-to path
@@ -29,7 +29,7 @@ class CollaborationsController < ApplicationController
   # GET /collaborations
   # GET /collaborations.xml
   def index
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaborations = @current_user.collaborations
     @comment = Comment.new
 
@@ -46,7 +46,7 @@ class CollaborationsController < ApplicationController
   # GET /collaborations/1.xml
   def show
     @collaboration = Collaboration.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration_user = CollaborationUser.find_by_user_id_and_collaboration_id(
       @current_user.id, @collaboration.id)
 
@@ -76,7 +76,7 @@ class CollaborationsController < ApplicationController
   # GET /collaborations/new.xml
   def new
     @collaboration = Collaboration.new
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -88,7 +88,7 @@ class CollaborationsController < ApplicationController
   # GET /collaborations/1/edit
   def edit
     @collaboration = Collaboration.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
   end
 
   # POST /collaborations
@@ -96,7 +96,7 @@ class CollaborationsController < ApplicationController
   def create
     @collaboration = Collaboration.new(params[:collaboration])
     @collaboration.created_by = session[:user_id]
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
 
     respond_to do |format|
 
@@ -117,7 +117,7 @@ class CollaborationsController < ApplicationController
   # PUT /collaborations/1.xml
   def update
     @collaboration = Collaboration.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
 
     respond_to do |format|
       if @collaboration.update_attributes(params[:collaboration])

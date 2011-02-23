@@ -1,6 +1,7 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  
   has_many :collaboration_users
   has_many :collaborations, 
     :through => :collaboration_users,

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users.xml
   def index
     @users = User.all
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaborations = @current_user.collaborations
 
     respond_to do |format|
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaborations = @current_user.collaborations
 
     respond_to do |format|
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaborations = @current_user.collaborations
 
     respond_to do |format|
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaborations = @current_user.collaborations
   end
 
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaborations = @current_user.collaborations
 
     respond_to do |format|
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     
     @user.skip_password_check = true
 
@@ -83,14 +83,14 @@ class UsersController < ApplicationController
   # GET
   def chgpass
     @user = User.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     
   end
 
   # action to update your password  
   # PUT
   def setpass
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @user = User.find(params[:id])
     @user.change_pass = false
 
@@ -104,7 +104,7 @@ class UsersController < ApplicationController
   end
   
   def avatar 
-    @current_user = User.find(session[:user_id])    
+    @current_user = current_user    
   end
 
 end

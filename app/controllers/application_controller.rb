@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password 
   
+  helper_method :current_user
+  
 protected
 
   # TODO: move these into Helpers
@@ -30,7 +32,7 @@ protected
   def authorize
 
     # If the user is valid and logged in
-    if User.find_by_id(session[:user_id])
+    if current_user
 
       # Check they have access to the relevant resource
       # This is a simple check - either they're in the relevant collaboration or not!
@@ -80,5 +82,11 @@ protected
     end
     
   end  
+  
+  private
+  
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 
 end

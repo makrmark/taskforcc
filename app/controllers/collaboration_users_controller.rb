@@ -6,7 +6,7 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users
   # GET /collaboration_users.xml
   def index
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @collaboration_users = @collaboration.collaboration_users
 
@@ -20,7 +20,7 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/1.xml
   def show
     @collaboration_user = CollaborationUser.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
 
     @task = Task.new(
@@ -50,7 +50,7 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/new.xml
   def new
     @collaboration_user = CollaborationUser.new
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
@@ -62,7 +62,7 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/1/edit
   def edit
     @collaboration_user = CollaborationUser.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
   end
 
@@ -70,7 +70,7 @@ class CollaborationUsersController < ApplicationController
   # POST /collaboration_users.xml
   def create
     @collaboration_user = CollaborationUser.new(params[:collaboration_user])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
 
     # TODO: could enforce this in the model
@@ -113,7 +113,7 @@ class CollaborationUsersController < ApplicationController
   # PUT /collaboration_users/1.xml
   def update
     @collaboration_user = CollaborationUser.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|
@@ -135,7 +135,7 @@ class CollaborationUsersController < ApplicationController
   def destroy
     @collaboration_user = CollaborationUser.find(params[:id])
     @collaboration_user.destroy
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
 
     respond_to do |format|

@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   # Add a comment to a Task
   def comment
     @task = Task.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
 
     @comment = Comment.new(params[:comment])
     @comment.user_id = session[:user_id]
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   # Favourite or UnFavourite a Task
   def favourite
     @task = Task.find(params[:id])
-#    @current_user = User.find(session[:user_id])
+#    @current_user = current_user
 
     # refactor into Task model
     favourite = Favourite.find(:first, 
@@ -68,7 +68,7 @@ class TasksController < ApplicationController
   # GET /tasks.xml
   def index
     @tasks = Task.all
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @comment = Comment.new
 
@@ -86,7 +86,7 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @topic = @task.topic;
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @comment = Comment.new
 
@@ -100,7 +100,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.xml
   def new
     @task = Task.new
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
     @topic_list = select_topic_list(@collaboration)
@@ -116,7 +116,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @task = Task.find(params[:id])
     @topic = @task.topic;
     @collaboration = Collaboration.find(params[:collaboration_id])
@@ -130,7 +130,7 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
     @task.created_by = session[:user_id]
     @task.updated_by = session[:user_id]
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @task.collaboration_id = params[:collaboration_id]
         
     @collaboration = Collaboration.find(params[:collaboration_id])
@@ -159,7 +159,7 @@ class TasksController < ApplicationController
   # PUT /tasks/1.xml
   def update
     @task = Task.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @task.updated_by = session[:user_id]
     @collaboration = Collaboration.find(params[:collaboration_id])
     @user_list = select_user_list(@collaboration)
@@ -186,7 +186,7 @@ class TasksController < ApplicationController
     @task.assigned_to= params[:assigned_to] if params[:assigned_to]
     @task.updated_by = session[:user_id]
 
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @comment = Comment.new()
 
@@ -209,7 +209,7 @@ class TasksController < ApplicationController
 =begin
   def destroy
     @task = Task.find(params[:id])
-    @current_user = User.find(session[:user_id])
+    @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
     @task.destroy
 

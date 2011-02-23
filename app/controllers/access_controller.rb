@@ -4,6 +4,10 @@ class AccessController < ApplicationController
 # http://railsonedge.blogspot.com/2008/03/rails-forum-restful-authenticationpart.html
 
   def start
+    if current_user
+      redirect_to collaborations_path
+    end
+
     @user = User.new()
   end
 
