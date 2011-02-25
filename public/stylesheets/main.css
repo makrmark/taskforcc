@@ -63,8 +63,13 @@ div.sidebar {
   margin-bottom: 10px;
 }
 
-div.logo {
-  background-image: url('/images/sprites.png');  
+h1.headLogo {
+	border: 0px;
+	float: left;
+}
+h1.headLogo a {
+	display: block;
+	background-image: url('/images/sprites.png');  
 	background-repeat: none;
   background-position: 0px 0px;
   height: 20px;
@@ -325,7 +330,7 @@ i.ts.Rejected   { background-position: -97px -20px; }
 i.ts.Resolved   { background-position: -81px -20px; }
 i.ts.Closed     { background-position: -49px -20px; }
 
-div.profile {
+div.profile {	
   min-height: 50px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -342,6 +347,26 @@ div.profile img.avatar {
 ul.profile {
   list-style: none;
   padding-left: 60px;
+}
+
+div.profile.mini {
+	float: right;
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+}
+img.miniavatar {
+	width: 22;
+	height: 22;
+	border-width: 0px;
+	margin: 0px;
+	vertical-align: top;
+}
+div.profile.mini a {
+	color: white;
+	margin-left: 3px;
+	margin-right: 3px;
 }
 
 span.user-name {

@@ -1,0 +1,7 @@
+<div class="profile mini" id="mini_<%= dom_id(mini_profile) %>">
+
+  <%= mini_avatar_for(mini_profile) %>
+  <%= link_to mini_profile.full_name, mini_profile %> &raquo;
+  <%= link_to 'Log Out', { :action => 'logout', :controller => 'access'}%>
+
+</div>

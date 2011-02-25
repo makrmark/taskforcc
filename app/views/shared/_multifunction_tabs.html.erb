@@ -44,7 +44,7 @@
     end
     %></li>
   <% end -%>
-  <% unless @topic.nil? -%>
+  <% if controller_name.eql?('topics') && @topic -%>
   <li class="mf-tab" id="topic-tab"><%= link_to_function 'Topic Details' do |page|
       page.select('div.mf-tab.body').each do |value|
         value.hide()
@@ -58,7 +58,7 @@
     end
     %></li>
   <% end -%>
-  <% unless @collaboration_user.nil? -%>
+  <% if controller_name.eql?('collaboration_users') && @collaboration_user -%>
   <li class="mf-tab" id="user-tab"><%= link_to_function 'User Details' do |page|
       page.select('div.mf-tab.body').each do |value|
         value.hide()
@@ -109,7 +109,7 @@
   </div>    
   <% end -%>
   
-  <% unless @topic.nil? -%>
+  <% if controller_name.eql?('topics') && @topic -%>
   <div id="topic" style="display:none;" class='mf-tab body'>
     <b>Name:</b> <%= @topic.name %>    
     <br />
@@ -121,7 +121,7 @@
   </div>    
   <% end -%>
 
-  <% unless @collaboration_user.nil? -%>
+  <% if controller_name.eql?('collaboration_users') && @collaboration_user -%>
   <div id="user" style="display:none;" class='mf-tab body'>
     <%= render(:partial => 'collaboration_users/collaboration_user', 
       :object => @collaboration_user,

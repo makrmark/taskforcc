@@ -183,5 +183,10 @@ module ApplicationHelper
     image_tag(gravatar_url_for("#{user.email}", :size=> "45", :d=> "mm"), 
       :class=> "avatar", :title => "#{user.full_name}")
   end
+  
+  def mini_avatar_for(user)
+    image_tag(gravatar_url_for("#{user.email}", :size=> "22", :d=> "mm"), 
+      :class=> "miniavatar", :title => "#{user.full_name}")
+  end
 
 end

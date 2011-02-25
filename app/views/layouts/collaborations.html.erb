@@ -24,14 +24,14 @@
 <div id="container">
 
     <div id="header">
-      <%= link_to '<div class="logo" title="Home"></div>', collaborations_path() %>
+			<h1 class="headLogo">
+	      <%= link_to "", collaborations_path() %>
+			</h1>
     </div>
 
     <div id="left">
-      <%= render 'users/user_profile', :object => @current_user %>
-
+      <%= render 'users/user_profile', :object => current_user %>
       <%= render 'shared/collaborations_sidebar' %>
-
     </div>
 
     <div id="right">
