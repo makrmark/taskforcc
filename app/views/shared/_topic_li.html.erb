@@ -8,7 +8,7 @@
 		tc += c.cnt_total_open if c.user_id == @current_user.id
 	end
 -%>
-<li <%= class_attribute -%>	id="<%= dom_id(topic_li) %>"><%= link_to h(topic_li.name), 
+<li id="tsbi_<%= dom_id(topic_li) %>" <%= class_attribute -%> ><%= link_to h(topic_li.name), 
   collaboration_topic_path(
     :collaboration_id => topic_li.collaboration_id,
     :id => topic_li.id

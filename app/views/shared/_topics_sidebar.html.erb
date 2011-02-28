@@ -1,6 +1,6 @@
 <% unless @collaboration.nil? || 
 	(request[:controller].eql?("collaborations") && ["new","create","index"].include?(request[:action]) ) %> 
-<div class="sidebar">            
+<div class="sidebar" id="topics_sidebar">            
   <h4 class="sidebar">
     <i class="Topics"></i>
     <%= link_to 'Topics', collaboration_topics_path(@collaboration), :title => 'Manage Topics' %>

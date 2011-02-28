@@ -8,7 +8,8 @@
 		tc += c.cnt_total_open if c.user_id == @current_user.id
 	end
 %>
-<li <%= class_attribute -%>><%= link_to h(collaboration_li.subject), collaboration_li %>
+<li id="csbi_<%= dom_id(collaboration_li) %>" <%= class_attribute -%>>
+<%= link_to h(collaboration_li.subject), collaboration_li -%>
 <% if tc > 0 %>
 	<span class="bubble counter" title="Open/Assigned"><%= tc -%></span>
 <% end %>
