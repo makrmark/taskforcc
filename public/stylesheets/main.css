@@ -66,6 +66,7 @@ div.sidebar {
 h1.headLogo {
 	border: 0px;
 	float: left;
+	margin: 0px;
 }
 h1.headLogo a {
 	display: block;
