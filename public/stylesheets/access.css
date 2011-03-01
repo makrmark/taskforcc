@@ -47,12 +47,7 @@ div#access_right {
   padding-top: 20px;
 }
 
-div#access_body h1, 
-div#access_body h2, 
-div#access_body h3, 
-div#access_body h4, 
-div#access_body h5, 
-div#access_body h6
+div#access_body *
 {
 	color: navy;
 }
@@ -91,11 +86,14 @@ table.login td.forgotten {
     color: lightblue;
 }
 
+div#access_right input[type="submit"].signup {
+  color: white;
+}
 input[type="submit"].signup {
+  color: white;
   display: inline;
   font-size: 14px;
   font-weight: bold;
-  color: white;
   background-color: navy;
   border-style: outset;
   border-width: 1px;

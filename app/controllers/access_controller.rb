@@ -117,5 +117,11 @@ class AccessController < ApplicationController
     
   def denied
   end
+  
+  def about
+  end
+  
+  def contact
+  end
 
 end

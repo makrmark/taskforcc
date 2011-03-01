@@ -26,9 +26,7 @@
     <i class="biglogo"></i>
   </a>
 
-  <% unless action_name == 'login' %>  
-    <%= render :partial => 'login' %>
-  <% end %>
+	<%= render :partial => 'login' %>
   
 </div>
 
@@ -36,14 +34,14 @@
 
 <div id="access_body">
   <div id="access_left">
-    <h4>taskfor.cc makes your team more productive.</h4>
+    <h1>Find out how Taskforcc can make your team more productive.</h1>
     
     <ul>
-      <li><%= link_to 'About taskfor.cc', url_for(:controller => 'pages', :action => 'about') %></li>
-      <li><%= link_to 'Contact', url_for(:controller => 'pages', :action => 'contact') %></li>
+		  <li><%= link_to 'Log In', url_for(:controller => 'access', :action => 'login') %></li>
+		  <li><%= link_to 'Sign Up', url_for(:controller => 'access', :action => 'signup') %></li>
+      <li><%= link_to 'About taskfor.cc', url_for(:controller => 'access', :action => 'about') %></li>
+      <li><%= link_to 'Contact', url_for(:controller => 'access', :action => 'contact') %></li>
     </ul>
-
-    <%= render :partial => 'shared/dev_disclaimer.html.erb' %>
 
   </div>
   <div id="access_right">  

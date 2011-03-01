@@ -8,11 +8,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1.2em;
 }
-h1 { font-size: 1.4em; }
-h2 { font-size: 1.3em; }
-h3 { font-size: 1.2em; }
-h4 { font-size: 1.1em; }
-h5 { font-size: 1.0em; }
+h1 { font-size: 1.4em; margin: 5px; }
+h2 { font-size: 1.3em; margin: 4px; }
+h3 { font-size: 1.2em; margin: 3px; }
+h4 { font-size: 1.1em; margin: 2px; }
+h5 { font-size: 1.0em; margin: 1px; }
 h6 { font-size: 1.0em; }
 
 a {

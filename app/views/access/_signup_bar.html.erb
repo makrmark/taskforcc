@@ -1,8 +1,6 @@
-<% unless action_name == 'signup' || action_name == 'start' %>
 <div id="access_signup_bar">
   <%= button_to 'Sign Up', 
     url_for(:controller => 'access', :action => 'signup'), 
     :class => 'signup' %>
   make your job a little easier
 </div>
-<% end%>
