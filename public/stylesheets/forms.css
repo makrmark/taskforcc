@@ -21,7 +21,7 @@ input[type="reset"]:active {
 /* http://cssbutton.com/forms/ */
 
 form.tabulated {
-	font-size: 1.2em;
+	font-size: 12px;
 }
 form.tabulated div {
 	margin-bottom: 10px;
@@ -72,23 +72,20 @@ form.tabulated input[type="reset"],
 form.tabulated.access {
 	margin-top: 20px;
 }
-form.tabulated.access * {
-	font-size: 0.8em;
-}
 form.tabulated.access label {
 	color: navy;
 	font-weight: bold;
 }
 form.tabulated.access input[type="text"],
 form.tabulated.access input[type="password"] {
-	font-size: 1.0em;
 	width: 40%;
+	font-size: 16px;
+	padding: 3px;
 }
 form.tabulated.access input[type="submit"] {
-	font-size: 1.0em;
 }
 form.tabulated.access div.form_footer {
-	font-size: 0.7em;
+	font-size: 12px;
 	color: navy;
 }
 
