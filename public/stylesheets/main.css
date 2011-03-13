@@ -29,12 +29,10 @@ div#header {
   padding-left: 3px;
 }
 div#footer {
+	margin-top: 100px;
 	border-top: 1px solid lightgrey;
   background-color: #F4F4F4;
 	text-align: center;
-	position: fixed;
-	bottom: 0px;
-	width: 100%;
 	padding: 10px;
 }
 div#footer.compact {
@@ -578,3 +576,33 @@ div#mf-tab-container {
   padding: 0px;
   margin-bottom: 10px;
 }
+
+li.activity {
+	list-style: none;
+	border-bottom: 1px solid lightgrey;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	padding-bottom: 2px;
+	font-size: 12px;
+	min-height: 30px;
+}
+div.activity-left {
+  float: left;
+  margin-right: 2px;
+}
+div.activity-content {
+	margin-left: 35px;
+}
+ul.acts {
+	font-size: 10px;
+	line-height: 12px;
+	list-style: none;
+	margin-left: 5px;
+}
+ul.acts label {
+	font-weight: bold;
+}
+span.act-was {
+	color: grey;
+}
+

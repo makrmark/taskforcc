@@ -164,6 +164,36 @@ class Task < ActiveRecord::Base
     
   end
 
+
+  def self.auditable_attribute?(attribute_name)
+    ['title', 'type', 'status', 'resolution', 'topic_id', 'assigned_to'].include?(attribute_name)    
+  end
+  
+  def self.auditable_attribute_type(attribute_name)
+    type_map = {
+      'title' => 'string',
+      'type'  => 'string',
+      'status' => 'string',
+      'resolution' => 'string',
+      'topic_id' => 'integer-string',
+      'assigned_to' => 'integer-string'
+    }
+    
+    return type_map[attribute_name]
+
+  end
+  
+  def auditable_attribute_string_val(attribute_name, integer_val)
+    case attribute_name
+    when 'topic_id'
+      topic = Topic.find(integer_val)
+      topic.name
+    when 'assigned_to'
+      user = User.find(integer_val)
+      user.full_name
+    end
+  end
+
 private
 
   #if the task is Resolved or Closed then the Resolution should be specified

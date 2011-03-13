@@ -1,0 +1,5 @@
+<li>&raquo; <%= label_tag act.attribute_name %>: <%= act.new_value %>
+	<% unless act.old_value.nil? %> 
+	<span class="act-was">(was: <%= act.old_value %>)</span>
+	<% end %>
+</li>

@@ -2,6 +2,7 @@
 
 <%= render :partial => 'shared/multifunction_tabs' %>
 
+<div id="task-container">
 <% if @current_user.tasks.empty? %>
   <div class="empty-message">
     No Tasks.
@@ -9,3 +10,4 @@
 <% else %>
   <%= render(:partial => 'tasks/task_container', :collection => @current_user.find_tasks(params) )%>
 <% end %>
+</div>

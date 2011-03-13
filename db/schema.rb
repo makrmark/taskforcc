@@ -9,7 +9,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221103746) do
+ActiveRecord::Schema.define(:version => 20110313063548) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "updated_by"
+    t.string   "related_class",                          :null => false
+    t.string   "action",           :default => "create", :null => false
+    t.integer  "collaboration_id",                       :null => false
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["collaboration_id"], :name => "index_activities_on_collaboration_id"
+  add_index "activities", ["updated_at"], :name => "index_activities_on_updated_at"
+  add_index "activities", ["updated_by"], :name => "index_activities_on_updated_by"
+
+  create_table "acts", :force => true do |t|
+    t.integer  "activity_id"
+    t.string   "attribute_name"
+    t.string   "attribute_type"
+    t.string   "string_val"
+    t.string   "string_val_was"
+    t.integer  "integer_val"
+    t.integer  "integer_val_was"
+    t.datetime "datetime_val"
+    t.datetime "datetime_val_was"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "acts", ["activity_id"], :name => "index_acts_on_activity_id"
 
   create_table "collaboration_users", :force => true do |t|
     t.integer  "collaboration_id"

@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     :collection => {
       :list => :get      
     }
+  map.resources :activities
 
   map.resources :collaborations do |collaboration|
     collaboration.resources  :collaboration_users

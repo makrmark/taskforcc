@@ -185,7 +185,7 @@ module ApplicationHelper
   end
   
   def mini_avatar_for(user)
-    image_tag(gravatar_url_for("#{user.email}", :size=> "22", :d=> "mm"), 
+    image_tag(gravatar_url_for("#{user.email}", :size=> "30", :d=> "mm"), 
       :class=> "miniavatar", :title => "#{user.full_name}")
   end
 

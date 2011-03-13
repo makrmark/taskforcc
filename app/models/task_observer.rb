@@ -16,6 +16,8 @@ class TaskObserver < ActiveRecord::Observer
 
     increment_counters(task)
     
+    add_task_created_activity(task)
+    
     TaskMailer.deliver_notify_created(task)
   end
   
@@ -26,12 +28,85 @@ class TaskObserver < ActiveRecord::Observer
       update_counters(task)
     end
 
+    add_task_updated_activity(task)
+
     TaskMailer.deliver_notify_updated(task)
     TaskMailer.deliver_notify_watchers(task)
   end
 
 
 private
+
+  def add_task_updated_activity(task)
+    add_task_activity(task, 'updated')
+  end
+  def add_task_created_activity(task)
+    add_task_activity(task, 'created')
+  end
+  def add_task_activity(task, action)
+    activity = Activity.find_by_task_id(task.id)
+
+    # check if we should keep the last or create new activity
+    tnow = Time.new
+    
+    activity.logger.debug("Now: #{tnow}, Updated At: #{activity.updated_at}") unless activity.nil?
+    
+    if activity.nil? ||
+      activity.updated_by != task.updated_by ||
+      tnow - activity.updated_at > 30
+      
+      activity = Activity.new(
+        :related_class => 'Task',
+        :action => action,
+        :task_id => task.id
+      )
+    end
+
+    activity.collaboration_id = task.collaboration_id
+    activity.topic_id = task.topic_id
+    activity.user_id = task.assigned_to
+    activity.updated_by = task.updated_by
+    activity.save!
+
+    add_task_acts(task, activity)
+  end
+  
+  def add_task_acts(task, activity)    
+    task.changes.each do |name, change|
+      add_task_act(task, activity, name, *change) if Task.auditable_attribute?(name)
+    end
+  end
+  
+  def add_task_act(task, activity, attribute_name, old_val, new_val)
+    
+    activity.logger.debug("adding audit record for #{attribute_name}")
+    act = Act.new(
+      :activity_id => activity.id,
+      :attribute_name => attribute_name,
+      :attribute_type => Task.auditable_attribute_type(attribute_name)
+    )
+
+    case Task.auditable_attribute_type(attribute_name)
+    when 'string'
+      act.string_val = new_val
+      act.string_val_was = old_val
+    when 'integer'
+      act.integer_val  = new_val
+      act.integer_val_was = old_val
+    when 'datetime'
+      act.datetime_val = new_val
+      act.datetime_val_was = old_val      
+    when 'integer-string'
+      act.integer_val  = new_val
+      act.integer_val_was = old_val
+      
+      act.string_val = task.auditable_attribute_string_val(attribute_name, new_val)
+      act.string_val_was = task.auditable_attribute_string_val(attribute_name, old_val) unless old_val.nil?
+    end
+
+    act.save!
+
+  end
 
   def update_counters(task)
 
