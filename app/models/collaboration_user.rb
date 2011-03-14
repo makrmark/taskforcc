@@ -41,6 +41,10 @@ class CollaborationUser < ActiveRecord::Base
     self.tasks_assigned_to.collaboration_filter(p[:collaboration_id]).title_filter(p[:title] || "").status_filter(p[:include_status])
   end
 
+  named_scope :collaboration_filter, lambda { |t|
+    { :conditions => { :collaboration_id => t }}    
+  }
+
   # 
   # A whole lot of methods to check what a user can or cannot do
   #

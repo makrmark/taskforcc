@@ -1,0 +1,24 @@
+<h3>Taskforcc Dashboard</h3>
+<table class="acl">
+	<thead>
+		<tr>
+			<th>Taskforcc</th>
+			<th class="stat">Assigned to Me</th>
+			<th class="stat">Total Open Tasks</th>
+			<th class="stat">Total Closed Tasks</th>
+			<th class="stat">Total Tasks</th>
+			<th class="stat">Completion %</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'dashboard/status_row', :collection => current_user.collaborations %>
+	</tbody>
+	<tfoot>
+	</tfoot>
+</table>
+
+<hr>
+<h4>Recent Activity</h4>
+<ul id="activities-container">
+	<%= render :partial => 'activities/activity', :collection => @activities %>
+</ul>

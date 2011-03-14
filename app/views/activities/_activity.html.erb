@@ -1,12 +1,23 @@
 <li class='activity' id="<%= dom_id(activity) %>">
 	<div class="activity-left"><%= mini_avatar_for(activity.user_updated_by) %></div>
 	<div class="activity-content">
-		<strong><%= activity.related_class %></strong> <%= activity.action %> 
-		in <strong><%= activity.collaboration.subject %></strong>
-		by <strong><%= activity.user_updated_by.full_name %></strong>
+		<%= activity.related_class %>: 
+		<strong><%= link_to activity.label, collaboration_task_path(
+			:collaboration_id => activity.collaboration_id,
+			:id => activity.task_id
+		) 
+		%></strong> 
+		<%= activity.action %> in
+		<strong><%= link_to activity.collaboration.subject, activity.collaboration %></strong> by
+		<strong><%= link_to activity.user_updated_by.full_name,
+			collaboration_collaboration_user_path(
+				:collaboration_id => activity.collaboration_id,
+				:id => CollaborationUser.find_by_user_id_and_collaboration_id(activity.updated_by, activity.collaboration_id)
+				)
+			%></strong>
 		<%= time_ago_in_words(activity.updated_at) %> ago
 		<ul class='acts'>
-		<%= render :partial => 'act', :collection => activity.acts %>
+			<%= render :partial => 'activities/act', :collection => activity.acts %>
 		</ul>
 	</div>
 </li>

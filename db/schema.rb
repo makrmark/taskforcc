@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20110313063548) do
     t.integer  "updated_by"
     t.string   "related_class",                          :null => false
     t.string   "action",           :default => "create", :null => false
+    t.string   "label"
     t.integer  "collaboration_id",                       :null => false
     t.integer  "task_id"
     t.integer  "user_id"

@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     :collection => {
       :list => :get      
     }
-  map.resources :activities
+  map.resources :dashboard
 
   map.resources :collaborations do |collaboration|
     collaboration.resources  :collaboration_users
@@ -62,7 +62,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => 'access', :action => 'start'
+  map.root :controller => 'dashboard', :action => 'index'
 
   # See how all your routes lay out with "rake routes"
 

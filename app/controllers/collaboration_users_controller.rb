@@ -49,7 +49,7 @@ class CollaborationUsersController < ApplicationController
   # GET /collaboration_users/new
   # GET /collaboration_users/new.xml
   def new
-    @collaboration_user = CollaborationUser.new
+    @collaboration_user = CollaborationUser.new()
     @current_user = current_user
     @collaboration = Collaboration.find(params[:collaboration_id])
 

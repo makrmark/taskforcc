@@ -389,16 +389,27 @@ table.acl td {
 	width: 20%;
 	border: 1px solid lightgrey;
 }
-table.acl td.green {
+table.acl .green {
 	background-color: #ddffdd;
 }
-table.acl td.yellow {
+table.acl .yellow {
 	background-color: #ffffdd;
 }
-table.acl td.red {
+table.acl .red {
 	background-color: #ffdddd;	
 }
 
+table.acl .stat {
+	text-align: center;
+}
+div.statusbar {
+	width: 100px; 
+	height: 100%;
+}
+div.statusbar div {
+	display: inline-block; 
+	height: 10px;	
+}
 
 /* Task Stuff */
 div.task {
@@ -579,10 +590,10 @@ div#mf-tab-container {
 
 li.activity {
 	list-style: none;
-	border-bottom: 1px solid lightgrey;
+	border-top: 1px solid lightgrey;
 	margin-top: 3px;
 	margin-bottom: 3px;
-	padding-bottom: 2px;
+	padding-top: 3px;
 	font-size: 12px;
 	min-height: 30px;
 }
@@ -592,6 +603,10 @@ div.activity-left {
 }
 div.activity-content {
 	margin-left: 35px;
+}
+span.activity-details {
+	color: grey;
+	font-size: 10px;
 }
 ul.acts {
 	font-size: 10px;
@@ -605,4 +620,3 @@ ul.acts label {
 span.act-was {
 	color: grey;
 }
-

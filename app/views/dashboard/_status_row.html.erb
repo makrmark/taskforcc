@@ -1,0 +1,24 @@
+<%
+	open_assigned = 0
+	open = 0
+	total = 0
+
+	status_row.counters.each do |c|		
+		open          += c.cnt_total_open
+		open_assigned += c.cnt_total_open if c.user_id == current_user.id
+		total         += c.cnt_total
+	end
+	
+	open_percent = 100*open/total
+	closed_percent = 100*(total - open)/total
+%>
+
+
+<tr>
+<th><%= link_to status_row.subject, collaboration_path(status_row) %></th>
+<td class="stat yellow"><%= open_assigned %></td>
+<td class="stat red"><%= open %></td>
+<td class="stat green"><%= total - open %></td>
+<th class="stat"><%= total %></th>
+<th><div class="statusbar"><div class="red" title="<%= open_percent %>%" style="width: <%= open_percent %>px;"></div><div  title="<%= closed_percent %>%" class="green" style="width: <%= closed_percent %>px;"></div></div></th>
+</tr>

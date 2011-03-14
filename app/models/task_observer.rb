@@ -44,7 +44,7 @@ private
     add_task_activity(task, 'created')
   end
   def add_task_activity(task, action)
-    activity = Activity.find_by_task_id(task.id)
+    activity = Activity.find_by_task_id(task.id, :order=>"updated_at desc", :limit => 1)
 
     # check if we should keep the last or create new activity
     tnow = Time.new
@@ -61,7 +61,8 @@ private
         :task_id => task.id
       )
     end
-
+    
+    activity.label = task.title
     activity.collaboration_id = task.collaboration_id
     activity.topic_id = task.topic_id
     activity.user_id = task.assigned_to

@@ -4,6 +4,7 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :updated_by
       t.string  :related_class, :null => false
       t.string  :action, :null => false, :default => 'create'
+      t.string  :label
       t.integer :collaboration_id, :null => false
       t.integer :task_id
       t.integer :user_id

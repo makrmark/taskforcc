@@ -10,7 +10,7 @@
   </div>
 <% else %>
   <ul class="sidebar">
-		<%= render :partial => 'shared/collaboration_li', :collection => @current_user.collaborations %>
+		<%= render :partial => 'shared/collaboration_li', :collection => current_user.collaborations %>
   </ul>
 <% end %>
 </div>
