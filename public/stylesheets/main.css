@@ -178,22 +178,16 @@ ul.tam.footer {
 	height: 17px;
 	float: none;
 	display: block;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: lightgrey;
 }
-ul.tam.footer li {
-  border-style: solid;
-  border-color: lightgrey;
-  border-width: 1px 1px 1px 1px;
+div.task ul.tam.footer li {
 	margin-right: 1px;
 	background-color: white;
-	border-bottom-color: white;
-
 }
-ul.tam.footer li.active {
-  background-color: #F4F4F4;
-	border-bottom-color: #F4F4F4;
+div.task ul.tam.footer li>a {
+	color: lightgrey;	
+}
+div.task ul.tam.footer li.active>a {
+	color: grey;
 }
 span.arrow {
 	font-size: 10px;
@@ -243,7 +237,7 @@ ul.tam ul.inactive {
 }
 
 /* Icons for the lists */
-ul.tam li i, h4 i  {	
+ul.tam li i, h4 i, div.activity-right i  {	
 	display: inline-block;
 	vertical-align: text-top;
   height: 15px;
@@ -271,6 +265,7 @@ i.Favourites { background-position: -33px -20px; }
 i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
 i.Tags       { background-position: -33px -52px; }
+i.ArrowRight { background-position: -1px -52px; }
 div.task-right {
   height: 45px;
   width: 45px;
@@ -462,11 +457,11 @@ div.task-title {
 
 /* Task Details Styles */
 div.task-details {
-	padding: 5px;
+	padding: 1px;
   border-style: solid;
   border-width: 0px 1px 1px 1px;
-  border-color: lightgrey;
-  background-color: #F4F4F4;
+  border-color: transparent;
+  background-color: #EDEFF4;
 }
 div.task-details textarea.editor_field {
 	width: 95%;
@@ -475,7 +470,7 @@ div.task-details textarea.editor_field {
 div.task-details a.in_place_edit_hint {
 	font-size: smaller;
 	float: right;
-	color: lightgrey;
+	color: grey;
 }
 div.task-details:hover a.in_place_edit_hint {
 	color: black;
@@ -530,14 +525,17 @@ div.cc {
 }
 div.comment {
   padding: 0px;
-  border-bottom-width: 1px;
+  border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: white;
   font-size: smaller;
 }
+form.cf {
+}
 input.cf {
-  width: 98%;
-  margin: 1% 1% 0% 1%;
+	border: 1px solid lightgrey;
+  width: 96%;
+  margin: 2px 2% 2px 2%;
 }
 
 /* multifunction tabs */
@@ -591,8 +589,8 @@ div#mf-tab-container {
 li.activity {
 	list-style: none;
 	border-top: 1px solid lightgrey;
-	margin-top: 3px;
-	margin-bottom: 3px;
+	margin-top: 5px;
+	margin-bottom: 2px;
 	padding-top: 3px;
 	font-size: 12px;
 	min-height: 30px;
@@ -601,8 +599,12 @@ div.activity-left {
   float: left;
   margin-right: 2px;
 }
+div.activity-right {
+  float: right;
+}
 div.activity-content {
 	margin-left: 35px;
+	margin-right: 15px;
 }
 span.activity-details {
 	color: grey;
@@ -619,4 +621,9 @@ ul.acts label {
 }
 span.act-was {
 	color: grey;
+}
+li.activity .task-details {
+	border-width: 1px;
+	margin-left: 40px;
+	margin-right: 40px;
 }

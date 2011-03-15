@@ -1,23 +1,36 @@
 <li class='activity' id="<%= dom_id(activity) %>">
 	<div class="activity-left"><%= mini_avatar_for(activity.user_updated_by) %></div>
+	<div class="activity-right"><%= link_to "<i class=\"ArrowRight\" title=\"Details\"></i>", collaboration_task_path(
+		:collaboration_id => activity.collaboration_id,
+		:id => activity.task_id
+	) 
+	%></div>
 	<div class="activity-content">
-		<%= activity.related_class %>: 
-		<strong><%= link_to activity.label, collaboration_task_path(
-			:collaboration_id => activity.collaboration_id,
-			:id => activity.task_id
-		) 
-		%></strong> 
-		<%= activity.action %> in
-		<strong><%= link_to activity.collaboration.subject, activity.collaboration %></strong> by
+		<div style="font-size: 10px">
 		<strong><%= link_to activity.user_updated_by.full_name,
 			collaboration_collaboration_user_path(
 				:collaboration_id => activity.collaboration_id,
 				:id => CollaborationUser.find_by_user_id_and_collaboration_id(activity.updated_by, activity.collaboration_id)
 				)
 			%></strong>
+		<%= activity.action %> a 
+		<%= activity.related_class %> in
+		<strong><%= link_to activity.collaboration.subject, activity.collaboration %></strong> 
 		<%= time_ago_in_words(activity.updated_at) %> ago
+		</div>
+		<strong><%= link_to activity.label, collaboration_task_path(
+			:collaboration_id => activity.collaboration_id,
+			:id => activity.task_id
+		) 
+		%></strong> 
+
 		<ul class='acts'>
 			<%= render :partial => 'activities/act', :collection => activity.acts %>
 		</ul>
 	</div>
+	<% if activity.related_class.eql?('Task') %>
+	  <div class="activity task-details" id="<%= dom_id(activity.task) %>_comments">
+	    <%= render :partial => 'tasks/task_comments', :object => activity.task %>
+	  </div>
+	<% end %>
 </li>

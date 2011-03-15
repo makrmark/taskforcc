@@ -54,11 +54,18 @@ private
     if activity.nil? ||
       activity.updated_by != task.updated_by ||
       tnow - activity.updated_at > 30
+
+      # update the last activity to reflect it is no longer latest
+      unless activity.nil?
+        activity.is_latest = false
+        activity.save!
+      end
       
       activity = Activity.new(
         :related_class => 'Task',
         :action => action,
-        :task_id => task.id
+        :task_id => task.id,
+        :is_latest => true
       )
     end
     

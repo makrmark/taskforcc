@@ -3,8 +3,9 @@ class DashboardController < ApplicationController
   layout "collaborations"
   
   def index
-    @activities = Activity.all(:order => "updated_at DESC", :limit => 10)
+    @activities = Activity.all(:conditions => {:is_latest => true}, :order => "updated_at DESC", :limit => 10)
     @collaborations = current_user.collaborations
+    @comment = Comment.new()
 
     respond_to do |format|
       format.html # index.html.erb
