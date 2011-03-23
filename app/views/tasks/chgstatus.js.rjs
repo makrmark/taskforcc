@@ -2,13 +2,14 @@ page.replace_html dom_id(@task), :partial => 'tasks/task', :object => @task
 page.visual_effect :highlight, dom_id(@task), :duration => 1
 
 page.replace "collaborations_sidebar", 
-  :partial => 'shared/collaborations_sidebar'
-  
-unless @collaboration.nil?
-  page.replace "topics_sidebar",
+  :partial => 'shared/collaborations_sidebar'  
+
+# Only replace these elements if they actually exist
+page.select("#topics_sidebar").each do |sidebar|
+  sidebar.replace "topics_sidebar",
     :partial => 'shared/topics_sidebar'  
-  page.replace "teams_sidebar",
+end
+page.select("#teams_sidebar").each do |sidebar|
+  sidebar.replace "teams_sidebar",
     :partial => 'shared/teams_sidebar'
 end
-  
-# TODO: only render those partials that are actually affected

@@ -131,7 +131,10 @@ ul.sidebar>li.active {
 	font-weight: bold;
 }
 
-div.empty-message {
+li#task-empty-message {
+	list-style: none;
+}
+li.empty-message {
   color: black;
   border: 1px solid blue;
   padding: 20px;
@@ -150,13 +153,13 @@ http://www.lwis.net/free-css-drop-down-menu/dropdown.simple.horizontal.html
   color: #555577;
 	font-size: 12px;
 }
-div.task ul.tam>li>a,
-div.task ul.tam {
+li.result ul.tam>li>a,
+li.result ul.tam {
   visibility: visible;
   color: lightgrey;
 }
-div.task:hover ul.tam>li>a,
-div.task:hover ul.tam  {
+li.result:hover ul.tam>li>a,
+li.result:hover ul.tam  {
   color: black;
 }
 
@@ -179,14 +182,14 @@ ul.tam.footer {
 	float: none;
 	display: block;
 }
-div.task ul.tam.footer li {
+li.result ul.tam.footer li {
 	margin-right: 1px;
 	background-color: white;
 }
-div.task ul.tam.footer li>a {
+li.result ul.tam.footer li>a {
 	color: lightgrey;	
 }
-div.task ul.tam.footer li.active>a {
+li.result ul.tam.footer li.active>a {
 	color: grey;
 }
 span.arrow {
@@ -252,11 +255,11 @@ i.Accept  { background-position: -49px -52px; }
 i.Reject  { background-position: -97px -52px; }
 i.Resolve { background-position: -81px -52px; }
 i.Close   { background-position: -49px -52px; }
-div.task:hover i.Assign  { background-position: -65px -20px; }
-div.task:hover i.Accept  { background-position: -49px -20px; }
-div.task:hover i.Reject  { background-position: -97px -20px; }
-div.task:hover i.Resolve { background-position: -81px -20px; }
-div.task:hover i.Close   { background-position: -49px -20px; }
+li.result:hover i.Assign  { background-position: -65px -20px; }
+li.result:hover i.Accept  { background-position: -49px -20px; }
+li.result:hover i.Reject  { background-position: -97px -20px; }
+li.result:hover i.Resolve { background-position: -81px -20px; }
+li.result:hover i.Close   { background-position: -49px -20px; }
 
 i.Description { background-position: -17px -36px; }
 i.Comments    { background-position: -1px -36px; }
@@ -407,15 +410,16 @@ div.statusbar div {
 }
 
 /* Task Stuff */
-div.task {
+li.result {
+	list-style: none;
   line-height: 1.2em;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-color: lightgrey;
+  margin-top: 5px;
+  margin-bottom: 5px;
+	padding-bottom: 3px;
+	border-bottom: 1px solid lightgrey;
   min-height: 55px;
 }
+
 div.task-left {
   float: left;
   margin-right: 2px;
@@ -530,6 +534,20 @@ div.comment {
   border-bottom-color: white;
   font-size: smaller;
 }
+div.comment-left {
+	float: left;
+	padding: 2px;
+}
+div.comment-body {
+	margin-left: 35px;
+	min-height: 35px;
+}
+div.ctaw {
+	color: grey;
+	margin-top: 2px;
+	line-height: 1em;
+}
+
 form.cf {
 }
 input.cf {
@@ -586,15 +604,6 @@ div#mf-tab-container {
   margin-bottom: 10px;
 }
 
-li.activity {
-	list-style: none;
-	border-top: 1px solid lightgrey;
-	margin-top: 5px;
-	margin-bottom: 2px;
-	padding-top: 3px;
-	font-size: 12px;
-	min-height: 30px;
-}
 div.activity-left {
   float: left;
   margin-right: 2px;
@@ -603,7 +612,7 @@ div.activity-right {
   float: right;
 }
 div.activity-content {
-	margin-left: 35px;
+	margin-left: 50px;
 	margin-right: 15px;
 }
 span.activity-details {
@@ -622,8 +631,7 @@ ul.acts label {
 span.act-was {
 	color: grey;
 }
-li.activity .task-details {
+li.result .task-details {
 	border-width: 1px;
-	margin-left: 40px;
-	margin-right: 40px;
+	margin-top: 3px;
 }

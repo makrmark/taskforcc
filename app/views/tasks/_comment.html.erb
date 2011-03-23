@@ -1,5 +1,7 @@
 <div class="comment" id="<%= dom_id(comment) %>"  style="<%= show ? '' : 'display: none;' %>">
-  <span class="user-name"><%= titled_text(comment.user.full_name, comment.user.email) -%></span> 
-  <%= h(comment.comment) %>
-  <span class="tta"><%= time_ago_in_words comment.created_at -%> ago</span>
+	<div class="comment-left"><%= mini_avatar_for(comment.user) %></div>
+	<div class="comment-body">
+	  <span class="user-name"><%= titled_text(comment.user.full_name, comment.user.email) -%></span> <%= h(comment.comment) -%>
+	  <div class="ctaw"><%= time_ago_in_words comment.created_at -%> ago</div>
+	</div>
 </div>

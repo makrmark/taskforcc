@@ -1,7 +1,9 @@
 <h4><%= breadcrumb %> &raquo; Tasks</h4>
 <hr />
 
+<ul id="resultset">
 <%= render(:partial => 'tasks/task_container', :collection => @tasks )%>
+</ul>
 
 <%= link_to 'New task', new_collaboration_task_path(
       :collaboration_id => @collaboration.id

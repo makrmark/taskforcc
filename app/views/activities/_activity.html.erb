@@ -1,10 +1,13 @@
-<li class='activity' id="<%= dom_id(activity) %>">
-	<div class="activity-left"><%= mini_avatar_for(activity.user_updated_by) %></div>
-	<div class="activity-right"><%= link_to "<i class=\"ArrowRight\" title=\"Details\"></i>", collaboration_task_path(
-		:collaboration_id => activity.collaboration_id,
-		:id => activity.task_id
-	) 
-	%></div>
+<li class='result' id="<%= dom_id(activity.task) %>">
+	<div class="activity-left"><%= avatar_for(activity.user_updated_by) %></div>
+	<div class="activity-right"><%= link_to_remote %Q{<i class="ArrowRight" title="Details"></i>}, {		
+			:url => collaboration_task_path(
+				:collaboration_id => activity.collaboration_id,
+				:id => activity.task_id
+			),
+			:method => :get
+		}
+	%></div>	
 	<div class="activity-content">
 		<div style="font-size: 10px">
 		<strong><%= link_to activity.user_updated_by.full_name,
@@ -27,10 +30,10 @@
 		<ul class='acts'>
 			<%= render :partial => 'activities/act', :collection => activity.acts %>
 		</ul>
+		<% if activity.related_class.eql?('Task') %>
+		  <div class="activity task-details" id="<%= dom_id(activity.task) %>_comments">
+		    <%= render :partial => 'tasks/task_comments', :object => activity.task %>
+		  </div>
+		<% end %>
 	</div>
-	<% if activity.related_class.eql?('Task') %>
-	  <div class="activity task-details" id="<%= dom_id(activity.task) %>_comments">
-	    <%= render :partial => 'tasks/task_comments', :object => activity.task %>
-	  </div>
-	<% end %>
 </li>
