@@ -6,10 +6,8 @@ page.replace "collaborations_sidebar",
 
 # Only replace these elements if they actually exist
 page.select("#topics_sidebar").each do |sidebar|
-  sidebar.replace "topics_sidebar",
-    :partial => 'shared/topics_sidebar'  
+  page.replace "topics_sidebar", :partial => 'shared/topics_sidebar'  
 end
 page.select("#teams_sidebar").each do |sidebar|
-  sidebar.replace "teams_sidebar",
-    :partial => 'shared/teams_sidebar'
+  page.replace "teams_sidebar", :partial => 'shared/teams_sidebar'
 end
