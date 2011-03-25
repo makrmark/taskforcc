@@ -27,13 +27,23 @@
 			<% cntr += 1 %>
 		<% end %>
 
-	<% end %>
-	
+	<% end %>	
 </div>
+<div id="<%= dom_id(task_comments) -%>_comment_form">
+<%# http://apidock.com/rails/ActionView/Helpers/PrototypeHelper/remote_form_for -%>
 <% remote_form_for @comment, 
   :url => comment_collaboration_task_path(task_comments.collaboration_id, task_comments.id), 
+	:loading => "Element.show('#{ dom_id(task_comments) }_comment_spinner'); Element.hide('#{ dom_id(task_comments) }_comment_field')",
+	:complete => "Element.hide('#{ dom_id(task_comments) }_comment_spinner'); Element.show('#{ dom_id(task_comments) }_comment_field')",
   :html => {:class => 'cf', :id=> "#{dom_id(task_comments)}_form"} do |f| %>
   <%= f.error_messages %>
-  <%= f.text_field :comment, :class => 'cf', 
-    :placeholder => 'Add your comments here', :maxlength => "255" %>
-<% end %>  
+	<div id="<%= dom_id(task_comments) -%>_comment_spinner" class="spinner" style="display: none;">
+		<img src="/images/ajax-bar-loader.gif" alt="" />
+	</div>
+  <%= f.text_field :comment, 
+		:class => 'cf', 
+		:id => "#{ dom_id(task_comments) }_comment_field",
+    :placeholder => 'Add your comments here', 
+		:maxlength => "255" %>
+<% end %>
+</div>
