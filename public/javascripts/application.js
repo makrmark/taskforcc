@@ -28,3 +28,14 @@ function toggle_tam_submenu(submenu, domid, menuname) {
 	$(submenu + "_"+ menuname +"_" + domid).toggle();
 	
 }
+
+/* show and hide the spinner when submitting a comment */
+function show_comment_spinner(domid) {
+	$(domid + "_comment_field").hide()
+	$(domid + "_comment_spinner" ).show()	
+}
+function hide_comment_spinner(domid) {
+	$(domid + "_comment_spinner" ).hide()
+	$(domid + "_comment_field" ).show()
+	
+}

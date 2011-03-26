@@ -33,8 +33,8 @@
 <%# http://apidock.com/rails/ActionView/Helpers/PrototypeHelper/remote_form_for -%>
 <% remote_form_for @comment, 
   :url => comment_collaboration_task_path(task_comments.collaboration_id, task_comments.id), 
-	:loading => "Element.show('#{ dom_id(task_comments) }_comment_spinner'); Element.hide('#{ dom_id(task_comments) }_comment_field')",
-	:complete => "Element.hide('#{ dom_id(task_comments) }_comment_spinner'); Element.show('#{ dom_id(task_comments) }_comment_field')",
+	:loading => "show_comment_spinner('#{dom_id(task_comments)}')",
+	:complete => "hide_comment_spinner('#{dom_id(task_comments)}')",
   :html => {:class => 'cf', :id=> "#{dom_id(task_comments)}_form"} do |f| %>
   <%= f.error_messages %>
 	<div id="<%= dom_id(task_comments) -%>_comment_spinner" class="spinner" style="display: none;">

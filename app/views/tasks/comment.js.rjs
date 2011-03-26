@@ -1,4 +1,5 @@
 # http://marklunds.com/s5/rails101/html/ajax.html
+
 page.insert_html :bottom, "comments_#{dom_id(@task)}", :partial => 'tasks/comment', 
   :object => @comment, :locals => { :show => true}
 page["#{dom_id(@task)}_form"].reset

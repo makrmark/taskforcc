@@ -550,11 +550,8 @@ div.ctaw {
 /* http://stackoverflow.com/questions/2184061/ */
 /* http://ajaxload.info/ */
 div.spinner {
-	position: relative;
-	top: 0px;
-	left: 0px;
 	z-index: 9999;
-	margin: 0px;
+	position: relative;
 }
 /*IE will need an 'adjustment'
 * html div.spinner {
