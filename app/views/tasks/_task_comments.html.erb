@@ -4,14 +4,19 @@
 	<% comment_count = task_comments.comments.count %>
 	<% if comment_count < 5 %>
 
-	  <%= render :partial => 'tasks/comment', :collection => task_comments.comments, 
-			:locals => { :show => true } -%>
+	<div class="comment" id="show_comments_<%= dom_id(task_comments) %>">
+		<i class="Comments"></i> Comment on this Task
+	</div>
+
+  <%= render :partial => 'tasks/comment', :collection => task_comments.comments, 
+		:locals => { :show => true } -%>
 
 	<%# if more 5 just show the last 3 %>
 	<% else %>
 
 		<div class="comment" id="show_comments_<%= dom_id(task_comments) %>">
-	    <%= link_to_function "#{comment_count - 3} more comments&hellip;" do |page|
+			<i class="Comments"></i>
+	    <%= link_to_function "#{comment_count - 3} more Comments" do |page|
 	        page.select("div#comments_#{ dom_id(task_comments) }>div.comment").each do |value|
 	          value.show
 	        end

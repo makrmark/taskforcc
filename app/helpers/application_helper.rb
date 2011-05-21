@@ -127,7 +127,8 @@ module ApplicationHelper
         :resolution => res,
         :method => 'post' # TODO: should be put?
         }
-      )
+      ),
+      :loading => "Element.show('#{dom_id(task)}_spinner')"
     )
   end
 
@@ -141,7 +142,8 @@ module ApplicationHelper
         :resolution => 'Unresolved',
         :assigned_to => uid
         }
-      )
+      ),
+      :loading => "Element.show('#{dom_id(task)}_spinner')"
     )
   end  
   
@@ -152,7 +154,8 @@ module ApplicationHelper
         :id => task.id,
         :topic_id => t.id
         }
-      )
+      ),
+      :loading => "Element.show('#{dom_id(task)}_spinner')"
     )
   end
 
@@ -163,7 +166,8 @@ module ApplicationHelper
         :id => task.id,
         :task_type => task_type
         }
-      )
+      ),
+      :loading => "Element.show('#{dom_id(task)}_spinner')"
     )
   end
 

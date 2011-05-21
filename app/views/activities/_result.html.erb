@@ -1,0 +1,4 @@
+<li class='result' id="<%= dom_id(result.task) %>_result">
+	<%= render :partial => 'activities/activity', :object => result %>
+	<%= render :partial => 'tasks/task', :object => result.task %>
+</li>

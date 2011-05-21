@@ -1,0 +1,11 @@
+<% unless @collaboration.nil? || 
+	(request[:controller].eql?("collaborations") && ["new","create","index"].include?(request[:action]) ) %> 
+<div id="search-sidebar" class="sidebar">
+	<h4 class="sidebar"><i class="Search"></i> Search</h4>
+  <%# http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.htm %>
+  <% form_tag request.path, :method => 'get', :id=>'search_form' do %>
+    <%= text_field_tag :title, params[:title] %>
+    <%= submit_tag 'Go' %>
+  <% end -%>
+</div>
+<% end -%>

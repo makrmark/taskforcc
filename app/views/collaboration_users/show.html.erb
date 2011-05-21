@@ -9,12 +9,12 @@
     </div>
   <% else %>
     <div id="task-empty-message"></div>
-    <%= render(:partial => 'tasks/task_container', 
+    <%= render(:partial => 'tasks/result', 
       :collection => @collaboration_user.find_tasks_assigned_to(params) )%>
   <% end%>
 </div>
 
-<% unless @collaboration.nil?  || ! @current_user.can_create_task?(@task) -%>
+<% if ! @collaboration.nil?  && @current_user.can_create_task?(@task) -%>
 	<%= button_to 'New task', new_collaboration_task_path(
 	    :collaboration_id => @collaboration.id,
 	    :assigned_to => @collaboration_user.user_id),

@@ -5,6 +5,10 @@ class CollaborationUser < ActiveRecord::Base
   has_many :tasks,
     :primary_key => 'collaboration_id',
     :foreign_key => 'collaboration_id'
+
+  has_many :activities,
+    :primary_key => 'collaboration_id',
+    :foreign_key => 'collaboration_id'
   
   has_many :tasks_assigned_to,
     :class_name => 'Task',

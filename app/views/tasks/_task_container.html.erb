@@ -1,3 +1,6 @@
-<li class="result" id="<%= dom_id(task_container) %>">
-  <%= render 'tasks/task', :object => task_container %>
+<%= render 'activities/result', :object => task_container.latest_activity %>
+<!--
+<li class="result">
+  <%# render 'tasks/task', :object => task_container %>
 </li>
+-->

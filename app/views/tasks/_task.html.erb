@@ -1,88 +1,81 @@
-<div class="task-left">
-  <%= avatar_for(task.user_assigned_to) %>
-</div>
-<div class="task-right">
-  <span id="fav_<%= dom_id(task) %>" class="fav">
-    <%= render 'tasks/task_favourite', :object => task -%>
-  </span>
-  <%= link_to_function %Q{<i class="tt #{task.task_type}" title="#{task.task_type}"></i>} do |page|
-			page["#{dom_id(task)}_ttm"].toggle
-		end			
-	%>
-	<%= render :partial => "tasks/task_type", :locals => { :task => task } %>
-	
-  <% stat = task.status -%>
-  <% res = case stat
-      when "Resolved", "Rejected", "Closed" then ":#{task.resolution}" else ""
-      end -%>
-  <i class="ts <%= stat %>" title="<%= stat + res %>"></i>  
-</div>
-<div class="task-content">
-  <div class="task-header">
-    <ul class="tam assignment">
-      <li class="noaction"><%=h task.collaboration.subject %> &raquo; </li>
-      <%= menu_for_topics(task.collaboration, task) %>
-      <%= menu_for_assignment(@current_user, task) %>
-    </ul>
-    <ul class="tam">      
-      <% task.valid_states_by_user(@current_user).each do |status| %>
-        <%= menu_for_status(task, status) %>
-      <% end %>
-    </ul>
-  </div>
-	<%# http://www.paulwelty.com/ruby-on-rails/ruby-on-rails-using-a-different-controller-with-in_place_editor_field/ %>
-	<%# http://weeatbricks.com/2007/09/01/in_place_editor_field-method-in-ruby-on-rails/ %>	
-	<div class="task-title">
-	<% @task = task %>
-	<%= in_place_editor_field "task", "title", 
-		{ :id => "task_title_#{@task.id}", :cancel_text => 'cancel', :save_text => 'ok', :size => 200 }, 
-		{ :url => set_task_title_collaboration_task_path(
-			:collaboration_id => task.collaboration_id,
-			:id => task.id
-		  ) } %>
+<div id="<%= dom_id(task) %>">
+	<div class="task-spinner" id="<%= dom_id(task) %>_spinner" style="display:none;">
+		<img src="/images/ajax-bar-loader.gif" alt="" />
 	</div>
-  <div class="tta">
-    Updated <%= time_ago_in_words task.updated_at %> ago by <span class="user-name"><%= titled_text(task.user_created_by.full_name,
-    task.user_created_by.email) %></span></div>  
+	<div class="task-left">
+	  <%= avatar_for(task.user_assigned_to) %>
+	</div>
+	<div class="task-right">
+	  <span id="fav_<%= dom_id(task) %>" class="fav">
+	    <%= render 'tasks/task_favourite', :object => task -%>
+	  </span>
+	  <%= link_to_function %Q{<i class="tt #{task.task_type}" title="#{task.task_type}"></i>} do |page|
+				page["#{dom_id(task)}_ttm"].toggle
+			end			
+		%>
+		<%= render :partial => "tasks/task_type", :locals => { :task => task } %>
+	
+	  <% stat = task.status -%>
+	  <% res = case stat
+	      when "Resolved", "Rejected", "Closed" then ":#{task.resolution}" else ""
+	      end -%>
+	  <i class="ts <%= stat %>" title="<%= stat + res %>"></i>  
+	</div>
+	<div class="task-content">
+	  <div class="task-header">
+	    <ul class="tam assignment">
+	      <li class="noaction"><%=h task.collaboration.subject %> &raquo; </li>
+	      <%= menu_for_topics(task.collaboration, task) %>
+	      <%= menu_for_assignment(@current_user, task) %>
+	    </ul>
+	    <ul class="tam">      
+	      <% task.valid_states_by_user(@current_user).each do |status| %>
+	        <%= menu_for_status(task, status) %>
+	      <% end %>
+	    </ul>
+	  </div>
+		<%# http://www.paulwelty.com/ruby-on-rails/ruby-on-rails-using-a-different-controller-with-in_place_editor_field/ %>
+		<%# http://weeatbricks.com/2007/09/01/in_place_editor_field-method-in-ruby-on-rails/ %>	
+		<div class="task-title">
+		<% @task = task %>
+		<%= in_place_editor_field "task", "title", 
+			{ :id => "task_title_#{@task.id}", :cancel_text => 'cancel', :save_text => 'ok', :size => 200 }, 
+			{ :url => set_task_title_collaboration_task_path(
+				:collaboration_id => task.collaboration_id,
+				:id => task.id
+			  ) } %>
+		</div>
+	  <div class="task-footer">
+			<div class="task-details">
+				<div class="task-description" id="<%= dom_id(task) %>_description_link"><i class="Description"></i>
+					<%= link_to_function "Description" do |page|
+							page["#{ dom_id(task) }_description_link"].hide
+							page["#{ dom_id(task) }_description"].show
+			      end
+			    %></div>
+				<div class="task-description" id="<%= dom_id(task) %>_description" style="display: none;">
 
-  <div class="task-footer">
-		<% show_tab = task.comments.empty? 		? "description" : "comments" -%>
-		<% dcl = show_tab.eql?("description") ? "active" : "" 					-%>
-		<% dst = show_tab.eql?("description") ? "" : "display: none;" 	-%>
-	  <% ccl = show_tab.eql?("comments") 		? "active" : "" 					-%>
-	  <% cst = show_tab.eql?("comments") 		? "" : "display: none;" 	-%>
+					<%# http://www.w3schools.com/CSS/pr_text_white-space.asp -%>
+					<% @task = task -%>
+					<a href="#" class="in_place_edit_hint" id='edit_task_description_<%= task.id %>'>edit</a>
+					<span	class="in_place_edit_container">
+						<%= 
+						in_place_editor_field "task", "description", 
+							{ :id => "task_description_#{@task.id}" }, 
+							{ :url => set_task_description_collaboration_task_path(
+								:collaboration_id => task.collaboration_id,
+								:id => task.id
+						  		),
+							:rows => 3, :cols => 50, :cancel_text => 'cancel', :save_text => 'ok', 
+							:external_control => "edit_task_description_#{task.id}",
+							:options => {:highlight_color => "='#ffffff'" }} -%></span>
+					</div>
+		   </div>
 
-		<ul class="tam footer">
-		  <li id="<%= dom_id(task) %>_description_tab" 
-				class="<%= dcl %>"><i class="Description"></i><%= link_to_function "Description",
-					"set_details_tab_to_description('#{dom_id(task)}')" %></li>
-		  <li id="<%= dom_id(task) %>_comments_tab"
-				class="<%= ccl %>"><i class="Comments"></i><%= link_to_function "Comments", 
-					"set_details_tab_to_comments('#{dom_id(task)}')" %></li>
-		  <!-- <li><i class="Attachments"></i>Attachments</li> -->
-		</ul>
-
-		<div class="task-details" id="<%= dom_id(task) %>_description" style="<%= dst %>">
-
-			<%# http://www.w3schools.com/CSS/pr_text_white-space.asp -%>
-			<% @task = task -%>
-			<a href="#" class="in_place_edit_hint" id='edit_task_description_<%= task.id %>'>edit</a>
-			<span	class="in_place_edit_container">
-				<%= 
-				in_place_editor_field "task", "description", 
-					{ :id => "task_description_#{@task.id}" }, 
-					{ :url => set_task_description_collaboration_task_path(
-						:collaboration_id => task.collaboration_id,
-						:id => task.id
-				  		),
-					:rows => 3, :cols => 50, :cancel_text => 'cancel', :save_text => 'ok', 
-					:external_control => "edit_task_description_#{task.id}",
-					:options => {:highlight_color => "='#ffffff'" }} -%></span>
-	   </div>
-
-	   <div class="task-details" id="<%= dom_id(task) %>_comments" style="<%= cst %>">
-	     <%= render :partial => 'tasks/task_comments', :object => task %>
-	   </div>
-  </div>  
+		   <div class="task-details" id="<%= dom_id(task) %>_comments">
+		     <%= render :partial => 'tasks/task_comments', :object => task %>
+		   </div>
+	  </div>  
+	</div>
 </div>
   

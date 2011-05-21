@@ -1,7 +1,13 @@
-<% unless @collaboration.nil? || 
-	(request[:controller].eql?("collaborations") && ["new","create","index"].include?(request[:action]) ) %> 
 <div class="sidebar">    
-  <h4><i class="Favourites"></i> <%= link_to 'Watched Tasks',
-    collaboration_watched_tasks_path(@collaboration), :title => "Show Watched Tasks" %></h4>
+  <h4><i class="Favourites"></i> 
+		<% unless @collaboration.nil? || 
+			(request[:controller].eql?("collaborations") && ["new","create","index"].include?(request[:action]) ) %> 
+
+			<%= link_to 'Watched Tasks',
+	    	collaboration_watched_tasks_path(@collaboration), :title => "Show Watched Tasks" %>
+		<% else %>
+			<%= link_to 'Watched Tasks',
+	    	watched_activities_path(), :title => "Show Watched Tasks" %>
+		<% end %>
+	</h4>
 </div>
-<% end %>

@@ -5,6 +5,10 @@ ActionController::Routing::Routes.draw do |map|
       :list => :get      
     }
   map.resources :dashboard
+  map.resources :activities, 
+    :collection => {
+      :watched => :get
+    }
 
   map.resources :collaborations do |collaboration|
     collaboration.resources  :collaboration_users

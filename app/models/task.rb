@@ -29,7 +29,13 @@ class Task < ActiveRecord::Base
     :class_name => 'User',
     :primary_key => 'id',
     :foreign_key => 'assigned_to'  
-
+    
+  has_many :activities
+  
+  has_one :latest_activity,
+    :class_name => 'Activity',
+    :conditions => {:is_latest => true}
+  
   # http://railscasts.com/episodes/108-named-scope
   # http://refactormycode.com/codes/788-advanced-search-form-named-scopes
   # http://apidock.com/rails/ActiveRecord/NamedScope/ClassMethods/named_scope

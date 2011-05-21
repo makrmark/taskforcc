@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
     :order   => "updated_at DESC",
     :conditions => "( collaboration_users.role <> 'Restricted' OR tasks.assigned_to = collaboration_users.user_id )"
 
+  has_many :activities,
+    :through => :collaboration_user_tasks,
+    :order   => "updated_at DESC",
+    :conditions => "( collaboration_users.role <> 'Restricted' OR activities.updated_by = collaboration_users.user_id )"
+
   has_many :collaborations_created_by,
     :class_name => 'Collaboration',
     :foreign_key => 'created_by'
