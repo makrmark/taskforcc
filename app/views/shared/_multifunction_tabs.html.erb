@@ -1,22 +1,8 @@
 <%# TODO: refactor the javascript into a separate function %>
 
-<% active_tab = session[:active_tab] || "search" %>
-<% active_tab = "search" if @collaboration.nil?  || ! @current_user.can_create_task?(@task) %>
+<% active_tab = "taskhere" %>
 
 <ul id="mf-tab-list" class="mf-tab">
-  <li class="mf-tab <%= "active" if active_tab.eql?("search") -%>" 
-	id="search-tab"><%= link_to_function 'Search Here' do |page|
-      page.select('div.mf-tab.body').each do |value|
-        value.hide()
-      end
-      page.select('li.mf-tab.active').each do |value|
-        value.removeClassName('active')
-      end
-
-      page['search'].show()
-      page['search-tab'].addClassName('active');
-    end
-    %></li>
   <% unless @collaboration.nil?  || ! @current_user.can_create_task?(@task) -%>
   <li class="mf-tab  <%= "active" if active_tab.eql?("taskhere") -%>" 
 	id="taskhere-tab"><%= link_to_function 'Task Here' do |page|
@@ -31,7 +17,7 @@
       page['taskhere-tab'].addClassName('active');
     end
     %></li>
-  <li class="mf-tab" id="details-tab"><%= link_to_function 'Taskforcc Details' do |page|
+  <li class="mf-tab" id="details-tab"><%= link_to_function 'Collaboration Details' do |page|
       page.select('div.mf-tab.body').each do |value|
         value.hide()
       end
@@ -74,18 +60,6 @@
   <% end -%>
 </ul>
 <div id="mf-tab-container">
-  <div id="search" class='mf-tab body' style="<%= "display:none;" if active_tab.eql?("taskhere") -%>">
-    <%# http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.htm %>
-    <% form_tag request.path, :method => 'get', 
-      :class => 'qtf', :id=>'search_form' do %>
-      <%= text_field_tag :title, params[:title], :class => 'qtt' %>
-      <%= submit_tag 'Search Here', :class => 'qtb' %>
-			<div class="qtf options">
-			<%= label_tag :include_status, "Filter Results" %>
-			<%= select_tag :include_status, options_for_select(['All Open Tasks', 'All Tasks', 'New', 'Assigned', 'Accepted', 'Rejected', 'Resolved', 'Closed'], params[:include_status] || 'All Open Tasks')%>
-			</div>
-    <% end -%>
-  </div>
   <% unless @collaboration.nil? || ! @current_user.can_create_task?(@task) -%>
   <div id="taskhere" class='mf-tab body' style="<%= "display:none;" if active_tab.eql?("search") -%>">
     <% remote_form_for [@collaboration, @task], 

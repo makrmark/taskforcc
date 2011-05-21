@@ -26,11 +26,11 @@
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
       ) %> &bull;
-      <%= link_to 'Remove from Taskforcc', collaboration_collaboration_user_path(
+      <%= link_to 'Remove from Collaboration', collaboration_collaboration_user_path(
         :collaboration_id => collaboration_user.collaboration_id,
         :id => collaboration_user.id
       ),
-      :confirm => "Really remove #{collaboration_user.user.full_name} from this Taskforcc?", :method => :delete %>
+      :confirm => "Really remove #{collaboration_user.user.full_name} from this Collaboration?", :method => :delete %>
     </li>    
     <% end %>
   </ul>
