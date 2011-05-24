@@ -53,12 +53,7 @@
 						page["#{ dom_id(task) }_comments"].hide
 						page["#{ dom_id(task) }_description"].show
 						page["#{ dom_id(task) }_activities"].hide
-						page["#{ dom_id(task) }_watchers"].hide
-					
-#						page["#{ dom_id(task) }_comment_link"].show
-#						page["#{ dom_id(task) }_description_link"].hide
-#						page["#{ dom_id(task) }_activity_link"].show
-#						page["#{ dom_id(task) }_watchers_link"].show
+						page["#{ dom_id(task) }_watchers"].hide					
 			      end
 			    	%></span>
 				<span class="task-details-action" id="<%= dom_id(task) %>_comment_link">
@@ -68,11 +63,6 @@
 						page["#{ dom_id(task) }_description"].hide
 						page["#{ dom_id(task) }_activities"].hide
 						page["#{ dom_id(task) }_watchers"].hide
-
-#						page["#{ dom_id(task) }_comment_link"].hide
-#						page["#{ dom_id(task) }_description_link"].show
-#						page["#{ dom_id(task) }_activity_link"].show
-#						page["#{ dom_id(task) }_watchers_link"].show
 			      end
 		    		%></span>
 				<span class="task-details-action" id="<%= dom_id(task) %>_activity_link">
@@ -82,32 +72,24 @@
 						page["#{ dom_id(task) }_description"].hide
 						page["#{ dom_id(task) }_activities"].show
 						page["#{ dom_id(task) }_watchers"].hide
-
-#						page["#{ dom_id(task) }_comment_link"].show
-#						page["#{ dom_id(task) }_description_link"].show
-#						page["#{ dom_id(task) }_activity_link"].hide
-#						page["#{ dom_id(task) }_watchers_link"].show
 		      end
 		    	%></span>
-
 				<span class="task-details-action" id="<%= dom_id(task) %>_watchers_link">
-				<% cls = task.favourite_users.empty? ? "" : "Watched" %>
-				<i class="Watchers <%= cls %>"></i>
-				<%= link_to_function "#{ task.favourite_users.length } Watchers" do |page|
-					page["#{ dom_id(task) }_comments"].hide
-					page["#{ dom_id(task) }_description"].hide
-					page["#{ dom_id(task) }_activities"].hide
-					page["#{ dom_id(task) }_watchers"].show
-
-#					page["#{ dom_id(task) }_comment_link"].show
-#					page["#{ dom_id(task) }_description_link"].show
-#					page["#{ dom_id(task) }_activity_link"].show
-#					page["#{ dom_id(task) }_watchers_link"].hide
-	      end
-		    %></span>
+					<% cls = task.favourite_users.empty? ? "" : "Watched" %>
+					<i class="Watchers <%= cls %>"></i>
+					<%= link_to_function "#{ task.favourite_users.length } Watchers" do |page|
+						page["#{ dom_id(task) }_comments"].hide
+						page["#{ dom_id(task) }_description"].hide
+						page["#{ dom_id(task) }_activities"].hide
+						page["#{ dom_id(task) }_watchers"].show
+		      end
+			    %></span>
 			</div>
 
-			<div class="task-details" id="<%= dom_id(task) %>_description" style="display: none;">
+			<% has_desc = ! task.description.nil? && task.description.length > 0 %>
+			<% cdisp = task.comments.length > 0 ? "" : "display: none;" -%>
+			<% ddisp = has_desc && task.comments.length == 0 ? "" : "display: none;" -%>
+			<div class="task-details" id="<%= dom_id(task) %>_description" style="<%= ddisp %>">
 				<div class="task-detail">
 					<i class="Description <%= ! task.description.nil? && task.description.length > 0 ? 'hascontent' : '' %>"></i>
 					<%= link_to_function "Description" do |page|
@@ -146,7 +128,7 @@
      	<%= render :partial => 'activities/activity', :collection => task.activities %>
 		</div>
 
-		<div class="task-details" id="<%= dom_id(task) %>_comments" style="display: none;">
+		<div class="task-details" id="<%= dom_id(task) %>_comments" style="<%= cdisp %>">
 		  <%= render :partial => 'tasks/task_comments', :object => task %>
 		</div>
 		
