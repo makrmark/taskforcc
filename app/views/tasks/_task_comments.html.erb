@@ -1,11 +1,15 @@
-<div id='comments_<%= dom_id(task_comments) %>' class='cc'>
+<div id='comments_<%= dom_id(task_comments) %>'>
 
 	<%# if less than 5 comments, just show them all %>
 	<% comment_count = task_comments.comments.count %>
 	<% if comment_count < 5 %>
 
-	<div class="comment" id="show_comments_<%= dom_id(task_comments) %>">
-		<i class="Comments"></i> Comment on this Task
+	<div class="task-detail" id="show_comments_<%= dom_id(task_comments) %>">
+		<i class="Comments"></i> <%= link_to_function "Comments" do |page|
+				page["#{ dom_id(task_comments) }_comment_link"].show
+				page["#{ dom_id(task_comments) }_comments"].hide
+      end
+    %>
 	</div>
 
   <%= render :partial => 'tasks/comment', :collection => task_comments.comments, 
@@ -14,7 +18,7 @@
 	<%# if more 5 just show the last 3 %>
 	<% else %>
 
-		<div class="comment" id="show_comments_<%= dom_id(task_comments) %>">
+		<div class="task-detail" id="show_comments_<%= dom_id(task_comments) %>">
 			<i class="Comments"></i>
 	    <%= link_to_function "#{comment_count - 3} more Comments" do |page|
 	        page.select("div#comments_#{ dom_id(task_comments) }>div.comment").each do |value|
@@ -34,7 +38,7 @@
 
 	<% end %>	
 </div>
-<div id="<%= dom_id(task_comments) -%>_comment_form">
+<div class="task-detail" id="<%= dom_id(task_comments) -%>_comment_form">
 <%# http://apidock.com/rails/ActionView/Helpers/PrototypeHelper/remote_form_for -%>
 <% remote_form_for @comment, 
   :url => comment_collaboration_task_path(task_comments.collaboration_id, task_comments.id), 

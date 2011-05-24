@@ -47,35 +47,120 @@
 		</div>
 	  <div class="task-footer">
 			<div class="task-details">
-				<div class="task-description" id="<%= dom_id(task) %>_description_link"><i class="Description"></i>
+				<span class="task-details-action" id="<%= dom_id(task) %>_description_link">
+					<i class="Description <%= ! task.description.nil? && task.description.length > 0 ? 'hascontent' : '' %>"></i>
 					<%= link_to_function "Description" do |page|
-							page["#{ dom_id(task) }_description_link"].hide
-							page["#{ dom_id(task) }_description"].show
+						page["#{ dom_id(task) }_comments"].hide
+						page["#{ dom_id(task) }_description"].show
+						page["#{ dom_id(task) }_activities"].hide
+						page["#{ dom_id(task) }_watchers"].hide
+					
+#						page["#{ dom_id(task) }_comment_link"].show
+#						page["#{ dom_id(task) }_description_link"].hide
+#						page["#{ dom_id(task) }_activity_link"].show
+#						page["#{ dom_id(task) }_watchers_link"].show
 			      end
-			    %></div>
-				<div class="task-description" id="<%= dom_id(task) %>_description" style="display: none;">
+			    	%></span>
+				<span class="task-details-action" id="<%= dom_id(task) %>_comment_link">
+					<i class="Comments <%= task.comments.length > 0 ? 'hascontent' : '' %>"></i>
+					<%= link_to_function "#{ task.comments.length } Comments" do |page|
+						page["#{ dom_id(task) }_comments"].show
+						page["#{ dom_id(task) }_description"].hide
+						page["#{ dom_id(task) }_activities"].hide
+						page["#{ dom_id(task) }_watchers"].hide
 
-					<%# http://www.w3schools.com/CSS/pr_text_white-space.asp -%>
+#						page["#{ dom_id(task) }_comment_link"].hide
+#						page["#{ dom_id(task) }_description_link"].show
+#						page["#{ dom_id(task) }_activity_link"].show
+#						page["#{ dom_id(task) }_watchers_link"].show
+			      end
+		    		%></span>
+				<span class="task-details-action" id="<%= dom_id(task) %>_activity_link">
+					<i class="Activity"></i>
+					<%= link_to_function "Activity" do |page|
+						page["#{ dom_id(task) }_comments"].hide
+						page["#{ dom_id(task) }_description"].hide
+						page["#{ dom_id(task) }_activities"].show
+						page["#{ dom_id(task) }_watchers"].hide
+
+#						page["#{ dom_id(task) }_comment_link"].show
+#						page["#{ dom_id(task) }_description_link"].show
+#						page["#{ dom_id(task) }_activity_link"].hide
+#						page["#{ dom_id(task) }_watchers_link"].show
+		      end
+		    	%></span>
+
+				<span class="task-details-action" id="<%= dom_id(task) %>_watchers_link">
+				<% cls = task.favourite_users.empty? ? "" : "Watched" %>
+				<i class="Watchers <%= cls %>"></i>
+				<%= link_to_function "#{ task.favourite_users.length } Watchers" do |page|
+					page["#{ dom_id(task) }_comments"].hide
+					page["#{ dom_id(task) }_description"].hide
+					page["#{ dom_id(task) }_activities"].hide
+					page["#{ dom_id(task) }_watchers"].show
+
+#					page["#{ dom_id(task) }_comment_link"].show
+#					page["#{ dom_id(task) }_description_link"].show
+#					page["#{ dom_id(task) }_activity_link"].show
+#					page["#{ dom_id(task) }_watchers_link"].hide
+	      end
+		    %></span>
+			</div>
+
+			<div class="task-details" id="<%= dom_id(task) %>_description" style="display: none;">
+				<div class="task-detail">
+					<i class="Description <%= ! task.description.nil? && task.description.length > 0 ? 'hascontent' : '' %>"></i>
+					<%= link_to_function "Description" do |page|
+							page["#{ dom_id(task) }_description"].hide
+							page["#{ dom_id(task) }_description_link"].show
+			      end
+			    %>
+					<a href="#" id="edit_task_description_<%= dom_id(task) %>"> &bull; Edit</a>
+				</div>
+				<div class="task-detail">
 					<% @task = task -%>
-					<a href="#" class="in_place_edit_hint" id='edit_task_description_<%= task.id %>'>edit</a>
-					<span	class="in_place_edit_container">
-						<%= 
+					<%# http://www.w3schools.com/CSS/pr_text_white-space.asp -%>
+					<span	class="in_place_edit_container"><%= 
 						in_place_editor_field "task", "description", 
-							{ :id => "task_description_#{@task.id}" }, 
-							{ :url => set_task_description_collaboration_task_path(
-								:collaboration_id => task.collaboration_id,
-								:id => task.id
-						  		),
-							:rows => 3, :cols => 50, :cancel_text => 'cancel', :save_text => 'ok', 
-							:external_control => "edit_task_description_#{task.id}",
-							:options => {:highlight_color => "='#ffffff'" }} -%></span>
-					</div>
-		   </div>
+						{ :id => "task_description_#{@task.id}" }, 
+						{ :url => set_task_description_collaboration_task_path(
+							:collaboration_id => task.collaboration_id,
+							:id => task.id
+					  		),
+						:rows => 3, :cols => 50, :cancel_text => 'cancel', :save_text => 'ok', 
+						:external_control => "edit_task_description_#{ dom_id(task) }",
+						:options => {:highlight_color => "='#ffffff'" }} -%>
+					</span>
+				</div>
+	   	</div>
 
-		   <div class="task-details" id="<%= dom_id(task) %>_comments">
-		     <%= render :partial => 'tasks/task_comments', :object => task %>
-		   </div>
-	  </div>  
+	   <div class="task-details" id="<%= dom_id(task) %>_activities" style="display: none;">
+			<div class="task-detail">
+				<i class="Activity"></i>
+				<%= link_to_function "Activity" do |page|
+						page["#{ dom_id(task) }_activities"].hide
+						page["#{ dom_id(task) }_activity_link"].show
+		      end
+		    %>
+			</div>
+     	<%= render :partial => 'activities/activity', :collection => task.activities %>
+		</div>
+
+		<div class="task-details" id="<%= dom_id(task) %>_comments" style="display: none;">
+		  <%= render :partial => 'tasks/task_comments', :object => task %>
+		</div>
+		
+		<div class="task-details" id="<%= dom_id(task) %>_watchers" style="display: none;">
+			<div class="task-detail">
+				<i class="Watchers <%= cls %>"></i>
+				<%= link_to_function "Watchers" do |page|
+						page["#{ dom_id(task) }_watchers"].hide
+						page["#{ dom_id(task) }_watchers_link"].show
+		      end
+		    %>
+			</div>
+		  <%= render :partial => 'tasks/task_watcher', :collection => task.favourite_users %>
+		</div>
 	</div>
 </div>
   

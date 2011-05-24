@@ -97,7 +97,7 @@ span.bubble {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
 	color: white;
-	font-size: 10px;
+	font-size: 9px;
 	font-weight: normal;
 }
 span.bubble.counter {
@@ -151,7 +151,7 @@ http://www.lwis.net/free-css-drop-down-menu/dropdown.simple.horizontal.html
 .tam {
   visibility: hidden;
   color: #555577;
-	font-size: 12px;
+	font-size: 10px;
 }
 li.result ul.tam>li>a,
 li.result ul.tam {
@@ -193,7 +193,7 @@ li.result ul.tam.footer li.active>a {
 	color: grey;
 }
 span.arrow {
-	font-size: 10px;
+	font-size: 8px;
 }
 
 ul.tam li {
@@ -240,7 +240,7 @@ ul.tam ul.inactive {
 }
 
 /* Icons for the lists */
-ul.tam li i, h4 i, div.activity-right i, div.comment i, div.task-description i  {	
+ul.tam li i, h4 i, div.activity-right i, div.comment i, div.task-description i, i  {	
 	display: inline-block;
 	vertical-align: text-top;
   height: 15px;
@@ -262,13 +262,18 @@ li.result:hover i.Resolve { background-position: -81px -20px; }
 li.result:hover i.Close   { background-position: -49px -20px; }
 
 i.Description { background-position: -17px -36px; }
+i.Description.hascontent { background-position: -81px -36px; }
 i.Comments    { background-position: -1px -36px; }
+i.Comments.hascontent    { background-position: -114px -36px; }
 i.Attachments { background-position: -33px -36px; }
 i.Favourites { background-position: -33px -20px; }
+i.Watchers { background-position: -1px -20px; }
+i.Watchers.Watched { background-position: -33px -20px; }
 i.Team       { background-position: -49px -36px; }
 i.Topics     { background-position: -65px -36px; }
 i.Tags       { background-position: -33px -52px; }
 i.Search     { background-position: -114px -20px; }
+i.Activity   { background-position: -129px -20px; }
 i.ArrowRight { background-position: -1px -52px; }
 div.task-right {
   height: 45px;
@@ -469,6 +474,14 @@ div.task-details {
   background-color: #EDEFF4;
 	font-size: 10px;
 }
+div.task-detail {
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+	border-color: white;
+}
+span.task-details-action {
+	margin-right: 4px;
+}
 div.task-details textarea.editor_field {
 	width: 95%;
 	height: 5em;
@@ -633,29 +646,18 @@ div#mf-tab-container {
   margin-bottom: 10px;
 }
 
-/*
-div.activity-left {
-  float: left;
-  margin-right: 2px;
-}
-div.activity-right {
-  float: right;
-}
-*/
-div.activity-content {
-/*	margin-left: 50px; 
-	margin-right: 15px; */
-}
 div.activity-details {
-	background-color:  #DDDDFF;
-	font-size: 12px;
+	font-size: 10px;
 	margin-bottom: 3px;
+}
+span.ataw {
+	color: grey;
 }
 ul.acts {
 	font-size: 10px;
 	line-height: 12px;
 	list-style: none;
-	margin-left: 5px;
+	margin-left: 15px;
 }
 ul.acts label {
 	font-weight: bold;

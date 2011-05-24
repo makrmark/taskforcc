@@ -1,4 +1,4 @@
-<div class="comment" id="<%= dom_id(comment) %>"  style="<%= show ? '' : 'display: none;' %>">
+<div class="task-detail" id="<%= dom_id(comment) %>"  style="<%= show ? '' : 'display: none;' %>">
 	<div class="comment-left"><%= mini_avatar_for(comment.user) %></div>
 	<div class="comment-body">
 	  <span class="user-name"><%= titled_text(comment.user.full_name, comment.user.email) -%></span> <%= h(comment.comment) -%>

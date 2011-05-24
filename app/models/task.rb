@@ -12,6 +12,10 @@ class Task < ActiveRecord::Base
     :through => :collaboration_users
     
   has_many :favourites
+  has_many :favourite_users,
+    :class_name => 'Favourite',
+    :include => :user
+  
   has_many :comments,
     :order => 'created_at ASC'
   
@@ -30,7 +34,9 @@ class Task < ActiveRecord::Base
     :primary_key => 'id',
     :foreign_key => 'assigned_to'  
     
-  has_many :activities
+  has_many :activities,
+    :order => 'updated_at ASC',
+    :include => :acts
   
   has_one :latest_activity,
     :class_name => 'Activity',
