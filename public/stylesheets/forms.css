@@ -2,7 +2,7 @@ input[type="button"],
 input[type="submit"], 
 input[type="reset"] {
 	color: white;
-	background-color: navy;
+	background-color: #6694E3;
 	border-style: outset;
 	border-width: 1px;
 }
@@ -73,7 +73,7 @@ form.tabulated.access {
 	margin-top: 20px;
 }
 form.tabulated.access label {
-	color: navy;
+	color: #6694E3;
 	font-weight: bold;
 }
 form.tabulated.access input[type="text"],
@@ -86,7 +86,7 @@ form.tabulated.access input[type="submit"] {
 }
 form.tabulated.access div.form_footer {
 	font-size: 12px;
-	color: navy;
+	color: #6694E3;
 }
 
 form.tabulated.login input[type="text"],
@@ -108,12 +108,13 @@ form.qtf {
   text-align: center;
 }
 input.qtt {
-  font-size: 1.2em;
+	border: 1px solid lightgrey;
+  font-size: 14px;
   width: 60%;
 	margin: 2px;
 }
 input.qtb {
-  font-size: 1.2em;
+  font-size: 14px;
   width: 110px;
 	margin: 2px;
 }

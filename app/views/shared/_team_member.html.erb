@@ -9,15 +9,10 @@
 	end
 -%>
 <% user = team_member.user %>
-<li <%= class_attribute -%>><%= link_to user.full_name, 
-  collaboration_collaboration_user_path(
-    :collaboration_id => team_member.collaboration_id,
-    :id => team_member.id
-  ) %>
+<li <%= class_attribute -%>><%= profile_link_to user.full_name, team_member %>
 <% unless user.status.eql?('Active') %>
 	<span class="bubble status"><%=user.status %></span>
 <% end %>
-
 <% if tc > 0 %>
 	<span class="bubble counter" title="Open Tasks"><%= tc -%></span>
 <% end %>

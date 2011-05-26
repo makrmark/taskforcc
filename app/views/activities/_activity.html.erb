@@ -1,11 +1,6 @@
 <div class="activity-details" id="<%= dom_id(activity) %>">
-	<i class="Activity"></i> <%= activity.action %> by
-	<strong><%= link_to activity.user_updated_by.full_name,
-		collaboration_collaboration_user_path(
-			:collaboration_id => activity.collaboration_id,
-			:id => CollaborationUser.find_by_user_id_and_collaboration_id(activity.updated_by, activity.collaboration_id)
-			)
-		%></strong>
+	<i class="Activity"></i> <%= activity.action %> by <%= profile_link_to activity.user_updated_by.full_name,
+		CollaborationUser.find_by_user_id_and_collaboration_id(activity.updated_by, activity.collaboration_id) -%>
   <span class="ataw"><%= time_ago_in_words activity.updated_at -%> ago.</span>
 	<% unless activity.acts.empty? %>
 	<span class="showhide" id="<%= dom_id(activity) %>_show_acts">

@@ -17,7 +17,7 @@ div.login {
 }
 
 div#access_header {
-  background-color: navy;
+  background-color: #6694E3;
   height: 80px;
   padding-top: 10px;
   padding-left: 100px;
@@ -69,7 +69,7 @@ i.biglogo {
 table.login {
   float: right;
   text-align: left;
-  background-color: navy;
+  background-color: #6694E3;
   display: inline;
   font-size: 12px;
 }
@@ -77,24 +77,23 @@ table.login label {
   font-size: 12px;
   width: 100%;
   font-weight: normal;
-  color: white;
+  color: #E0ECFF;
   text-align: left;
   display: inline;
   margin-bottom: 2px;
 }
 table.login td.forgotten {
-    color: lightblue;
+    color: #E0ECFF;
 }
 
 div#access_right input[type="submit"].signup {
-  color: white;
+  color: #E0ECFF;
 }
 input[type="submit"].signup {
-  color: white;
+  color: #E0ECFF;
   display: inline;
   font-size: 14px;
   font-weight: bold;
-  background-color: navy;
   border-style: outset;
   border-width: 1px;
   padding-top: 5px;

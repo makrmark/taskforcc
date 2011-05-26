@@ -1,3 +1,19 @@
+/*
+#6694E3; Darkest Blue (102, 148, 227)
+#B2C9F1; Lighter Blue (178, 201, 241) (used also for highlighting)
+#E0ECFF; Lightest Blue (224, 236, 255)
+#CAD4E6; Lightest Blue-Border (202, 212, 230)
+
+#36C; Link Colour
+#FFF1A8; Alertbox Colour
+
+#EFEFEF; Lightgrey
+grey; Lightgrey-Border
+*/
+span.profile_link>a {
+	color: #36C;
+}
+
 #container {
   width: 90%;
 	margin-left: 5%;
@@ -22,8 +38,8 @@
   height: 100%;
 }
 div#header {
-  background: navy;
-  color: orange;
+  background: #6694E3;
+  color: white;
   height: 24px;
   padding-top: 3px;
   padding-left: 3px;
@@ -101,7 +117,8 @@ span.bubble {
 	font-weight: normal;
 }
 span.bubble.counter {
-	background-color: grey;
+	background-color: #6694E3;
+	color: #E0ECFF;
 	margin-right: 2px;
 	float: right;
 }
@@ -123,11 +140,18 @@ ul.sidebar>li {
 	border-color: white;
 	padding-left: 10px;
 }
+
+/*
+#6694E3; Darkest Blue (102, 148, 227)
+#B2C9F1; Lighter Blue (178, 201, 241) (used also for highlighting)
+#E0ECFF; Lightest Blue (224, 236, 255)
+#CAD4E6; Lightest Blue-Border (202, 212, 230)
+*/
 ul.sidebar>li:hover {
-	background-color: #e0e0e0;
+	background-color: #e0ecff;
 }
 ul.sidebar>li.active {
-	background-color: #c0c0c0;
+	background-color: #b2c9f1;
 	font-weight: bold;
 }
 
@@ -190,7 +214,7 @@ li.result ul.tam.footer li>a {
 	color: lightgrey;	
 }
 li.result ul.tam.footer li.active>a {
-	color: grey;
+	color: gray;
 }
 span.arrow {
 	font-size: 8px;
@@ -305,7 +329,7 @@ ul.tt {
 	position: relative;
 	list-style: none;
 	background-color: white;
-	border: 1px solid grey;
+	border: 1px solid lightgrey;
 	z-index: 500;
 }
 ul.tt li {
@@ -387,11 +411,11 @@ table.acl th {
 	text-align: left;
 	background-color: #eeeeee;
 	width: 20%;
-	border: 1px solid lightgrey;
+	border: 1px solid gray;
 }
 table.acl td {
 	width: 20%;
-	border: 1px solid lightgrey;
+	border: 1px solid gray;
 }
 table.acl .green {
 	background-color: #ddffdd;
@@ -439,8 +463,7 @@ div.task-content {
 }
 
 div.task-header {
-  color: grey;
-  margin-bottom: 2px;
+  color: lightgrey;
   padding-left: 2px;
   height: 17px;
 }
@@ -458,20 +481,19 @@ span.tta, div.tta {
 }
 
 div.task-footer {
-  min-height: 40px;
 }
 div.task-title {
-	font-weight: bold;
-	margin: 3px 0px 3px 0px;
+	font-size: 14px;
+	margin: 2px 0px 5px 0px;
 }
 
 /* Task Details Styles */
 div.task-details {
 	padding: 1px;
+	margin-top: 1px;
   border-style: solid;
-  border-width: 0px 1px 1px 1px;
   border-color: transparent;
-  background-color: #EDEFF4;
+  background-color: #E0ECFF;
 	font-size: 10px;
 }
 div.task-detail {
@@ -482,26 +504,25 @@ div.task-detail {
 span.task-details-action {
 	margin-right: 4px;
 }
+
+div.task-title input {
+	font-size: 14px;	
+}
+div.task-title input.editor_field {
+	width: 60%;
+	border: 1px solid lightgrey;
+}
+div.task-title input.editor_ok_button {
+}
+
+.inplaceeditor-saving { background: url(/images/ajax-loader.gif) bottom right no-repeat; }
+
 div.task-details textarea.editor_field {
 	width: 95%;
 	height: 5em;
 }
-div.task-details a.in_place_edit_hint {
-	float: right;
-	color: grey;
-}
-div.task-details:hover a.in_place_edit_hint {
-	color: black;
-}
-div.task-details a.in_place_edit_hint:hover {
-	color: black;
-}
 div.task-details span.in_place_edit_container {
 	white-space: pre-line; 
-	color:grey;
-}
-div.task-title input.editor_field {
-	width: 60%;
 }
 div.task-spinner {
 	z-index: 9999;
@@ -510,16 +531,14 @@ div.task-spinner {
 	text-align: center;
 	vertical-align: middle;
 	background-color: transparent;
-	height: 60px;
 	width: 60%;
 }
 div.task-spinner img {
 	position: relative;
-	top: 20px;
-	margin-top: 20px;
+	top: 10px;
+	margin-top: 10px;
 }
 
-.inplaceeditor-saving { background: url(/images/ajax-loader.gif) bottom right no-repeat; }
 
 
 /* Task Favourites */
@@ -570,7 +589,7 @@ div.comment-body {
 	min-height: 35px;
 }
 div.ctaw {
-	color: grey;
+	color: darkgray;
 	margin-top: 2px;
 	line-height: 1em;
 }
@@ -594,7 +613,7 @@ form.cf {
   margin: 2px 0px 2px 0px;
 }
 input.cf {
-	border: 1px solid lightgrey;
+	border: 1px solid darkgrey;
   width: 100%;
 }
 
@@ -614,27 +633,23 @@ ul.mf-tab {
 }
 
 li.mf-tab {
-  width: 130px;
+  width: 150px;
   border-style: solid;
   border-width: 1px;
   border-color: lightgrey;
   border-bottom-style: none;
   text-align: center;
-  color: grey;
+  color: gray;
   background-color: white;
 }
 li.mf-tab.active {
   font-weight: bold;
-  background-color: #F4F4F4;
+  background-color: #E0ECFF;
 }
 div.mf-tab.body {
+	font-size: 10px;
 	padding: 3px;
-}
-li#search-tab, div#search {
-	background-color: #E0F0E0;
-}
-li#taskhere-tab, div#taskhere {
-	background-color: #E0E0F0;	
+	background-color: #E0ECFF;	
 }
 div#mf-tab-container {
   border-style: solid;
@@ -650,8 +665,11 @@ div.activity-details {
 	font-size: 10px;
 	margin-bottom: 3px;
 }
+li.result>div.activity-details {
+	background-color: #EFEFEF;
+}
 span.ataw {
-	color: grey;
+	color: darkgrey;
 }
 ul.acts {
 	font-size: 10px;
@@ -663,9 +681,8 @@ ul.acts label {
 	font-weight: bold;
 }
 span.act-was {
-	color: grey;
+	color: gray;
 }
 li.result .task-details {
 	border-width: 1px;
-	margin-top: 3px;
 }

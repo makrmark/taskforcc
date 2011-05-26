@@ -1,5 +1,16 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+
+  # This can be inefficient because collaboration_user must be looked up each time.
+  # and sometimes this must be determined by lookup depending on the context (eg: Comment)
+  def profile_link_to(full_name, collaboration_user) 
+    lnk = link_to full_name,
+  		collaboration_collaboration_user_path(
+  			:collaboration_id => collaboration_user.collaboration_id,
+  			:id => collaboration_user.id
+  			)
+  	"<span class='profile_link'>#{ lnk }</span>"
+  end
   
   # give some text a tooltip
   def titled_text(text, title)

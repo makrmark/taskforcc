@@ -1,12 +1,14 @@
-page.replace "#{dom_id(@task)}", 
+page.replace dom_id(@task), 
   :partial => 'tasks/task', :object => @task
 
 # http://railsforum.com/viewtopic.php?id=18083
-page << "if ($('#{dom_id(@task.latest_activity)}')) {"
-  page.replace "#{dom_id(@task.latest_activity)}", 
+tid = "#{ dom_id(@task) }_result"
+aid = "#{ dom_id(@task.latest_activity) }"
+page << "if ($('#{aid}')) {"
+  page.replace aid, 
     :partial => 'activities/activity', :object => @task.latest_activity  
 page << "} else {"
-  page.insert_html :top, "#{dom_id(@task)}_result", 
+  page.insert_html :top, tid,
     :partial => 'activities/activity', :object => @task.latest_activity
 page << "}"
 

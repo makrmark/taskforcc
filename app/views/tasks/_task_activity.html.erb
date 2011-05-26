@@ -1,0 +1,7 @@
+<div class="task-detail" id='<%= dom_id(task_activity) %>_activity'>
+	<div class="comment-left"><%= mini_avatar_for(task_activity.user_updated_by) %></div>
+	<div class="comment-body">
+	  <span class="user-name"><%= titled_text(task_activity.user_updated_by.full_name, task_activity.user_updated_by.email) -%></span>
+	  <div class="ctaw"><%= time_ago_in_words task_activity.updated_at -%> ago</div>
+	</div>	
+</div>
