@@ -3,13 +3,13 @@ page.replace dom_id(@task),
 
 # http://railsforum.com/viewtopic.php?id=18083
 tid = "#{ dom_id(@task) }_result"
-aid = "#{ dom_id(@task.latest_activity) }"
+aid = "#{ dom_id(@task.latest_activity) }_latest"
 page << "if ($('#{aid}')) {"
-  page.replace aid, 
-    :partial => 'activities/activity', :object => @task.latest_activity  
+  page.replace aid, :partial => 'activities/activity', 
+    :object => @task.latest_activity, :locals =>{ :idsfx => '_latest' }  
 page << "} else {"
-  page.insert_html :top, tid,
-    :partial => 'activities/activity', :object => @task.latest_activity
+  page.insert_html :top, tid, :partial => 'activities/activity', 
+    :object => @task.latest_activity, :locals =>{ :idsfx => '_latest' } 
 page << "}"
 
 # Update the sidebars (recalculated counters)

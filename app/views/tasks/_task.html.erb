@@ -125,7 +125,8 @@
 		      end
 		    %>
 			</div>
-     	<%= render :partial => 'activities/activity', :collection => task.activities %>
+     	<%= render :partial => 'activities/activity', :collection => task.activities,
+ 				:locals => { :idsfx => ''}%>
 		</div>
 
 		<div class="task-details" id="<%= dom_id(task) %>_comments" style="<%= cdisp %>">

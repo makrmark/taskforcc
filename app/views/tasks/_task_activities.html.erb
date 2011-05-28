@@ -1,3 +1,4 @@
 <div id='<%= dom_id(task_activities) %>_activities'>
-	<%= render :partial => 'activities/activity', :collection => task_activities.activities %>
+	<%= render :partial => 'activities/activity', 
+		:collection => task_activities.activities, :locals => { :idsfx => '' } %>
 </div>
