@@ -524,22 +524,17 @@ div.task-details textarea.editor_field {
 div.task-details span.in_place_edit_container {
 	white-space: pre-line; 
 }
-div.task-spinner {
+
+
+#resultset-spinner {
 	z-index: 9999;
-	position: absolute;
-	float: left;
 	text-align: center;
-	vertical-align: middle;
-	background-color: transparent;
-	width: 60%;
+	background-color: #FFF1A8;
+	border: 1px;
+	padding: 10px;
 }
-div.task-spinner img {
-	position: relative;
-	top: 10px;
-	margin-top: 10px;
+#resultsset-spinner img {
 }
-
-
 
 /* Task Favourites */
 span.fav {

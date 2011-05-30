@@ -139,7 +139,8 @@ module ApplicationHelper
         :method => 'post' # TODO: should be put?
         }
       ),
-      :loading => "Element.show('#{dom_id(task)}_spinner')"
+      :loading => "Element.show('resultset-spinner')",
+      :complete => "Element.hide('resultset-spinner')"
     )
   end
 
@@ -154,7 +155,8 @@ module ApplicationHelper
         :assigned_to => uid
         }
       ),
-      :loading => "Element.show('#{dom_id(task)}_spinner')"
+      :loading => "Element.show('resultset-spinner')",
+      :complete => "Element.hide('resultset-spinner')"
     )
   end  
   
@@ -166,7 +168,8 @@ module ApplicationHelper
         :topic_id => t.id
         }
       ),
-      :loading => "Element.show('#{dom_id(task)}_spinner')"
+      :loading => "Element.show('resultset-spinner')",
+      :complete => "Element.hide('resultset-spinner')"
     )
   end
 
@@ -178,7 +181,8 @@ module ApplicationHelper
         :task_type => task_type
         }
       ),
-      :loading => "Element.show('#{dom_id(task)}_spinner')"
+      :loading => "Element.show('resultset-spinner')",
+      :complete => "Element.hide('resultset-spinner')"
     )
   end
 

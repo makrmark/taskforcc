@@ -3,6 +3,8 @@
 <%= render :partial => 'shared/multifunction_tabs' %>
 
 <ul id="resultset">
+	<%= render :partial => 'shared/resultset_spinner' %>
+
   <% if @collaboration.find_tasks(params, @collaboration_user).empty? %>
   
     <li class="empty-message" id="task-empty-message">

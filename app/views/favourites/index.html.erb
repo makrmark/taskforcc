@@ -1,7 +1,9 @@
 <h4><%= breadcrumb %> Watched Tasks</h4>
 <hr />
 
-<div id="task-container">
+<div id="resultset">
+	<%= render :partial => 'shared/resultset_spinner' %>
+	
   <% if @collaboration.favourites(@current_user.id).empty? %>
 
     <div id="task-empty-message" class="empty-message">

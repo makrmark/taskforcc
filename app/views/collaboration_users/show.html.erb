@@ -1,7 +1,9 @@
 <h4><%= breadcrumb %> Assigned Tasks</h4>
 <%= render :partial => 'shared/multifunction_tabs' %>
 
-<div id="task-container">
+<div id="resultset">
+	<%= render :partial => 'shared/resultset_spinner' %>
+
   <% if @collaboration_user.find_tasks_assigned_to(params).empty? %>
   
     <div class="empty-message" id="task-empty-message">
