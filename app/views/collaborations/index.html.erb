@@ -2,12 +2,14 @@
 
 <%= render :partial => 'shared/multifunction_tabs' %>
 
-<div id="task-container">
+<div id="resultset">
+	<%= render :partial => 'shared/resultset_spinner' %>	
+	
 <% if @current_user.tasks.empty? %>
   <div class="empty-message">
     No Tasks.
   </div>
 <% else %>
-  <%= render(:partial => 'tasks/task_container', :collection => @current_user.find_tasks(params) )%>
+  <%= render(:partial => 'tasks/result', :collection => @current_user.find_tasks(params) )%>
 <% end %>
 </div>
