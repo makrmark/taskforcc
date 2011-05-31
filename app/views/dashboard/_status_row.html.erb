@@ -9,8 +9,8 @@
 		total         += c.cnt_total
 	end
 	
-	open_percent = 100*open/total
-	closed_percent = 100*(total - open)/total
+	open_percent   = total > 0 ? 100*open/total : 100;
+	closed_percent = total > 0 ? 100*(total - open)/total : 0;
 %>
 
 
