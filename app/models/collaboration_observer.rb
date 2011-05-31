@@ -28,6 +28,30 @@ class CollaborationObserver < ActiveRecord::Observer
       :sortorder => 1000
     )
     archived_topic.save!
+    
+    invite_users_task = Task.new(
+      :collaboration_id => collaboration.id,
+      :topic_id => unfiled_topic.id,
+      :created_by => collaboration.created_by,
+      :updated_by => collaboration.created_by,
+      :assigned_to => collaboration.created_by,
+      :title => "Invite Users to Collaborate",
+      :description => "Include users in your Collaboration by Inviting them to join the Team.\n\n" +
+        "Users' privileges within your Collaboration depends on their Role."
+    )
+    invite_users_task.save!
+
+    create_topics_task = Task.new(
+      :collaboration_id => collaboration.id,
+      :topic_id => unfiled_topic.id,
+      :created_by => collaboration.created_by,
+      :updated_by => collaboration.created_by,
+      :assigned_to => collaboration.created_by,
+      :title => "Create Topics",
+      :description => "Create Topics to your Collaboration to organise your Tasks logically.\n\n" +
+        "Each Topic may have a Mediator with additional responsibility for Tasks created in that Topic."
+    )
+    create_topics_task.save!
 
   end
 end
