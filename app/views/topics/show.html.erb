@@ -1,21 +1,21 @@
 <h2><%= breadcrumb %> Tasks</h2>
 <%= render :partial => 'shared/multifunction_tabs' %>
 
-<div id="resultset">
+<ul id="resultset">
 	<%= render :partial => 'shared/resultset_spinner' %>
 	
   <% if @topic.find_tasks(params, @collaboration_user).empty? %>  
   
-    <div id="task-empty-message" class="empty-message">
+    <li id="task-empty-message" class="empty-message">
       No tasks match this selection
-   </div>
+   </li>
   
   <% else %>
-    <div id="task-empty-message"></div>
+    <li id="task-empty-message"></li>
     <%= render(:partial => 'tasks/task_container', 
       :collection => @topic.find_tasks(params, @collaboration_user) )%>
   <% end %>
-</div>
+</ul>
 
 <% unless @collaboration.nil?  || ! @current_user.can_create_task?(@task) -%>
 	<%= button_to 'New task', new_collaboration_task_path(

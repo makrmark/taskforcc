@@ -1,21 +1,21 @@
 <h4><%= breadcrumb %> Watched Tasks</h4>
 <hr />
 
-<div id="resultset">
+<ul id="resultset">
 	<%= render :partial => 'shared/resultset_spinner' %>
 	
   <% if @collaboration.favourites(@current_user.id).empty? %>
 
-    <div id="task-empty-message" class="empty-message">
+    <li id="task-empty-message" class="empty-message">
       You are not yet Watching any Tasks.
-    </div>
+    </li>
   
   <% else %>
-    <div id="task-empty-message"></div>
+    <li id="task-empty-message"></li>
     
     <% @collaboration.favourites(@current_user.id).each do |fav| %>
       <%= render(:partial => 'tasks/task_container', 
         :object => fav.task ) %>
     <% end %>
   <% end %>
-</div>
+</ul>

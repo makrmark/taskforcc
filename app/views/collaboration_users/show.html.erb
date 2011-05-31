@@ -1,20 +1,20 @@
-<h4><%= breadcrumb %> Assigned Tasks</h4>
+<h2><%= breadcrumb %> Assigned Tasks</h2>
 <%= render :partial => 'shared/multifunction_tabs' %>
 
-<div id="resultset">
+<ul id="resultset">
 	<%= render :partial => 'shared/resultset_spinner' %>
 
   <% if @collaboration_user.find_tasks_assigned_to(params).empty? %>
   
-    <div class="empty-message" id="task-empty-message">
+    <li class="empty-message" id="task-empty-message">
       No tasks match this selection
-    </div>
+    </li>
   <% else %>
-    <div id="task-empty-message"></div>
+    <li id="task-empty-message"></li>
     <%= render(:partial => 'tasks/result', 
       :collection => @collaboration_user.find_tasks_assigned_to(params) )%>
   <% end%>
-</div>
+</ul>
 
 <% if ! @collaboration.nil?  && @current_user.can_create_task?(@task) -%>
 	<%= button_to 'New task', new_collaboration_task_path(

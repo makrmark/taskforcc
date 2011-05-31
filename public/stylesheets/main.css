@@ -57,8 +57,9 @@ div#footer.compact {
 }
 
 h4 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+	padding: 2px;
 }
 h4.breadcrumb>span, h4.breadcrumb>span>a,
 h4.sidebar>span>a  {
@@ -158,7 +159,7 @@ ul.sidebar>li.active {
 li#task-empty-message {
 	list-style: none;
 }
-li.empty-message {
+.empty-message {
   color: black;
   border: 1px solid blue;
   padding: 20px;
