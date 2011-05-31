@@ -12,7 +12,7 @@
   
   <% else %>
     <li id="task-empty-message"></li>
-    <%= render(:partial => 'tasks/task_container', 
+    <%= render(:partial => 'tasks/result', 
       :collection => @topic.find_tasks(params, @collaboration_user) )%>
   <% end %>
 </ul>
