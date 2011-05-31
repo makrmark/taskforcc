@@ -4,7 +4,7 @@
 <table class="acl">
   <tr>
     <th>Topic Name</th>
-    <th>Controller</th>
+    <th>Mediator</th>
     <th>Actions</th>
   </tr>
 
@@ -14,9 +14,9 @@
           :collaboration_id => topic.collaboration_id,
           :id => topic.id
       ) %></td>
-    <td><span class="user-name"><%= titled_text(topic.user.full_name,
-      topic.user.email) %></span></td>
-
+    <td>
+			<%= profile_link_to topic.user.full_name,
+				CollaborationUser.find_by_user_id_and_collaboration_id(topic.controller, topic.collaboration_id) -%></td>
 		<td>
 			<%= link_to 'Show Tasks', collaboration_topic_path(
 	          :collaboration_id => topic.collaboration_id,

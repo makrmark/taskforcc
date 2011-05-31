@@ -6,10 +6,10 @@ tid = "#{ dom_id(@task) }_result"
 aid = "#{ dom_id(@task.latest_activity) }_latest"
 page << "if ($('#{aid}')) {"
   page.replace aid, :partial => 'activities/activity', 
-    :object => @task.latest_activity, :locals =>{ :idsfx => '_latest' }  
+    :object => @task.latest_activity, :locals =>{ :idsfx => '_latest', :show_acts => true }  
 page << "} else {"
   page.insert_html :top, tid, :partial => 'activities/activity', 
-    :object => @task.latest_activity, :locals =>{ :idsfx => '_latest' } 
+    :object => @task.latest_activity, :locals =>{ :idsfx => '_latest', :show_acts => true } 
 page << "}"
 
 # Update the sidebars (recalculated counters)

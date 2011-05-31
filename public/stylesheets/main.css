@@ -459,8 +459,13 @@ div.task-right {
   float: right;
   margin-left: 2px;  
 }
+div.task-menubar {
+	float: right;
+	width: 15px;
+	height: 100%;
+}
 div.task-content {
-  padding: 0px 50px 0px 50px;
+  padding: 0px 65px 0px 50px;
 }
 
 div.task-header {

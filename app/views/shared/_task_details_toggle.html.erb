@@ -1,10 +1,13 @@
 <ul id="mf-tab-list" class="mf-tab">
   <%# http://railsapi.com/doc/rails-v3.0.0/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html -%>
   <li class="mf-tab" id="showhide-tab">
-    <%= link_to_function 'Task Details' do |page|
+    <%= link_to_function 'Show/Hide Details' do |page|
         page.select('div.task-footer').each do |value|
           value.toggle
-        end     
+        end
+				page.select('li.result>div.activity-details').each do |value|
+					value.toggle
+				end
       end
     %>
   </li>

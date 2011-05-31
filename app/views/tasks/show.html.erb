@@ -1,8 +1,10 @@
-<h4><%= breadcrumb %></h4>
+<h2><%= breadcrumb %></h2>
 <hr />
 
-<div class="task" id="<%= dom_id(@task) %>">
-  <%= render 'tasks/task', :object => @task %>
-</div>
+<ul id="resultset">
+	<li class="result" id="<%= dom_id(@task) %>_result">
+	  <%= render 'tasks/task', :object => @task %>
+	</li>
+</ul>
 
 

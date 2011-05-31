@@ -1,4 +1,5 @@
 <li class='result' id="<%= dom_id(result.task) %>_result">
-	<%= render :partial => 'activities/activity', :object => result, :locals => { :idsfx => '_latest' } %>
+	<%= render :partial => 'activities/activity', :object => result, 
+		:locals => { :idsfx => '_latest', :show_acts => false } %>
 	<%= render :partial => 'tasks/task', :object => result.task %>
 </li>
