@@ -29,17 +29,19 @@ class CollaborationObserver < ActiveRecord::Observer
     )
     archived_topic.save!
     
-    invite_users_task = Task.new(
-      :collaboration_id => collaboration.id,
-      :topic_id => unfiled_topic.id,
-      :created_by => collaboration.created_by,
-      :updated_by => collaboration.created_by,
-      :assigned_to => collaboration.created_by,
-      :title => "Invite Users to Collaborate",
-      :description => "Include users in your Collaboration by Inviting them to join the Team.\n\n" +
-        "Users' privileges within your Collaboration depends on their Role."
-    )
-    invite_users_task.save!
+    unless collaboration.is_system
+      invite_users_task = Task.new(
+        :collaboration_id => collaboration.id,
+        :topic_id => unfiled_topic.id,
+        :created_by => collaboration.created_by,
+        :updated_by => collaboration.created_by,
+        :assigned_to => collaboration.created_by,
+        :title => "Invite Users to Collaborate",
+        :description => "Include users in your Collaboration by Inviting them to join the Team.\n\n" +
+          "Users' privileges within your Collaboration depends on their Role."
+      )
+      invite_users_task.save!      
+    end
 
     create_topics_task = Task.new(
       :collaboration_id => collaboration.id,
