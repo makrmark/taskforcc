@@ -36,7 +36,7 @@ protected
 
       # Check they have access to the relevant resource
       # This is a simple check - either they're in the relevant collaboration or not!
-      if ['collaborations','activities', 'dashboard'].include?(controller_name) && 
+      if ['collaborations', 'news', 'dashboard'].include?(controller_name) && 
         params[:id].nil?
 
         # impossible to ascertain if user has access if collaboration_id not specified

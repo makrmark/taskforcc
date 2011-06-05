@@ -531,15 +531,22 @@ div.task-details span.in_place_edit_container {
 	white-space: pre-line; 
 }
 
+#resultset-spinner-container {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -155px;
 
-#resultset-spinner {
-	z-index: 9999;
+	z-index: 10000;
 	text-align: center;
-	background-color: #FFF1A8;
-	border: 1px;
-	padding: 10px;
+	margin: 0 auto;
 }
-#resultsset-spinner img {
+#resultset-spinner {
+	background-color: #FFF1A8;
+	border: 1px solid orange;
+	padding: 2px;
+}
+#resultset-spinner img {
 }
 
 /* Task Favourites */
@@ -686,4 +693,10 @@ span.act-was {
 }
 li.result .task-details {
 	border-width: 1px;
+}
+li.result .task-details.tab {
+	display: none;	
+}
+li.result .task-details.tab.active {
+	display: block;
 }

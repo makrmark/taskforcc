@@ -1,6 +1,27 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+function show_details_tab(dom_id, tabname) {
+	// first hide any displayed tabs
+	$$(dom_id + " .task-details.tab").each(function(value, index) {
+		value.removeClassName("active");
+	});
+
+	// then show the named tab
+	$(dom_id + "_" + tabname).addClassName("active")
+
+	// hide any active 'hide' links
+	$$(dom_id + ".tab-link.active").each(function(value, index) {
+		value.hide();		
+	});
+	
+	// show the regular links
+	$$(dom_id + ".tab-link").each(function(value, index) {
+		value.hide();		
+	});
+	
+}
+
 
 // these functions used to set the active tab in the task details section
 function set_details_tab_to_comments(domid) {	

@@ -1,0 +1,7 @@
+<h2>Top Activity</h2>
+<hr>
+<%= render :partial => 'shared/task_details_toggle' %>
+<%= render :partial => 'shared/resultset_spinner' %>
+<ul id="resultset">
+	<%= render :partial => 'activities/result', :collection => @activities %>
+</ul>

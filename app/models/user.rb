@@ -24,7 +24,13 @@ class User < ActiveRecord::Base
 
   has_many :activities,
     :through => :collaboration_user_tasks,
-    :order   => "updated_at DESC",
+    :order => "updated_at DESC",
+    :conditions => "( collaboration_users.role <> 'Restricted' OR activities.updated_by = collaboration_users.user_id )"
+
+  has_many :top_activities,
+    :class_name => 'Activity',
+    :through => :collaboration_user_tasks,
+    :order => "version DESC, updated_at DESC",
     :conditions => "( collaboration_users.role <> 'Restricted' OR activities.updated_by = collaboration_users.user_id )"
 
   has_many :collaborations_created_by,
@@ -59,6 +65,11 @@ class User < ActiveRecord::Base
   # http://www.regular-expressions.info/email.html
   validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
   validates_uniqueness_of :email
+  
+  def find_top_activities
+      self.activities
+  end
+  
 
   # http://www.sitepoint.com/blogs/2008/10/06/timezones-in-rails-21/
   def self.authenticate(email, password)

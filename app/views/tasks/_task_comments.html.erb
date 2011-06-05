@@ -3,31 +3,18 @@
 	<%# if less than 5 comments, just show them all %>
 	<% comment_count = task_comments.comments.count %>
 	<% if comment_count < 5 %>
-
-	<div class="task-detail" id="show_comments_<%= dom_id(task_comments) %>">
-		<i class="Comments"></i> <%= link_to_function "Comments" do |page|
-				page["#{ dom_id(task_comments) }_comments"].hide
-      end
-    %>
-	</div>
-
-  <%= render :partial => 'tasks/comment', :collection => task_comments.comments, 
-		:locals => { :show => true } -%>
-
+	  <%= render :partial => 'tasks/comment', :collection => task_comments.comments, 
+			:locals => { :show => true } -%>
 	<%# if more 5 just show the last 3 %>
 	<% else %>
-
 		<div class="task-detail" id="show_comments_<%= dom_id(task_comments) %>">
-			<i class="Comments"></i> <%= link_to_function "Comments" do |page|
-					page["#{ dom_id(task_comments) }_comments"].hide
-	      end
-	    %>
-			<span id="<%= dom_id(task_comments) %>_more"> &bull; 
-		    <%= link_to_function "show #{comment_count - 3} more" do |page|
+			<i class="Comments"></i>
+			<span id="<%= dom_id(task_comments) %>_more">
+		    <%= link_to_function "Show #{comment_count - 3} more" do |page|
 		        page.select("div#comments_#{ dom_id(task_comments) }>div.task-detail").each do |value|
 		          value.show
 		        end
-						page["#{ dom_id(task_comments) }_more"].hide
+						page["show_comments_#{ dom_id(task_comments) }"].hide
 		      end
 		    %>
 			</span>

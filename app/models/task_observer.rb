@@ -10,6 +10,7 @@ class TaskObserver < ActiveRecord::Observer
         task.assigned_to = task.updated_by
       end
     end             
+    task.version += 1
   end
 
   def after_create(task)
@@ -66,9 +67,10 @@ private
         :action => action,
         :task_id => task.id,
         :is_latest => true
-      )
+        )
     end
     
+    activity.version = task.version
     activity.label = task.title
     activity.collaboration_id = task.collaboration_id
     activity.topic_id = task.topic_id

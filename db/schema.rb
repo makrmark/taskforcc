@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314134134) do
+ActiveRecord::Schema.define(:version => 20110602150238) do
 
   create_table "activities", :force => true do |t|
     t.integer  "updated_by"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110314134134) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_latest",        :default => false,    :null => false
+    t.integer  "version",          :default => 1,        :null => false
   end
 
   add_index "activities", ["collaboration_id"], :name => "index_activities_on_collaboration_id"
@@ -131,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20110314134134) do
     t.integer  "collaboration_id"
     t.integer  "topic_id"
     t.integer  "updated_by"
+    t.integer  "version",          :default => 1,            :null => false
   end
 
   add_index "tasks", ["assigned_to"], :name => "index_tasks_on_assigned_to"

@@ -22,9 +22,17 @@ class Activity < ActiveRecord::Base
   named_scope :favourite_filter, lambda { |t|
     { :conditions => { :task_id => t } }
   }
+
+  named_scope :activities_filter, lambda { |t|
+    { :conditions => { :id => t } }
+  }
   
   named_scope :latest_filter, lambda { |t|
     { :conditions => { :is_latest => true } }
+  }
+
+  named_scope :action_filter, lambda { |t|
+    { :conditions => { :action => t } }
   }
   
 end

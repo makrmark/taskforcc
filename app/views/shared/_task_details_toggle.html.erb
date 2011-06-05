@@ -1,6 +1,14 @@
 <ul id="mf-tab-list" class="mf-tab">
   <%# http://railsapi.com/doc/rails-v3.0.0/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html -%>
-  <li class="mf-tab" id="showhide-tab">
+
+	<li class="mf-tab">
+		<%= link_to 'Top News', url_for( :controller=> 'news', :action => "top" ), :title => "Top News" %>
+	</li>
+	<li class="mf-tab">
+		<%= link_to 'Recent Activity', url_for( :controller=> 'news', :action => "recent" ), :title => "Recent Activity" %>
+	</li>
+
+  <li class="mf-tab" id="showhide-tab" style="float: right;">
     <%= link_to_function 'Show/Hide Details' do |page|
         page.select('div.task-footer').each do |value|
           value.toggle

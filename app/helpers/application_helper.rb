@@ -56,20 +56,7 @@ module ApplicationHelper
     end
     "<ul style=\"display: none;\" class='dir shadow' id='ttsm_topics_#{dom_id(task)}'>#{menu_items}</ul>"
   end
-
-  #
-  # Menu for changing Assignment
-  #
-  def menu_for_assignment(cusr, task)    
-    if task.valid_states_by_user(cusr).include?('Assigned')
-      link = link_to_function(task.user_assigned_to.full_name,
-        "toggle_tam_submenu('tasm', '#{dom_id(task)}', 'assigned')")
-       "<li>#{link} <span class=\"arrow\">▼</span> #{submenu_for_assignment(task)}</li>"
-    else 
-      "<li>#{h task.user_assigned_to.full_name}</li>"
-    end
-  end
-
+  
   #
   # Menu for changing status
   #
@@ -78,7 +65,9 @@ module ApplicationHelper
       "toggle_tam_submenu('trsm', '#{dom_id(task)}', '#{stat}')")
     case stat
     when 'Assigned' # submenu is the collaboration user list
-      # do nothing - see menu_for_assignment
+      link = link_to_function('Reassign',
+        "toggle_tam_submenu('tasm', '#{dom_id(task)}', 'assigned')")
+       "<li><i class='Assign'></i>#{link} <span class=\"arrow\">▼</span> #{submenu_for_assignment(task)}</li>"
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
       "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
@@ -139,8 +128,8 @@ module ApplicationHelper
         :method => 'post' # TODO: should be put?
         }
       ),
-      :loading => "Element.show('resultset-spinner')",
-      :complete => "Element.hide('resultset-spinner')"
+      :loading => "Element.show('resultset-spinner-container')",
+      :complete => "Element.hide('resultset-spinner-container')"
     )
   end
 
@@ -155,8 +144,8 @@ module ApplicationHelper
         :assigned_to => uid
         }
       ),
-      :loading => "Element.show('resultset-spinner')",
-      :complete => "Element.hide('resultset-spinner')"
+      :loading => "Element.show('resultset-spinner-container')",
+      :complete => "Element.hide('resultset-spinner-container')"
     )
   end  
   
@@ -168,8 +157,8 @@ module ApplicationHelper
         :topic_id => t.id
         }
       ),
-      :loading => "Element.show('resultset-spinner')",
-      :complete => "Element.hide('resultset-spinner')"
+      :loading => "Element.show('resultset-spinner-container')",
+      :complete => "Element.hide('resultset-spinner-container')"
     )
   end
 
@@ -181,8 +170,8 @@ module ApplicationHelper
         :task_type => task_type
         }
       ),
-      :loading => "Element.show('resultset-spinner')",
-      :complete => "Element.hide('resultset-spinner')"
+      :loading => "Element.show('resultset-spinner-container')",
+      :complete => "Element.hide('resultset-spinner-container')"
     )
   end
 
