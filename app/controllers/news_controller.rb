@@ -6,14 +6,23 @@ class NewsController < ApplicationController
     # remember where to go back to
     session[:return_to_index] = request.request_uri
 
+    @task = Task.new(
+      :created_by => @current_user.id, 
+      :assigned_to => @current_user.id
+    )
+
     if params[:collaboration_id]
       @collaboration = Collaboration.find(params[:collaboration_id])
+      @task.collaboration_id = @collaboration.id
+      @task.topic_id = @collaboration.unfiled_topic.id
     end
     if params[:topic_id]
       @topic = Topic.find(params[:topic_id])
+      @task.topic_id = @topic.id
     end
     if params[:collaboration_user_id]
       @collaboration_user = CollaborationUser.find(params[:collaboration_user_id])
+      @task.assigned_to = @collaboration_user.user_id
     end
     
     @collaborations = current_user.collaborations

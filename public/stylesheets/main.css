@@ -156,7 +156,7 @@ ul.sidebar>li.active {
 	font-weight: bold;
 }
 
-li#task-empty-message {
+li#task-empty-message, li#empty-message {
 	list-style: none;
 }
 .empty-message {
@@ -623,6 +623,9 @@ form.cf {
 input.cf {
 	border: 1px solid darkgrey;
   width: 100%;
+}
+
+div.taskhere {	
 }
 
 /* multifunction tabs */

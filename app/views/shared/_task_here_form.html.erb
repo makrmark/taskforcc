@@ -1,0 +1,13 @@
+<% if @collaboration && @current_user.can_create_task?(@task) -%>
+<div id="taskhere" class='taskhere'>
+  <% remote_form_for [@collaboration, @task], 
+    :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
+    <%= f.error_messages %>
+    <%= hidden_field_tag 'task[topic_id]', @task.topic_id %>
+    <%= hidden_field_tag 'task[assigned_to]', @task.assigned_to %>
+    <%= f.text_field :title, :class => 'qtt' %>
+    <%= f.submit 'Task Here', :class => 'qtb' %>
+  <% end %>
+</div>
+<hr>
+<% end %>
