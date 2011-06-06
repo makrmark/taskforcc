@@ -1,11 +1,34 @@
 <ul id="mf-tab-list" class="mf-tab">
   <%# http://railsapi.com/doc/rails-v3.0.0/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html -%>
 
+<%
+	if @topic
+		top_news_url = top_collaboration_topic_news_path(@collaboration, @topic)
+	elsif @collaboration_user
+		top_news_url = top_collaboration_collaboration_user_news_path(@collaboration, @collaboration_user)
+	elsif @collaboration
+		top_news_url = top_collaboration_news_path(@collaboration)
+	else
+		top_news_url = top_news_path(@collaboration, @topic)
+	end
+%>
+<%
+	if @topic
+		recent_news_url = recent_collaboration_topic_news_path(@collaboration, @topic)
+	elsif @collaboration_user
+		recent_news_url = recent_collaboration_collaboration_user_news_path(@collaboration, @collaboration_user)
+	elsif @collaboration
+		recent_news_url = recent_collaboration_news_path(@collaboration)
+	else
+		recent_news_url = recent_news_path(@collaboration, @topic)
+	end
+%>
+
 	<li class="mf-tab <%= session[:news_view].eql?('top') ? 'active' : '' %>">
-		<%= link_to 'Top News', url_for( :controller=> 'news', :action => "top" ), :title => "Top News" %>
+		<%= link_to 'Top News', top_news_url, :title => "Top News" %>
 	</li>
 	<li class="mf-tab <%= session[:news_view].eql?('recent') ? 'active' : '' %>">
-		<%= link_to 'Recent Activity', url_for( :controller=> 'news', :action => "recent" ), :title => "Recent Activity" %>
+		<%= link_to 'Recent Activity', recent_news_url, :title => "Recent Activity" %>
 	</li>
 
   <li class="mf-tab" id="showhide-tab" style="float: right;">

@@ -38,6 +38,7 @@ class NewsController < ApplicationController
     end    
   end
 
+  # TODO: do we really need to jump through all these hoops with the filters?
   def recent # most recent activity    
 
     if @topic
