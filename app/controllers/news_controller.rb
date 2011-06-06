@@ -11,11 +11,9 @@ class NewsController < ApplicationController
     end
     if params[:topic_id]
       @topic = Topic.find(params[:topic_id])
-      @collaboration = Collaboration.find(params[:collaboration_id])
     end
     if params[:collaboration_user_id]
       @collaboration_user = CollaborationUser.find(params[:collaboration_user_id])
-      @collaboration = Collaboration.find(params[:collaboration_id])
     end
     
     @collaborations = current_user.collaborations
@@ -44,7 +42,7 @@ class NewsController < ApplicationController
     if @topic
       @activities = current_user.activities.latest_filter.topic_filter(@topic.id)      
     elsif @collaboration_user
-      @activities = current_user.activities.latest_filter.collaboration_filter(@collaboration_id).user_filter(@collaboration_user.user_id)            
+      @activities = current_user.activities.latest_filter.collaboration_filter(@collaboration.id).user_filter(@collaboration_user.user_id)            
     elsif @collaboration
       @activities = current_user.activities.latest_filter.collaboration_filter(@collaboration.id)
     else
@@ -76,7 +74,7 @@ class NewsController < ApplicationController
     if @topic
       @activities = current_user.top_activities.latest_filter.topic_filter(@topic.id)      
     elsif @collaboration_user
-      @activities = current_user.top_activities.latest_filter.collaboration_filter(@collaboration_id).user_filter(@collaboration_user.user_id)            
+      @activities = current_user.top_activities.latest_filter.collaboration_filter(@collaboration.id).user_filter(@collaboration_user.user_id)            
     elsif @collaboration
       @activities = current_user.top_activities.latest_filter.collaboration_filter(@collaboration.id)
     else
