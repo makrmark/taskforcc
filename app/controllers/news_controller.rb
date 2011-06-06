@@ -4,7 +4,7 @@ class NewsController < ApplicationController
 
   def setup
     # remember where to go back to
-    session[:return_to_index] = request.uri
+    session[:return_to_index] = request.request_uri
 
     if params[:collaboration_id]
       @collaboration = Collaboration.find(params[:collaboration_id])
