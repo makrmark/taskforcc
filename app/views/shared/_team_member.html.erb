@@ -9,7 +9,7 @@
 	end
 -%>
 <% user = team_member.user %>
-<li <%= class_attribute -%>><%= profile_link_to user.full_name, team_member %>
+<li <%= class_attribute -%>><%= link_to user.full_name, collaboration_collaboration_user_news_index_path(@collaboration.id, team_member.id) %>
 <% unless user.status.eql?('Active') %>
 	<span class="bubble status"><%=user.status %></span>
 <% end %>

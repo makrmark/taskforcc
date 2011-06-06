@@ -1,7 +1,7 @@
 <div id='comments_<%= dom_id(task_comments) %>'>
 
 	<%# if less than 5 comments, just show them all %>
-	<% comment_count = task_comments.comments.count %>
+	<% comment_count = task_comments.comments.size %>
 	<% if comment_count < 5 %>
 	  <%= render :partial => 'tasks/comment', :collection => task_comments.comments, 
 			:locals => { :show => true } -%>

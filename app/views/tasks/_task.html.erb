@@ -139,7 +139,7 @@
 		</div>
 		
 		<div class="task-details tab" id="<%= dom_id(task) %>_watchers">
-			<% if task.favourites.count == 0 %>
+			<% if task.favourites.size == 0 %>
 			<div class="task-detail">
 				No-one is watching this task yet
 			</div>

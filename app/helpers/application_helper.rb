@@ -30,7 +30,7 @@ module ApplicationHelper
       when 'topics'
         span += " &raquo; #{h @topic.name} " unless @topic.nil?
       when 'collaboration_users'
-          span += " &raquo; #{h @collaboration_user.user.full_name}" unless @collaboration_user.user.nil?
+          span += " &raquo; #{h @collaboration_user.user.full_name}" unless @collaboration_user.nil? || action_name.eql?('new')
       when 'tasks'
         span += " &raquo; #{h @task.title}" unless @task.nil?
       end      

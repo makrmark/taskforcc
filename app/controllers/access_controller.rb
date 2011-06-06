@@ -5,7 +5,7 @@ class AccessController < ApplicationController
 
   def start
     if current_user
-      redirect_to collaborations_path
+      redirect_to root_path
     end
 
     @user = User.new()
@@ -36,7 +36,7 @@ class AccessController < ApplicationController
           else # normally this path is used
             uri = session[:original_uri]
             session[:original_uri] = nil
-            redirect_to( uri || url_for(:controller => 'collaborations') )
+            redirect_to( uri || root_path )
           end
       else
         flash.now[:notice] = "Invalid email/password combination"

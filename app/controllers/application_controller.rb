@@ -49,13 +49,23 @@ protected
       elsif controller_name.eql?('users') && params.has_key?(:id)
 
         # don't let users view each other's profiles directly
-        unless params[:id].to_s == session[:user_id].to_s          
+        unless params[:id].to_s == session[:user_id].to_s
           session.delete(:original_uri)
           flash[:notice] = "You do not have access to this resource"
           redirect_to url_for :controller => 'access', :action => 'denied'
           return
         end
-
+      
+      # TODO: only primary user can index all users (this is a cludge)
+      elsif controller_name.eql?('users')
+        
+        unless session[:user_id] == 1
+          session.delete(:original_uri)
+          flash[:notice] = "You do not have access to this resource"
+          redirect_to url_for :controller => 'access', :action => 'denied'
+          return
+        end
+        
       else
         cid = controller_name.eql?("collaborations") ? params[:id] : params[:collaboration_id]
         cu = CollaborationUser.find_by_collaboration_id_and_user_id(
