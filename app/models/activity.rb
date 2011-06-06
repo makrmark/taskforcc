@@ -19,6 +19,18 @@ class Activity < ActiveRecord::Base
     :primary_key => 'collaboration_id',
     :foreign_key => 'collaboration_id'
 
+  named_scope :collaboration_filter, lambda { |t|
+    { :conditions => { :collaboration_id => t } }
+  }
+
+  named_scope :topic_filter, lambda { |t|
+    { :conditions => { :topic_id => t } }
+  }
+
+  named_scope :user_filter, lambda { |t|
+    { :conditions => { :user_id => t } }
+  }
+
   named_scope :favourite_filter, lambda { |t|
     { :conditions => { :task_id => t } }
   }

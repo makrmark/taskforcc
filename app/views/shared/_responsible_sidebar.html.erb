@@ -1,0 +1,12 @@
+<% unless @collaboration.nil? || 
+	(request[:controller].eql?("collaborations") && ["new","create","index"].include?(request[:action]) ) %> 
+<div class="sidebar" id="responsible_sidebar">            
+  <h4 class="sidebar">
+    <i class="Topics"></i> Responsible
+  </h4>
+
+  <ul class="sidebar">
+    <%= render (:partial => 'shared/responsible_user', :collection => @collaboration.collaboration_users ) %>
+  </ul>
+</div>
+<% end %>

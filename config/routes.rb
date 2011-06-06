@@ -13,7 +13,22 @@ ActionController::Routing::Routes.draw do |map|
     }
 
   map.resources :collaborations do |collaboration|
-    collaboration.resources  :collaboration_users
+    collaboration.resources  :collaboration_users do |cu|
+      cu.resources :news, 
+        :collection => {
+          :watched => :get,
+          :recent  => :get,
+          :top     => :get
+        }
+    end
+    collaboration.resources  :topics do |topic|
+      topic.resources :news, 
+        :collection => {
+          :watched => :get,
+          :recent  => :get,
+          :top     => :get
+        }
+    end
     collaboration.resources  :tasks, 
       :member => {
         :chgstatus => :post,
@@ -22,9 +37,14 @@ ActionController::Routing::Routes.draw do |map|
         :set_task_title => :post,
         :set_task_description => :post
       }
-    collaboration.resources  :topics
     collaboration.resources  :watched_tasks, :controller => :favourites
     collaboration.resources  :comments
+    collaboration.resources  :news, 
+      :collection => {
+        :watched => :get,
+        :recent  => :get,
+        :top     => :get
+      }
   end
 
   map.resources :users, 

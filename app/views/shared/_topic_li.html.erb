@@ -9,9 +9,9 @@
 	end
 -%>
 <li id="tsbi_<%= dom_id(topic_li) %>" <%= class_attribute -%> ><%= link_to h(topic_li.name), 
-  collaboration_topic_path(
+  collaboration_topic_news_index_path(
     :collaboration_id => topic_li.collaboration_id,
-    :id => topic_li.id
+    :topic_id => topic_li.id
   ) %>
 	<% if tc > 0 %>
 		<span class="bubble counter" title="Open/Assigned"><%= tc -%></span>

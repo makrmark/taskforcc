@@ -1,0 +1,23 @@
+<%
+	if controller_name.eql?("news")
+ 		class_attribute = "class=\"active\"" if @collaboration_user == responsible_user
+	end
+
+	tc = 0
+	responsible_user.counters.each do |c|
+		tc += c.cnt_total_open if c.user_id == responsible_user.user_id
+	end
+-%>
+<% user = responsible_user.user %>
+<li <%= class_attribute -%>><%= link_to user.full_name, 
+	collaboration_collaboration_user_news_index_path(
+		:collaboration_id => responsible_user.collaboration_id,
+		:collaboration_user_id => responsible_user.id
+	) %>
+<% unless user.status.eql?('Active') %>
+	<span class="bubble status"><%= user.status %></span>
+<% end %>
+<% if tc > 0 %>
+	<span class="bubble counter" title="Open Tasks"><%= tc -%></span>
+<% end %>
+</li>
