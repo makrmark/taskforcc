@@ -49,6 +49,13 @@
 				:id => task.id
 			  ) } %>
 		</div>
+
+		<%
+			has_desc = ! task.description.nil? && task.description.length > 0
+			dcls = has_desc && task.comments.size == 0 ? "active" : ""
+			ccls = task.comments.size > 0 ? "active" : "" 
+		-%>
+
 	  <div class="task-footer">
 			<div class="task-details">
 				<span class="task-details-action">
@@ -78,19 +85,6 @@
 					</span>
 
 				<span class="task-details-action">
-					<i class="Activity"></i>
-					<%= link_to_function "Activity", {
-						:id => "#{ dom_id(task) }_activity_link", :class=> "tab-show-link"
-					} do |page|
-						page.select("##{ dom_id(task) } .task-details.tab.active").each do |tab| 
-							tab.removeClassName("active")
-						end
-						page["#{ dom_id(task) }_activities"].addClassName("active")
-		      end
-		    	%>
-				</span>
-				
-				<span class="task-details-action">
 					<% cls = task.favourite_users.empty? ? "" : "Watched" %>
 					<i class="Watchers <%= cls %>"></i>
 					<%= link_to_function "#{ task.favourite_users.length } Watching", {
@@ -102,13 +96,23 @@
 						page["#{ dom_id(task) }_watchers"].addClassName("active")
 		      end
 			    %>
-			</span>
+				</span>
+
+				<span class="task-details-action">
+					<i class="Activity"></i>
+					<%= link_to_function "Activity", {
+						:id => "#{ dom_id(task) }_activity_link", :class=> "tab-show-link"
+					} do |page|
+						page.select("##{ dom_id(task) } .task-details.tab.active").each do |tab| 
+							tab.removeClassName("active")
+						end
+						page["#{ dom_id(task) }_activities"].addClassName("active")
+		      end
+		    	%>
+				</span>			
 			</div>
 
-			<% has_desc = ! task.description.nil? && task.description.length > 0 %>
-			<% cdisp = task.comments.length > 0 ? "" : "display: none;" -%>
-			<% ddisp = has_desc && task.comments.length == 0 ? "" : "display: none;" -%>
-			<div class="task-details tab" id="<%= dom_id(task) %>_description">
+			<div class="task-details tab <%= dcls -%>" id="<%= dom_id(task) %>_description">
 				<div class="task-detail">
 					<a href="#" id="edit_task_description_<%= dom_id(task) %>">Edit Description</a>
 				</div>
@@ -129,12 +133,7 @@
 				</div>
 	   	</div>
 
-		<div class="task-details tab" id="<%= dom_id(task) %>_activities">
-     	<%= render :partial => 'activities/activity', :collection => task.activities,
- 				:locals => { :idsfx => '', :show_acts => true}%>
-		</div>
-
-		<div class="task-details tab" id="<%= dom_id(task) %>_comments">
+		<div class="task-details tab  <%= ccls -%>" id="<%= dom_id(task) %>_comments">
 		  <%= render :partial => 'tasks/task_comments', :object => task %>
 		</div>
 		
@@ -146,6 +145,11 @@
 			<% else %>
 		  <%= render :partial => 'tasks/task_watcher', :collection => task.favourite_users %>
 			<% end %>
+		</div>
+
+		<div class="task-details tab" id="<%= dom_id(task) %>_activities">
+     	<%= render :partial => 'activities/activity', :collection => task.activities,
+ 				:locals => { :idsfx => '', :show_acts => true} %>
 		</div>
 	</div>
 </div>
