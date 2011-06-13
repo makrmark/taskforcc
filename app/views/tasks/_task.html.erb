@@ -57,8 +57,8 @@
 		-%>
 
 	  <div class="task-footer">
-			<div class="task-details">
-				<span class="task-details-action">
+			<ul class="task-details-actions">
+				<li id="<%= dom_id(task) -%>_description_tab" class="<%= dcls -%>">
 					<i class="Description <%= ! task.description.nil? && task.description.length > 0 ? 'hascontent' : '' %>"></i>
 					<%= link_to_function "Description", {
 							:id => "#{ dom_id(task) }_description_link", :class=> "tab-show-link"
@@ -67,11 +67,15 @@
 								tab.removeClassName("active")
 							end
 							page["#{ dom_id(task) }_description"].addClassName("active")
+
+							page.select("##{ dom_id(task) } .task-details-actions>li.active").each do |tab| 
+								tab.removeClassName("active")
+							end
+							page["#{ dom_id(task) }_description_tab"].addClassName("active")
 			      end
 			    	%>
-				</span>
-
-				<span class="task-details-action">
+				</li>
+				<li id="<%= dom_id(task) -%>_comments_tab" class="<%= ccls -%>">
 					<i class="Comments <%= task.comments.length > 0 ? 'hascontent' : '' %>"></i>
 					<%= link_to_function "#{ task.comments.length } Comments", {
 						:id => "#{ dom_id(task) }_comments_link", :class=> "tab-show-link"
@@ -80,11 +84,15 @@
 							tab.removeClassName("active")
 						end
 						page["#{ dom_id(task) }_comments"].addClassName("active")
+
+						page.select("##{ dom_id(task) } .task-details-actions>li.active").each do |tab| 
+							tab.removeClassName("active")
+						end
+						page["#{ dom_id(task) }_comments_tab"].addClassName("active")
 		      end
 	    		%>
-					</span>
-
-				<span class="task-details-action">
+				</li>
+				<li id="<%= dom_id(task) -%>_watchers_tab">
 					<% cls = task.favourite_users.empty? ? "" : "Watched" %>
 					<i class="Watchers <%= cls %>"></i>
 					<%= link_to_function "#{ task.favourite_users.length } Watching", {
@@ -94,11 +102,15 @@
 							tab.removeClassName("active")
 						end
 						page["#{ dom_id(task) }_watchers"].addClassName("active")
+
+						page.select("##{ dom_id(task) } .task-details-actions>li.active").each do |tab| 
+							tab.removeClassName("active")
+						end
+						page["#{ dom_id(task) }_watchers_tab"].addClassName("active")
 		      end
 			    %>
-				</span>
-
-				<span class="task-details-action">
+				</li>
+				<li id="<%= dom_id(task) -%>_activity_tab">
 					<i class="Activity"></i>
 					<%= link_to_function "Activity", {
 						:id => "#{ dom_id(task) }_activity_link", :class=> "tab-show-link"
@@ -107,11 +119,16 @@
 							tab.removeClassName("active")
 						end
 						page["#{ dom_id(task) }_activities"].addClassName("active")
+
+						page.select("##{ dom_id(task) } .task-details-actions>li.active").each do |tab| 
+							tab.removeClassName("active")
+						end
+						page["#{ dom_id(task) }_activity_tab"].addClassName("active")
 		      end
 		    	%>
-				</span>			
-			</div>
-
+				</li>
+			</ul>
+			
 			<div class="task-details tab <%= dcls -%>" id="<%= dom_id(task) %>_description">
 				<div class="task-detail">
 					<a href="#" id="edit_task_description_<%= dom_id(task) %>">Edit Description</a>

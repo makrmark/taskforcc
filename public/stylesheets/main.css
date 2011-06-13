@@ -500,19 +500,40 @@ div.task-title {
 /* Task Details Styles */
 div.task-details {
 	padding: 1px;
-	margin-top: 1px;
-  border-style: solid;
-  border-color: transparent;
+	border: 1px solid #CAD4E6;
   background-color: #E0ECFF;
 	font-size: 10px;
 }
+li.result .task-details {
+}
+li.result .task-details.tab {
+	display: none;	
+}
+li.result .task-details.tab.active {
+	display: block;
+}
+
 div.task-detail {
   border-style: solid;
-  border-width: 0px 0px 1px 0px;
+  border-width: 0px 0px 0px 0px;
 	border-color: white;
 }
-span.task-details-action {
+ul.task-details-actions {
+	font-size: 11px;
+	margin-bottom: 0px; /* might be better done in the task-detail class */
+}
+ul.task-details-actions li {
+	display: inline;
+	list-style: none;
 	margin-right: 4px;
+	border: 1px solid #CAD4E6;
+	border-bottom-color: transparent;
+	background-color: transparent;
+	padding: 1px 2px 1px 2px;
+}
+ul.task-details-actions li.active {
+	background-color: #E0ECFF;
+	border-bottom-color: #E0ECFF;
 }
 
 div.task-title input {
@@ -700,13 +721,4 @@ ul.acts label {
 }
 span.act-was {
 	color: gray;
-}
-li.result .task-details {
-	border-width: 1px;
-}
-li.result .task-details.tab {
-	display: none;	
-}
-li.result .task-details.tab.active {
-	display: block;
 }
