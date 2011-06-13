@@ -1,16 +1,18 @@
-<h2>Recent Activity</h2>
-<%= render :partial => 'shared/breadcrumb' %>
+<h2><%= render :partial => 'shared/breadcrumb' %> Recent Activity</h2>
 <hr>
 <%= render :partial => 'shared/task_here_form' %>
 <%= render :partial => 'shared/task_details_toggle' %>
-<%= render :partial => 'shared/resultset_spinner' %>
-<ul id="resultset">
-  <% if @activities.empty? %>  
-    <li class="empty-message" id="empty-message">
-      No tasks match this selection.      
-    </li>
-  <% else %>
-    <li id="empty-message"></li>
-  <% end %>
-	<%= render :partial => 'activities/result', :collection => @activities %>
-</ul>
+
+<div id="content-body">
+	<%= render :partial => 'shared/resultset_spinner' %>
+	<ul id="resultset">
+	  <% if @activities.empty? %>  
+	    <li class="empty-message" id="empty-message">
+	      No tasks match this selection.      
+	    </li>
+	  <% else %>
+	    <li id="empty-message"></li>
+	  <% end %>
+		<%= render :partial => 'activities/result', :collection => @activities %>
+	</ul>
+</div>

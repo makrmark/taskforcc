@@ -31,7 +31,7 @@
 		<%= link_to 'Recent Activity', recent_news_url, :title => "Recent Activity" %>
 	</li>
 
-  <li class="mf-tab" id="showhide-tab" style="float: right;">
+  <li class="mf-tab showhide">
     <%= link_to_function 'Show/Hide Details' do |page|
         page.select('div.task-footer').each do |value|
           value.toggle

@@ -24,17 +24,21 @@ span.profile_link>a {
 #left {
   float: left;
   width: 200px;
-  padding: 4px;
+  padding: 5px;
   height: 100%;
 }
 #content {
-  padding: 0px 215px 0px 215px;
+	padding: 0px 205px 0px 205px;
   height: 100%;
+}
+#content-body {
+	border: 4px solid #B2C9F1;
+	padding: 5px 2px 5px 2px;
 }
 #right {
   float: right;
   width: 200px;
-  padding: 4px;
+  padding: 5px;
   height: 100%;
 }
 div#header {
@@ -531,6 +535,8 @@ div.task-details span.in_place_edit_container {
 	white-space: pre-line; 
 }
 
+#resultset {
+}
 #resultset-spinner-container {
 	position: absolute;
 	top: 0px;
@@ -626,6 +632,7 @@ input.cf {
 }
 
 div.taskhere {	
+	margin-bottom: 8px;
 }
 
 /* multifunction tabs */
@@ -638,24 +645,24 @@ ul.mf-tab li.mf-tab {
   display: inline-block;  
 }
 ul.mf-tab {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: lightgrey;
 }
 
 li.mf-tab {
+	border: 1px solid #CAD4E6;
+	border-bottom-width: 0px;
   width: 150px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: lightgrey;
-  border-bottom-style: none;
   text-align: center;
   color: gray;
-  background-color: white;
+  background-color: transparent;
 }
 li.mf-tab.active {
   font-weight: bold;
-  background-color: #E0ECFF;
+  background-color: #B2C9F1;
+}
+li.mf-tab.showhide {
+	float: right;
+	background-color: #EFEFEF;
+	border-color: lightgrey;
 }
 div.mf-tab.body {
 	font-size: 10px;

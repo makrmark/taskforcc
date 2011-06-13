@@ -1,5 +1,5 @@
-<h4>
-	<%= @collaboration.subject if @collaboration %>
-	<%= "&raquo; #{@topic.name}" if @topic %>
-	<%= "&raquo; #{@collaboration_user.user.full_name}" if @collaboration_user %>
-</h4>
+<%= @collaboration.subject if @collaboration %>
+<%= "&raquo; #{@topic.name}" if @topic %>
+<%= "&raquo; #{@collaboration_user.user.full_name}" if @collaboration_user %>
+
+<% if @collaboration %> &raquo; <% end %>
