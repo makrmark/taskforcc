@@ -448,10 +448,8 @@ div.statusbar div {
 li.result {
 	list-style: none;
   line-height: 1.2em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-	padding-bottom: 3px;
-	border-bottom: 1px solid lightgrey;
+  margin-top: 3px;
+  margin-bottom: 10px;
   min-height: 55px;
 }
 
