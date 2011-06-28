@@ -18,7 +18,7 @@ class TaskObserver < ActiveRecord::Observer
     increment_counters(task)
     
     add_task_created_activity(task)
-    
+
     TaskMailer.deliver_notify_created(task)
   end
   
