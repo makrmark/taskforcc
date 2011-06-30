@@ -53,7 +53,7 @@
 		<%
 			has_desc = ! task.description.nil? && task.description.length > 0
 			dcls = has_desc && task.comments.size == 0 ? "active" : ""
-			ccls = task.comments.size > 0 ? "active" : "" 
+			ccls = ! has_desc || task.comments.size > 0 ? "active" : "" 
 		-%>
 
 	  <div class="task-footer">

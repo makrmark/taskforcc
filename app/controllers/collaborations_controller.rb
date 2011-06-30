@@ -103,7 +103,7 @@ class CollaborationsController < ApplicationController
       # TODO: use transactions here
       # http://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
       if @collaboration.save
-          format.html { redirect_to(@collaboration, :notice => 'Collaboration was successfully created.') }
+          format.html { redirect_to(collaboration_news_index_path @collaboration, :notice => 'Collaboration was successfully created.') }
           format.xml  { render :xml => @collaboration, :status => :created, :location => @collaboration }
       else
         flash[:error] = "Errors creating taskforcc."

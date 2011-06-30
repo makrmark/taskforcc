@@ -557,14 +557,12 @@ div.task-details span.in_place_edit_container {
 #resultset {
 }
 #resultset-spinner-container {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: 50%;
 	margin-left: -155px;
-
 	z-index: 10000;
 	text-align: center;
-	margin: 0 auto;
 }
 #resultset-spinner {
 	background-color: #FFF1A8;
