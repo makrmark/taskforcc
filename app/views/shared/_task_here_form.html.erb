@@ -1,10 +1,12 @@
-<% if @collaboration && @current_user.can_create_task?(@task) -%>
+<% if @collaboration && @current_user.can_create_task?(@new_task) -%>
 <div id="taskhere" class='taskhere'>
-  <% remote_form_for [@collaboration, @task], 
+  <% remote_form_for [@collaboration, @new_task], 
+	  :loading => "Element.show('resultset-spinner-container')",
+	  :complete => "Element.hide('resultset-spinner-container')",
     :html => {:class => 'qtf', :id=>'task_here_form'} do |f| %>
     <%= f.error_messages %>
-    <%= hidden_field_tag 'task[topic_id]', @task.topic_id %>
-    <%= hidden_field_tag 'task[assigned_to]', @task.assigned_to %>
+    <%= hidden_field_tag 'task[topic_id]', @new_task.topic_id %>
+    <%= hidden_field_tag 'task[assigned_to]', @new_task.assigned_to %>
     <%= f.text_field :title, :class => 'qtt' %>
     <%= f.submit 'Create Task Here', :class => 'qtb' %>
   <% end %>

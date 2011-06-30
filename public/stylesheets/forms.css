@@ -104,7 +104,7 @@ form.tabulated.login a {
 /*
 * Used for the form in the multifunction tab area
 */
-form.qtf {
+/* form.qtf {
   text-align: center;
 }
 input.qtt {
@@ -117,6 +117,30 @@ input.qtb {
   font-size: 14px;
   width: 150px;
 	margin: 2px;
+}
+div.qtf.options {
+	text-align: left;
+}
+*/
+form.qtf {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -250px;
+	margin-top: 2px;
+  text-align: center;
+}
+input.qtt {
+	border-style: 1px inset #6694E3;
+  font-size: 10px;
+  width: 400px;
+	margin: 1px;
+}
+input.qtb {
+	border-style: 1px solid #B2C9F1;
+  font-size: 10px;
+  width: 100px;
+	margin: 1px;
 }
 div.qtf.options {
 	text-align: left;
