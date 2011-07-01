@@ -1,4 +1,6 @@
-<% if @collaboration && @current_user.can_create_task?(@new_task) -%>
+<% if controller_name.eql?('news') && 
+	@collaboration && 
+	@current_user.can_create_task?(@new_task) -%>
 <div id="taskhere" class='taskhere'>
   <% remote_form_for [@collaboration, @new_task], 
 	  :loading => "Element.show('resultset-spinner-container')",
