@@ -102,25 +102,7 @@ form.tabulated.login a {
 
 
 /*
-* Used for the form in the multifunction tab area
-*/
-/* form.qtf {
-  text-align: center;
-}
-input.qtt {
-	border: 1px solid lightgrey;
-  font-size: 14px;
-  width: 60%;
-	margin: 2px;
-}
-input.qtb {
-  font-size: 14px;
-  width: 150px;
-	margin: 2px;
-}
-div.qtf.options {
-	text-align: left;
-}
+* Used for the form for creating new Tasks
 */
 form.qtf {
 	position: absolute;

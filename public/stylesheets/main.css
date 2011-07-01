@@ -452,6 +452,9 @@ li.result {
   margin-bottom: 10px;
   min-height: 55px;
 }
+li.result div.Closed {
+	background-color: #F3F3F3;
+}
 
 div.task-left {
   float: left;
@@ -502,7 +505,8 @@ div.task-details {
   background-color: #E0ECFF;
 	font-size: 10px;
 }
-li.result .task-details {
+li.result div.activity-details {
+	border: 1px solid lightgrey;
 }
 li.result .task-details.tab {
 	display: none;	
@@ -523,7 +527,8 @@ ul.task-details-actions {
 ul.task-details-actions li {
 	display: inline;
 	list-style: none;
-	margin-right: 4px;
+	margin-left: 2px;
+	margin-right: 2px;
 	border: 1px solid #CAD4E6;
 	border-bottom-color: transparent;
 	background-color: transparent;
