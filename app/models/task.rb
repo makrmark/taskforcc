@@ -122,11 +122,11 @@ class Task < ActiveRecord::Base
   def self.valid_resolutions(stat)
     case stat
     when 'Resolved' then
-      ['Completed', 'Mitigated', 'Answered']
+      ['Resolved']
     when 'Rejected' then
-      ['Duplicate', 'Not Required', 'Invalid', 'Not Responsible', 'Won\'t Resolve']
+      ['Rejected']
     when 'Closed' then
-      ['Duplicate', 'Not Required', 'Invalid', 'Completed', 'Mitigated', 'Answered', 'Won\'t Resolve']
+      ['Rejected', 'Resolved']
     else
       ['Unresolved']
     end

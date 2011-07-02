@@ -140,10 +140,12 @@ ul.sidebar {
 }
 ul.sidebar>li {
 	border: 0px;
-	border-bottom: 1px;
+	border-top: 1px;
 	border-style: solid;
-	border-color: white;
+	border-color: #EFEFEF;
 	padding-left: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
 /*
@@ -285,7 +287,7 @@ i.Reject  { background-position: -97px -52px; }
 i.Resolve { background-position: -81px -52px; }
 i.Close   { background-position: -49px -52px; }
 li.result:hover i.Assign  { background-position: -65px -20px; }
-li.result:hover i.Accept  { background-position: -49px -20px; }
+li.result:hover i.Accept  { background-position: -129px -36px; }
 li.result:hover i.Reject  { background-position: -97px -20px; }
 li.result:hover i.Resolve { background-position: -81px -20px; }
 li.result:hover i.Close   { background-position: -49px -20px; }
@@ -412,8 +414,8 @@ div.avatar:hover {
 }
 
 img.avatar.mini {
-	width: 22px;
-	height: 22px;
+	width: 28px;
+	height: 28px;
 	border-width: 0px;
 	margin: 0px;
 	vertical-align: top;

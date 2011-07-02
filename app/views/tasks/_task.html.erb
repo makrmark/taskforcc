@@ -30,7 +30,6 @@
 	    <ul class="tam assignment">
 	      <li class="noaction"><%=h task.collaboration.subject %> &raquo; </li>
 	      <%= menu_for_topics(task.collaboration, task) %>
-	      <li class="noaction"><%=h task.user_assigned_to.full_name %></li>
 	    </ul>
 	    <ul class="tam">      
 	      <% task.valid_states_by_user(@current_user).each do |status| %>

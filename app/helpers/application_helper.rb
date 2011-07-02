@@ -45,7 +45,7 @@ module ApplicationHelper
   def menu_for_topics(collaboration, task)
     link = link_to_function(task.topic.name, 
       "toggle_tam_submenu('ttsm', '#{dom_id(task)}', 'topics')")
-    "<li>#{link} <span class=\"arrow\">▼</span> &raquo; #{submenu_for_topics(collaboration, task)}</li>"
+    "<li>#{link} <span class=\"arrow\">▼</span> #{submenu_for_topics(collaboration, task)}</li>"
   end
   
   def submenu_for_topics(collaboration, task)
@@ -70,6 +70,8 @@ module ApplicationHelper
        "<li><i class='Assign'></i>#{link} <span class=\"arrow\">▼</span> #{submenu_for_assignment(task)}</li>"
     when 'Accepted', 'Closed' # no submenu - maintain current resolution
       "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, task.resolution, label_for_status(stat))}&nbsp;</li>"
+    when 'Rejected', 'Resolved'
+      "<li><i class='#{label_for_status(stat)}'></i>#{link_for_chgstatus(task, stat, stat, label_for_status(stat))}&nbsp;</li>"
     else # submenu is the resolution list
       "<li><i class='#{label_for_status(stat)}'></i>#{link} <span class=\"arrow\">▼</span> #{submenu_for_resolution(task, stat)} </li>"
     end
