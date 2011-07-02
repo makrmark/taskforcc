@@ -1,6 +1,6 @@
 <div id="<%= dom_id(task) %>" class="<%= task.status %>">
 	<div class="task-left">
-	  <%= avatar_for(task.user_assigned_to) %>
+		<%= render :partial => 'tasks/task_avatars', :object=> task %>
 	</div>
 	<div class="task-menubar">
 		<%= link_to %Q{<i class="ArrowRight" title="Open"></i>}, collaboration_task_path(

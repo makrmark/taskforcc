@@ -1,0 +1,6 @@
+<% if task_avatars.created_by == task_avatars.assigned_to -%>
+	<%= avatar_for(task_avatars.user_created_by) %>
+<% else -%>
+	<div class="avatar created_by"><%= med_avatar_for(task_avatars.user_created_by) %></div>
+	<div class="avatar assigned_to"><%= med_avatar_for(task_avatars.user_assigned_to) %></div>
+<% end -%>
